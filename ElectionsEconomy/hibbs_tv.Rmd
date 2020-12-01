@@ -27,10 +27,10 @@ library(bayesplot)
 library(rstanarm)
 
 # Parameters
-  # Common code
-file_common <- here::here("_common.R")
   # U.S. Presidential election results and GDP growth
 file_hibbs <- here::here("ElectionsEconomy/data/hibbs.dat")
+  # Common code
+file_common <- here::here("_common.R")
 
 #===============================================================================
 
