@@ -2,8 +2,8 @@ set.seed(42)
 
 options(
   digits = 3,
-  dplyr.print_max = 6,
-  dplyr.print_min = 6,
+  dplyr.print_max = 10,
+  dplyr.print_min = 10,
   dplyr.summarise.inform = FALSE
 )
 
