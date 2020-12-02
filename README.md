@@ -23,8 +23,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [ElectionsEconomy/](ElectionsEconomy/)
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
         presidential vote share from the economy
-        <!-- - [ElectricCompany/](ElectricCompany/) -->
-        <!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+-   [ElectricCompany/](ElectricCompany/)
+    -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
+        “Electric company” data
         <!-- - [Peacekeeping/](Peacekeeping/) -->
         <!--     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping -->
         <!-- - [SimpleCausal/](SimpleCausal/) -->
@@ -286,9 +287,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         presidential vote share from the economy
         <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
         <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
-        <!-- - [ElectricCompany/](ElectricCompany/) -->
-        <!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
-        <!-- - [FakeKCV/](FakeKCV/) -->
+-   [ElectricCompany/](ElectricCompany/)
+    -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
+        “Electric company” data <!-- - [FakeKCV/](FakeKCV/) -->
         <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
         <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
         <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
