@@ -148,7 +148,7 @@ incomes. We’ll format `income` for plotting and recode “dk/refused” as
 `NA`.
 
 ``` r
-income_recode =
+income_recode <- 
   levels(pew$income) %>% 
   set_names(
     levels(pew$income) %>% 
@@ -249,7 +249,7 @@ pew %>%
 Again, we’ll format `ideo` for plotting and recode “dk/refused” as `NA`.
 
 ``` r
-ideo_recode =
+ideo_recode <- 
   levels(pew$ideo) %>% 
   set_names(levels(pew$ideo) %>% str_to_title())
 
