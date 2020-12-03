@@ -16,8 +16,6 @@ Predicting presidential vote share from the economy. See Chapters
 ```{r, message=FALSE}
 # Packages
 library(tidyverse)
-library(arm)
-library(bayesplot)
 library(rstanarm)
 
 # Parameters
