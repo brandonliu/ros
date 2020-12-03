@@ -19,8 +19,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy
 - [ElectricCompany/](ElectricCompany/)
     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data
-<!-- - [Peacekeeping/](Peacekeeping/) -->
-<!--     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping -->
+- [Peacekeeping/](Peacekeeping/)
+    - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping
 <!-- - [SimpleCausal/](SimpleCausal/) -->
 <!--     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference -->
 <!-- - [Helicopters/](Helicopters/) -->
@@ -355,8 +355,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
 <!-- - [Parabola/](Parabola/) -->
 <!--     - [parabola_tv.md](Parabola/parabola_tv.md) - Demonstration of using Stan for optimization -->
-<!-- - [Peacekeeping/](Peacekeeping/) -->
-<!--     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping -->
+- [Peacekeeping/](Peacekeeping/)
+    - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping
 <!-- - [PearsonLee/](PearsonLee/) -->
 <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
 <!-- - [Pew/](Pew/) -->

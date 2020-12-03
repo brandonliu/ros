@@ -26,8 +26,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
         “Electric company” data
-        <!-- - [Peacekeeping/](Peacekeeping/) -->
-        <!--     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping -->
+-   [Peacekeeping/](Peacekeeping/)
+    -   [peace\_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil
+        war in countries with and without United Nations peacekeeping
         <!-- - [SimpleCausal/](SimpleCausal/) -->
         <!--     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference -->
         <!-- - [Helicopters/](Helicopters/) -->
@@ -342,8 +343,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
         <!-- - [Parabola/](Parabola/) -->
         <!--     - [parabola_tv.md](Parabola/parabola_tv.md) - Demonstration of using Stan for optimization -->
-        <!-- - [Peacekeeping/](Peacekeeping/) -->
-        <!--     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping -->
+-   [Peacekeeping/](Peacekeeping/)
+    -   [peace\_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil
+        war in countries with and without United Nations peacekeeping
         <!-- - [PearsonLee/](PearsonLee/) -->
         <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
         <!-- - [Pew/](Pew/) -->
