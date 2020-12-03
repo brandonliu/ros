@@ -3,12 +3,8 @@ title: "Regression and Other Stories: Peacekeeping"
 author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
 date: "`r format(Sys.Date())`"
 output:
-  html_document:
-    theme: readable
+  github_document:
     toc: true
-    toc_depth: 2
-    toc_float: true
-    code_download: true
 ---
 Tidyverse version by Bill Behrman.
 
@@ -25,10 +21,10 @@ library(haven)
 library(lubridate)
 
 # Parameters
-  # Common code
-file_common <- here::here("_common.R")
   # Outcomes after civil wars with and without U.N. peacekeeping
 file_peace <- here::here("Peacekeeping/data/pk&pkept_old.dta")
+  # Common code
+file_common <- here::here("_common.R")
 
 #===============================================================================
 
@@ -75,15 +71,15 @@ peace %>%
 
 Haiti had a ceasefire that started on 1994-09-18. The seven rows correspond to seven different time periods. There were peacekeepers for six of these periods (`pk_dum`), though the peacekeeping operation and mission (`pkop`) varied.
 
-We'll now collapse the data to one row per conflict ID, using the first row. We'll add a new variable `peacekeepers` to indicate whether there were peacekeepers at any time.
+We'll add a new variable `peacekeepers` to indicate whether there were peacekeepers at any time. And we'll now collapse the data to one row per conflict ID, using the first row. 
 
 ```{r}
 peace <- 
   peace %>% 
   group_by(id) %>% 
   summarize(
-    across(everything(), first),
-    peacekeepers = any(pk_dum == 1)
+    peacekeepers = any(pk_dum == 1),
+    across(everything(), first)
   )
 ```
 
@@ -92,7 +88,7 @@ We are only interested in conflicts where we know the peacekeeper status.
 ```{r}
 peace %>% 
   filter(is.na(peacekeepers)) %>% 
-  select(id, cname, cfdate, faildate, outcome, pk_dum, pkop, peacekeepers)
+  select(id, cname, peacekeepers, cfdate, faildate, outcome, pk_dum, pkop)
 ```
 
 There are 13 conflicts with no peacekeeper data. We'll remove them.
@@ -157,13 +153,13 @@ In the conflicts where the ceasefires held, the duration of peace was shorter wh
 ## Plots
 
 ```{r}
-peace_war <- 
+ceasefire_failed <- 
   peace %>% 
   filter(!is.na(faildate)) %>% 
   mutate(return_years = interval(cfdate, faildate) / dyears(1))
 
 return_years_means <- 
-  peace_war %>% 
+  ceasefire_failed %>% 
   group_by(peacekeepers) %>% 
   summarize(return_years_mean = mean(return_years))
 
@@ -173,7 +169,7 @@ peacekeepers_labels <-
     "TRUE" = "With peacekeeping"
   )
 
-peace_war %>% 
+ceasefire_failed %>% 
   ggplot(aes(return_years)) +
   geom_histogram(binwidth = 0.5, boundary = 0) +
   geom_vline(aes(xintercept = return_years_mean), data = return_years_means) +
@@ -191,7 +187,7 @@ peace_war %>%
 
 ```{r}
 
-peace_war %>% 
+ceasefire_failed %>% 
   drop_na(hazard1) %>% 
   ggplot(aes(hazard1, return_years, color = peacekeepers)) +
   geom_point() +
