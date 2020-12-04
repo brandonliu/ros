@@ -1,23 +1,32 @@
----
-title: "Regression and Other Stories: SimpleCausal"
-author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
-date: "`r format(Sys.Date())`"
-output:
-  github_document:
-    toc: true
----
+Regression and Other Stories: SimpleCausal
+================
+Andrew Gelman, Jennifer Hill, Aki Vehtari
+2020-12-04
+
+-   [Simulated data from linear
+    model](#simulated-data-from-linear-model)
+    -   [Regression with binary
+        predictor](#regression-with-binary-predictor)
+    -   [Regression with continuous
+        predictor](#regression-with-continuous-predictor)
+-   [Simulated data from nonlinear
+    model](#simulated-data-from-nonlinear-model)
+    -   [Regression with continuous
+        predictor](#regression-with-continuous-predictor-1)
+-   [Simulated data from two groups](#simulated-data-from-two-groups)
+
 Tidyverse version by Bill Behrman.
 
-Simple graphs illustrating regression for causal inference. See
-Chapter 1 in Regression and Other Stories.
+Simple graphs illustrating regression for causal inference. See Chapter
+1 in Regression and Other Stories.
 
-The simulated data depends on the random seed, and thus the plots
-and numbers here and in the book may differ. You can experiment
-with the simulation variation by changing the seed.
+The simulated data depends on the random seed, and thus the plots and
+numbers here and in the book may differ. You can experiment with the
+simulation variation by changing the seed.
 
--------------
+------------------------------------------------------------------------
 
-```{r, message=FALSE}
+``` r
 # Packages
 library(tidyverse)
 
@@ -35,7 +44,7 @@ source(file_common)
 
 ## Simulated data from linear model
 
-```{r}
+``` r
 set.seed(SEED)
 
 n <- 50
@@ -49,13 +58,21 @@ df_1 <-
 
 ### Regression with binary predictor
 
-```{r}
+``` r
 lm_1a <- lm(y ~ x_binary, data = df_1)
 
 arm::display(lm_1a)
 ```
 
-```{r}
+    #> lm(formula = y ~ x_binary, data = df_1)
+    #>             coef.est coef.se
+    #> (Intercept) 16.20     0.65  
+    #> x_binary     4.63     0.95  
+    #> ---
+    #> n = 50, k = 2
+    #> residual sd = 3.36, R-Squared = 0.33
+
+``` r
 slope <- coef(lm_1a)[["x_binary"]]
 intercept <- coef(lm_1a)[["(Intercept)"]]
 
@@ -75,15 +92,25 @@ df_1 %>%
   )
 ```
 
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
 ### Regression with continuous predictor
 
-```{r}
+``` r
 lm_1b <- lm(y ~ x, data = df_1)
 
 arm::display(lm_1b)
 ```
 
-```{r}
+    #> lm(formula = y ~ x, data = df_1)
+    #>             coef.est coef.se
+    #> (Intercept) 10.08     1.13  
+    #> x            2.89     0.37  
+    #> ---
+    #> n = 50, k = 2
+    #> residual sd = 2.73, R-Squared = 0.56
+
+``` r
 slope <- coef(lm_1b)[["x"]]
 intercept <- coef(lm_1b)[["(Intercept)"]]
 
@@ -106,9 +133,11 @@ df_1 %>%
   )
 ```
 
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+
 ## Simulated data from nonlinear model
 
-```{r}
+``` r
 set.seed(SEED)
 
 n <- 50
@@ -120,16 +149,23 @@ df_2 <-
   )
 ```
 
-
 ### Regression with continuous predictor
 
-```{r}
+``` r
 lm_2 <- lm(y ~ x, data = df_2)
 
 arm::display(lm_2)
 ```
 
-```{r}
+    #> lm(formula = y ~ x, data = df_2)
+    #>             coef.est coef.se
+    #> (Intercept) 13.37     0.74  
+    #> x           -2.18     0.24  
+    #> ---
+    #> n = 50, k = 2
+    #> residual sd = 1.78, R-Squared = 0.63
+
+``` r
 df_2 %>% 
   ggplot(aes(x)) +
   geom_point(aes(y = y)) +
@@ -142,7 +178,9 @@ df_2 %>%
   )
 ```
 
-```{r}
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+
+``` r
 slope <- coef(lm_2)[["x"]]
 intercept <- coef(lm_2)[["(Intercept)"]]
 
@@ -158,9 +196,11 @@ df_2 %>%
   )
 ```
 
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+
 ## Simulated data from two groups
 
-```{r}
+``` r
 set.seed(SEED)
 
 n <- 100
@@ -178,13 +218,22 @@ df_3 <-
   )
 ```
 
-```{r}
+``` r
 lm_3 <- lm(y ~ x_1 + x_2, data = df_3)
 
 arm::display(lm_3)
 ```
 
-```{r}
+    #> lm(formula = y ~ x_1 + x_2, data = df_3)
+    #>             coef.est coef.se
+    #> (Intercept) 20.05     0.49  
+    #> x_1          5.07     0.21  
+    #> x_2          9.79     0.58  
+    #> ---
+    #> n = 100, k = 3
+    #> residual sd = 2.71, R-Squared = 0.87
+
+``` r
 slope <- coef(lm_3)[["x_1"]]
 intercept_0 <- coef(lm_3)[["(Intercept)"]]
 intercept_1 <- coef(lm_3)[["(Intercept)"]] + coef(lm_3)[["x_2"]]
@@ -223,3 +272,5 @@ ggplot() +
     color = NULL
   )
 ```
+
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
