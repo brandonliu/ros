@@ -29,8 +29,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Peacekeeping/](Peacekeeping/)
     -   [peace\_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil
         war in countries with and without United Nations peacekeeping
-        <!-- - [SimpleCausal/](SimpleCausal/) -->
-        <!--     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference -->
+-   [SimpleCausal/](SimpleCausal/)
+    -   [causal\_tv.md](SimpleCausal/causal_tv.md) - Simple graphs
+        illustrating regression for causal inference
         <!-- - [Helicopters/](Helicopters/) -->
         <!--     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise -->
 
@@ -376,8 +377,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
         <!-- - [SexRatio/](SexRatio/) -->
         <!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
-        <!-- - [SimpleCausal/](SimpleCausal/) -->
-        <!--     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference -->
+-   [SimpleCausal/](SimpleCausal/)
+    -   [causal\_tv.md](SimpleCausal/causal_tv.md) - Simple graphs
+        illustrating regression for causal inference
         <!-- - [Simplest/](Simplest/) -->
         <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
         <!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
