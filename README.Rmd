@@ -18,13 +18,13 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [ElectionsEconomy/](ElectionsEconomy/)
     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy
 - [ElectricCompany/](ElectricCompany/)
-    - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data
+    - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data
 - [Peacekeeping/](Peacekeeping/)
     - [peace_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil war in countries with and without United Nations peacekeeping
 - [SimpleCausal/](SimpleCausal/)
     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference
-<!-- - [Helicopters/](Helicopters/) -->
-<!--     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise -->
+- [Helicopters/](Helicopters/)
+    - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise
 
 <!-- ### 2  Data and measurement -->
 <!-- - [HDI/](HDI/) -->
@@ -188,7 +188,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 
 <!-- ### 16  Design and sample size decisions -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [SampleSize/](SampleSize/) -->
 <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
@@ -208,14 +208,14 @@ This repository contains Tidyverse implementations for the examples and exercise
 
 <!-- ### 19  Causal inference using regression on the treatment variable -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [Incentives/]((Incentives/)) -->
 <!--     - [incentives_tv.md](Incentives/incentives_tv.md) - Simple analysis of incentives data -->
 <!-- - [Cows/](Cows/) -->
 
 <!-- ### 20  Observational studies with all confounders assumed to be measured -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [Childcare/](Childcare/) -->
 <!--     - [childcare_tv.md](Childcare/childcare_tv.md) - Infant Health and Development Program (IHDP) example. -->
 
@@ -300,7 +300,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
 <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
 - [ElectricCompany/](ElectricCompany/)
-    - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data
+    - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data
 <!-- - [FakeKCV/](FakeKCV/) -->
 <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
 <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
@@ -318,8 +318,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways -->
 <!-- - [HealthExpenditure/](HealthExpenditure/) -->
 <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
-<!-- - [Helicopters/](Helicopters/) -->
-<!--     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise -->
+- [Helicopters/](Helicopters/)
+    - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise
 <!-- - [Imputation/](Imputation/) -->
 <!--     - [imputation_tv.md](Imputation/imputation_tv.md) - Regression-based imputation for the Social Indicators Survey -->
 <!--     - [imputation_gg_tv.md](Imputation/imputation_gg_tv.md) - Regression-based imputation for the Social Indicators Survey, dplyr/ggplot version -->

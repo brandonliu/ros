@@ -25,15 +25,16 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         presidential vote share from the economy
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
-        “Electric company” data
+        “Electric Company” data
 -   [Peacekeeping/](Peacekeeping/)
     -   [peace\_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil
         war in countries with and without United Nations peacekeeping
 -   [SimpleCausal/](SimpleCausal/)
     -   [causal\_tv.md](SimpleCausal/causal_tv.md) - Simple graphs
         illustrating regression for causal inference
-        <!-- - [Helicopters/](Helicopters/) -->
-        <!--     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise -->
+-   [Helicopters/](Helicopters/)
+    -   [helicopters\_tv.md](Helicopters/helicopters_tv.md) - Example
+        data file for helicopter flying time exercise
 
 <!-- ### 2  Data and measurement -->
 <!-- - [HDI/](HDI/) -->
@@ -183,7 +184,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!-- - [AcademyAwards/](AcademyAwards/) -->
 <!-- ### 16  Design and sample size decisions -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [SampleSize/](SampleSize/) -->
 <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
@@ -200,13 +201,13 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
 <!-- ### 19  Causal inference using regression on the treatment variable -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [Incentives/]((Incentives/)) -->
 <!--     - [incentives_tv.md](Incentives/incentives_tv.md) - Simple analysis of incentives data -->
 <!-- - [Cows/](Cows/) -->
 <!-- ### 20  Observational studies with all confounders assumed to be measured -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric company" data -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [Childcare/](Childcare/) -->
 <!--     - [childcare_tv.md](Childcare/childcare_tv.md) - Infant Health and Development Program (IHDP) example. -->
 <!-- ### 21  More advanced topics in causal inference -->
@@ -291,7 +292,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
-        “Electric company” data <!-- - [FakeKCV/](FakeKCV/) -->
+        “Electric Company” data <!-- - [FakeKCV/](FakeKCV/) -->
         <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
         <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
         <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
@@ -307,8 +308,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways -->
         <!-- - [HealthExpenditure/](HealthExpenditure/) -->
         <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
-        <!-- - [Helicopters/](Helicopters/) -->
-        <!--     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise -->
+-   [Helicopters/](Helicopters/)
+    -   [helicopters\_tv.md](Helicopters/helicopters_tv.md) - Example
+        data file for helicopter flying time exercise
         <!-- - [Imputation/](Imputation/) -->
         <!--     - [imputation_tv.md](Imputation/imputation_tv.md) - Regression-based imputation for the Social Indicators Survey -->
         <!--     - [imputation_gg_tv.md](Imputation/imputation_gg_tv.md) - Regression-based imputation for the Social Indicators Survey, dplyr/ggplot version -->
