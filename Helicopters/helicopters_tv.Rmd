@@ -3,12 +3,8 @@ title: "Regression and Other Stories: Helicopters"
 author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
 date: "`r format(Sys.Date())`"
 output:
-  html_document:
-    theme: readable
+  github_document:
     toc: true
-    toc_depth: 2
-    toc_float: true
-    code_download: true
 ---
 Tidyverse version by Bill Behrman.
 
@@ -22,10 +18,10 @@ Example data file for helicopter flying time exercise. See Chapter
 library(tidyverse)
 
 # Parameters
-  # Common code
-file_common <- here::here("_common.R")
   # U.S. Presidential election results and GDP growth
 file_helicopters <- here::here("Helicopters/data/helicopters.txt")
+  # Common code
+file_common <- here::here("_common.R")
 
 #===============================================================================
 
