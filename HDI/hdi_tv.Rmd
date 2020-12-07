@@ -3,12 +3,8 @@ title: "Regression and Other Stories: Human Development Index"
 author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
 date: "`r format(Sys.Date())`"
 output:
-  html_document:
-    theme: readable
+  github_document:
     toc: true
-    toc_depth: 2
-    toc_float: true
-    code_download: true
 ---
 Tidyverse version by Bill Behrman.
 
@@ -23,12 +19,12 @@ library(tidyverse)
 library(sf)
 
 # Parameters
-  # Common code
-file_common <- here::here("_common.R")
   # Human Development Index (HDI) data
 file_hdi <- here::here("HDI/data/hdi.dat")
   # Data that includes state income
 file_income <- here::here("HDI/data/state vote and income, 68-00.dta")
+  # Common code
+file_common <- here::here("_common.R")
 
 #===============================================================================
 
