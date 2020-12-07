@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-02
+2020-12-07
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -211,14 +211,8 @@ hibbs %>%
   ggplot(aes(growth, vote)) +
   geom_hline(yintercept = 50, color = "grey60") +
   geom_abline(slope = slope, intercept = intercept) +
-  annotate(
-    geom = "text",
-    label = eqn,
-    x = 3,
-    y = 54,
-    hjust = 0
-  ) +
   geom_point() +
+  annotate("text", x = 3, y = 54, label = eqn, hjust = 0) +
   scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
   labs(
