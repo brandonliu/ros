@@ -19,7 +19,7 @@ library(tidyverse)
 library(sf)
 
 # Parameters
-  # Human Development Index (HDI) data
+  # Human Development Index data
 file_hdi <- here::here("HDI/data/hdi.dat")
   # Data that includes state income
 file_income <- here::here("HDI/data/state vote and income, 68-00.dta")
