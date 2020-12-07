@@ -16,7 +16,6 @@ in Regression and Other Stories.
 ```{r, message=FALSE}
 # Packages
 library(tidyverse)
-library(rstanarm)
 
 # Parameters
   # U.S. Presidential election results and GDP growth

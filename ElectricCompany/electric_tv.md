@@ -1,7 +1,7 @@
 Regression and Other Stories: Electric Company
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-02
+2020-12-07
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -17,7 +17,6 @@ Regression and Other Stories.
 ``` r
 # Packages
 library(tidyverse)
-library(rstanarm)
 
 # Parameters
   # U.S. Presidential election results and GDP growth
