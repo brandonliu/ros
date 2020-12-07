@@ -36,20 +36,22 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [helicopters\_tv.md](Helicopters/helicopters_tv.md) - Example
         data file for helicopter flying time exercise
 
-<!-- ### 2  Data and measurement -->
-<!-- - [HDI/](HDI/) -->
-<!--     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways -->
-<!-- - [Pew/](Pew/) -->
-<!--     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data -->
-<!-- - [HealthExpenditure/](HealthExpenditure/) -->
-<!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
-<!-- - [Names/](Names/) -->
-<!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
-<!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
-<!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
-<!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
-<!-- - [Congress/](Congress/) -->
-<!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
+### 2 Data and measurement
+
+-   [HDI/](HDI/)
+    -   [hdi\_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking
+        at data in different ways <!-- - [Pew/](Pew/) -->
+        <!--     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data -->
+        <!-- - [HealthExpenditure/](HealthExpenditure/) -->
+        <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
+        <!-- - [Names/](Names/) -->
+        <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
+        <!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
+        <!-- - [Congress/](Congress/) -->
+        <!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
+        <!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
+        <!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
+
 <!-- ### 3  Some basic methods in mathematics and probability -->
 <!-- - [Mile/](Mile/) -->
 <!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
@@ -304,8 +306,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [gay_tv.md](Gay/gay_tv.md) - Nonlinear models (Loess, B-spline, GP-spline, and BART) and political attitudes as a function of age -->
         <!-- - [Girls/](Girls/) --> <!-- - [Golf/](Golf/) -->
         <!--     - [golf_tv.md](Golf/golf_tv.md) - Gold putting accuracy: Fitting a nonlinear model using Stan -->
-        <!-- - [HDI/](https://github.com/avehtari/ROS-Examples/HDI/) -->
-        <!--     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways -->
+-   [HDI/](https://github.com/avehtari/ROS-Examples/HDI/)
+    -   [hdi\_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking
+        at data in different ways
         <!-- - [HealthExpenditure/](HealthExpenditure/) -->
         <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
 -   [Helicopters/](Helicopters/)
