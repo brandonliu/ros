@@ -40,9 +40,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 
 -   [HDI/](HDI/)
     -   [hdi\_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking
-        at data in different ways <!-- - [Pew/](Pew/) -->
-        <!--     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data -->
-        <!-- - [HealthExpenditure/](HealthExpenditure/) -->
+        at data in different ways
+-   [Pew/](Pew/)
+    -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
+        Pew data <!-- - [HealthExpenditure/](HealthExpenditure/) -->
         <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
         <!-- - [Names/](Names/) -->
         <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
@@ -354,9 +355,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         war in countries with and without United Nations peacekeeping
         <!-- - [PearsonLee/](PearsonLee/) -->
         <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
-        <!-- - [Pew/](Pew/) -->
-        <!--     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data -->
-        <!-- - [PoissonExample/](PoissonExample/) -->
+-   [Pew/](Pew/)
+    -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
+        Pew data <!-- - [PoissonExample/](PoissonExample/) -->
         <!--     - [poissonexample_tv.md](PoissonExample/poissonexample_tv.md) - Demonstrate Poisson regression with simulated data. -->
         <!-- - [Pollution/](Pollution/) -->
         <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
