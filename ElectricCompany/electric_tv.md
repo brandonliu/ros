@@ -1,7 +1,7 @@
 Regression and Other Stories: Electric Company
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-07
+2020-12-08
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)

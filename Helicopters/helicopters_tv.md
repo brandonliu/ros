@@ -1,7 +1,7 @@
 Regression and Other Stories: Helicopters
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-04
+2020-12-08
 
 -   [Data](#data)
 

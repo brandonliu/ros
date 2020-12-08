@@ -1,7 +1,7 @@
 Regression and Other Stories: Peacekeeping
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-03
+2020-12-08
 
 -   [Data](#data)
 -   [Plots](#plots)

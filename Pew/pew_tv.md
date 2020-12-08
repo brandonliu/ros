@@ -1,7 +1,7 @@
 Regression and Other Stories: Pew
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-02
+2020-12-08
 
 -   [Data](#data)
     -   [Income](#income)

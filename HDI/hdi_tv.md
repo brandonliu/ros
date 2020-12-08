@@ -1,7 +1,7 @@
 Regression and Other Stories: Human Development Index
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-07
+2020-12-08
 
 -   [Data](#data)
 -   [Plots](#plots)

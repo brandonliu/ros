@@ -1,7 +1,7 @@
 ---
 title: "Regression and Other Stories: Helicopters"
 author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
-date: "`r format(Sys.Date())`"
+date: "`r Sys.Date()`"
 output:
   github_document:
     toc: true

@@ -1,7 +1,7 @@
 Regression and Other Stories: SimpleCausal
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-04
+2020-12-08
 
 -   [Simulated data from linear
     model](#simulated-data-from-linear-model)
