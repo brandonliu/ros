@@ -1,7 +1,7 @@
 Regression and Other Stories: Health Expenditure
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-02
+2020-12-09
 
 -   [Data](#data)
 -   [Plot](#plot)
