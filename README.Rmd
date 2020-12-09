@@ -31,8 +31,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways
 - [Pew/](Pew/)
     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data
-<!-- - [HealthExpenditure/](HealthExpenditure/) -->
-<!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
+- [HealthExpenditure/](HealthExpenditure/)
+    - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models
 <!-- - [Names/](Names/) -->
 <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
 <!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
@@ -317,8 +317,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [golf_tv.md](Golf/golf_tv.md) - Gold putting accuracy: Fitting a nonlinear model using Stan -->
 - [HDI/](https://github.com/avehtari/ROS-Examples/HDI/)
     - [hdi_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking at data in different ways
-<!-- - [HealthExpenditure/](HealthExpenditure/) -->
-<!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
+- [HealthExpenditure/](HealthExpenditure/)
+    - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models
 - [Helicopters/](Helicopters/)
     - [helicopters_tv.md](Helicopters/helicopters_tv.md) - Example data file for helicopter flying time exercise
 <!-- - [Imputation/](Imputation/) -->

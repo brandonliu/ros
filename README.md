@@ -43,8 +43,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         at data in different ways
 -   [Pew/](Pew/)
     -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
-        Pew data <!-- - [HealthExpenditure/](HealthExpenditure/) -->
-        <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
+        Pew data
+-   [HealthExpenditure/](HealthExpenditure/)
+    -   [healthexpenditure\_tv.md](HealthExpenditure/healthexpenditure_tv.md) -
+        Discovery through graphs of data and models
         <!-- - [Names/](Names/) -->
         <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
         <!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
@@ -310,8 +312,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [HDI/](https://github.com/avehtari/ROS-Examples/HDI/)
     -   [hdi\_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking
         at data in different ways
-        <!-- - [HealthExpenditure/](HealthExpenditure/) -->
-        <!--     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models -->
+-   [HealthExpenditure/](HealthExpenditure/)
+    -   [healthexpenditure\_tv.md](HealthExpenditure/healthexpenditure_tv.md) -
+        Discovery through graphs of data and models
 -   [Helicopters/](Helicopters/)
     -   [helicopters\_tv.md](Helicopters/helicopters_tv.md) - Example
         data file for helicopter flying time exercise
