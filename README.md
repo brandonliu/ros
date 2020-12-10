@@ -47,9 +47,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [HealthExpenditure/](HealthExpenditure/)
     -   [healthexpenditure\_tv.md](HealthExpenditure/healthexpenditure_tv.md) -
         Discovery through graphs of data and models
-        <!-- - [Names/](Names/) -->
-        <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
-        <!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
+-   [Names/](Names/)
+    -   [lastletters\_tv.md](Names/lastletters_tv.md) - Last letters -
+        Distributions of last letters of names of American babies
         <!-- - [Congress/](Congress/) -->
         <!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
         <!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
@@ -343,9 +343,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
         <!-- - [Mile/](Mile/) -->
         <!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
-        <!-- - [Names/](Names/) -->
-        <!--     - [names_tv.md](Names/names_tv.md) - Names - Distributions of names of American babies -->
-        <!--     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies -->
+-   [Names/](Names/)
+    -   [lastletters\_tv.md](Names/lastletters_tv.md) - Last letters -
+        Distributions of last letters of names of American babies
         <!-- - [NES/](NES/) -->
         <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
         <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
