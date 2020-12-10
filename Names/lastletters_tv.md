@@ -1,7 +1,7 @@
 Regression and Other Stories: Last letters of names
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-03
+2020-12-10
 
 -   [Data](#data)
 -   [Plots](#plots)

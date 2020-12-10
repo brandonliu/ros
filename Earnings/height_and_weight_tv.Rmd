@@ -1,5 +1,5 @@
 ---
-title: "Regression and Other Stories: Height and Weight"
+title: "Regression and Other Stories: Height and weight"
 author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
 date: "`r Sys.Date()`"
 output:
