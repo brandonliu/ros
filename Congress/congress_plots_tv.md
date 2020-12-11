@@ -1,7 +1,7 @@
 Regression and Other Stories: Congress
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-04
+2020-12-11
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -19,9 +19,9 @@ library(tidyverse)
 
 # Parameters
   # Directory with congressional election data
-dir_election <- here::here("Congress/data")
+dir_elections <- here::here("Congress/data")
   # Data variables
-election_rename <- 
+elections_rename <- 
   c(
     state_code = "X1",
     district_code = "X2",
@@ -44,9 +44,9 @@ source(file_common)
 
 ``` r
 elections <- 
-  fs::dir_ls(path = dir_election, regexp = "\\d{4}.asc$") %>% 
+  fs::dir_ls(path = dir_elections, regexp = "\\d{4}.asc$") %>% 
   map_dfr(~ read_table2(., col_names = FALSE), .id = "year") %>% 
-  rename(!!! election_rename) %>% 
+  rename(!!! elections_rename) %>% 
   mutate(
     year = str_match(year, "(\\d{4}).asc$")[, 2] %>% as.integer(),
     across(!year, na_if, -9),
@@ -174,7 +174,8 @@ v %>%
   scale_x_continuous(
     breaks = scales::breaks_width(0.1),
     minor_breaks = NULL,
-    labels = scales::label_percent(accuracy = 1)
+    labels = scales::label_percent(accuracy = 1),
+    expand = expansion(add = 0.05)
   ) +
   scale_y_continuous(
     breaks = scales::breaks_width(0.1),
@@ -188,7 +189,7 @@ v %>%
   theme(legend.position = "bottom") +
   labs(
     title = "Swings in U.S. congressional elections",
-    subtitle = "Where Democratic percentage in first election was between 20 - 80% ",
+    subtitle = "Where Democratic percentage was between 20 - 80%",
     x = "Democratic percentage in first election",
     y = "Swing in Democratic vote in next election",
     color = NULL
