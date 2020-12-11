@@ -50,8 +50,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Names/](Names/)
     -   [lastletters\_tv.md](Names/lastletters_tv.md) - Last letters -
         Distributions of last letters of names of American babies
-        <!-- - [Congress/](Congress/) -->
-        <!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
+-   [Congress/](Congress/)
+    -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
+        Predictive uncertainty for congressional elections
         <!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
         <!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
 
@@ -60,8 +61,6 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
 <!-- - [Metabolic/](Metabolic/) -->
 <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
 <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
 <!-- - [Stents/](Stents/) -->
@@ -267,28 +266,29 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!-- - [ChileSchools/](ChileSchools/) -->
 <!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
 <!-- - [Coins/](Coins/) -->
-<!-- - [Congress/](Congress/) -->
-<!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
-<!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
-<!-- - [Coop/](Coop/) -->
-<!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
-<!-- - [Coverage/](Coverage/) -->
-<!--     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage -->
-<!-- - [Cows/](Cows/) -->
-<!-- - [CrossValidation/](CrossValidation/) -->
-<!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
-<!-- - [SampleSize/](SampleSize/) -->
-<!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
-<!-- - [Death/](Death/) -->
-<!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
-<!-- - [DifferentSoftware/](DifferentSoftware/) -->
-<!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
-<!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuos model -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 
+-   [Congress/](Congress/)
+    <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
+    -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
+        Predictive uncertainty for congressional elections
+        <!-- - [Coop/](Coop/) -->
+        <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
+        <!-- - [Coverage/](Coverage/) -->
+        <!--     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage -->
+        <!-- - [Cows/](Cows/) -->
+        <!-- - [CrossValidation/](CrossValidation/) -->
+        <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+        <!-- - [SampleSize/](SampleSize/) -->
+        <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
+        <!-- - [Death/](Death/) -->
+        <!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
+        <!-- - [DifferentSoftware/](DifferentSoftware/) -->
+        <!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
+        <!-- - [Earnings/](Earnings/) -->
+        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+        <!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
+        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuos model -->
+        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 -   [ElectionsEconomy/](ElectionsEconomy/)
     <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting

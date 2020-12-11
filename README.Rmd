@@ -35,8 +35,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [healthexpenditure_tv.md](HealthExpenditure/healthexpenditure_tv.md) - Discovery through graphs of data and models
 - [Names/](Names/)
     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies
-<!-- - [Congress/](Congress/) -->
-<!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
+- [Congress/](Congress/)
+    - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections
 <!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
 <!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
 
@@ -46,8 +46,6 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
 <!-- - [Metabolic/](Metabolic/) -->
 <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
 <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
 <!-- - [Stents/](Stents/) -->
@@ -273,9 +271,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!-- - [ChileSchools/](ChileSchools/) -->
 <!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
 <!-- - [Coins/](Coins/) -->
-<!-- - [Congress/](Congress/) -->
+- [Congress/](Congress/)
 <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
-<!--     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections -->
+    - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections
 <!-- - [Coop/](Coop/) -->
 <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
 <!-- - [Coverage/](Coverage/) -->
