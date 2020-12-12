@@ -1,7 +1,7 @@
 Regression and Other Stories: AgePeriodCohort
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-06
+2020-12-12
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -140,10 +140,11 @@ v %>%
 
 ### Impact of changing age distribution on mortality
 
-A helper function to fix the mortality rates to a given year.
+A helper function to set the mortality rates for all years to that of a
+given year.
 
 ``` r
-fix_rates <- function(.data, rate_year) {
+set_rates <- function(.data, rate_year) {
   .data %>% 
     left_join(
       .data %>% 
@@ -159,7 +160,7 @@ fix_rates <- function(.data, rate_year) {
 v <- 
   c(1999, 2013) %>% 
   set_names() %>% 
-  map_dfr(~ fix_rates(mortality, .), .id = "rate_year") %>% 
+  map_dfr(~ set_rates(mortality, .), .id = "rate_year") %>% 
   group_by(rate_year, year) %>% 
   summarize(rate = weighted.mean(rate, population)) %>% 
   ungroup() %>% 
@@ -298,7 +299,7 @@ declined to 492 in 2013. The rate for women in deaths per 100,000
 increased throughout the period, from 281 in 1999 to 309 in 2013. The
 combination of these two trends explains why the overall trend increased
 from 1999 to 2005 and then was stable afterwards. The decrease in the
-men’s rate is roughly canceled by the increase in the women’s rate.
+men’s rate was roughly canceled by the increase in the women’s rate.
 
 ### Age-adjusted mortality by gender and region
 
