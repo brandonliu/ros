@@ -53,8 +53,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Congress/](Congress/)
     -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
         Predictive uncertainty for congressional elections
-        <!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
-        <!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
+-   [AgePeriodCohort/](AgePeriodCohort/)
+    -   [births\_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment
 
 <!-- ### 3  Some basic methods in mathematics and probability -->
 <!-- - [Mile/](Mile/) -->
@@ -245,28 +245,28 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 ## Examples alphabetically
 
 <!-- - [AcademyAwards/](AcademyAwards/) -->
-<!-- - [AgePeriodCohort/](AgePeriodCohort/) -->
-<!--     - [births_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment -->
-<!-- - [Arsenic/](Arsenic/) -->
-<!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictice comparisons for a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_building_optimizing_tv.md](Arsenic/arsenic_logistic_building_optimizing_tv.md) - Building a logistic regression model: wells in Bangladesh. A version with normal approximation at the mode. -->
-<!-- - [Balance/](Balance/) -->
-<!--     - [treatcontrol_tv.md](Balance/treatcontrol_tv.md) -->
-<!-- - [Beauty/](Beauty/) -->
-<!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
-<!-- - [Bypass/](Bypass/) -->
-<!-- - [CausalDiagram/](CausalDiagram/) -->
-<!--     - [diagrams_tv.md](CausalDiagram/diagrams_tv.md) - Plot causal diagram -->
-<!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
-<!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
-<!-- - [Childcare/](Childcare/) -->
-<!--     - [childcare_tv.md](Childcare/childcare_tv.md) - Infant Health and Development Program (IHDP) example. -->
-<!-- - [ChileSchools/](ChileSchools/) -->
-<!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
-<!-- - [Coins/](Coins/) -->
 
+-   [AgePeriodCohort/](AgePeriodCohort/)
+    -   [births\_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment
+        <!-- - [Arsenic/](Arsenic/) -->
+        <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictice comparisons for a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_building_optimizing_tv.md](Arsenic/arsenic_logistic_building_optimizing_tv.md) - Building a logistic regression model: wells in Bangladesh. A version with normal approximation at the mode. -->
+        <!-- - [Balance/](Balance/) -->
+        <!--     - [treatcontrol_tv.md](Balance/treatcontrol_tv.md) -->
+        <!-- - [Beauty/](Beauty/) -->
+        <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
+        <!-- - [Bypass/](Bypass/) -->
+        <!-- - [CausalDiagram/](CausalDiagram/) -->
+        <!--     - [diagrams_tv.md](CausalDiagram/diagrams_tv.md) - Plot causal diagram -->
+        <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
+        <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
+        <!-- - [Childcare/](Childcare/) -->
+        <!--     - [childcare_tv.md](Childcare/childcare_tv.md) - Infant Health and Development Program (IHDP) example. -->
+        <!-- - [ChileSchools/](ChileSchools/) -->
+        <!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
+        <!-- - [Coins/](Coins/) -->
 -   [Congress/](Congress/)
     <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
     -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
