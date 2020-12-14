@@ -56,15 +56,17 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [AgePeriodCohort/](AgePeriodCohort/)
     -   [births\_tv.md](AgePeriodCohort/births_tv.md) - Age adjustment
 
-<!-- ### 3  Some basic methods in mathematics and probability -->
-<!-- - [Mile/](Mile/) -->
-<!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
-<!-- - [Metabolic/](Metabolic/) -->
-<!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
-<!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
-<!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
-<!-- - [Stents/](Stents/) -->
-<!--     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions -->
+### 3 Some basic methods in mathematics and probability
+
+-   [Mile/](Mile/)
+    -   [mile\_tv.md](Mile/mile_tv.md) - Trend of record times in the
+        mile run <!-- - [Metabolic/](Metabolic/) -->
+        <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
+        <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
+        <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
+        <!-- - [Stents/](Stents/) -->
+        <!--     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions -->
+
 <!-- ### 4  Generative models and statistical inference -->
 <!-- - [Coverage/](Coverage/) -->
 <!--     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage -->
@@ -229,16 +231,19 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
 <!-- - [Scalability/](Scalability/) -->
 <!--     - [scalability_tv.md](Scalability/scalability_tv.md) - Demonstrate computation speed with 100 000 observations. -->
-<!-- ### Appendix A -->
+
+### Appendix A
+
 <!-- - [Coins/](Coins/) -->
-<!-- - [Mile/](Mile/) -->
-<!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
-<!-- - [Parabola/](Parabola/) -->
-<!--     - [parabola_tv.md](Parabola/parabola_tv.md) - Demonstration of using Stan for optimization -->
-<!-- - [Restaurant/](Restaurant/) -->
-<!--     - [restaurant_tv.md](Restaurant/restaurant_tv.md) - Demonstration of using Stan for optimization -->
-<!-- - [DifferentSoftware/](DifferentSoftware/) -->
-<!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
+
+-   [Mile/](Mile/)
+    -   [mile\_tv.md](Mile/mile_tv.md) - Trend of record times in the
+        mile run <!-- - [Parabola/](Parabola/) -->
+        <!--     - [parabola_tv.md](Parabola/parabola_tv.md) - Demonstration of using Stan for optimization -->
+        <!-- - [Restaurant/](Restaurant/) -->
+        <!--     - [restaurant_tv.md](Restaurant/restaurant_tv.md) - Demonstration of using Stan for optimization -->
+        <!-- - [DifferentSoftware/](DifferentSoftware/) -->
+        <!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
 
 ------------------------------------------------------------------------
 
@@ -341,8 +346,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
         <!-- - [Metabolic/](Metabolic/) -->
         <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
-        <!-- - [Mile/](Mile/) -->
-        <!--     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run -->
+-   [Mile/](Mile/)
+    -   [mile\_tv.md](Mile/mile_tv.md) - Trend of record times in the
+        mile run
 -   [Names/](Names/)
     -   [lastletters\_tv.md](Names/lastletters_tv.md) - Last letters -
         Distributions of last letters of names of American babies
