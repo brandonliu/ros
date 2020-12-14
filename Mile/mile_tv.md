@@ -1,7 +1,7 @@
 Regression and Other Stories: Mile
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-07
+2020-12-14
 
 -   [Data](#data)
 -   [Linear model](#linear-model)
@@ -97,8 +97,7 @@ intercept <- 0.15
 slope <- 0.4
 f <- function(x) intercept + slope * x
 
-x_max <- 2
-v <- tibble(x = c(0, x_max), y = f(x))
+v <- tibble(x = c(0, 2), y = f(x))
 
 v %>% 
   ggplot(aes(x, y)) +
@@ -118,8 +117,7 @@ intercept <- 0.95
 slope <- -0.4
 f <- function(x) intercept + slope * x
 
-x_max <- 2
-v <- tibble(x = c(0, x_max), y = f(x))
+v <- tibble(x = c(0, 2), y = f(x))
 
 v %>% 
   ggplot(aes(x, y)) +
