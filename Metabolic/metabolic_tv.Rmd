@@ -34,7 +34,7 @@ source(file_common)
 ## Data
 
 ```{r}
-metabolic_rate <- 
+metabolic_rates <- 
   tribble(
        ~animal, ~mass, ~metabolic_rate, ~hjust,
        "Mouse",  0.02,            0.17,   -0.2,
@@ -51,8 +51,8 @@ slope <- 0.74
 ```{r}
 power_law <- 
   tibble(
-    x = seq(0.02, 3000, length.out = 101),
-    y = exp(intercept) * x^slope
+    mass = seq(0.02, 3000, length.out = 101),
+    metabolic_rate = exp(intercept) * mass^slope
   )
 
 eqn <- 
@@ -63,34 +63,35 @@ eqn <-
 
 ```
 
-
 ```{r}
-metabolic_rate %>% 
-  ggplot() +
-  geom_point(aes(mass, metabolic_rate)) +
-  geom_text(aes(mass, metabolic_rate, label = animal, hjust = hjust)) +
-  geom_line(aes(x, y), data = power_law) +
-  annotate("text", x = 0.4, y = 18, label = eqn, parse = TRUE) +
-  scale_x_log10() +
-  scale_y_log10() +
+metabolic_rates %>% 
+  ggplot(aes(mass, metabolic_rate)) +
+  geom_line(data = power_law) +
+  geom_point() +
+  geom_text(aes(label = animal, hjust = hjust)) +
+  annotate("text", x = 750, y = 1125, label = eqn, parse = TRUE) +
+  scale_x_continuous(breaks = scales::breaks_width(500)) +
+  coord_cartesian(xlim = c(-100, NA)) +
   labs(
-    title = "Metabolic rate on log-log scales",
+    title = "Metabolic rate on untransformed scales",
     x = "Body mass (kilograms)",
     y = "Metabolic rate (watts)"
   )
 ```
 
 ```{r}
-metabolic_rate %>% 
-  ggplot() +
-  geom_point(aes(mass, metabolic_rate)) +
-  geom_text(aes(mass, metabolic_rate, label = animal, hjust = hjust)) +
-  geom_line(aes(x, y), data = power_law) +
-  annotate("text", x = 750, y = 1125, label = eqn, parse = TRUE) +
-  scale_x_continuous(breaks = scales::breaks_width(500)) +
-  coord_cartesian(xlim = c(-100, NA)) +
+metabolic_rates %>% 
+  ggplot(aes(mass, metabolic_rate)) +
+  geom_line(data = power_law) +
+  geom_point() +
+  geom_text(aes(label = animal, hjust = hjust)) +
+  annotate("text", x = 0.4, y = 18, label = eqn, parse = TRUE) +
+  scale_x_log10(
+    labels = scales::label_number(big.mark = "", drop0trailing = TRUE)
+  ) +
+  scale_y_log10() +
   labs(
-    title = "Metabolic rate on untransformed scales",
+    title = "Metabolic rate on log-log scales",
     x = "Body mass (kilograms)",
     y = "Metabolic rate (watts)"
   )
