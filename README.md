@@ -60,8 +60,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 
 -   [Mile/](Mile/)
     -   [mile\_tv.md](Mile/mile_tv.md) - Trend of record times in the
-        mile run <!-- - [Metabolic/](Metabolic/) -->
-        <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
+        mile run
+-   [Metabolic/](Metabolic/)
+    -   [metabolic\_tv.md](Metabolic/metabolic_tv.md) - How to interpret
+        a power law or log-log regression
         <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
         <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
         <!-- - [Stents/](Stents/) -->
@@ -344,8 +346,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
         <!-- - [Mesquite/](Mesquite/) -->
         <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
-        <!-- - [Metabolic/](Metabolic/) -->
-        <!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
+-   [Metabolic/](Metabolic/)
+    -   [metabolic\_tv.md](Metabolic/metabolic_tv.md) - How to interpret
+        a power law or log-log regression
 -   [Mile/](Mile/)
     -   [mile\_tv.md](Mile/mile_tv.md) - Trend of record times in the
         mile run

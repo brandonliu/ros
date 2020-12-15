@@ -44,8 +44,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 ### 3  Some basic methods in mathematics and probability
 - [Mile/](Mile/)
     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run
-<!-- - [Metabolic/](Metabolic/) -->
-<!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
+- [Metabolic/](Metabolic/)
+    - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression
 <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
 <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
 <!-- - [Stents/](Stents/) -->
@@ -339,8 +339,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
 <!-- - [Mesquite/](Mesquite/) -->
 <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
-<!-- - [Metabolic/](Metabolic/) -->
-<!--     - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression -->
+- [Metabolic/](Metabolic/)
+    - [metabolic_tv.md](Metabolic/metabolic_tv.md) - How to interpret a power law or log-log regression
 - [Mile/](Mile/)
     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run
 - [Names/](Names/)
