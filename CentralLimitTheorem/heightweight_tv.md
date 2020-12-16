@@ -1,7 +1,7 @@
 Regression and Other Stories: Heights and weights
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-11
+2020-12-16
 
 -   [Data](#data)
 -   [Plots](#plots)
