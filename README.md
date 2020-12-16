@@ -64,8 +64,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Metabolic/](Metabolic/)
     -   [metabolic\_tv.md](Metabolic/metabolic_tv.md) - How to interpret
         a power law or log-log regression
-        <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
-        <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
+-   [CentralLimitTheorem/](CentralLimitTheorem/)
+    -   [heightweight\_tv.md](CentralLimitTheorem/heightweight_tv.md) -
+        Illustrate central limit theorem and normal distribution
         <!-- - [Stents/](Stents/) -->
         <!--     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions -->
 
@@ -267,8 +268,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Bypass/](Bypass/) -->
         <!-- - [CausalDiagram/](CausalDiagram/) -->
         <!--     - [diagrams_tv.md](CausalDiagram/diagrams_tv.md) - Plot causal diagram -->
-        <!-- - [CentralLimitTheorem/](CentralLimitTheorem/) -->
-        <!--     - [heightweight_tv.md](CentralLimitTheorem/heightweight_tv.md) - Illustrate central limit theorem and normal distribution -->
+-   [CentralLimitTheorem/](CentralLimitTheorem/)
+    -   [heightweight\_tv.md](CentralLimitTheorem/heightweight_tv.md) -
+        Illustrate central limit theorem and normal distribution
         <!-- - [Childcare/](Childcare/) -->
         <!--     - [childcare_tv.md](Childcare/childcare_tv.md) - Infant Health and Development Program (IHDP) example. -->
         <!-- - [ChileSchools/](ChileSchools/) -->
