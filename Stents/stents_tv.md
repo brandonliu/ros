@@ -1,7 +1,7 @@
 Regression and Other Stories: Stents
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-13
+2020-12-17
 
 -   [Data](#data)
 -   [Plot](#plot)
