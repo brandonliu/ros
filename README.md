@@ -67,8 +67,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [CentralLimitTheorem/](CentralLimitTheorem/)
     -   [heightweight\_tv.md](CentralLimitTheorem/heightweight_tv.md) -
         Illustrate central limit theorem and normal distribution
-        <!-- - [Stents/](Stents/) -->
-        <!--     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions -->
+-   [Stents/](Stents/)
+    -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
+        distributions
 
 <!-- ### 4  Generative models and statistical inference -->
 <!-- - [Coverage/](Coverage/) -->
@@ -403,9 +404,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Simplest/](Simplest/) -->
         <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
         <!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
-        <!-- - [Stents/](Stents/) -->
-        <!--     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions -->
-        <!-- - [Storable/](Storable/) -->
+-   [Stents/](Stents/)
+    -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
+        distributions <!-- - [Storable/](Storable/) -->
         <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
         <!-- - [Student/](Student/) -->
         <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
