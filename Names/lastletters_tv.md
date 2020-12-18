@@ -1,7 +1,7 @@
 Regression and Other Stories: Last letters of names
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-10
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -100,7 +100,7 @@ boys_last_letter %>%
   )
 ```
 
-<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 boys_last_letter %>% 
@@ -115,7 +115,7 @@ boys_last_letter %>%
   )
 ```
 
-<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
 ### Percentage of top 10 names each year by sex
 
@@ -169,7 +169,7 @@ prop_top_10 %>%
   )
 ```
 
-<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="lastletters_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
 In 2017, the last year in the data, the two lines crossed, with 7.7% for
 girls and 7.5% for boys.

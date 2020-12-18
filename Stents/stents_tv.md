@@ -1,7 +1,7 @@
 Regression and Other Stories: Stents
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-17
+2020-12-18
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -86,4 +86,4 @@ v %>%
   )
 ```
 
-<img src="stents_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="stents_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />

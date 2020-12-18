@@ -1,7 +1,7 @@
 Regression and Other Stories: Health Expenditure
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-09
+2020-12-18
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -85,4 +85,4 @@ v %>%
   )
 ```
 
-<img src="healthexpenditure_tv_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="healthexpenditure_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />

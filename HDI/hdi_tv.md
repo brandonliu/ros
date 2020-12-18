@@ -1,7 +1,7 @@
 Regression and Other Stories: Human Development Index
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -151,7 +151,7 @@ hdi_income %>%
   )
 ```
 
-<img src="hdi_tv_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="hdi_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
 ### Rank of state income and Human Development Index
 
@@ -169,7 +169,7 @@ hdi_income %>%
   )
 ```
 
-<img src="hdi_tv_files/figure-gfm/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="hdi_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
 ### Human Development Index by state
 
@@ -217,7 +217,7 @@ us_hdi %>%
   )
 ```
 
-<img src="hdi_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="hdi_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 ### Distance from Canada
 
@@ -235,4 +235,4 @@ us_hdi %>%
   )
 ```
 
-<img src="hdi_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="hdi_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />

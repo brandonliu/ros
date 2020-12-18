@@ -1,7 +1,7 @@
 Regression and Other Stories: Pew
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Data](#data)
     -   [Income](#income)
@@ -295,7 +295,7 @@ v %>%
   )
 ```
 
-<img src="pew_tv_files/figure-gfm/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="pew_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 ### Party identification by income
 
@@ -333,4 +333,4 @@ v %>%
   )
 ```
 
-<img src="pew_tv_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="pew_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />

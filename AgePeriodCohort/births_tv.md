@@ -1,7 +1,7 @@
 Regression and Other Stories: AgePeriodCohort
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-12
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -116,7 +116,7 @@ mortality_unadjusted %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />
 
 ### Mean age of cohort
 
@@ -136,7 +136,7 @@ v %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
 ### Impact of changing age distribution on mortality
 
@@ -186,7 +186,7 @@ v %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
 From 1999 to 2013, the unadjusted mortality rate increased from 382 to
 415 deaths per 100,000, an increase of 33 deaths per 100,000. If the
@@ -246,7 +246,7 @@ v %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
 As mentioned above, from 1999 to 2013 the unadjusted mortality rate
 increased from 382 to 415 deaths per 100,000, an increase of 33 deaths
@@ -290,7 +290,7 @@ v %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
 
 The mortality rate for men is substantially higher than that for women,
 but the genders have different trends. The rate for men in deaths per
@@ -327,7 +327,7 @@ v %>%
   )
 ```
 
-<img src="births_tv_files/figure-gfm/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="births_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 We see a dramatic increase in mortality for women in the South, from 302
 deaths per 100,000 in 1999 to 367 deaths per 100,000 in 2013.

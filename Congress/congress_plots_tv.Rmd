@@ -116,7 +116,7 @@ elections %>%
 
 ## Plot
 
-```{r, fig.asp=0.8, fig.width=10, out.width="100%"}
+```{r, fig.asp=0.8, fig.width=10}
 v <- 
   elections %>% 
   filter(
@@ -124,7 +124,13 @@ v <-
     !is.na(incumbent),
     abs(d_prop - 0.5) < 0.3 & abs(d_prop_prev - 0.5) < 0.3
   ) %>% 
-  mutate(period = str_glue("{year - 2} to {year}"))
+  mutate(period = str_glue("{year - 2} to {year}")) %>% 
+  {
+    bind_rows(
+      filter(., incumbent),
+      filter(., !incumbent)
+    )
+  }
 
 v %>% 
   ggplot() +

@@ -1,7 +1,7 @@
 Regression and Other Stories: Helicopters
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Data](#data)
 
@@ -34,13 +34,13 @@ source(file_common)
 helicopters <- 
   file_helicopters %>% 
   read.table(header = TRUE) %>% 
-  as_tibble()
+  as_tibble(.name_repair = str_to_lower)
 
 helicopters
 ```
 
     #> # A tibble: 20 x 4
-    #>    Helicopter_ID width_cm length_cm time_sec
+    #>    helicopter_id width_cm length_cm time_sec
     #>            <int>    <dbl>     <dbl>    <dbl>
     #>  1             1      4.6       8.2     1.64
     #>  2             1      4.6       8.2     1.74

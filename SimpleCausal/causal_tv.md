@@ -1,7 +1,7 @@
 Regression and Other Stories: SimpleCausal
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Simulated data from linear
     model](#simulated-data-from-linear-model)
@@ -92,7 +92,7 @@ df_1 %>%
   )
 ```
 
-<img src="causal_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
 ### Regression with continuous predictor
 
@@ -133,7 +133,7 @@ df_1 %>%
   )
 ```
 
-<img src="causal_tv_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
 ## Simulated data from nonlinear model
 
@@ -178,7 +178,7 @@ df_2 %>%
   )
 ```
 
-<img src="causal_tv_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
 ``` r
 slope <- coef(lm_2)[["x"]]
@@ -196,7 +196,7 @@ df_2 %>%
   )
 ```
 
-<img src="causal_tv_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
 
 ## Simulated data from two groups
 
@@ -273,4 +273,4 @@ ggplot() +
   )
 ```
 
-<img src="causal_tv_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="causal_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />

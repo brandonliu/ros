@@ -1,7 +1,7 @@
 Regression and Other Stories: Heights and weights
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-16
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -89,7 +89,7 @@ heights %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 heights %>% 
@@ -105,7 +105,7 @@ heights %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 heights %>% 
@@ -120,7 +120,7 @@ heights %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
 ### Log-normal approximation of weights
 
@@ -153,7 +153,7 @@ v %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
 ``` r
 v <- 
@@ -179,7 +179,7 @@ v %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
 ### Normal distribution
 
@@ -226,4 +226,4 @@ v %>%
   )
 ```
 
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />

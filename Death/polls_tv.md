@@ -1,7 +1,7 @@
 Regression and Other Stories: Death penalty poll
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-16
+2020-12-18
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -70,4 +70,4 @@ death_penalty %>%
   )
 ```
 
-<img src="polls_tv_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="polls_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />

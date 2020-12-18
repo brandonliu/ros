@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -79,7 +79,7 @@ hibbs %>%
   )
 ```
 
-<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />
 
 ## Linear regression
 
@@ -222,4 +222,4 @@ hibbs %>%
   )
 ```
 
-<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />

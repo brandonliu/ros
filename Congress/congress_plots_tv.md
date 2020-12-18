@@ -1,7 +1,7 @@
 Regression and Other Stories: Congress
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-11
+2020-12-18
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -162,7 +162,13 @@ v <-
     !is.na(incumbent),
     abs(d_prop - 0.5) < 0.3 & abs(d_prop_prev - 0.5) < 0.3
   ) %>% 
-  mutate(period = str_glue("{year - 2} to {year}"))
+  mutate(period = str_glue("{year - 2} to {year}")) %>% 
+  {
+    bind_rows(
+      filter(., incumbent),
+      filter(., !incumbent)
+    )
+  }
 
 v %>% 
   ggplot() +
@@ -196,4 +202,4 @@ v %>%
   )
 ```
 
-<img src="congress_plots_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="congress_plots_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />

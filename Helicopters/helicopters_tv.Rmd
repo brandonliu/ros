@@ -35,7 +35,7 @@ source(file_common)
 helicopters <- 
   file_helicopters %>% 
   read.table(header = TRUE) %>% 
-  as_tibble()
+  as_tibble(.name_repair = str_to_lower)
 
 helicopters
 ```

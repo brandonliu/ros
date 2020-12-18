@@ -1,7 +1,7 @@
 Regression and Other Stories: Metabolic
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-15
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -78,7 +78,7 @@ metabolic_rates %>%
   )
 ```
 
-<img src="metabolic_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="metabolic_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 metabolic_rates %>% 
@@ -98,4 +98,4 @@ metabolic_rates %>%
   )
 ```
 
-<img src="metabolic_tv_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="metabolic_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />

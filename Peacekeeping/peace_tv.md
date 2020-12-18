@@ -1,7 +1,7 @@
 Regression and Other Stories: Peacekeeping
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-08
+2020-12-18
 
 -   [Data](#data)
 -   [Plots](#plots)
@@ -300,7 +300,7 @@ ceasefire_failed %>%
   )
 ```
 
-<img src="peace_tv_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="peace_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
 
 ``` r
 ceasefire_failed %>% 
@@ -330,7 +330,7 @@ ceasefire_failed %>%
   )
 ```
 
-<img src="peace_tv_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="peace_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
 
 The plot uses `hazard1` as a measure of the conditions in the country at
 the time of the ceasefire. Below a threshold of this measure, it was

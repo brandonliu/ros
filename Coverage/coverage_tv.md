@@ -1,7 +1,7 @@
 Regression and Other Stories: Coverage
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-14
+2020-12-18
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -82,4 +82,4 @@ sim %>%
   )
 ```
 
-<img src="coverage_tv_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="coverage_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />

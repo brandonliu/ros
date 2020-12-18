@@ -43,7 +43,15 @@ votes <-
     names_to = "voters",
     names_transform = list(voters = as.double),
     values_to = "votes"
-  )
+  ) %>% 
+  group_by(name_1) %>% 
+  mutate(
+    vote_prop_cum = votes / voters,
+    vote_prop_new = 
+      (votes - lag(votes, default = 0, order_by = voters)) / 
+      (voters - lag(voters, default = 0, order_by = voters))
+  ) %>% 
+  ungroup()
 ```
 
 Candidates who received the most votes
@@ -58,7 +66,7 @@ voters_total <- max(voters)
 
 votes %>% 
   filter(voters == voters_total) %>% 
-  select(!voters) %>% 
+  select(starts_with("name"), votes) %>% 
   arrange(desc(votes))
 ```
 
@@ -66,8 +74,7 @@ votes %>%
 candidates_top_8 <- 
   votes %>% 
   filter(voters == voters_total) %>% 
-  arrange(desc(votes)) %>% 
-  slice(1:8) %>% 
+  slice_max(order_by = votes, n = 8) %>% 
   pull(name_2)
 ```
 
@@ -76,16 +83,13 @@ candidates_top_8 <-
 ### Cummulative vote percentages at different points in counting
 
 ```{r}
-v <- 
+votes_top_8 <- 
   votes %>% 
   filter(name_2 %in% candidates_top_8) %>% 
-  mutate(
-    name = ordered(name_2, levels = candidates_top_8),
-    vote_prop = votes / voters
-  )
+  mutate(name = ordered(name_2, levels = candidates_top_8))
 
-v %>% 
-  ggplot(aes(voters, vote_prop)) +
+votes_top_8 %>% 
+  ggplot(aes(voters, vote_prop_cum)) +
   geom_line() +
   geom_point() +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
@@ -95,7 +99,7 @@ v %>%
     title = "Cummulative vote percentages at different points in counting",
     subtitle = "For top 8 candidates",
     x = "Cummulative voters",
-    y = "Vote percentage",
+    y = "Cummulative vote percentage",
     caption = "Voters could vote for up to 6 candidates"
   )
 ```
@@ -103,20 +107,8 @@ v %>%
 ### Vote percentages of new votes at different points in counting
 
 ```{r}
-v <- 
-  votes %>% 
-  filter(name_2 %in% candidates_top_8) %>% 
-  mutate(name = ordered(name_2, levels = candidates_top_8)) %>% 
-  group_by(name) %>% 
-  mutate(
-    new_vote_prop = 
-      (votes - lag(votes, default = 0, order_by = voters)) / 
-      (voters - lag(voters, default = 0, order_by = voters))
-  ) %>% 
-  ungroup()
-
-v %>% 
-  ggplot(aes(voters, new_vote_prop)) +
+votes_top_8 %>% 
+  ggplot(aes(voters, vote_prop_new)) +
   geom_line() +
   geom_point() +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
@@ -137,27 +129,22 @@ v %>%
 v <- 
   votes %>% 
   group_by(name_1) %>% 
-  mutate(
-    new_vote_prop = 
-      (votes - lag(votes, default = 0, order_by = voters)) / 
-      (voters - lag(voters, default = 0, order_by = voters))
-  ) %>% 
   summarize(
     votes_final = votes[voters == voters_total],
-    new_vote_prop_sd = sd(new_vote_prop),
+    vote_prop_new_sd = sd(vote_prop_new),
   )
 
-new_voters <- voters - lag(voters, default = 0)
-new_vote_prop_sd_expected <- 
+voters_new <- voters - lag(voters, default = 0)
+vote_prop_new_sd_expected <- 
   tibble(
     votes_final = seq(min(v$votes_final), max(v$votes_final), length.out = 101),
     vote_prop_final = votes_final / voters_total,
-    new_vote_prop_sd = 
-      map_dbl(vote_prop_final, ~ sqrt(mean(. * (1 - .) / new_voters)))
+    vote_prop_new_sd = 
+      map_dbl(vote_prop_final, ~ sqrt(mean(. * (1 - .) / voters_new)))
   )
 
-ggplot(mapping = aes(votes_final, new_vote_prop_sd)) +
-  geom_line(data = new_vote_prop_sd_expected) +
+ggplot(mapping = aes(votes_final, vote_prop_new_sd)) +
+  geom_line(data = vote_prop_new_sd_expected) +
   geom_point(data = v) +
   scale_x_continuous(breaks = scales::breaks_width(500)) +
   labs(

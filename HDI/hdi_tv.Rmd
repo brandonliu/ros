@@ -132,7 +132,7 @@ us_hdi <-
   )
 ```
 
-```{r, out.width="100%"}
+```{r}
 us_hdi %>% 
   ggplot() +
   geom_sf(aes(fill = hdi)) +
@@ -147,7 +147,7 @@ us_hdi %>%
 
 ### Distance from Canada
 
-```{r, out.width="100%"}
+```{r}
 us_hdi %>% 
   ggplot() +
   geom_sf(aes(fill = factor(canada_dist))) +
