@@ -71,14 +71,16 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
         distributions
 
-<!-- ### 4  Generative models and statistical inference -->
-<!-- - [Coverage/](Coverage/) -->
-<!--     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage -->
-<!-- - [Death/](Death/) -->
-<!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
-<!-- - [Coop/](Coop/) -->
-<!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
-<!-- - [Girls/](Girls/) -->
+### 4 Generative models and statistical inference
+
+-   [Coverage/](Coverage/)
+    -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
+        <!-- - [Death/](Death/) -->
+        <!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
+        <!-- - [Coop/](Coop/) -->
+        <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
+        <!-- - [Girls/](Girls/) -->
+
 <!-- ### 5  Simulation -->
 <!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
 <!--     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models -->
@@ -283,8 +285,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Predictive uncertainty for congressional elections
         <!-- - [Coop/](Coop/) -->
         <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
-        <!-- - [Coverage/](Coverage/) -->
-        <!--     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage -->
+-   [Coverage/](Coverage/)
+    -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
         <!-- - [Cows/](Cows/) -->
         <!-- - [CrossValidation/](CrossValidation/) -->
         <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
