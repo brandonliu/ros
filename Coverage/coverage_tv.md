@@ -1,7 +1,7 @@
 Regression and Other Stories: Coverage
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2020-12-21
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -30,18 +30,18 @@ source(file_common)
 ## Data
 
 ``` r
-sim_mean <- 6
-sim_sd <- 4
-sim_n <- 100
+mean <- 6
+sd <- 4
+n_sim <- 100
 
 sim <- 
   tibble(
-    id = seq_len(sim_n),
-    x = rnorm(sim_n, mean = sim_mean, sd = sim_sd),
-    lower_95 = x + qnorm(0.025, mean = 0, sd = sim_sd),
-    lower_50 = x + qnorm(0.25, mean = 0, sd = sim_sd),
-    upper_50 = x + qnorm(0.75, mean = 0, sd = sim_sd),
-    upper_95 = x + qnorm(0.975, mean = 0, sd = sim_sd)
+    id = seq_len(n_sim),
+    x = rnorm(n_sim, mean = mean, sd = sd),
+    lower_95 = x + qnorm(0.025, mean = 0, sd = sd),
+    lower_50 = x + qnorm(0.25, mean = 0, sd = sd),
+    upper_50 = x + qnorm(0.75, mean = 0, sd = sd),
+    upper_95 = x + qnorm(0.975, mean = 0, sd = sd)
   )
 ```
 
@@ -51,8 +51,8 @@ Coverage
 v <- 
   sim %>% 
   summarize(
-    coverage_50 = mean(sim_mean >= lower_50 & sim_mean <= upper_50),
-    coverage_95 = mean(sim_mean >= lower_95 & sim_mean <= upper_95)
+    coverage_50 = mean(mean >= lower_50 & mean <= upper_50),
+    coverage_95 = mean(mean >= lower_95 & mean <= upper_95)
   )
 
 v
@@ -72,13 +72,14 @@ simulation population mean 94% of the time.
 ``` r
 sim %>% 
   ggplot(aes(id)) +
-  geom_hline(yintercept = sim_mean, color = "red") +
+  geom_hline(yintercept = mean, color = "red") +
   geom_linerange(aes(ymin = lower_95, ymax = upper_95)) +
   geom_linerange(aes(ymin = lower_50, ymax = upper_50), size = 1) +
   geom_point(aes(y = x)) +
   labs(
+    title = str_glue("Coverage of {n_sim} random simulations"),
     x = "Simulation",
-    y = "Estimate, 50% and 95% uncertainty intervals"
+    y = "Estimates, 50% and 95% uncertainty intervals"
   )
 ```
 
