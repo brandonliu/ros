@@ -1,7 +1,7 @@
 Regression and Other Stories: Death penalty poll
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2020-12-22
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -56,8 +56,8 @@ death_penalty %>%
     size = 0.2
   ) +
   scale_x_date(
-    breaks = lubridate::make_date(seq(1940, 2000, 10)),
-    minor_breaks = lubridate::make_date(seq(1936, 2004, 2)),
+    breaks = lubridate::make_date(year = seq(1940, 2000, 10)),
+    minor_breaks = lubridate::make_date(year = seq(1936, 2004, 2)),
     date_labels = "%Y"
   ) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
@@ -66,7 +66,7 @@ death_penalty %>%
       "Are you in favor of the death penalty for a person convicted of murder?",
     x = "Year",
     y = "Percentage in favor of those with an opinion",
-    caption = "Gallup"
+    caption = "Source: Gallup"
   )
 ```
 
