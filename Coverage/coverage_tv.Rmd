@@ -34,9 +34,9 @@ mean <- 6
 sd <- 4
 n_sim <- 100
 
-sim <- 
+sims <- 
   tibble(
-    id = seq_len(n_sim),
+    sim = seq_len(n_sim),
     x = rnorm(n_sim, mean = mean, sd = sd),
     lower_95 = x + qnorm(0.025, mean = 0, sd = sd),
     lower_50 = x + qnorm(0.25, mean = 0, sd = sd),
@@ -49,7 +49,7 @@ Coverage
 
 ```{r}
 v <- 
-  sim %>% 
+  sims %>% 
   summarize(
     coverage_50 = mean(mean >= lower_50 & mean <= upper_50),
     coverage_95 = mean(mean >= lower_95 & mean <= upper_95)
@@ -63,8 +63,8 @@ The 50% uncertainty interval contained the simulation population mean `r format(
 ## Plot
 
 ```{r}
-sim %>% 
-  ggplot(aes(id)) +
+sims %>% 
+  ggplot(aes(sim)) +
   geom_hline(yintercept = mean, color = "red") +
   geom_linerange(aes(ymin = lower_95, ymax = upper_95)) +
   geom_linerange(aes(ymin = lower_50, ymax = upper_50), size = 1) +
