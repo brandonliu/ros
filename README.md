@@ -75,9 +75,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 
 -   [Coverage/](Coverage/)
     -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
-        <!-- - [Death/](Death/) -->
-        <!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
-        <!-- - [Coop/](Coop/) -->
+-   [Death/](Death/)
+    -   [polls\_tv.md](Death/polls_tv.md) - Proportion of American
+        adults supporting the death penalty <!-- - [Coop/](Coop/) -->
         <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
         <!-- - [Girls/](Girls/) -->
 
@@ -292,8 +292,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
         <!-- - [SampleSize/](SampleSize/) -->
         <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
-        <!-- - [Death/](Death/) -->
-        <!--     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty -->
+-   [Death/](Death/)
+    -   [polls\_tv.md](Death/polls_tv.md) - Proportion of American
+        adults supporting the death penalty
         <!-- - [DifferentSoftware/](DifferentSoftware/) -->
         <!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
         <!-- - [Earnings/](Earnings/) -->
