@@ -1,0 +1,79 @@
+---
+title: "Regression and Other Stories: Simple regression"
+author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+---
+Tidyverse version by Bill Behrman.
+
+Linear regression with a single predictor. See Chapters 6 and 7 in
+Regression and Other Stories.
+
+-------------
+
+```{r, message=FALSE}
+# Packages
+library(tidyverse)
+library(rstanarm)
+
+# Parameters
+  # Seed
+SEED <- 2141
+  # Common code
+file_common <- here::here("_common.R")
+
+#===============================================================================
+
+# Run common code
+source(file_common)
+```
+
+# Chapter 6
+
+### Simulate fake data
+
+```{r}
+set.seed(SEED)
+
+intercept <- 0.2
+slope <- 0.3
+sigma <- 0.5
+
+fake <- 
+  tibble(
+    x = 1:20,
+    y = intercept + slope * x + rnorm(length(x), mean = 0, sd = sigma)
+  )
+```
+
+### Linear regression model
+
+The option `refresh = 0` suppresses the default Stan sampling progress output. This is useful for small data with fast computation. For more complex models and bigger data, it can be useful to see the progress.
+
+```{r}
+fit_1 <- stan_glm(y ~ x, data = fake, seed = SEED, refresh = 0)
+
+print(fit_1, digits = 2)
+```
+
+### Plot
+
+```{r}
+fit_intercept <- coef(fit_1)[["(Intercept)"]]
+fit_slope <- coef(fit_1)[["x"]]
+eqn <- 
+  str_glue(
+    "y = {format(fit_intercept, digits = 2, nsmall = 2)} + ",
+    "{format(fit_slope, digits = 2, nsmall = 2)} x"
+  )
+
+fake %>% 
+  ggplot(aes(x, y)) +
+  geom_abline(slope = fit_slope, intercept = fit_intercept) +
+  geom_point() +
+  annotate("text", x = 5.5, y = 4.5, label = eqn, hjust = 0) +
+  labs(title = "Data and fitted regression line")
+```
+
