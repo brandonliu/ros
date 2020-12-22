@@ -229,7 +229,7 @@ The equations for the regression lines are:
     Men:   y = -38219 + 977 x
     Women: y =  -9779 + 399 x
 
-Note that 15% of women have no earnings, whereas only 2% of men have no
+From the plots, we can see that many more women than men have no
 earnings.
 
 ``` r
@@ -246,3 +246,5 @@ earnings %>%
     #>   <dbl> <chr>  <int>  <dbl>
     #> 1     0 female   172 0.151 
     #> 2     0 male      15 0.0222
+
+15% of women have no earnings, whereas only 2% of men have no earnings.

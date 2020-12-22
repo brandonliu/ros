@@ -167,7 +167,7 @@ The equations for the regression lines are:
     Men:   y = `r format(fit_params$intercept[fit_params$sex == "male"], digits = 0, nsmall = 0, scientific = FALSE)` + `r format(fit_params$slope[fit_params$sex == "male"], digits = 0, nsmall = 0, scientific = FALSE)` x
     Women: y =  `r format(fit_params$intercept[fit_params$sex == "female"], digits = 0, nsmall = 0, scientific = FALSE)` + `r format(fit_params$slope[fit_params$sex == "female"], digits = 0, nsmall = 0, scientific = FALSE)` x
 
-Note that 15% of women have no earnings, whereas only 2% of men have no earnings.
+From the plots, we can see that many more women than men have no earnings.
 
 ```{r}
 earnings %>% 
@@ -177,4 +177,6 @@ earnings %>%
   ungroup() %>% 
   filter(earn == 0)
 ```
+
+15% of women have no earnings, whereas only 2% of men have no earnings.
 
