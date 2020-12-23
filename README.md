@@ -77,9 +77,11 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
 -   [Death/](Death/)
     -   [polls\_tv.md](Death/polls_tv.md) - Proportion of American
-        adults supporting the death penalty <!-- - [Coop/](Coop/) -->
-        <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
-        <!-- - [Girls/](Girls/) -->
+        adults supporting the death penalty
+-   [Coop/](Coop/)
+    -   [riverbay\_tv.md](Coop/riverbay_tv.md) - Example of hypothesis
+        testing
+-   [Girls/](Girls/)
 
 <!-- ### 5  Simulation -->
 <!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
@@ -283,8 +285,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
     -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
         Predictive uncertainty for congressional elections
-        <!-- - [Coop/](Coop/) -->
-        <!--     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing -->
+-   [Coop/](Coop/)
+    -   [riverbay\_tv.md](Coop/riverbay_tv.md) - Example of hypothesis
+        testing
 -   [Coverage/](Coverage/)
     -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
         <!-- - [Cows/](Cows/) -->
@@ -320,8 +323,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Gay/](Gay/) -->
         <!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
         <!--     - [gay_tv.md](Gay/gay_tv.md) - Nonlinear models (Loess, B-spline, GP-spline, and BART) and political attitudes as a function of age -->
-        <!-- - [Girls/](Girls/) --> <!-- - [Golf/](Golf/) -->
-        <!--     - [golf_tv.md](Golf/golf_tv.md) - Gold putting accuracy: Fitting a nonlinear model using Stan -->
+-   [Girls/](Girls/) <!-- - [Golf/](Golf/) -->
+    <!--     - [golf_tv.md](Golf/golf_tv.md) - Gold putting accuracy: Fitting a nonlinear model using Stan -->
 -   [HDI/](https://github.com/avehtari/ROS-Examples/HDI/)
     -   [hdi\_tv.md](HDI/hdi_tv.md) - Human Development Index - Looking
         at data in different ways
