@@ -83,11 +83,14 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         testing
 -   [Girls/](Girls/)
 
-<!-- ### 5  Simulation -->
-<!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
-<!--     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
+### 5 Simulation
+
+-   [ProbabilitySimulation/](ProbabilitySimulation/)
+    -   [probsim\_tv.md](ProbabilitySimulation/probsim_tv.md) -
+        Simulation of probability models
+        <!-- - [Earnings/](Earnings/) -->
+        <!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
+
 <!-- ### 6  Background on regression modeling -->
 <!-- - [Simplest/](Simplest/) -->
 <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
@@ -385,9 +388,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Poststrat/](Poststrat/) -->
         <!--     - [poststrat_tv.md](Poststrat/poststrat_tv.md) - Poststratification after estimation -->
         <!--     - [poststrat2_tv.md](Poststrat/poststrat2_tv.md) - Poststratification after estimation -->
-        <!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
-        <!--     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models -->
-        <!-- - [Pyth/](Pyth/) -->
+-   [ProbabilitySimulation/](ProbabilitySimulation/)
+    -   [probsim\_tv.md](ProbabilitySimulation/probsim_tv.md) -
+        Simulation of probability models <!-- - [Pyth/](Pyth/) -->
         <!-- - [Redistricting/](Redistricting/) -->
         <!-- - [Residuals/](Residuals/) -->
         <!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->

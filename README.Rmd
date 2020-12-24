@@ -60,9 +60,9 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing
 - [Girls/](Girls/)
 
-<!-- ### 5  Simulation -->
-<!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
-<!--     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models -->
+### 5  Simulation
+- [ProbabilitySimulation/](ProbabilitySimulation/)
+    - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
 
@@ -365,8 +365,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!-- - [Poststrat/](Poststrat/) -->
 <!--     - [poststrat_tv.md](Poststrat/poststrat_tv.md) - Poststratification after estimation -->
 <!--     - [poststrat2_tv.md](Poststrat/poststrat2_tv.md) - Poststratification after estimation -->
-<!-- - [ProbabilitySimulation/](ProbabilitySimulation/) -->
-<!--     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models -->
+- [ProbabilitySimulation/](ProbabilitySimulation/)
+    - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models
 <!-- - [Pyth/](Pyth/) -->
 <!-- - [Redistricting/](Redistricting/) -->
 <!-- - [Residuals/](Residuals/) -->
