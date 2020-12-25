@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-20
+2020-12-25
 
 -   [Data](#data)
 -   [Plot](#plot)
@@ -77,11 +77,10 @@ earnings %>%
 
     #> [1] 0.6
 
-Earnings ratio of bootstrap sample. Since the function requires no
-arguments, we use `...` in order to use `map_dbl()` below.
+Earnings ratio of bootstrap sample.
 
 ``` r
-earnings_ratio <- function(...) {
+earnings_ratio <- function() {
   earnings %>% 
     select(sex, earn) %>% 
     slice_sample(prop = 1, replace = TRUE) %>% 
@@ -101,7 +100,7 @@ set.seed(194)
 n_sims <- 1e4
 
 earnings_ratio_boot <- 
-  tibble(earnings_ratio = map_dbl(seq_len(n_sims), earnings_ratio))
+  tibble(earnings_ratio = map_dbl(seq_len(n_sims), ~ earnings_ratio()))
 ```
 
 ## Plot
