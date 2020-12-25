@@ -63,8 +63,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 ### 5  Simulation
 - [ProbabilitySimulation/](ProbabilitySimulation/)
     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
+- [Earnings/](Earnings/)
+    - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution
 
 <!-- ### 6  Background on regression modeling -->
 <!-- - [Simplest/](Simplest/) -->
@@ -176,7 +176,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!-- - [Storable/](Storable/)  -->
 <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
 <!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuos model -->
+<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
 <!-- - [RiskyBehavior/](RiskyBehavior/) -->
 <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
 <!-- - [NES/](NES/) -->
@@ -287,10 +287,10 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [polls_tv.md](Death/polls_tv.md) - Proportion of American adults supporting the death penalty
 <!-- - [DifferentSoftware/](DifferentSoftware/) -->
 <!--     - [linear_tv.md](DifferentSoftware/linear_tv.md) - Linear regression using different software options -->
-<!-- - [Earnings/](Earnings/) -->
+- [Earnings/](Earnings/)
+    - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution
 <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
-<!--     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuos model -->
+<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
 <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 - [ElectionsEconomy/](ElectionsEconomy/)
 <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
