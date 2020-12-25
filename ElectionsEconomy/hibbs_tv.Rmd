@@ -67,6 +67,8 @@ computation. For more complex models and bigger data, it can be
 useful to see the progress.
 
 ```{r}
+set.seed(264)
+
 model <- stan_glm(vote ~ growth, data = hibbs, refresh = 0)
 ```
 
@@ -120,6 +122,92 @@ hibbs %>%
     title = "Data and linear fit",
     x = "Average recent growth in personal income",
     y = "Incumbent party's vote share"
+  )
+```
+
+# Chapter 7
+
+## Plot of economy and election results
+
+```{r, fig.asp=1}
+v <- 
+  hibbs %>% 
+  mutate(
+    label = str_glue("  {inc_party_candidate} vs. {other_candidate} ({year})  "),
+    hjust = 
+      if_else(
+        year %in% c(1960, 1964, 1972, 1976, 1984, 1996, 2012),
+        "right",
+        "left"
+      ),
+    vjust =
+      case_when(
+        year == 1992 ~ 0,
+        year == 2000 ~ 0.2,
+        year %in% c(1960, 2008) ~ 1,
+        TRUE ~ 0.5
+      )
+  )
+
+v %>% 
+  ggplot(aes(growth, vote)) +
+  geom_hline(yintercept = 50, color = "grey60") +
+  geom_point() +
+  geom_text(aes(label = label, hjust = hjust, vjust = vjust)) +
+  scale_x_continuous(
+    labels = scales::label_percent(accuracy = 1, scale = 1),
+    expand = expansion(add = c(0.8, 1.2))
+  ) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Forecasting elections from the economy",
+    x = "Income growth",
+    y = "Incumbent party's share of the popular vote"
+  )
+```
+
+```{r}
+growth <- 2
+```
+
+## Plot of prediction given `r growth`% growth
+
+```{r}
+vote_pred <- predict(model, newdata = tibble(growth = growth))
+sd <- sigma(model)
+
+v <- 
+  tibble(
+    vote = c(50, seq(vote_pred - 4 * sd, vote_pred + 4 * sd, length.out = 201)),
+    y = dnorm(vote, mean = vote_pred, sd = sd)
+  )
+
+label <-
+  str_glue(
+    "Predicted\n",
+    "{format(100 * (1 - pnorm(50, mean = vote_pred, sd = sd)), digits = 0)}% ",
+    "chance\n",
+    "of Clinton victory"
+  )
+
+v %>% 
+  ggplot(aes(vote, y)) +
+  geom_area(data = . %>% filter(vote >= 50), fill = "grey70") +
+  geom_line() +
+  geom_segment(
+    aes(x = 50, xend = 50, y = 0, yend = dnorm(50, mean = vote_pred, sd = sd))
+  ) +
+  annotate("text", x = 51.5, y = 0.025, label = label, hjust = 0) +
+  scale_x_continuous(
+    breaks = scales::breaks_width(5),
+    labels = scales::label_percent(accuracy = 1, scale = 1)
+  ) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Probability forecast of Hillary Clinton vote share in 2016",
+    subtitle = str_glue("Based upon {growth}% rate of economic growth"),
+    x = "Clinton share of the two-party vote",
+    y = NULL
   )
 ```
 

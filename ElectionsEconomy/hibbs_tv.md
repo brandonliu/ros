@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2020-12-25
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -10,6 +10,11 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
     -   [Linear regression](#linear-regression)
         -   [Posterior interval](#posterior-interval)
         -   [Plot regression line](#plot-regression-line)
+-   [Chapter 7](#chapter-7)
+    -   [Plot of economy and election
+        results](#plot-of-economy-and-election-results)
+    -   [Plot of prediction given 2%
+        growth](#plot-of-prediction-given-2-growth)
 
 Tidyverse version by Bill Behrman.
 
@@ -88,6 +93,8 @@ output. This is useful for small data with fast computation. For more
 complex models and bigger data, it can be useful to see the progress.
 
 ``` r
+set.seed(264)
+
 model <- stan_glm(vote ~ growth, data = hibbs, refresh = 0)
 ```
 
@@ -104,7 +111,7 @@ model
     #>  predictors:   2
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) 46.2    1.7  
+    #> (Intercept) 46.3    1.7  
     #> growth       3.1    0.7  
     #> 
     #> Auxiliary parameter(s):
@@ -164,23 +171,23 @@ summary(model)
     #> 
     #> Estimates:
     #>               mean   sd   10%   50%   90%
-    #> (Intercept) 46.2    1.8 44.0  46.2  48.5 
-    #> growth       3.1    0.8  2.1   3.1   4.0 
+    #> (Intercept) 46.3    1.8 44.1  46.3  48.5 
+    #> growth       3.0    0.8  2.1   3.1   4.0 
     #> sigma        4.0    0.8  3.1   3.9   5.1 
     #> 
     #> Fit Diagnostics:
     #>            mean   sd   10%   50%   90%
-    #> mean_PPD 52.0    1.4 50.2  52.0  53.9 
+    #> mean_PPD 52.1    1.5 50.2  52.1  53.9 
     #> 
     #> The mean_ppd is the sample average posterior predictive distribution of the outcome variable (for details see help('summary.stanreg')).
     #> 
     #> MCMC diagnostics
     #>               mcse Rhat n_eff
-    #> (Intercept)   0.0  1.0  3103 
-    #> growth        0.0  1.0  3093 
-    #> sigma         0.0  1.0  2618 
-    #> mean_PPD      0.0  1.0  3410 
-    #> log-posterior 0.0  1.0  1730 
+    #> (Intercept)   0.0  1.0  3056 
+    #> growth        0.0  1.0  3162 
+    #> sigma         0.0  1.0  2352 
+    #> mean_PPD      0.0  1.0  3299 
+    #> log-posterior 0.0  1.0  1256 
     #> 
     #> For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure of effective sample size, and Rhat is the potential scale reduction factor on split chains (at convergence Rhat=1).
 
@@ -192,9 +199,9 @@ posterior_interval(model) %>%
 ```
 
     #>               5%  95%
-    #> (Intercept) 43.4 49.1
+    #> (Intercept) 43.5 49.1
     #> growth       1.8  4.3
-    #> sigma        2.9  5.5
+    #> sigma        3.0  5.5
 
 ### Plot regression line
 
@@ -223,3 +230,93 @@ hibbs %>%
 ```
 
 <img src="hibbs_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+
+# Chapter 7
+
+## Plot of economy and election results
+
+``` r
+v <- 
+  hibbs %>% 
+  mutate(
+    label = str_glue("  {inc_party_candidate} vs. {other_candidate} ({year})  "),
+    hjust = 
+      if_else(
+        year %in% c(1960, 1964, 1972, 1976, 1984, 1996, 2012),
+        "right",
+        "left"
+      ),
+    vjust =
+      case_when(
+        year == 1992 ~ 0,
+        year == 2000 ~ 0.2,
+        year %in% c(1960, 2008) ~ 1,
+        TRUE ~ 0.5
+      )
+  )
+
+v %>% 
+  ggplot(aes(growth, vote)) +
+  geom_hline(yintercept = 50, color = "grey60") +
+  geom_point() +
+  geom_text(aes(label = label, hjust = hjust, vjust = vjust)) +
+  scale_x_continuous(
+    labels = scales::label_percent(accuracy = 1, scale = 1),
+    expand = expansion(add = c(0.8, 1.2))
+  ) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Forecasting elections from the economy",
+    x = "Income growth",
+    y = "Incumbent party's share of the popular vote"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+
+``` r
+growth <- 2
+```
+
+## Plot of prediction given 2% growth
+
+``` r
+vote_pred <- predict(model, newdata = tibble(growth = growth))
+sd <- sigma(model)
+
+v <- 
+  tibble(
+    vote = c(50, seq(vote_pred - 4 * sd, vote_pred + 4 * sd, length.out = 201)),
+    y = dnorm(vote, mean = vote_pred, sd = sd)
+  )
+
+label <-
+  str_glue(
+    "Predicted\n",
+    "{format(100 * (1 - pnorm(50, mean = vote_pred, sd = sd)), digits = 0)}% ",
+    "chance\n",
+    "of Clinton victory"
+  )
+
+v %>% 
+  ggplot(aes(vote, y)) +
+  geom_area(data = . %>% filter(vote >= 50), fill = "grey70") +
+  geom_line() +
+  geom_segment(
+    aes(x = 50, xend = 50, y = 0, yend = dnorm(50, mean = vote_pred, sd = sd))
+  ) +
+  annotate("text", x = 51.5, y = 0.025, label = label, hjust = 0) +
+  scale_x_continuous(
+    breaks = scales::breaks_width(5),
+    labels = scales::label_percent(accuracy = 1, scale = 1)
+  ) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Probability forecast of Hillary Clinton vote share in 2016",
+    subtitle = str_glue("Based upon {growth}% rate of economic growth"),
+    x = "Clinton share of the two-party vote",
+    y = NULL
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
