@@ -95,13 +95,13 @@ complex models and bigger data, it can be useful to see the progress.
 ``` r
 set.seed(264)
 
-model <- stan_glm(vote ~ growth, data = hibbs, refresh = 0)
+fit <- stan_glm(vote ~ growth, data = hibbs, refresh = 0)
 ```
 
 Print default summary of the fitted model.
 
 ``` r
-model
+fit
 ```
 
     #> stan_glm
@@ -125,10 +125,10 @@ model
 Print summary of the priors used.
 
 ``` r
-prior_summary(model)
+prior_summary(fit)
 ```
 
-    #> Priors for model 'model' 
+    #> Priors for model 'fit' 
     #> ------
     #> Intercept (after predictors centered)
     #>   Specified prior:
@@ -155,7 +155,7 @@ sampling behavior. `summary()` function can be used to obtain the
 summary of the convergence diagnostics for MCMC sampling.
 
 ``` r
-summary(model)
+summary(fit)
 ```
 
     #> 
@@ -194,7 +194,7 @@ summary(model)
 ### Posterior interval
 
 ``` r
-posterior_interval(model) %>% 
+posterior_interval(fit) %>% 
   round(digits = 1)
 ```
 
@@ -206,8 +206,8 @@ posterior_interval(model) %>%
 ### Plot regression line
 
 ``` r
-intercept <- coef(model)[["(Intercept)"]]
-slope <- coef(model)[["growth"]]
+intercept <- coef(fit)[["(Intercept)"]]
+slope <- coef(fit)[["growth"]]
 eqn <- 
   str_glue(
     "y = {format(intercept, digits = 1, nsmall = 1)} + ",
@@ -219,7 +219,7 @@ hibbs %>%
   geom_hline(yintercept = 50, color = "grey60") +
   geom_abline(slope = slope, intercept = intercept) +
   geom_point() +
-  annotate("text", x = 3, y = 54, label = eqn, hjust = 0) +
+  annotate("text", x = 3.05, y = 53.75, label = eqn, hjust = 0) +
   scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
   labs(
@@ -281,8 +281,8 @@ growth <- 2
 ## Plot of prediction given 2% growth
 
 ``` r
-vote_pred <- predict(model, newdata = tibble(growth = growth))
-sd <- sigma(model)
+vote_pred <- predict(fit, newdata = tibble(growth = growth))
+sd <- sigma(fit)
 
 v <- 
   tibble(
