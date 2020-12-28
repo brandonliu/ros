@@ -92,16 +92,17 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [earnings\_bootstrap\_tv.md](Earnings/earnings_bootstrap_tv.md) -
         Bootstrapping to simulate the sampling distribution
 
-<!-- ### 6  Background on regression modeling -->
-<!-- - [Simplest/](Simplest/) -->
-<!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-<!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
-<!-- - [PearsonLee/](PearsonLee/) -->
-<!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
-<!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
-<!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
+### 6 Background on regression modeling
+
+-   [Simplest/](Simplest/)
+    -   [simplest\_tv.md](Simplest/simplest_tv.md) - Linear regression
+        with a single predictor <!-- - [Earnings/](Earnings/) -->
+        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+        <!-- - [PearsonLee/](PearsonLee/) -->
+        <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
+        <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
+        <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
+
 <!-- ### 7  Linear regression with a single predictor -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
@@ -109,7 +110,6 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the coverage of intervals -->
 <!--    - [Simplest/](Simplest/) -->
 <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-<!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
 <!-- ### 8 Fitting regression models -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
@@ -412,9 +412,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [SimpleCausal/](SimpleCausal/)
     -   [causal\_tv.md](SimpleCausal/causal_tv.md) - Simple graphs
         illustrating regression for causal inference
-        <!-- - [Simplest/](Simplest/) -->
-        <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-        <!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
+-   [Simplest/](Simplest/)
+    -   [simplest\_tv.md](Simplest/simplest_tv.md) - Linear regression
+        with a single predictor
 -   [Stents/](Stents/)
     -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
         distributions <!-- - [Storable/](Storable/) -->

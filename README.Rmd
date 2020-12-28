@@ -66,10 +66,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Earnings/](Earnings/)
     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution
 
-<!-- ### 6  Background on regression modeling -->
-<!-- - [Simplest/](Simplest/) -->
-<!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-<!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
+### 6  Background on regression modeling
+- [Simplest/](Simplest/)
+    - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
 <!-- - [PearsonLee/](PearsonLee/) -->
@@ -84,7 +83,6 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the coverage of intervals -->
 <!--    - [Simplest/](Simplest/) -->
 <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-<!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
 
 <!-- ### 8 Fitting regression models -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
@@ -386,9 +384,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
 - [SimpleCausal/](SimpleCausal/)
     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference
-<!-- - [Simplest/](Simplest/) -->
-<!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
-<!--     - [simplest_lm_tv.md](Simplest/simplest_lm_tv.md) - Linear least squares regression with a single predictor -->
+- [Simplest/](Simplest/)
+    - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor
 - [Stents/](Stents/)
     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions
 <!-- - [Storable/](Storable/) -->
