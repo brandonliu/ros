@@ -1,5 +1,10 @@
+
+# Parameters
+
+# Set seed for random number generation
 set.seed(42)
 
+# General options
 options(
   digits = 3,
   dplyr.print_max = 10,
@@ -7,6 +12,7 @@ options(
   dplyr.summarise.inform = FALSE
 )
 
+# knitr options
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = FALSE,
@@ -14,3 +20,10 @@ knitr::opts_chunk$set(
   fig.show = "hold",
   out.width = "100%"
 )
+
+#===============================================================================
+
+# Get samples from stanfit object
+as_tibble.stanfit <- function(x, ...) {
+  as_tibble(as.data.frame(x, ...))
+}
