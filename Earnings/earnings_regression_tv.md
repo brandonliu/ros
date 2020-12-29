@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-22
+2020-12-29
 
 -   [Chapter 6](#chapter-6)
     -   [Data](#data)
@@ -76,7 +76,7 @@ earnings %>%
 
 ``` r
 fit_2 <- 
-  stan_glm(earn ~ height + sex, data = earnings, seed = SEED, refresh = 0)
+  stan_glm(earn ~ height + sex, data = earnings, refresh = 0, seed = SEED)
 
 print(fit_2)
 ```
@@ -156,8 +156,8 @@ fit_3 <-
   stan_glm(
     earn ~ height + sex + height:sex,
     data = earnings,
-    seed = SEED,
-    refresh = 0
+    refresh = 0,
+    seed = SEED
   )
 
 print(fit_3)
