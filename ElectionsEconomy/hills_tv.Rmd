@@ -1,0 +1,216 @@
+---
+title: "Regression and Other Stories: Elections Economy"
+author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+---
+Tidyverse version by Bill Behrman.
+
+Present uncertainty in parameter estimates. See Chapter 7 in
+Regression and Other Stories.
+
+-------------
+
+```{r, message=FALSE}
+# Packages
+library(tidyverse)
+library(arm)
+library(rstanarm)
+
+# Parameters
+  # U.S. Presidential election results and GDP growth
+file_hibbs <- here::here("ElectionsEconomy/data/hibbs.dat")
+  # Common code
+file_common <- here::here("_common.R")
+  
+#===============================================================================
+
+# Run common code
+source(file_common)
+```
+
+## Data
+
+```{r}
+hibbs <- 
+  file_hibbs %>% 
+  read.table(header = TRUE) %>% 
+  as_tibble()
+
+hibbs
+```
+
+## Classical least squares linear regression
+
+```{r}
+fit_1 <- lm(vote ~ growth, data = hibbs)
+
+display(fit_1)
+```
+
+The linear regression coefficients returned by `lm()` are at the maximum of a multivariate normal likelihood function.
+
+```{r}
+coef_1 <- coef(fit_1)
+a_1 <- coef_1[["(Intercept)"]]
+b_1 <- coef_1[["growth"]]
+vcov_1 <- vcov(fit_1)
+a_1_se <- sqrt(diag(vcov_1))[["(Intercept)"]]
+b_1_se <- sqrt(diag(vcov_1))[["growth"]]
+n_points <- 201
+
+v <- 
+  expand_grid(
+    a = seq(a_1 - 4 * a_1_se, a_1 + 4 * a_1_se, length.out = n_points),
+    b = seq(b_1 - 4 * b_1_se, b_1 + 4 * b_1_se, length.out = n_points)
+  ) %>% 
+  mutate(
+    prob = mvtnorm::dmvnorm(x = as.matrix(.), mean = coef_1, sigma = vcov_1)
+  )
+
+v %>% 
+  ggplot(aes(a, b)) +
+  geom_contour(aes(z = prob)) +
+  geom_point(data = tibble(a = a_1, b = b_1), color = "red") +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  labs(title = "Coefficients and coefficient likelihood for data")
+```
+
+```{r}
+v %>% 
+  ggplot(aes(a, b)) +
+  geom_contour(aes(z = prob)) +
+  annotate(
+    "segment",
+    x    = c(a_1 - a_1_se, a_1),
+    xend = c(a_1 + a_1_se, a_1),
+    y    = c(b_1, b_1 - b_1_se),
+    yend = c(b_1, b_1 + b_1_se)
+  ) +
+  geom_point(data = tibble(a = a_1, b = b_1), color = "red") +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  labs(
+    title =
+      "Coefficients with ± 1 standard error and coefficient likelihood for data"
+  )
+```
+
+## Bayesian model with flat priors
+
+### With estimation based upon optimization
+
+A Bayesian model using flat priors will result in a posterior distribution that is the same as the likelihood function for classical least squares regression. If we direct the algorithm to perform optimization instead of sampling, it will seek the same maximum likelihood estimate that is returned by classical least squares regression.
+
+```{r}
+set.seed(466)
+
+fit_2 <- 
+  stan_glm(
+    vote ~ growth,
+    data = hibbs,
+    refresh = 0,
+    prior = NULL,
+    prior_intercept = NULL,
+    prior_aux = NULL,
+    algorithm = "optimizing"
+  )
+```
+
+```{r}
+coef_2 <- coef(fit_2)
+
+coef_2 - coef_1
+```
+
+The coefficients obtained through optimizing are close to the least square coefficients.
+
+### With estimation based upon sampling (MCMC)
+
+```{r}
+set.seed(466)
+
+fit_3 <- 
+  stan_glm(
+    vote ~ growth,
+    data = hibbs,
+    refresh = 0,
+    prior = NULL,
+    prior_intercept = NULL,
+    prior_aux = NULL,
+    algorithm = "sampling"
+  )
+```
+
+```{r}
+coef_3 <- coef(fit_3)
+
+coef_3 - coef_1
+```
+
+The coefficients obtained by sampling are even closer to the least square coefficients than those found through optimizing.
+
+```{r}
+a_3 <- coef_3[["(Intercept)"]]
+b_3 <- coef_3[["growth"]]
+
+draws <- 
+  as_tibble(fit_3) %>% 
+  rename(a = "(Intercept)", b = "growth")
+
+draws %>% 
+  ggplot(aes(a, b)) +
+  geom_point(size = 0.1) +
+  geom_point(data = tibble(a = a_3, b = b_3), color = "red", size = 1.5) +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  labs(title = str_glue("{nrow(draws)} posterior draws of coefficients"))
+```
+
+```{r}
+eqn <- 
+  str_glue(
+    "y = {format(a_3, digits = 1, nsmall = 1)} + ",
+    "{format(b_3, digits = 1, nsmall = 1)} x"
+  )
+
+hibbs %>% 
+  ggplot(aes(growth, vote)) +
+  geom_abline(slope = b_3, intercept = a_3) +
+  geom_point() +
+  annotate("text", x = 3.05, y = 53.75, label = eqn, hjust = 0) +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Data and linear fit",
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+```{r}
+set.seed(457)
+
+n_lines <- 100
+
+hibbs %>% 
+  ggplot(aes(growth, vote)) +
+  geom_abline(
+    aes(slope = b, intercept = a),
+    data = draws %>% slice_sample(n = n_lines),
+    alpha = 0.5
+  ) +
+  geom_abline(slope = b_3, intercept = a_3, color = "red") +
+  geom_point(color = "white", size = 2) +
+  geom_point() +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Data and range of possible linear fits",
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+
+
