@@ -100,8 +100,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Earnings/](Earnings/)
     -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
         Predict respondents’ yearly earnings using survey data from 1990
-        <!-- - [PearsonLee/](PearsonLee/) -->
-        <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
+-   [PearsonLee/](PearsonLee/)
+    -   [heights\_tv.md](PearsonLee/heights_tv.md) - The heredity of
+        height. Published in 1903 by Karl Pearson and Alice Lee.
         <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
         <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
 
@@ -382,8 +383,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Peacekeeping/](Peacekeeping/)
     -   [peace\_tv.md](Peacekeeping/peace_tv.md) - Outcomes after civil
         war in countries with and without United Nations peacekeeping
-        <!-- - [PearsonLee/](PearsonLee/) -->
-        <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
+-   [PearsonLee/](PearsonLee/)
+    -   [heights\_tv.md](PearsonLee/heights_tv.md) - The heredity of
+        height. Published in 1903 by Karl Pearson and Alice Lee.
 -   [Pew/](Pew/)
     -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
         Pew data <!-- - [PoissonExample/](PoissonExample/) -->
