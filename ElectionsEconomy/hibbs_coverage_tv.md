@@ -62,19 +62,9 @@ b <- 3.1
 sigma <- 3.8
 ```
 
-``` r
-# Check whether parameter is within posterior uncertainty interval
-in_posterior_interval <- function(fit, x, param, prob) {
-  posterior_interval <- posterior_interval(fit, prob = prob, pars = param)
-  tibble(
-    param = param,
-    prob = prob,
-    in_posterior_interval = 
-      (x >= posterior_interval[1]) && (x <= posterior_interval[2])
-  )
-}
+Parameters and posterior uncertainty interval probabilities to test.
 
-# Parameters and posterior uncertainty interval probabilities to test
+``` r
 params_probs <- 
   tribble(
        ~x,        ~param,
@@ -84,6 +74,35 @@ params_probs <-
   ) %>% 
   mutate(prob = list(c(0.5, 0.90, 0.95))) %>% 
   unnest(cols = prob)
+
+params_probs
+```
+
+    #> # A tibble: 9 x 3
+    #>       x param        prob
+    #>   <dbl> <chr>       <dbl>
+    #> 1  46.2 (Intercept)  0.5 
+    #> 2  46.2 (Intercept)  0.9 
+    #> 3  46.2 (Intercept)  0.95
+    #> 4   3.1 x            0.5 
+    #> 5   3.1 x            0.9 
+    #> 6   3.1 x            0.95
+    #> 7   3.8 sigma        0.5 
+    #> 8   3.8 sigma        0.9 
+    #> 9   3.8 sigma        0.95
+
+Check whether parameter is within posterior uncertainty interval.
+
+``` r
+in_posterior_interval <- function(fit, x, param, prob) {
+  posterior_interval <- posterior_interval(fit, prob = prob, pars = param)
+  tibble(
+    param = param,
+    prob = prob,
+    in_posterior_interval = 
+      (x >= posterior_interval[1]) && (x <= posterior_interval[2])
+  )
+}
 ```
 
 Generate simulation data, fit linear regression model to data, and
@@ -133,21 +152,21 @@ sims %>%
   ) %>% 
   group_by(param, prob) %>% 
   summarize(posterior_interval_prop = mean(in_posterior_interval)) %>% 
-  ungroup()
+  ungroup() %>% 
+  knitr::kable()
 ```
 
-    #> # A tibble: 9 x 3
-    #>   param  prob posterior_interval_prop
-    #>   <chr> <dbl>                   <dbl>
-    #> 1 a      0.5                    0.478
-    #> 2 a      0.9                    0.899
-    #> 3 a      0.95                   0.944
-    #> 4 b      0.5                    0.493
-    #> 5 b      0.9                    0.9  
-    #> 6 b      0.95                   0.947
-    #> 7 sigma  0.5                    0.5  
-    #> 8 sigma  0.9                    0.917
-    #> 9 sigma  0.95                   0.958
+| param | prob | posterior\_interval\_prop |
+|:------|-----:|--------------------------:|
+| a     | 0.50 |                     0.478 |
+| a     | 0.90 |                     0.899 |
+| a     | 0.95 |                     0.944 |
+| b     | 0.50 |                     0.493 |
+| b     | 0.90 |                     0.900 |
+| b     | 0.95 |                     0.947 |
+| sigma | 0.50 |                     0.500 |
+| sigma | 0.90 |                     0.917 |
+| sigma | 0.95 |                     0.958 |
 
 In all cases, the proportion of simulations where the posterior
 uncertainty interval covered the parameters was close to the

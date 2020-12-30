@@ -50,20 +50,9 @@ b <- 3.1
 sigma <- 3.8
 ```
 
+Parameters and posterior uncertainty interval probabilities to test.
 
 ```{r}
-# Check whether parameter is within posterior uncertainty interval
-in_posterior_interval <- function(fit, x, param, prob) {
-  posterior_interval <- posterior_interval(fit, prob = prob, pars = param)
-  tibble(
-    param = param,
-    prob = prob,
-    in_posterior_interval = 
-      (x >= posterior_interval[1]) && (x <= posterior_interval[2])
-  )
-}
-
-# Parameters and posterior uncertainty interval probabilities to test
 params_probs <- 
   tribble(
        ~x,        ~param,
@@ -73,6 +62,22 @@ params_probs <-
   ) %>% 
   mutate(prob = list(c(0.5, 0.90, 0.95))) %>% 
   unnest(cols = prob)
+
+params_probs
+```
+
+Check whether parameter is within posterior uncertainty interval.
+
+```{r}
+in_posterior_interval <- function(fit, x, param, prob) {
+  posterior_interval <- posterior_interval(fit, prob = prob, pars = param)
+  tibble(
+    param = param,
+    prob = prob,
+    in_posterior_interval = 
+      (x >= posterior_interval[1]) && (x <= posterior_interval[2])
+  )
+}
 ```
 
 Generate simulation data, fit linear regression model to data, and determine whether parameters are in their posterior uncertainty intervals.
@@ -118,7 +123,8 @@ sims %>%
   ) %>% 
   group_by(param, prob) %>% 
   summarize(posterior_interval_prop = mean(in_posterior_interval)) %>% 
-  ungroup()
+  ungroup() %>% 
+  knitr::kable()
 ```
 
 In all cases, the proportion of simulations where the posterior uncertainty interval covered the parameters was close to the probabilities defining the intervals.
