@@ -96,8 +96,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 
 -   [Simplest/](Simplest/)
     -   [simplest\_tv.md](Simplest/simplest_tv.md) - Linear regression
-        with a single predictor <!-- - [Earnings/](Earnings/) -->
-        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+        with a single predictor
+-   [Earnings/](Earnings/)
+    -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
+        Predict respondents’ yearly earnings using survey data from 1990
         <!-- - [PearsonLee/](PearsonLee/) -->
         <!--     - [heights_tv.md](PearsonLee/heights_tv.md) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee. -->
         <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
@@ -106,13 +108,13 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!-- ### 7  Linear regression with a single predictor -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
-<!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
 <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the coverage of intervals -->
 <!--    - [Simplest/](Simplest/) -->
 <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
 <!-- ### 8 Fitting regression models -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
+<!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
 <!-- - [Influence/](Influence/) -->
 <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
 <!-- ### 9 Prediction and Bayesian inference  -->
@@ -307,15 +309,16 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Earnings/](Earnings/)
     -   [earnings\_bootstrap\_tv.md](Earnings/earnings_bootstrap_tv.md) -
         Bootstrapping to simulate the sampling distribution
-        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+    -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
+        Predict respondents’ yearly earnings using survey data from 1990
         <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
         <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 -   [ElectionsEconomy/](ElectionsEconomy/)
     <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
         presidential vote share from the economy
-        <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
         <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
+        <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
         “Electric Company” data <!-- - [FakeKCV/](FakeKCV/) -->
