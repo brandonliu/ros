@@ -1,12 +1,21 @@
 Regression and Other Stories: Simple regression
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-28
+2020-12-30
 
 -   [Chapter 6](#chapter-6)
     -   [Simulate fake data](#simulate-fake-data)
     -   [Linear regression model](#linear-regression-model)
     -   [Plot](#plot)
+-   [Chapter 7](#chapter-7)
+    -   [Simulate fake data](#simulate-fake-data-1)
+    -   [Estimating the mean is the same as regressing on a constant
+        term](#estimating-the-mean-is-the-same-as-regressing-on-a-constant-term)
+    -   [Simulate fake data](#simulate-fake-data-2)
+    -   [Estimating a difference is the same as regressing on an
+        indicator
+        variable](#estimating-a-difference-is-the-same-as-regressing-on-an-indicator-variable)
+    -   [Plot](#plot-1)
 
 Tidyverse version by Bill Behrman.
 
@@ -39,14 +48,14 @@ source(file_common)
 ``` r
 set.seed(SEED)
 
-intercept <- 0.2
-slope <- 0.3
+a <- 0.2
+b <- 0.3
 sigma <- 0.5
 
-fake <- 
+fake_1 <- 
   tibble(
     x = 1:20,
-    y = intercept + slope * x + rnorm(length(x), mean = 0, sd = sigma)
+    y = a + b * x + rnorm(length(x), mean = 0, sd = sigma)
   )
 ```
 
@@ -57,7 +66,7 @@ output. This is useful for small data with fast computation. For more
 complex models and bigger data, it can be useful to see the progress.
 
 ``` r
-fit_1 <- stan_glm(y ~ x, data = fake, seed = SEED, refresh = 0)
+fit_1 <- stan_glm(y ~ x, data = fake_1, refresh = 0, seed = SEED)
 
 print(fit_1, digits = 2)
 ```
@@ -83,20 +92,196 @@ print(fit_1, digits = 2)
 ### Plot
 
 ``` r
-fit_intercept <- coef(fit_1)[["(Intercept)"]]
-fit_slope <- coef(fit_1)[["x"]]
+intercept <- coef(fit_1)[["(Intercept)"]]
+slope <- coef(fit_1)[["x"]]
 eqn <- 
   str_glue(
-    "y = {format(fit_intercept, digits = 2, nsmall = 2)} + ",
-    "{format(fit_slope, digits = 2, nsmall = 2)} x"
+    "y = {format(intercept, digits = 2, nsmall = 2)} + ",
+    "{format(slope, digits = 2, nsmall = 2)} x"
   )
 
-fake %>% 
+fake_1 %>% 
   ggplot(aes(x, y)) +
-  geom_abline(slope = fit_slope, intercept = fit_intercept) +
+  geom_abline(slope = slope, intercept = intercept) +
   geom_point() +
   annotate("text", x = 5.5, y = 4.5, label = eqn, hjust = 0) +
   labs(title = "Data and fitted regression line")
 ```
 
 <img src="simplest_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+
+# Chapter 7
+
+## Simulate fake data
+
+``` r
+set.seed(SEED)
+
+n_0 <- 200
+y_0 <- rnorm(n_0, mean = 2, sd = 5)
+```
+
+``` r
+y_0_mean <- mean(y_0)
+y_0_mean
+```
+
+    #> [1] 2.43
+
+``` r
+y_0_mean_se <- sd(y_0) / sqrt(n_0)
+y_0_mean_se
+```
+
+    #> [1] 0.36
+
+## Estimating the mean is the same as regressing on a constant term
+
+``` r
+fake_2 <- tibble(y = y_0)
+
+fit_2 <- 
+  stan_glm(
+    y ~ 1,
+    data = fake_2,
+    refresh = 0,
+    seed = SEED,
+    prior = NULL,
+    prior_intercept = NULL,
+    prior_aux = NULL
+  )
+
+print(fit_2, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      y ~ 1
+    #>  observations: 200
+    #>  predictors:   1
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 2.43   0.37  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 5.12   0.27  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+## Simulate fake data
+
+``` r
+set.seed(SEED)
+
+n_1 <- 300
+y_1 <- rnorm(n_1, mean = 8, sd = 5)
+```
+
+``` r
+y_1_mean <- mean(y_1)
+y_1_mean_se <- sd(y_1) / sqrt(n_1)
+
+diff <- y_1_mean - y_0_mean
+diff
+```
+
+    #> [1] 6.08
+
+``` r
+diff_se <- sqrt(y_0_mean_se^2 + y_1_mean_se^2)
+diff_se
+```
+
+    #> [1] 0.46
+
+## Estimating a difference is the same as regressing on an indicator variable
+
+``` r
+fake_3 <- 
+  bind_rows(
+    tibble(x = 0, y = y_0),
+    tibble(x = 1, y = y_1)
+  )
+
+fit_3 <- 
+  stan_glm(
+    y ~ x,
+    data = fake_3,
+    refresh = 0,
+    seed = SEED,
+    prior = NULL,
+    prior_intercept = NULL,
+    prior_aux = NULL
+  )
+
+print(fit_3, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      y ~ x
+    #>  observations: 500
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 2.43   0.37  
+    #> x           6.09   0.48  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 5.03   0.15  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+## Plot
+
+``` r
+label_y_0_mean <- 
+  str_glue("bar(y)[0] == {format(y_0_mean, digits = 2, nsmall = 2)}")
+label_y_1_mean <- 
+  str_glue("bar(y)[1] == {format(y_1_mean, digits = 2, nsmall = 2)}")
+
+intercept <- coef(fit_3)[["(Intercept)"]]
+slope <- coef(fit_3)[["x"]]
+eqn <- 
+  str_glue(
+    "y = {format(intercept, digits = 2, nsmall = 2)} + ",
+    "{format(slope, digits = 2, nsmall = 2)} x"
+  )
+
+offset <- 1.5
+
+fake_3 %>% 
+  ggplot(aes(x, y)) +
+  geom_hline(yintercept = c(y_0_mean, y_1_mean), color = "grey60") +
+  geom_abline(slope = slope, intercept = intercept) +
+  geom_point() +
+  annotate(
+    "text",
+    x = c(0.04, 0.96),
+    y = c(y_0_mean - offset, y_1_mean + offset),
+    hjust = c(0, 1),
+    label = c(label_y_0_mean, label_y_1_mean),
+    parse = TRUE
+  ) +
+  annotate(
+    "text",
+    x = 0.5,
+    y = intercept + slope * 0.5 - offset,
+    hjust = 0,
+    label = eqn
+  ) +
+  scale_x_continuous(breaks = 0:1, minor_breaks = NULL) +
+  labs(
+    title =
+      "Regression on an indicator is the same as computing a difference in means",
+    x = "x (Indicator)"
+  )
+```
+
+<img src="simplest_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
