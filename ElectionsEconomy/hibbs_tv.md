@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-25
+2020-12-31
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -15,6 +15,10 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         results](#plot-of-economy-and-election-results)
     -   [Plot of prediction given 2%
         growth](#plot-of-prediction-given-2-growth)
+-   [Chapter 8](#chapter-8)
+    -   [Data and linear fit](#data-and-linear-fit)
+    -   [Data and range of possible linear
+        fits](#data-and-range-of-possible-linear-fits)
 
 Tidyverse version by Bill Behrman.
 
@@ -320,3 +324,60 @@ v %>%
 ```
 
 <img src="hibbs_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
+
+# Chapter 8
+
+## Data and linear fit
+
+``` r
+hibbs %>% 
+  ggplot(aes(growth, vote)) +
+  geom_abline(slope = slope, intercept = intercept) +
+  geom_point() +
+  annotate("text", x = 3.05, y = 53.75, label = eqn, hjust = 0) +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Data and linear fit",
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
+
+## Data and range of possible linear fits
+
+``` r
+set.seed(189)
+
+draws <- 
+  as_tibble(fit) %>% 
+  rename(slope = "growth", intercept = "(Intercept)")
+```
+
+``` r
+set.seed(189)
+
+n_lines <- 50
+
+hibbs %>% 
+  ggplot(aes(growth, vote)) +
+  geom_abline(
+    aes(slope = slope, intercept = intercept),
+    data = draws %>% slice_sample(n = n_lines),
+    alpha = 0.25
+  ) +
+  geom_abline(slope = slope, intercept = intercept, color = "red") +
+  geom_point(color = "white", size = 2) +
+  geom_point() +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Data and range of possible linear fits",
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
