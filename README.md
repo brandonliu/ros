@@ -103,8 +103,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [PearsonLee/](PearsonLee/)
     -   [heights\_tv.md](PearsonLee/heights_tv.md) - The heredity of
         height. Published in 1903 by Karl Pearson and Alice Lee.
-        <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
-        <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
+-   [FakeMidtermFinal/](FakeMidtermFinal/)
+    -   [simulation\_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake
+        dataset of 1000 students’ scores on a midterm and final exam
 
 <!-- ### 7  Linear regression with a single predictor -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
@@ -324,8 +325,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
         “Electric Company” data <!-- - [FakeKCV/](FakeKCV/) -->
         <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
-        <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
-        <!--     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam -->
+-   [FakeMidtermFinal/](FakeMidtermFinal/)
+    -   [simulation\_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake
+        dataset of 1000 students’ scores on a midterm and final exam
         <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
         <!-- - [FrenchElection/](FrenchElection/) -->
         <!--     - [ps_primaire_tv.md](FrenchElection/ps_primaire_tv.md) - French Election data -->
