@@ -8,7 +8,7 @@ output:
 ---
 Tidyverse version by Bill Behrman.
 
-Present uncertainty in parameter estimates. See Chapter 7 in
+Present uncertainty in parameter estimates. See Chapter 8 in
 Regression and Other Stories.
 
 -------------
@@ -166,51 +166,4 @@ draws %>%
   scale_x_continuous(breaks = scales::breaks_width(2)) +
   labs(title = str_glue("{nrow(draws)} posterior draws of coefficients"))
 ```
-
-```{r}
-eqn <- 
-  str_glue(
-    "y = {format(a_3, digits = 1, nsmall = 1)} + ",
-    "{format(b_3, digits = 1, nsmall = 1)} x"
-  )
-
-hibbs %>% 
-  ggplot(aes(growth, vote)) +
-  geom_abline(slope = b_3, intercept = a_3) +
-  geom_point() +
-  annotate("text", x = 3.05, y = 53.75, label = eqn, hjust = 0) +
-  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  labs(
-    title = "Data and linear fit",
-    x = "Average recent growth in personal income",
-    y = "Incumbent party's vote share"
-  )
-```
-
-```{r}
-set.seed(457)
-
-n_lines <- 100
-
-hibbs %>% 
-  ggplot(aes(growth, vote)) +
-  geom_abline(
-    aes(slope = b, intercept = a),
-    data = draws %>% slice_sample(n = n_lines),
-    alpha = 0.5
-  ) +
-  geom_abline(slope = b_3, intercept = a_3, color = "red") +
-  geom_point(color = "white", size = 2) +
-  geom_point() +
-  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  labs(
-    title = "Data and range of possible linear fits",
-    x = "Average recent growth in personal income",
-    y = "Incumbent party's vote share"
-  )
-```
-
-
 

@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-29
+2020-12-31
 
 -   [Data](#data)
 -   [Classical least squares linear
@@ -14,7 +14,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
 
 Tidyverse version by Bill Behrman.
 
-Present uncertainty in parameter estimates. See Chapter 7 in Regression
+Present uncertainty in parameter estimates. See Chapter 8 in Regression
 and Other Stories.
 
 ------------------------------------------------------------------------
@@ -215,52 +215,3 @@ draws %>%
 ```
 
 <img src="hills_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
-
-``` r
-eqn <- 
-  str_glue(
-    "y = {format(a_3, digits = 1, nsmall = 1)} + ",
-    "{format(b_3, digits = 1, nsmall = 1)} x"
-  )
-
-hibbs %>% 
-  ggplot(aes(growth, vote)) +
-  geom_abline(slope = b_3, intercept = a_3) +
-  geom_point() +
-  annotate("text", x = 3.05, y = 53.75, label = eqn, hjust = 0) +
-  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  labs(
-    title = "Data and linear fit",
-    x = "Average recent growth in personal income",
-    y = "Incumbent party's vote share"
-  )
-```
-
-<img src="hills_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
-
-``` r
-set.seed(457)
-
-n_lines <- 100
-
-hibbs %>% 
-  ggplot(aes(growth, vote)) +
-  geom_abline(
-    aes(slope = b, intercept = a),
-    data = draws %>% slice_sample(n = n_lines),
-    alpha = 0.5
-  ) +
-  geom_abline(slope = b_3, intercept = a_3, color = "red") +
-  geom_point(color = "white", size = 2) +
-  geom_point() +
-  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
-  labs(
-    title = "Data and range of possible linear fits",
-    x = "Average recent growth in personal income",
-    y = "Incumbent party's vote share"
-  )
-```
-
-<img src="hills_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
