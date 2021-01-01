@@ -107,16 +107,19 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [simulation\_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake
         dataset of 1000 students’ scores on a midterm and final exam
 
-<!-- ### 7  Linear regression with a single predictor -->
-<!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
-<!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the coverage of intervals -->
-<!--    - [Simplest/](Simplest/) -->
-<!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
+### 7 Linear regression with a single predictor
+
+-   [ElectionsEconomy/](ElectionsEconomy/)
+    -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
+        presidential vote share from the economy
+        <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the coverage of intervals -->
+        <!--    - [Simplest/](Simplest/) -->
+        <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
+
 <!-- ### 8 Fitting regression models -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
 <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
+<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
 <!-- - [Influence/](Influence/) -->
 <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
 <!-- ### 9 Prediction and Bayesian inference  -->
@@ -317,9 +320,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 -   [ElectionsEconomy/](ElectionsEconomy/)
     <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
+    <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
         presidential vote share from the economy
-        <!--     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation. -->
         <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
