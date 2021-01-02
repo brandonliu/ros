@@ -52,8 +52,8 @@ fit <- stan_glm(y ~ x, data = data, refresh = 0)
 Plot of linear regression with residuals.
 
 ``` r
-slope <- coef(fit)[["x"]]
 intercept <- coef(fit)[["(Intercept)"]]
+slope <- coef(fit)[["x"]]
 
 v <- 
   data %>% 
