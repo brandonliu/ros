@@ -573,7 +573,7 @@ v %>%
   ggplot(aes(growth)) +
   geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
   geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
-  geom_line(aes(y = pred)) +
+  geom_line(aes(y = .pred)) +
   geom_point(aes(y = vote), data = hibbs, color = "white", size = 2) +
   geom_point(aes(y = vote), data = hibbs) +
   scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
