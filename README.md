@@ -114,8 +114,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         presidential vote share from the economy
     -   [hibbs\_coverage\_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) -
         Checking the coverage of intervals
-        <!--    - [Simplest/](Simplest/) -->
-        <!--     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor -->
+-   [Simplest/](Simplest/)
+    -   [simplest\_tv.md](Simplest/simplest_tv.md) - Linear regression
+        with a single predictor
 
 <!-- ### 8 Fitting regression models -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
