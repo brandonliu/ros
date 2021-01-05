@@ -28,6 +28,19 @@ as_tibble.stanfit <- function(x, ...) {
   as_tibble(as.data.frame(x, ...))
 }
 
+# Predictive intervals for fit model
+predictive_intervals <- function(.data, fit, probs = c(0.5, 0.9)) {
+  .data %>%
+    mutate(pred = predict(fit, newdata = .)) %>%
+    bind_cols(
+      map_dfc(
+        probs, 
+        ~ predictive_interval(fit, prob = ., newdata = .data) %>%
+          as_tibble()
+      )
+    )
+}
+
 # Sequence of evenly spaced points spanning the range of x
 seq_range <- function(x, n = 101) {
   seq(from = min(x, na.rm = TRUE), to = max(x, na.rm = TRUE), length.out = n)
