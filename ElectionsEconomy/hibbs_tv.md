@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-04
+2021-01-05
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -20,7 +20,8 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
     -   [Data and range of possible linear
         fits](#data-and-range-of-possible-linear-fits)
 -   [Chapter 9](#chapter-9)
-    -   [Plots](#plots)
+    -   [Propogating uncertainty in inference using posterior
+        simulations](#propogating-uncertainty-in-inference-using-posterior-simulations)
         -   [Posterior simulations of the
             intercept](#posterior-simulations-of-the-intercept)
         -   [Posterior simulations of the
@@ -31,6 +32,16 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             x](#data-and-100-posterior-draws-of-the-line-y-a-b-x)
         -   [Data and linear fit with 50% and 90% predictive
             intervals](#data-and-linear-fit-with-50-and-90-predictive-intervals)
+    -   [Prediction and uncertainty](#prediction-and-uncertainty)
+        -   [Point prediction using
+            `predict()`](#point-prediction-using-predict)
+        -   [Linear predictor with uncertainty using
+            `posterior_linpred()`](#linear-predictor-with-uncertainty-using-posterior_linpred)
+        -   [Predictive distribution for a new observation using
+            `posterior_predict()`](#predictive-distribution-for-a-new-observation-using-posterior_predict)
+        -   [Prediction given a range of input
+            values](#prediction-given-a-range-of-input-values)
+        -   [Propogating uncertainty](#propogating-uncertainty)
 
 Tidyverse version by Bill Behrman.
 
@@ -394,6 +405,8 @@ hibbs %>%
 
 # Chapter 9
 
+## Propogating uncertainty in inference using posterior simulations
+
 Fit parameter statistics.
 
 ``` r
@@ -468,8 +481,6 @@ sims %>%
     #>   z_median z_mad
     #>      <dbl> <dbl>
     #> 1     15.1  3.92
-
-## Plots
 
 ### Posterior simulations of the intercept
 
@@ -586,3 +597,141 @@ v %>%
 ```
 
 <img src="hibbs_tv_files/figure-gfm/unnamed-chunk-26-1.png" width="100%" />
+
+## Prediction and uncertainty
+
+### Point prediction using `predict()`
+
+Point prediction given 2% growth.
+
+``` r
+new <- tibble(growth = 2)
+
+y_point_pred <- predict(fit, newdata = new)
+```
+
+Manual calculation for point prediction.
+
+``` r
+y_point_pred_manual <- a + b * new$growth
+
+y_point_pred_manual - y_point_pred
+```
+
+    #>      1 
+    #> 0.0565
+
+### Linear predictor with uncertainty using `posterior_linpred()`
+
+Create a linear prediction for each of the 4000 posterior simulations of
+the model parameters.
+
+``` r
+y_linpred <- posterior_linpred(fit, newdata = new)
+```
+
+Manual calculation for linear predictions.
+
+``` r
+y_linpred_manual <- sims$a + sims$b * new$growth
+
+max(abs(y_linpred_manual - y_linpred))
+```
+
+    #> [1] 0
+
+### Predictive distribution for a new observation using `posterior_predict()`
+
+Predictive uncertainty.
+
+``` r
+set.seed(835)
+
+y_pred <- posterior_predict(fit, newdata = new)
+```
+
+Manual calculation for predictive uncertainty.
+
+``` r
+set.seed(835)
+
+y_pred_manual <- 
+  sims$a + sims$b * new$growth + rnorm(nrow(sims), mean = 0, sd = sims$sigma)
+
+max(abs(y_pred_manual - y_pred))
+```
+
+    #> [1] 0
+
+Plot of predictions.
+
+``` r
+tibble(y_pred = as.numeric(y_pred)) %>% 
+  ggplot(aes(y_pred)) +
+  geom_histogram(binwidth = 1) +
+  geom_vline(xintercept = median(y_pred), color = "red") +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  labs(
+    title = 
+      str_glue(
+        "Predicted percentage of two-party vote with {new$growth}% growth"
+      ),
+    subtitle = 
+      str_glue(
+        "Median prediction is {format(median(y_pred), digits = 1, nsmall = 1)}%"
+      ),
+    x = "Percentage of two-party vote",
+    y = "Count"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-33-1.png" width="100%" />
+
+Summary of predictions.
+
+``` r
+cat(
+  str_glue(
+    "Predicted Clinton percentage of two-party vote: ",
+    "{format(median(y_pred), digits = 1, nsmall = 1)} with s.e. ",
+    "{format(mad(y_pred), digits = 1, nsmall = 1)}\n",
+    "Pr(Clinton win) = {format(mean(y_pred > 50), digits = 2, nsmall = 2)}"
+  )
+)
+```
+
+    #> Predicted Clinton percentage of two-party vote: 52.3 with s.e. 3.9
+    #> Pr(Clinton win) = 0.73
+
+### Prediction given a range of input values
+
+``` r
+new_grid <- tibble(growth = seq(-2, 4, 0.5))
+y_point_pred_grid <- predict(fit, newdata = new_grid)
+y_linpred_grid <- posterior_linpred(fit, newdata = new_grid)
+y_pred_grid <- posterior_predict(fit, newdata = new_grid)
+```
+
+### Propogating uncertainty
+
+``` r
+set.seed(672)
+
+v <- 
+  tibble(
+    x_new = rnorm(nrow(sims), mean = 2, sd = 0.3),
+    y_pred = rnorm(nrow(sims), mean = sims$a + sims$b * x_new, sd = sims$sigma)
+  )
+
+cat(
+  str_glue(
+    "Predicted Clinton percentage of two-party vote: ",
+    "{format(median(v$y_pred), digits = 1, nsmall = 1)} with s.e. ",
+    "{format(mad(v$y_pred), digits = 1, nsmall = 1)}\n",
+    "Pr(Clinton win) = {format(mean(v$y_pred > 50), digits = 2, nsmall = 2)}"
+  )
+)
+```
+
+    #> Predicted Clinton percentage of two-party vote: 52.3 with s.e. 4.3
+    #> Pr(Clinton win) = 0.71
