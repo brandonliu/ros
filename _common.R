@@ -27,3 +27,8 @@ knitr::opts_chunk$set(
 as_tibble.stanfit <- function(x, ...) {
   as_tibble(as.data.frame(x, ...))
 }
+
+# Sequence of evenly spaced points spanning the range of x
+seq_range <- function(x, n = 101) {
+  seq(from = min(x, na.rm = TRUE), to = max(x, na.rm = TRUE), length.out = n)
+}
