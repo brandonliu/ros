@@ -1,7 +1,7 @@
 Regression and Other Stories: Simple regression
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-30
+2021-01-05
 
 -   [Chapter 6](#chapter-6)
     -   [Simulate fake data](#simulate-fake-data)
