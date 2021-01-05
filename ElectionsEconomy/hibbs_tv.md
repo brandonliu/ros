@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-31
+2021-01-04
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -19,6 +19,18 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
     -   [Data and linear fit](#data-and-linear-fit)
     -   [Data and range of possible linear
         fits](#data-and-range-of-possible-linear-fits)
+-   [Chapter 9](#chapter-9)
+    -   [Plots](#plots)
+        -   [Posterior simulations of the
+            intercept](#posterior-simulations-of-the-intercept)
+        -   [Posterior simulations of the
+            slope](#posterior-simulations-of-the-slope)
+        -   [Posterior draws of the regression coefficients a,
+            b](#posterior-draws-of-the-regression-coefficients-a-b)
+        -   [Data and 100 posterior draws of the line, y = a + b
+            x](#data-and-100-posterior-draws-of-the-line-y-a-b-x)
+        -   [Data and linear fit with 50% and 90% predictive
+            intervals](#data-and-linear-fit-with-50-and-90-predictive-intervals)
 
 Tidyverse version by Bill Behrman.
 
@@ -351,9 +363,7 @@ hibbs %>%
 ``` r
 set.seed(189)
 
-draws <- 
-  as_tibble(fit) %>% 
-  rename(slope = "growth", intercept = "(Intercept)")
+sims <- as_tibble(fit)
 ```
 
 ``` r
@@ -364,8 +374,8 @@ n_lines <- 50
 hibbs %>% 
   ggplot(aes(growth, vote)) +
   geom_abline(
-    aes(slope = slope, intercept = intercept),
-    data = draws %>% slice_sample(n = n_lines),
+    aes(slope = growth, intercept = `(Intercept)`),
+    data = sims %>% slice_sample(n = n_lines),
     alpha = 0.25
   ) +
   geom_abline(slope = slope, intercept = intercept, color = "red") +
@@ -381,3 +391,198 @@ hibbs %>%
 ```
 
 <img src="hibbs_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+
+# Chapter 9
+
+Fit parameter statistics.
+
+``` r
+print(fit, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      vote ~ growth
+    #>  observations: 16
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 46.32   1.71 
+    #> growth       3.06   0.73 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 3.90   0.73  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Extract the simulations.
+
+``` r
+set.seed(189)
+
+sims <- as_tibble(fit)
+```
+
+Median and mean absolute deviation of parameters.
+
+``` r
+sims %>% 
+  pivot_longer(
+    cols = everything(),
+    names_to = "param"
+  ) %>% 
+  group_by(param) %>% 
+  summarize(
+    median = median(value),
+    mad = mad(value)
+  )
+```
+
+    #> # A tibble: 3 x 3
+    #>   param       median   mad
+    #>   <chr>        <dbl> <dbl>
+    #> 1 (Intercept)  46.3  1.71 
+    #> 2 growth        3.06 0.730
+    #> 3 sigma         3.90 0.732
+
+Rename intercept and slope.
+
+``` r
+sims <- 
+  sims %>% 
+  rename(a = "(Intercept)", b = "growth")
+```
+
+Median and mean absolute deviation for a derived quantity a / b.
+
+``` r
+sims %>% 
+  mutate(z = a / b) %>% 
+  summarize(across(z, list(median = median, mad = mad)))
+```
+
+    #> # A tibble: 1 x 2
+    #>   z_median z_mad
+    #>      <dbl> <dbl>
+    #> 1     15.1  3.92
+
+## Plots
+
+### Posterior simulations of the intercept
+
+``` r
+a_median <- median(sims$a)
+a_mad <- mad(sims$a)
+lines_mad <- a_median + setdiff(-2:2, 0) * a_mad
+
+sims %>% 
+  ggplot(aes(a)) +
+  geom_histogram(binwidth = 0.5, boundary = 0) +
+  geom_vline(xintercept = a_median, color = "red") +
+  geom_vline(xintercept = lines_mad, color = "grey60") +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  labs(
+    title = "Posterior simulations of the intercept",
+    subtitle = 
+      "With posterior median in red and ± 1 and 2 median absolute deviations in grey"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-21-1.png" width="100%" />
+
+### Posterior simulations of the slope
+
+``` r
+b_median <- median(sims$b)
+b_mad <- mad(sims$b)
+lines_mad <- b_median + setdiff(-2:2, 0) * b_mad
+
+sims %>% 
+  ggplot(aes(b)) +
+  geom_histogram(binwidth = 0.1, boundary = 0) +
+  geom_vline(xintercept = b_median, color = "red") +
+  geom_vline(xintercept = lines_mad, color = "grey60") +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  labs(
+    title = "Posterior simulations of the slope",
+    subtitle = 
+      "With posterior median in red and ± 1 and 2 median absolute deviations in grey"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-22-1.png" width="100%" />
+
+### Posterior draws of the regression coefficients a, b
+
+``` r
+a <- coef(fit)[["(Intercept)"]]
+b <- coef(fit)[["growth"]]
+
+sims %>% 
+  ggplot(aes(a, b)) +
+  geom_point(size = 0.1) +
+  geom_point(data = tibble(a = a, b = b), color = "red", size = 1.5) +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  labs(title = "Posterior draws of the regression coefficients a, b")
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-23-1.png" width="100%" />
+
+``` r
+n_lines <- 100
+```
+
+### Data and 100 posterior draws of the line, y = a + b x
+
+``` r
+set.seed(189)
+
+hibbs %>% 
+  ggplot(aes(growth, vote)) +
+  geom_abline(
+    aes(slope = b, intercept = a),
+    data = sims %>% slice_sample(n = n_lines),
+    alpha = 0.25
+  ) +
+  geom_abline(slope = b, intercept = a, color = "red") +
+  geom_point(color = "white", size = 2) +
+  geom_point() +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = 
+      str_glue("Data and {n_lines} posterior draws of the line, y = a + b x"),
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-25-1.png" width="100%" />
+
+### Data and linear fit with 50% and 90% predictive intervals
+
+``` r
+v <- 
+  tibble(growth = seq_range(hibbs$growth)) %>% 
+  predictive_intervals(fit = fit)
+
+v %>% 
+  ggplot(aes(growth)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = pred)) +
+  geom_point(aes(y = vote), data = hibbs, color = "white", size = 2) +
+  geom_point(aes(y = vote), data = hibbs) +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1, scale = 1)) +
+  labs(
+    title = "Data and linear fit with 50% and 90% predictive intervals",
+    x = "Average recent growth in personal income",
+    y = "Incumbent party's vote share"
+  )
+```
+
+<img src="hibbs_tv_files/figure-gfm/unnamed-chunk-26-1.png" width="100%" />
