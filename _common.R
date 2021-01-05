@@ -31,7 +31,7 @@ as_tibble.stanfit <- function(x, ...) {
 # Predictive intervals for fit model
 predictive_intervals <- function(.data, fit, probs = c(0.5, 0.9)) {
   .data %>%
-    mutate(pred = predict(fit, newdata = .)) %>%
+    mutate(.pred = predict(fit, newdata = .)) %>%
     bind_cols(
       map_dfc(
         probs, 
