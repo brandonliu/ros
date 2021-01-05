@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-31
+2021-01-04
 
 -   [Data](#data)
 -   [Classical least squares linear
