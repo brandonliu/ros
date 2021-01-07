@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-04
+2021-01-06
 
 -   [Data](#data)
 -   [Classical least squares linear
@@ -11,6 +11,8 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         optimization](#with-estimation-based-upon-optimization)
     -   [With estimation based upon
         sampling (MCMC)](#with-estimation-based-upon-sampling-mcmc)
+    -   [Posterior draws of regression
+        coefficients](#posterior-draws-of-regression-coefficients)
 
 Tidyverse version by Bill Behrman.
 
@@ -195,8 +197,10 @@ coef_3 - coef_1
     #> (Intercept)      growth 
     #>    -0.00542    -0.00782
 
-The coefficients obtained by sampling are even closer to the least
-square coefficients than those found through optimizing.
+The coefficients obtained through sampling are also close to the least
+square coefficients.
+
+### Posterior draws of regression coefficients
 
 ``` r
 a_3 <- coef_3[["(Intercept)"]]
@@ -211,7 +215,7 @@ draws %>%
   geom_point(size = 0.1) +
   geom_point(data = tibble(a = a_3, b = b_3), color = "red", size = 1.5) +
   scale_x_continuous(breaks = scales::breaks_width(2)) +
-  labs(title = str_glue("{nrow(draws)} posterior draws of coefficients"))
+  labs(title = str_glue("{nrow(draws)} posterior draws of regression coefficients"))
 ```
 
 <img src="hills_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
