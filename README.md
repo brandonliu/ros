@@ -118,12 +118,15 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [simplest\_tv.md](Simplest/simplest_tv.md) - Linear regression
         with a single predictor
 
-<!-- ### 8 Fitting regression models -->
-<!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
-<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
-<!-- - [Influence/](Influence/) -->
-<!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
+### 8 Fitting regression models
+
+-   [ElectionsEconomy/](ElectionsEconomy/)
+    -   [hills\_tv.md](ElectionsEconomy/hills_tv.md) - Present
+        uncertainty in parameter estimates
+        <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
+        <!-- - [Influence/](Influence/) -->
+        <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
+
 <!-- ### 9 Prediction and Bayesian inference  -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
@@ -326,7 +329,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Checking the model-fitting procedure using fake-data simulation.
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
         presidential vote share from the economy
-        <!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
+    -   [hills\_tv.md](ElectionsEconomy/hills_tv.md) - Present
+        uncertainty in parameter estimates
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
         “Electric Company” data <!-- - [FakeKCV/](FakeKCV/) -->

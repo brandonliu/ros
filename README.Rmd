@@ -83,9 +83,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Simplest/](Simplest/)
     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor
 
-<!-- ### 8 Fitting regression models -->
-<!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
+### 8 Fitting regression models
+- [ElectionsEconomy/](ElectionsEconomy/)
+    - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates
 <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
 <!-- - [Influence/](Influence/) -->
 <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
@@ -294,7 +294,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation.
     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy
-<!--     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates -->
+    - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates
 - [ElectricCompany/](ElectricCompany/)
     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data
 <!-- - [FakeKCV/](FakeKCV/) -->
