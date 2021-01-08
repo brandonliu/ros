@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-29
+2021-01-08
 
 -   [Chapter 6](#chapter-6)
     -   [Data](#data)
@@ -13,7 +13,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
 Tidyverse version by Bill Behrman.
 
 Predict respondents’ yearly earnings using survey data from 1990. See
-Chapters 6, 9 and 12 in Regression and Other Stories.
+Chapters 6 and 12 in Regression and Other Stories.
 
 ------------------------------------------------------------------------
 
@@ -47,8 +47,8 @@ earnings <-
   mutate(
     sex = 
       case_when(
-        male == 0 ~ "female",
-        male == 1 ~ "male",
+        male == 0 ~ "Female",
+        male == 1 ~ "Male",
         TRUE ~ NA_character_
       )
   )
@@ -60,16 +60,16 @@ earnings %>%
     #> # A tibble: 1,816 x 3
     #>    height sex     earn
     #>     <dbl> <chr>  <dbl>
-    #>  1     74 male   50000
-    #>  2     66 female 60000
-    #>  3     64 female 30000
-    #>  4     65 female 25000
-    #>  5     63 female 50000
-    #>  6     68 female 62000
-    #>  7     63 female 51000
-    #>  8     64 female  9000
-    #>  9     62 female 29000
-    #> 10     73 male   32000
+    #>  1     74 Male   50000
+    #>  2     66 Female 60000
+    #>  3     64 Female 30000
+    #>  4     65 Female 25000
+    #>  5     63 Female 50000
+    #>  6     68 Female 62000
+    #>  7     63 Female 51000
+    #>  8     64 Female  9000
+    #>  9     62 Female 29000
+    #> 10     73 Male   32000
     #> # … with 1,806 more rows
 
 ## Linear regression of earnings on height and sex with no interaction
@@ -90,7 +90,7 @@ print(fit_2)
     #>             Median   MAD_SD  
     #> (Intercept) -26129.1  11683.7
     #> height         650.6    179.7
-    #> sexmale      10630.6   1445.1
+    #> sexMale      10630.6   1445.1
     #> 
     #> Auxiliary parameter(s):
     #>       Median  MAD_SD 
@@ -104,9 +104,9 @@ print(fit_2)
 fit_params <- 
   tribble(
     ~sex, ~intercept, ~slope,
-    "female", coef(fit_2)[["(Intercept)"]], coef(fit_2)[["height"]],
-    "male", 
-      coef(fit_2)[["(Intercept)"]] + coef(fit_2)[["sexmale"]],
+    "Female", coef(fit_2)[["(Intercept)"]], coef(fit_2)[["height"]],
+    "Male", 
+      coef(fit_2)[["(Intercept)"]] + coef(fit_2)[["sexMale"]],
       coef(fit_2)[["height"]]
   )
 
@@ -116,8 +116,8 @@ earnings %>%
   mutate(
     height =
       case_when(
-        sex == "female" ~ height - offset,
-        sex == "male" ~ height + offset,
+        sex == "Female" ~ height - offset,
+        sex == "Male" ~ height + offset,
         TRUE ~ NA_real_
       )
   ) %>% 
@@ -130,7 +130,6 @@ earnings %>%
   coord_cartesian(ylim = c(0, 1e5)) +
   scale_x_continuous(breaks = scales::breaks_width(1), minor_breaks = NULL) +
   scale_y_continuous(labels = scales::label_comma()) +
-  scale_color_discrete(labels = c("Female", "Male")) +
   theme(legend.position = "bottom") +
   labs(
     title = 
@@ -172,8 +171,8 @@ print(fit_3)
     #>                Median   MAD_SD  
     #> (Intercept)     -9779.4  15218.0
     #> height            399.0    234.7
-    #> sexmale        -28439.8  23449.0
-    #> height:sexmale    577.6    345.4
+    #> sexMale        -28439.8  23449.0
+    #> height:sexMale    577.6    345.4
     #> 
     #> Auxiliary parameter(s):
     #>       Median  MAD_SD 
@@ -187,10 +186,10 @@ print(fit_3)
 fit_params <- 
   tribble(
     ~sex, ~intercept, ~slope,
-    "female", coef(fit_3)[["(Intercept)"]], coef(fit_3)[["height"]],
-    "male", 
-      coef(fit_3)[["(Intercept)"]] + coef(fit_3)[["sexmale"]],
-      coef(fit_3)[["height"]] + coef(fit_3)[["height:sexmale"]]
+    "Female", coef(fit_3)[["(Intercept)"]], coef(fit_3)[["height"]],
+    "Male", 
+      coef(fit_3)[["(Intercept)"]] + coef(fit_3)[["sexMale"]],
+      coef(fit_3)[["height"]] + coef(fit_3)[["height:sexMale"]]
   )
 
 offset <- 0.2
@@ -199,8 +198,8 @@ earnings %>%
   mutate(
     height =
       case_when(
-        sex == "female" ~ height - offset,
-        sex == "male" ~ height + offset,
+        sex == "Female" ~ height - offset,
+        sex == "Male" ~ height + offset,
         TRUE ~ NA_real_
       )
   ) %>% 
@@ -210,7 +209,6 @@ earnings %>%
   coord_cartesian(ylim = c(0, 1e5)) +
   scale_x_continuous(breaks = scales::breaks_width(1), minor_breaks = NULL) +
   scale_y_continuous(labels = scales::label_comma()) +
-  scale_color_discrete(labels = c("Female", "Male")) +
   theme(legend.position = "bottom") +
   labs(
     title = 
@@ -244,7 +242,7 @@ earnings %>%
     #> # A tibble: 2 x 4
     #>    earn sex        n   prop
     #>   <dbl> <chr>  <int>  <dbl>
-    #> 1     0 female   172 0.151 
-    #> 2     0 male      15 0.0222
+    #> 1     0 Female   172 0.151 
+    #> 2     0 Male      15 0.0222
 
 15% of women have no earnings, whereas only 2% of men have no earnings.
