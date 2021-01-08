@@ -1,7 +1,7 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-05
+2021-01-08
 
 -   [Chapter 1](#chapter-1)
     -   [Data](#data)
@@ -607,19 +607,18 @@ Point prediction given 2% growth.
 ``` r
 new <- tibble(growth = 2)
 
-y_point_pred <- predict(fit, newdata = new)
+y_point_pred <- as.double(predict(fit, newdata = new))
 ```
 
 Manual calculation for point prediction.
 
 ``` r
-y_point_pred_manual <- a + b * new$growth
+y_point_pred_manual <- mean(sims$a + sims$b * new$growth)
 
 y_point_pred_manual - y_point_pred
 ```
 
-    #>      1 
-    #> 0.0565
+    #> [1] 0
 
 ### Linear predictor with uncertainty using `posterior_linpred()`
 
