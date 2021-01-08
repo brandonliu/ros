@@ -123,9 +123,11 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [ElectionsEconomy/](ElectionsEconomy/)
     -   [hills\_tv.md](ElectionsEconomy/hills_tv.md) - Present
         uncertainty in parameter estimates
-        <!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
-        <!-- - [Influence/](Influence/) -->
-        <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
+    -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
+        presidential vote share from the economy
+-   [Influence/](Influence/)
+    -   [influence\_tv.md](Influence/influence_tv.md) - Influence of
+        individual points in a fitted regression
 
 <!-- ### 9 Prediction and Bayesian inference  -->
 <!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
@@ -360,8 +362,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [imputation_gg_tv.md](Imputation/imputation_gg_tv.md) - Regression-based imputation for the Social Indicators Survey, dplyr/ggplot version -->
         <!-- - [Incentives/]((Incentives/)) -->
         <!--     - [incentives_tv.md](Incentives/incentives_tv.md) - Simple analysis of incentives data -->
-        <!-- - [Influence/](Influence/) -->
-        <!--     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression -->
+-   [Influence/](Influence/)
+    -   [influence\_tv.md](Influence/influence_tv.md) - Influence of
+        individual points in a fitted regression
         <!-- - [Interactions/](Interactions/) -->
         <!--     - [interactions_tv.md](Interactions/interactions_tv.md) - Plot interaction example figure -->
         <!-- - [Introclass/](Introclass/) -->
