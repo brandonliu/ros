@@ -217,8 +217,8 @@ the median absolute deviations are very different.
 ``` r
 preds %>% 
   ggplot(aes(y = stat(density))) +
-  geom_freqpoly(aes(linpred, color = "linpred"), binwidth = 0.2) +
   geom_freqpoly(aes(pred, color = "pred"), binwidth = 10) +
+  geom_freqpoly(aes(linpred, color = "linpred"), binwidth = 0.2) +
   scale_x_continuous(breaks = scales::breaks_width(50)) +
   scale_y_continuous(breaks = 0) +
   scale_color_discrete(
