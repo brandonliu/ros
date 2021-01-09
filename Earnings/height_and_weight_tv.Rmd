@@ -152,6 +152,7 @@ preds %>%
   scale_x_continuous(breaks = scales::breaks_width(50)) +
   scale_y_continuous(breaks = 0) +
   scale_color_discrete(
+    breaks = c("linpred", "pred"),
     labels = c("Linear predictor", "Predicted value")
   ) +
   theme(legend.position = "bottom") +

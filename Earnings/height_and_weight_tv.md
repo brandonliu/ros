@@ -1,7 +1,7 @@
 Regression and Other Stories: Height and weight
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-08
+2021-01-09
 
 -   [Chapter 9](#chapter-9)
     -   [Data](#data)
@@ -222,6 +222,7 @@ preds %>%
   scale_x_continuous(breaks = scales::breaks_width(50)) +
   scale_y_continuous(breaks = 0) +
   scale_color_discrete(
+    breaks = c("linpred", "pred"),
     labels = c("Linear predictor", "Predicted value")
   ) +
   theme(legend.position = "bottom") +
