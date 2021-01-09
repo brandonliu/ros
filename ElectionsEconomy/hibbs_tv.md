@@ -607,7 +607,7 @@ Point prediction given 2% growth.
 ``` r
 new <- tibble(growth = 2)
 
-y_point_pred <- as.double(predict(fit, newdata = new))
+y_point_pred <- predict(fit, newdata = new)
 ```
 
 Manual calculation for point prediction.
@@ -615,7 +615,7 @@ Manual calculation for point prediction.
 ``` r
 y_point_pred_manual <- mean(sims$a + sims$b * new$growth)
 
-y_point_pred_manual - y_point_pred
+y_point_pred_manual - as.double(y_point_pred)
 ```
 
     #> [1] 0
