@@ -129,15 +129,17 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [influence\_tv.md](Influence/influence_tv.md) - Influence of
         individual points in a fitted regression
 
-<!-- ### 9 Prediction and Bayesian inference  -->
-<!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
-<!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
-<!-- - [SexRatio/](SexRatio/) -->
-<!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-<!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+### 9 Prediction and Bayesian inference
+
+-   [ElectionsEconomy/](ElectionsEconomy/)
+    -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
+        presidential vote share from the economy
+        <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
+        <!-- - [Earnings/](Earnings/) -->
+        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+        <!-- - [SexRatio/](SexRatio/) -->
+        <!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
+
 <!-- ### 10  Linear regression with multiple predictors -->
 <!-- - [KidIQ/](KidIQ/) -->
 <!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->

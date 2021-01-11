@@ -90,15 +90,14 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Influence/](Influence/)
     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression
 
-<!-- ### 9 Prediction and Bayesian inference  -->
-<!-- - [ElectionsEconomy/](ElectionsEconomy/) -->
-<!--     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy -->
+### 9 Prediction and Bayesian inference
+- [ElectionsEconomy/](ElectionsEconomy/)
+    - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy
 <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
-<!-- - [SexRatio/](SexRatio/) -->
-<!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-<!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+<!-- - [SexRatio/](SexRatio/) -->
+<!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
 
 <!-- ### 10  Linear regression with multiple predictors -->
 <!-- - [KidIQ/](KidIQ/) -->
