@@ -1,0 +1,212 @@
+---
+title: "Regression and Other Stories: KidIQ"
+author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+---
+Tidyverse version by Bill Behrman.
+
+Linear regression with multiple predictors. See Chapters 10, 11 and
+12 in Regression and Other Stories.
+
+-------------
+
+```{r, message=FALSE}
+# Packages
+library(tidyverse)
+library(rstanarm)
+
+# Parameters
+  # Kid test score data
+file_kids <- here::here("KidIQ/data/kidiq.csv")
+  # Common code
+file_common <- here::here("_common.R")
+
+#===============================================================================
+
+# Run common code
+source(file_common)
+```
+
+# Chapter 10
+
+## Data
+
+```{r, message=FALSE}
+kids <- read_csv(file_kids)
+
+kids
+```
+
+## Adding predictors to a model
+
+### Starting with a binary predictor
+
+The option `refresh = 0` suppresses the default Stan sampling progress output. This is useful for small data with fast computation. For more complex models and bigger data, it can be useful to see the progress.
+
+```{r}
+set.seed(765)
+
+fit_1 <- stan_glm(kid_score ~ mom_hs, data = kids, refresh = 0)
+
+fit_1
+```
+
+```{r}
+intercept <- coef(fit_1)[["(Intercept)"]]
+slope <- coef(fit_1)[["mom_hs"]]
+
+kids %>% 
+  ggplot(aes(mom_hs, kid_score)) +
+  geom_count() +
+  geom_abline(slope = slope, intercept = intercept) +
+  scale_x_continuous(
+    breaks = 0:1,
+    minor_breaks = NULL,
+    labels = c("No", "Yes")
+  ) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  labs(
+    title = "Child test score vs. mother high school completion",
+    x = "Mother completed high school",
+    y = "Child test score",
+    size = "Count"
+  )
+```
+
+### A single continuous predictor
+
+```{r}
+set.seed(765)
+
+fit_2 <- stan_glm(kid_score ~ mom_iq, data = kids, refresh = 0)
+
+fit_2
+```
+
+```{r}
+intercept <- coef(fit_2)[["(Intercept)"]]
+slope <- coef(fit_2)[["mom_iq"]]
+
+kids %>% 
+  ggplot(aes(mom_iq, kid_score)) +
+  geom_point() +
+  geom_abline(slope = slope, intercept = intercept) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  labs(
+    title = "Child test score vs. mother IQ score",
+    x = "Mother IQ score",
+    y = "Child test score"
+  )
+```
+
+### Including both predictors
+
+```{r}
+set.seed(765)
+
+fit_3 <- stan_glm(kid_score ~ mom_hs + mom_iq, data = kids, refresh = 0)
+
+fit_3
+```
+
+```{r}
+lines <- 
+  tribble(
+    ~mom_hs, ~intercept, ~slope,
+    0, coef(fit_3)[["(Intercept)"]], coef(fit_3)[["mom_iq"]],
+    1, 
+      coef(fit_3)[["(Intercept)"]] + coef(fit_3)[["mom_hs"]],
+      coef(fit_3)[["mom_iq"]]
+  )
+
+kids %>% 
+  ggplot(aes(mom_iq, kid_score, color = factor(mom_hs))) +
+  geom_point() +
+  geom_abline(
+    aes(slope = slope, intercept = intercept, color = factor(mom_hs)),
+    data = lines
+  ) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  scale_color_discrete(breaks = 0:1, labels = c("No", "Yes")) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Child test score vs. mother IQ score and high school completion",
+    subtitle = "Without interaction",
+    x = "Mother IQ score",
+    y = "Child test score",
+    color = "Mother completed high school"
+  )
+```
+
+## Interactions
+
+```{r}
+set.seed(765)
+
+fit_4 <- 
+  stan_glm(
+    kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4
+```
+
+```{r}
+lines <- 
+  tribble(
+    ~mom_hs, ~intercept, ~slope,
+    0, coef(fit_4)[["(Intercept)"]], coef(fit_4)[["mom_iq"]],
+    1, 
+      coef(fit_4)[["(Intercept)"]] + coef(fit_4)[["mom_hs"]],
+      coef(fit_4)[["mom_iq"]] + coef(fit_4)[["mom_hs:mom_iq"]]
+  )
+
+kids %>% 
+  ggplot(aes(mom_iq, kid_score, color = factor(mom_hs))) +
+  geom_point() +
+  geom_abline(
+    aes(slope = slope, intercept = intercept, color = factor(mom_hs)),
+    data = lines
+  ) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  scale_color_discrete(breaks = 0:1, labels = c("No", "Yes")) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Child test score vs. mother IQ score and high school completion",
+    subtitle = "With interaction",
+    x = "Mother IQ score",
+    y = "Child test score",
+    color = "Mother completed high school"
+  )
+```
+
+```{r}
+kids %>% 
+  ggplot(aes(mom_iq, kid_score, color = factor(mom_hs))) +
+  geom_point() +
+  geom_abline(
+    aes(slope = slope, intercept = intercept, color = factor(mom_hs)),
+    data = lines
+  ) +
+  coord_cartesian(xlim = c(0, NA), ylim = c(-20, NA)) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  scale_color_discrete(breaks = 0:1, labels = c("No", "Yes")) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Child test score vs. mother IQ score and high school completion",
+    subtitle = "With interaction",
+    x = "Mother IQ score",
+    y = "Child test score",
+    color = "Mother completed high school"
+  )
+```
+
