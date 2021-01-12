@@ -298,7 +298,7 @@ kids %>%
 ``` r
 kids %>% 
   ggplot(aes(mom_iq, kid_score, color = factor(mom_hs))) +
-  geom_point() +
+  geom_point(size = 0.75) +
   geom_abline(
     aes(slope = slope, intercept = intercept, color = factor(mom_hs)),
     data = lines
