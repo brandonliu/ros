@@ -134,7 +134,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [ElectionsEconomy/](ElectionsEconomy/)
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
         presidential vote share from the economy
-        <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
+    -   [bayes\_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of
+        Bayesian information aggregation
         <!-- - [Earnings/](Earnings/) -->
         <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
         <!-- - [SexRatio/](SexRatio/) -->
@@ -328,7 +329,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
         <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 -   [ElectionsEconomy/](ElectionsEconomy/)
-    <!--     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation -->
+    -   [bayes\_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of
+        Bayesian information aggregation
     -   [hibbs\_coverage\_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) -
         Checking the model-fitting procedure using fake-data simulation.
     -   [hibbs\_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting
