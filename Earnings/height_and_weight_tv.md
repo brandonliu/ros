@@ -1,13 +1,23 @@
 Regression and Other Stories: Height and weight
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-09
+2021-01-12
 
 -   [Chapter 9](#chapter-9)
     -   [Data](#data)
     -   [Simulating uncertainty for the linear predictor and new
         observations](#simulating-uncertainty-for-the-linear-predictor-and-new-observations)
         -   [Plot](#plot)
+-   [Chapter 10](#chapter-10)
+    -   [Indicator variables](#indicator-variables)
+        -   [Centering a predictor](#centering-a-predictor)
+        -   [Including a binary variable in a
+            regression](#including-a-binary-variable-in-a-regression)
+        -   [Using indicator variables for multiple levels of a
+            categorical
+            variable](#using-indicator-variables-for-multiple-levels-of-a-categorical-variable)
+        -   [Changing the baseline factor
+            level](#changing-the-baseline-factor-level)
 
 Tidyverse version by Bill Behrman.
 
@@ -109,26 +119,6 @@ fit_1
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-Predict the weight for someone 66 inches tall.
-
-``` r
-set.seed(733)
-
-pred_66 <- posterior_predict(fit_1, newdata = tibble(height = 66))
-```
-
-``` r
-cat(
-  str_glue(
-    "The predicted weight for someone 66 inches tall is ",
-    "{format(mean(pred_66), digits = 1, nsmall = 1)} pounds with a sd of ",
-    "{format(sd(pred_66), digits = 1, nsmall = 1)}."
-  )
-)
-```
-
-    #> The predicted weight for someone 66 inches tall is 153.2 pounds with a sd of 29.0.
-
 Center heights.
 
 ``` r
@@ -165,7 +155,7 @@ fit_2
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-New data for someone 70 inches tall.
+New data for a 70-inch-tall person.
 
 ``` r
 new <- tibble(c_height = 4)
@@ -234,4 +224,327 @@ preds %>%
   )
 ```
 
-<img src="height_and_weight_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+<img src="height_and_weight_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
+
+# Chapter 10
+
+## Indicator variables
+
+``` r
+earnings %>% 
+  select(height, weight, sex, ethnicity)
+```
+
+    #> # A tibble: 1,816 x 4
+    #>    height weight sex    ethnicity
+    #>     <dbl>  <dbl> <chr>  <chr>    
+    #>  1     74    210 Male   White    
+    #>  2     66    125 Female White    
+    #>  3     64    126 Female White    
+    #>  4     65    200 Female White    
+    #>  5     63    110 Female Other    
+    #>  6     68    165 Female Black    
+    #>  7     63    190 Female White    
+    #>  8     64    125 Female White    
+    #>  9     62    200 Female White    
+    #> 10     73    230 Male   White    
+    #> # … with 1,806 more rows
+
+Fit linear regression of weight against height.
+
+``` r
+set.seed(733)
+
+fit_1 <- stan_glm(weight ~ height, data = earnings, refresh = 0)
+
+fit_1
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ height
+    #>  observations: 1789
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) -173.4   12.3
+    #> height         4.9    0.2
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 29.0    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Predict the weight for a 66-inch-tall person.
+
+``` r
+set.seed(733)
+
+new <- tibble(height = 66)
+
+pred <- posterior_predict(fit_1, newdata = new)
+```
+
+``` r
+cat(
+  str_glue(
+    "The predicted weight for 66-inch-tall person is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+    #> The predicted weight for 66-inch-tall person is 153.2 pounds with a sd of 29.0.
+
+### Centering a predictor
+
+Center heights.
+
+``` r
+earnings <- 
+  earnings %>% 
+  mutate(c_height = height - 66)
+```
+
+Fit using centered heights.
+
+``` r
+set.seed(733)
+
+fit_2 <- stan_glm(weight ~ c_height, data = earnings, refresh = 0)
+
+fit_2
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ c_height
+    #>  observations: 1789
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 153.4    0.7 
+    #> c_height      4.9    0.2 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 29.0    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Including a binary variable in a regression
+
+``` r
+set.seed(733)
+
+fit_3 <- stan_glm(weight ~ c_height + sex, data = earnings, refresh = 0)
+
+fit_3
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ c_height + sex
+    #>  observations: 1789
+    #>  predictors:   3
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 149.5    0.9 
+    #> c_height      3.9    0.3 
+    #> sexMale      11.8    2.0 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 28.7    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Predict the weight for a 70-inch-tall woman.
+
+``` r
+set.seed(733)
+
+new <- tibble(c_height = 4, sex = "Female")
+
+pred <- posterior_predict(fit_3, newdata = new)
+```
+
+``` r
+cat(
+  str_glue(
+    "The predicted weight for 70-inch-tall woman is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+    #> The predicted weight for 70-inch-tall woman is 165.0 pounds with a sd of 28.8.
+
+Predict the weight for a 70-inch-tall man.
+
+``` r
+set.seed(733)
+
+new <- tibble(c_height = 4, sex = "Male")
+
+pred <- posterior_predict(fit_3, newdata = new)
+```
+
+``` r
+cat(
+  str_glue(
+    "The predicted weight for 70-inch-tall man is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+    #> The predicted weight for 70-inch-tall man is 176.8 pounds with a sd of 28.7.
+
+### Using indicator variables for multiple levels of a categorical variable
+
+``` r
+earnings %>% 
+  count(ethnicity)
+```
+
+    #> # A tibble: 4 x 2
+    #>   ethnicity     n
+    #>   <chr>     <int>
+    #> 1 Black       180
+    #> 2 Hispanic    104
+    #> 3 Other        38
+    #> 4 White      1494
+
+``` r
+set.seed(733)
+
+fit_4 <- 
+  stan_glm(weight ~ c_height + sex + ethnicity, data = earnings, refresh = 0)
+
+fit_4
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ c_height + sex + ethnicity
+    #>  observations: 1789
+    #>  predictors:   6
+    #> ------
+    #>                   Median MAD_SD
+    #> (Intercept)       154.3    2.2 
+    #> c_height            3.9    0.3 
+    #> sexMale            12.2    2.0 
+    #> ethnicityHispanic  -6.2    3.5 
+    #> ethnicityOther    -12.3    5.1 
+    #> ethnicityWhite     -5.2    2.3 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 28.6    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Changing the baseline factor level
+
+``` r
+earnings <- 
+  earnings %>% 
+  mutate(
+    ethnicity = 
+      factor(ethnicity, levels = c("White", "Black", "Hispanic", "Other"))
+  )
+```
+
+``` r
+set.seed(733)
+
+fit_5 <- 
+  stan_glm(weight ~ c_height + sex + ethnicity, data = earnings, refresh = 0)
+
+fit_5
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ c_height + sex + ethnicity
+    #>  observations: 1789
+    #>  predictors:   6
+    #> ------
+    #>                   Median MAD_SD
+    #> (Intercept)       149.1    0.9 
+    #> c_height            3.8    0.3 
+    #> sexMale            12.1    1.9 
+    #> ethnicityBlack      5.2    2.2 
+    #> ethnicityHispanic  -1.0    2.9 
+    #> ethnicityOther     -7.1    4.6 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 28.6    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Equivalently, create indicator variables for the four ethnic groups.
+
+``` r
+earnings <- 
+  earnings %>% 
+  mutate(
+    ethnicity_white = if_else(ethnicity == "White", 1, 0),
+    ethnicity_black = if_else(ethnicity == "Black", 1, 0),
+    ethnicity_hispanic = if_else(ethnicity == "Hispanic", 1, 0),
+    ethnicity_other = if_else(ethnicity == "Other", 1, 0)
+  )
+```
+
+``` r
+set.seed(733)
+
+fit_6 <- 
+  stan_glm(
+    weight ~ 
+      c_height + sex + ethnicity_black + ethnicity_hispanic + ethnicity_other,
+    data = earnings,
+    refresh = 0
+  )
+
+fit_6
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      weight ~ c_height + sex + ethnicity_black + ethnicity_hispanic + 
+    #>     ethnicity_other
+    #>  observations: 1789
+    #>  predictors:   6
+    #> ------
+    #>                    Median MAD_SD
+    #> (Intercept)        149.1    0.9 
+    #> c_height             3.8    0.3 
+    #> sexMale             12.1    1.9 
+    #> ethnicity_black      5.2    2.2 
+    #> ethnicity_hispanic  -1.0    2.9 
+    #> ethnicity_other     -7.1    4.6 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 28.6    0.5  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg

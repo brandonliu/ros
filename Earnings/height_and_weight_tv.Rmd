@@ -69,24 +69,6 @@ fit_1 <- stan_glm(weight ~ height, data = earnings, refresh = 0)
 fit_1
 ```
 
-Predict the weight for someone 66 inches tall.
-
-```{r}
-set.seed(733)
-
-pred_66 <- posterior_predict(fit_1, newdata = tibble(height = 66))
-```
-
-```{r}
-cat(
-  str_glue(
-    "The predicted weight for someone 66 inches tall is ",
-    "{format(mean(pred_66), digits = 1, nsmall = 1)} pounds with a sd of ",
-    "{format(sd(pred_66), digits = 1, nsmall = 1)}."
-  )
-)
-```
-
 Center heights.
 
 ```{r}
@@ -105,7 +87,7 @@ fit_2 <- stan_glm(weight ~ c_height, data = earnings, refresh = 0)
 fit_2
 ```
 
-New data for someone 70 inches tall.
+New data for a 70-inch-tall person.
 
 ```{r}
 new <- tibble(c_height = 4)
@@ -162,5 +144,177 @@ preds %>%
     y = NULL,
     color = NULL
   )
+```
+
+# Chapter 10
+
+## Indicator variables
+
+```{r}
+earnings %>% 
+  select(height, weight, sex, ethnicity)
+```
+
+Fit linear regression of weight against height.
+
+```{r}
+set.seed(733)
+
+fit_1 <- stan_glm(weight ~ height, data = earnings, refresh = 0)
+
+fit_1
+```
+
+Predict the weight for a 66-inch-tall person.
+
+```{r}
+set.seed(733)
+
+new <- tibble(height = 66)
+
+pred <- posterior_predict(fit_1, newdata = new)
+```
+
+```{r}
+cat(
+  str_glue(
+    "The predicted weight for 66-inch-tall person is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+### Centering a predictor
+
+Center heights.
+
+```{r}
+earnings <- 
+  earnings %>% 
+  mutate(c_height = height - 66)
+```
+
+Fit using centered heights.
+
+```{r}
+set.seed(733)
+
+fit_2 <- stan_glm(weight ~ c_height, data = earnings, refresh = 0)
+
+fit_2
+```
+
+### Including a binary variable in a regression
+
+```{r}
+set.seed(733)
+
+fit_3 <- stan_glm(weight ~ c_height + sex, data = earnings, refresh = 0)
+
+fit_3
+```
+
+Predict the weight for a 70-inch-tall woman.
+
+```{r}
+set.seed(733)
+
+new <- tibble(c_height = 4, sex = "Female")
+
+pred <- posterior_predict(fit_3, newdata = new)
+```
+
+```{r}
+cat(
+  str_glue(
+    "The predicted weight for 70-inch-tall woman is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+Predict the weight for a 70-inch-tall man.
+
+```{r}
+set.seed(733)
+
+new <- tibble(c_height = 4, sex = "Male")
+
+pred <- posterior_predict(fit_3, newdata = new)
+```
+
+```{r}
+cat(
+  str_glue(
+    "The predicted weight for 70-inch-tall man is ",
+    "{format(mean(pred), digits = 1, nsmall = 1)} pounds with a sd of ",
+    "{format(sd(pred), digits = 1, nsmall = 1)}."
+  )
+)
+```
+
+### Using indicator variables for multiple levels of a categorical variable
+
+```{r}
+earnings %>% 
+  count(ethnicity)
+```
+
+```{r}
+set.seed(733)
+
+fit_4 <- 
+  stan_glm(weight ~ c_height + sex + ethnicity, data = earnings, refresh = 0)
+
+fit_4
+```
+
+### Changing the baseline factor level
+
+```{r}
+earnings <- 
+  earnings %>% 
+  mutate(
+    ethnicity = 
+      factor(ethnicity, levels = c("White", "Black", "Hispanic", "Other"))
+  )
+```
+
+```{r}
+set.seed(733)
+
+fit_5 <- 
+  stan_glm(weight ~ c_height + sex + ethnicity, data = earnings, refresh = 0)
+
+fit_5
+```
+
+Equivalently, create indicator variables for the four ethnic groups.
+
+```{r}
+earnings <- 
+  earnings %>% 
+  mutate(
+    ethnicity_white = if_else(ethnicity == "White", 1, 0),
+    ethnicity_black = if_else(ethnicity == "Black", 1, 0),
+    ethnicity_hispanic = if_else(ethnicity == "Hispanic", 1, 0),
+    ethnicity_other = if_else(ethnicity == "Other", 1, 0)
+  )
+```
+
+```{r}
+set.seed(733)
+
+fit_6 <- 
+  stan_glm(
+    weight ~ 
+      c_height + sex + ethnicity_black + ethnicity_hispanic + ethnicity_other,
+    data = earnings,
+    refresh = 0
+  )
+
+fit_6
 ```
 
