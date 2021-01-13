@@ -1,7 +1,7 @@
 Regression and Other Stories: Beauty and sex ratio
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-07
+2021-01-13
 
 -   [Data](#data)
 -   [Least-squares regression](#least-squares-regression)
@@ -24,8 +24,6 @@ library(arm)
 library(rstanarm)
 
 # Parameters
-  # Results of educational experiment
-file_electric_wide <- here::here("ElectricCompany/data/electric_wide.txt")
   # Common code
 file_common <- here::here("_common.R")
 

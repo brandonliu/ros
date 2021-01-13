@@ -20,8 +20,6 @@ library(arm)
 library(rstanarm)
 
 # Parameters
-  # Results of educational experiment
-file_electric_wide <- here::here("ElectricCompany/data/electric_wide.txt")
   # Common code
 file_common <- here::here("_common.R")
 
