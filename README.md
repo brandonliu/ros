@@ -138,8 +138,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Bayesian information aggregation
         <!-- - [Earnings/](Earnings/) -->
         <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-        <!-- - [SexRatio/](SexRatio/) -->
-        <!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
+-   [SexRatio/](SexRatio/)
+    -   [sexratio\_tv.md](SexRatio/sexratio_tv.md) - Example where an
+        informative prior makes a difference
 
 <!-- ### 10  Linear regression with multiple predictors -->
 <!-- - [KidIQ/](KidIQ/) -->
@@ -431,8 +432,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
         <!-- - [Sesame/](Sesame/) -->
         <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
-        <!-- - [SexRatio/](SexRatio/) -->
-        <!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
+-   [SexRatio/](SexRatio/)
+    -   [sexratio\_tv.md](SexRatio/sexratio_tv.md) - Example where an
+        informative prior makes a difference
 -   [SimpleCausal/](SimpleCausal/)
     -   [causal\_tv.md](SimpleCausal/causal_tv.md) - Simple graphs
         illustrating regression for causal inference

@@ -96,8 +96,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-<!-- - [SexRatio/](SexRatio/) -->
-<!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
+- [SexRatio/](SexRatio/)
+    - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference
 
 <!-- ### 10  Linear regression with multiple predictors -->
 <!-- - [KidIQ/](KidIQ/) -->
@@ -379,8 +379,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
 <!-- - [Sesame/](Sesame/) -->
 <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
-<!-- - [SexRatio/](SexRatio/) -->
-<!--     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference -->
+- [SexRatio/](SexRatio/)
+    - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference
 - [SimpleCausal/](SimpleCausal/)
     - [causal_tv.md](SimpleCausal/causal_tv.md) - Simple graphs illustrating regression for causal inference
 - [Simplest/](Simplest/)
