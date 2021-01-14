@@ -136,8 +136,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         presidential vote share from the economy
     -   [bayes\_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of
         Bayesian information aggregation
-        <!-- - [Earnings/](Earnings/) -->
-        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+-   [Earnings/](Earnings/)
+    -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
+        Predict weight
 -   [SexRatio/](SexRatio/)
     -   [sexratio\_tv.md](SexRatio/sexratio_tv.md) - Example where an
         informative prior makes a difference
@@ -328,7 +329,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
         Predict respondents’ yearly earnings using survey data from 1990
         <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
-        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+    -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
+        Predict weight
 -   [ElectionsEconomy/](ElectionsEconomy/)
     -   [bayes\_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of
         Bayesian information aggregation

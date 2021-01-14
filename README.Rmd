@@ -94,8 +94,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [ElectionsEconomy/](ElectionsEconomy/)
     - [hibbs_tv.md](ElectionsEconomy/hibbs_tv.md) - Predicting presidential vote share from the economy
     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+- [Earnings/](Earnings/)
+    - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight
 - [SexRatio/](SexRatio/)
     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference
 
@@ -288,7 +288,7 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution
     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990
 <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+    - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight
 - [ElectionsEconomy/](ElectionsEconomy/)
     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation
     - [hibbs_coverage_tv.md](ElectionsEconomy/hibbs_coverage_tv.md) - Checking the model-fitting procedure using fake-data simulation.
