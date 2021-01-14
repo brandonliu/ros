@@ -28,7 +28,7 @@ library(tidyverse)
 library(rstanarm)
 
 # Parameters
-  # Results of educational experiment
+  # Congressional election data
 file_congress <- here::here("Congress/data/congress.csv")
   # Party colors
 party_colors <- 
@@ -114,7 +114,12 @@ congress %>%
 set.seed(616)
 
 congress %>% 
-  slice_sample(prop = 1) %>% 
+  {
+    bind_rows(
+      filter(., inc88 != "Open"),
+      filter(., inc88 == "Open")
+    )
+  } %>% 
   ggplot(aes(v86, v88, color = inc88)) +
   geom_hline(yintercept = 0.5, color = "grey60") +
   geom_vline(xintercept = 0.5, color = "grey60") +
@@ -140,7 +145,12 @@ congress %>%
 set.seed(616)
 
 congress %>% 
-  slice_sample(prop = 1) %>% 
+  {
+    bind_rows(
+      filter(., inc88 != "Open"),
+      filter(., inc88 == "Open")
+    )
+  } %>% 
   ggplot(aes(v86_adj, v88_adj, color = inc88)) +
   geom_hline(yintercept = 0.5, color = "grey60") +
   geom_vline(xintercept = 0.5, color = "grey60") +
@@ -211,8 +221,6 @@ nrow(sims_88)
     #> [1] 4000
 
 ``` r
-set.seed(620)
-
 data_90 <-  
   congress %>% 
   transmute(
@@ -226,6 +234,8 @@ nrow(data_90)
     #> [1] 435
 
 ``` r
+set.seed(620)
+
 pred_90 <- 
   posterior_predict(fit_88, newdata = data_90) %>% 
   as_tibble()
@@ -242,50 +252,46 @@ pred_90_dems <-
   pred_90 %>% 
   mutate(across(everything(), ~ . > 0.5)) %>% 
   rowwise() %>% 
-  mutate(dems_pred = sum(c_across(everything()))) %>% 
-  pull(dems_pred)
+  mutate(pred_dems = sum(c_across(everything()))) %>% 
+  pull(pred_dems)
 ```
 
-Predicted number of seats Democrats will win in 1990.
+Predicted number of Democratic wins in 1990.
 
 ``` r
 tibble(pred_90_dems = pred_90_dems) %>% 
   ggplot(aes(pred_90_dems)) +
   geom_bar() +
   labs(
-    title = "Predicted number of seats Democrats will win in 1990",
-    x = "Predicted number of seats Democrats will win",
+    title = "Predicted number of Democratic wins in 1990",
+    x = "Predicted number of Democratic wins",
     y = "Count"
   )
 ```
 
-<img src="congress_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+<img src="congress_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 ``` r
-summary(pred_90_dems)
+cat(
+  str_glue(
+    "The mean predicted number of Democratic wins in 1990 is ",
+    "{format(mean(pred_90_dems), digits = 1, nsmall = 1)} with a standard ",
+    "deviation of {format(sd(pred_90_dems), digits = 1, nsmall = 1)}."
+  )
+)
 ```
 
-    #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    #>     252     259     261     261     263     270
+    #> The mean predicted number of Democratic wins in 1990 is 261.0 with a standard deviation of 2.5.
+
+The actual number of Democratic wins in 1990 was 267.
 
 ``` r
-mean <- mean(pred_90_dems)
+actual_90_dems <- 267
 
-sd <- sd(pred_90_dems)
-sd
-```
-
-    #> [1] 2.55
-
-The actual number of Democratic seats won in 1990 was 267.
-
-``` r
-dems_90 <- 267
-
-z <- (dems_90 - mean) / sd
+z <- (actual_90_dems - mean(pred_90_dems)) / sd(pred_90_dems)
 z
 ```
 
     #> [1] 2.34
 
-This was 2.34 standard deviations from the predicted number of seats.
+This was 2.34 standard deviations from the predicted number of wins.
