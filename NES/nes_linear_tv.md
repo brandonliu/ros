@@ -155,8 +155,8 @@ summary(nes)
     #>  Max.   :4.00   Max.   :1.000   Max.   :5.00  
     #> 
 
-The variable `real_ideo` is 27.9% `NA`s. This could be a problem, but we
-will ignore it.
+The variable `real_ideo` has 27.9% `NA`s. This could be a problem, but
+we will ignore it.
 
 Finally, we’ll convert `age_discrete` into a factor.
 
@@ -248,13 +248,13 @@ var_labels <-
 coefs %>% 
   mutate(
     var = fct_inorder(var),
-    lower_50 = qnorm(0.25, mean = coef, sd = se),
-    upper_50 = qnorm(0.75, mean = coef, sd = se)
+    q_25 = qnorm(0.25, mean = coef, sd = se),
+    q_75 = qnorm(0.75, mean = coef, sd = se)
   ) %>% 
   ggplot(aes(year, coef)) +
   geom_hline(yintercept = 0, color = "grey60") +
   geom_line() +
-  geom_linerange(aes(ymin = lower_50, ymax = upper_50)) +
+  geom_linerange(aes(ymin = q_25, ymax = q_75)) +
   geom_point() +
   facet_wrap(
     vars(var),
