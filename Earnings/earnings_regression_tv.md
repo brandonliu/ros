@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-08
+2021-01-15
 
 -   [Chapter 6](#chapter-6)
     -   [Data](#data)
@@ -183,7 +183,7 @@ print(fit_3)
     #> * For info on the priors used see ?prior_summary.stanreg
 
 ``` r
-fit_params <- 
+lines <- 
   tribble(
     ~sex, ~intercept, ~slope,
     "Female", coef(fit_3)[["(Intercept)"]], coef(fit_3)[["height"]],
@@ -205,7 +205,10 @@ earnings %>%
   ) %>% 
   ggplot(aes(height, earn, color = sex)) +
   geom_count() +
-  geom_abline(aes(slope = slope, intercept = intercept, color = sex), data = fit_params) +
+  geom_abline(
+    aes(slope = slope, intercept = intercept, color = sex), 
+    data = lines
+  ) +
   coord_cartesian(ylim = c(0, 1e5)) +
   scale_x_continuous(breaks = scales::breaks_width(1), minor_breaks = NULL) +
   scale_y_continuous(labels = scales::label_comma()) +
@@ -224,8 +227,8 @@ earnings %>%
 
 The equations for the regression lines are:
 
-    Men:   y = -38219 + 977 x
-    Women: y =  -9779 + 399 x
+    Men:   y = -15499 + 651 x
+    Women: y =  -26129 + 651 x
 
 From the plots, we can see that many more women than men have no
 earnings.

@@ -123,7 +123,7 @@ print(fit_3)
 ```
 
 ```{r}
-fit_params <- 
+lines <- 
   tribble(
     ~sex, ~intercept, ~slope,
     "Female", coef(fit_3)[["(Intercept)"]], coef(fit_3)[["height"]],
@@ -145,7 +145,10 @@ earnings %>%
   ) %>% 
   ggplot(aes(height, earn, color = sex)) +
   geom_count() +
-  geom_abline(aes(slope = slope, intercept = intercept, color = sex), data = fit_params) +
+  geom_abline(
+    aes(slope = slope, intercept = intercept, color = sex), 
+    data = lines
+  ) +
   coord_cartesian(ylim = c(0, 1e5)) +
   scale_x_continuous(breaks = scales::breaks_width(1), minor_breaks = NULL) +
   scale_y_continuous(labels = scales::label_comma()) +
