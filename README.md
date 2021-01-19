@@ -147,9 +147,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
-        multiple predictors <!-- - [Earnings/](Earnings/) -->
-        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-        <!-- - [Congress/](Congress/) -->
+        multiple predictors
+-   [Earnings/](Earnings/)
+    -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
+        Predict weight <!-- - [Congress/](Congress/) -->
         <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
         <!-- - [NES/](NES/) -->
         <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
