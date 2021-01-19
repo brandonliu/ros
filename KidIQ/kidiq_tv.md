@@ -1,7 +1,7 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-11
+2021-01-19
 
 -   [Chapter 10](#chapter-10)
     -   [Data](#data)
@@ -12,6 +12,13 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             predictor](#a-single-continuous-predictor)
         -   [Including both predictors](#including-both-predictors)
     -   [Interactions](#interactions)
+-   [Chapter 11](#chapter-11)
+    -   [Plotting the data and fitted
+        model](#plotting-the-data-and-fitted-model)
+        -   [Displaying uncertainty in the fitted
+            regression](#displaying-uncertainty-in-the-fitted-regression)
+        -   [Displaying using one plot for each input
+            variable](#displaying-using-one-plot-for-each-input-variable)
 
 Tidyverse version by Bill Behrman.
 
@@ -318,3 +325,92 @@ kids %>%
 ```
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
+
+# Chapter 11
+
+## Plotting the data and fitted model
+
+### Displaying uncertainty in the fitted regression
+
+``` r
+v <- 
+  tibble(mom_iq = seq_range(kids$mom_iq)) %>% 
+  predictive_intervals(fit = fit_2)
+
+v %>% 
+  ggplot(aes(mom_iq)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  geom_point(aes(y = kid_score), data = kids) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  labs(
+    title = "Child test score vs. mother IQ score",
+    subtitle = "With 50% and 90% predictive intervals",
+    x = "Mother IQ score",
+    y = "Child test score"
+  )
+```
+
+<img src="kidiq_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
+
+### Displaying using one plot for each input variable
+
+``` r
+v <- 
+  tibble(
+    mom_hs = mean(kids$mom_hs),
+    mom_iq = seq_range(kids$mom_iq)
+  ) %>% 
+  predictive_intervals(fit = fit_3)
+
+v %>% 
+  ggplot(aes(mom_iq)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  geom_point(aes(y = kid_score), data = kids) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  labs(
+    title = 
+      "Child test score vs. mother IQ score and mean high school completion",
+    subtitle = "With 50% and 90% predictive intervals",
+    x = "Mother IQ score",
+    y = "Child test score"
+  )
+```
+
+<img src="kidiq_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
+
+``` r
+v <- 
+  tibble(
+    mom_hs = 0:1,
+    mom_iq = mean(kids$mom_iq)
+  ) %>% 
+  predictive_intervals(fit = fit_3)
+
+v %>% 
+  ggplot(aes(mom_hs)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  geom_count(aes(y = kid_score), data = kids) +
+  scale_x_continuous(
+    breaks = 0:1,
+    minor_breaks = NULL,
+    labels = c("No", "Yes")
+  ) +
+  scale_y_continuous(breaks = scales::breaks_width(20)) +
+  labs(
+    title =
+      "Child test score vs. mother high school completion and mean IQ score",
+    x = "Mother completed high school",
+    y = "Child test score",
+    size = "Count"
+  )
+```
+
+<img src="kidiq_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
