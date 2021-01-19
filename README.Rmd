@@ -99,9 +99,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [SexRatio/](SexRatio/)
     - [sexratio_tv.md](SexRatio/sexratio_tv.md) - Example where an informative prior makes a difference
 
-<!-- ### 10  Linear regression with multiple predictors -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
+### 10  Linear regression with multiple predictors
+- [KidIQ/](KidIQ/)
+    - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
 <!-- - [Congress/](Congress/) -->
@@ -326,8 +326,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [interactions_tv.md](Interactions/interactions_tv.md) - Plot interaction example figure -->
 <!-- - [Introclass/](Introclass/) -->
 <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
+- [KidIQ/](KidIQ/)
+    - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
 <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
 <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->

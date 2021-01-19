@@ -143,17 +143,19 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [sexratio\_tv.md](SexRatio/sexratio_tv.md) - Example where an
         informative prior makes a difference
 
-<!-- ### 10  Linear regression with multiple predictors -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
-<!-- - [Congress/](Congress/) -->
-<!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
-<!-- - [NES/](NES/) -->
-<!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
-<!-- - [Beauty/](Beauty/) -->
-<!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
+### 10 Linear regression with multiple predictors
+
+-   [KidIQ/](KidIQ/)
+    -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
+        multiple predictors <!-- - [Earnings/](Earnings/) -->
+        <!--     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight -->
+        <!-- - [Congress/](Congress/) -->
+        <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
+        <!-- - [NES/](NES/) -->
+        <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
+        <!-- - [Beauty/](Beauty/) -->
+        <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
+
 <!-- ### 11  Assumptions, diagnostics, and model evaluation -->
 <!-- - [KidIQ/](KidIQ/) -->
 <!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
@@ -376,8 +378,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [interactions_tv.md](Interactions/interactions_tv.md) - Plot interaction example figure -->
         <!-- - [Introclass/](Introclass/) -->
         <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
-        <!-- - [KidIQ/](KidIQ/) -->
-        <!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
+-   [KidIQ/](KidIQ/)
+    -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
+        multiple predictors
         <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
         <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
         <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
