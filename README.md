@@ -150,9 +150,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         multiple predictors
 -   [Earnings/](Earnings/)
     -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
-        Predict weight <!-- - [Congress/](Congress/) -->
-        <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
-        <!-- - [NES/](NES/) -->
+        Predict weight
+-   [Congress/](Congress/)
+    -   [congress\_tv.md](Congress/congress_tv.md) - Predictive
+        uncertainty for congressional elections <!-- - [NES/](NES/) -->
         <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
         <!-- - [Beauty/](Beauty/) -->
         <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
@@ -308,7 +309,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
         <!-- - [Coins/](Coins/) -->
 -   [Congress/](Congress/)
-    <!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
+    -   [congress\_tv.md](Congress/congress_tv.md) - Predictive
+        uncertainty for congressional elections
     -   [congress\_plots\_tv.md](Congress/congress_plots_tv.md) -
         Predictive uncertainty for congressional elections
 -   [Coop/](Coop/)

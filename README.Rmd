@@ -104,8 +104,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 - [Earnings/](Earnings/)
     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight
-<!-- - [Congress/](Congress/) -->
-<!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
+- [Congress/](Congress/)
+    - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections
 <!-- - [NES/](NES/) -->
 <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
 <!-- - [Beauty/](Beauty/) -->
@@ -269,7 +269,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [chile_schools_tv.md](ChileSchools/chile_schools_tv.md) - ChileSchools example. -->
 <!-- - [Coins/](Coins/) -->
 - [Congress/](Congress/)
-<!--     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections -->
+    - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections
     - [congress_plots_tv.md](Congress/congress_plots_tv.md) - Predictive uncertainty for congressional elections
 - [Coop/](Coop/)
     - [riverbay_tv.md](Coop/riverbay_tv.md) - Example of hypothesis testing
