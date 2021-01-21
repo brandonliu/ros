@@ -153,9 +153,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Predict weight
 -   [Congress/](Congress/)
     -   [congress\_tv.md](Congress/congress_tv.md) - Predictive
-        uncertainty for congressional elections <!-- - [NES/](NES/) -->
-        <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
-        <!-- - [Beauty/](Beauty/) -->
+        uncertainty for congressional elections
+-   [NES/](NES/)
+    -   [nes\_linear\_tv.md](NES/nes_linear_tv.md) - Fitting the same
+        regression to many datasets <!-- - [Beauty/](Beauty/) -->
         <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
 
 <!-- ### 11  Assumptions, diagnostics, and model evaluation -->
@@ -401,8 +402,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Names/](Names/)
     -   [lastletters\_tv.md](Names/lastletters_tv.md) - Last letters -
         Distributions of last letters of names of American babies
-        <!-- - [NES/](NES/) -->
-        <!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
+-   [NES/](NES/)
+    -   [nes\_linear\_tv.md](NES/nes_linear_tv.md) - Fitting the same
+        regression to many datasets
         <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
         <!-- - [Newcomb/](Newcomb/) -->
         <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->

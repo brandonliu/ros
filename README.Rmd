@@ -106,8 +106,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight
 - [Congress/](Congress/)
     - [congress_tv.md](Congress/congress_tv.md) - Predictive uncertainty for congressional elections
-<!-- - [NES/](NES/) -->
-<!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
+- [NES/](NES/)
+    - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets
 <!-- - [Beauty/](Beauty/) -->
 <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
 
@@ -342,8 +342,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [mile_tv.md](Mile/mile_tv.md) - Trend of record times in the mile run
 - [Names/](Names/)
     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies
-<!-- - [NES/](NES/) -->
-<!--     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets -->
+- [NES/](NES/)
+    - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets
 <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
 <!-- - [Newcomb/](Newcomb/) -->
 <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
