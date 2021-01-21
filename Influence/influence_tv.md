@@ -1,7 +1,7 @@
 Regression and Other Stories: Influence
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-01
+2021-01-20
 
 Tidyverse version by Bill Behrman.
 
@@ -25,7 +25,7 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-Fake data.
+Simulated data.
 
 ``` r
 set.seed(264)
