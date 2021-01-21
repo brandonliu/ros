@@ -292,3 +292,20 @@ v %>%
     size = "Count"
   )
 ```
+
+## Residual plots
+
+```{r}
+kids %>% 
+  mutate(resid = residuals(fit_2)) %>% 
+  ggplot(aes(mom_iq, resid)) +
+  geom_hline(yintercept = 0, color = "white", size = 2) +
+  geom_point() +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  labs(
+    title = "Residual vs. mother IQ score",
+    x = "Mother IQ score",
+    y = "Residual"
+  )
+```
+

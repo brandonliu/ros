@@ -1,7 +1,7 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-19
+2021-01-21
 
 -   [Chapter 10](#chapter-10)
     -   [Data](#data)
@@ -19,6 +19,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             regression](#displaying-uncertainty-in-the-fitted-regression)
         -   [Displaying using one plot for each input
             variable](#displaying-using-one-plot-for-each-input-variable)
+    -   [Residual plots](#residual-plots)
 
 Tidyverse version by Bill Behrman.
 
@@ -414,3 +415,21 @@ v %>%
 ```
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+
+## Residual plots
+
+``` r
+kids %>% 
+  mutate(resid = residuals(fit_2)) %>% 
+  ggplot(aes(mom_iq, resid)) +
+  geom_hline(yintercept = 0, color = "white", size = 2) +
+  geom_point() +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  labs(
+    title = "Residual vs. mother IQ score",
+    x = "Mother IQ score",
+    y = "Residual"
+  )
+```
+
+<img src="kidiq_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
