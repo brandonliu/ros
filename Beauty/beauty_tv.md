@@ -1,7 +1,7 @@
 Regression and Other Stories: Beauty and Teaching Quality
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-15
+2021-01-22
 
 -   [Data](#data)
 -   [Exporatory data analysis](#exporatory-data-analysis)
@@ -92,6 +92,8 @@ summary(beauty)
 
 ### 1D EDA
 
+#### `eval`
+
 ``` r
 beauty %>% 
   ggplot(aes(eval)) +
@@ -102,6 +104,8 @@ beauty %>%
 
 Most evaluations are between 3 and 5 with a mean and median of 4.
 
+#### `beauty`
+
 ``` r
 beauty %>% 
   ggplot(aes(beauty)) +
@@ -110,8 +114,10 @@ beauty %>%
 
 <img src="beauty_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
-`beauty` appears to have been normalized so that the mean and median are
+`beauty` appears to have been normalized so that the mean is
 approximately 0.
+
+#### `age`
 
 ``` r
 beauty %>% 
@@ -123,6 +129,8 @@ beauty %>%
 
 A fairly uniform distribution between ages 30 and 65, with mean and
 median around 48.
+
+#### `female`
 
 ``` r
 beauty %>% 
@@ -138,6 +146,8 @@ beauty %>%
 
 About 42% of the instructors are female.
 
+#### `minority`
+
 ``` r
 beauty %>% 
   count(minority) %>% 
@@ -151,6 +161,8 @@ beauty %>%
     #> 2 1           64 0.138
 
 About 14% of the instructors are from a minority.
+
+#### `nonenglish`
 
 ``` r
 beauty %>% 
@@ -166,6 +178,8 @@ beauty %>%
 
 Only about 6% of the instructors are non-native English speakers.
 
+#### `lower`
+
 ``` r
 beauty %>% 
   count(lower) %>% 
@@ -179,6 +193,8 @@ beauty %>%
     #> 2 1       157 0.339
 
 About 34% of the classes are lower division.
+
+#### `couse_id`
 
 ``` r
 beauty %>% 
@@ -486,10 +502,11 @@ print(fit_3, digits = 2)
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-For instructors with the average beauty score of 0, compared to the
-baseline of male instructors who are white, native English speaking, and
-who are not teaching lower division courses, the predicted teaching
-evaluation score for:
+A male, white, native English speaking instructor, not teaching a lower
+division course, and with the average beauty score of 0, has the
+baseline predicted teaching evaluation score of 4.09. Compared to this
+baseline, for other instructors with the average beauty score of 0, the
+predicted teaching evaluation score for:
 
 -   Women is 0.19 lower.
 -   Minority instructors is 0.04 lower.
