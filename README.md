@@ -156,8 +156,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         uncertainty for congressional elections
 -   [NES/](NES/)
     -   [nes\_linear\_tv.md](NES/nes_linear_tv.md) - Fitting the same
-        regression to many datasets <!-- - [Beauty/](Beauty/) -->
-        <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
+        regression to many datasets
+-   [Beauty/](Beauty/)
+    -   [beauty\_tv.md](Beauty/beauty_tv.md) - Student evaluations of
+        instructors’ beauty and teaching quality
 
 <!-- ### 11  Assumptions, diagnostics, and model evaluation -->
 <!-- - [KidIQ/](KidIQ/) -->
@@ -296,8 +298,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [arsenic_logistic_building_optimizing_tv.md](Arsenic/arsenic_logistic_building_optimizing_tv.md) - Building a logistic regression model: wells in Bangladesh. A version with normal approximation at the mode. -->
         <!-- - [Balance/](Balance/) -->
         <!--     - [treatcontrol_tv.md](Balance/treatcontrol_tv.md) -->
-        <!-- - [Beauty/](Beauty/) -->
-        <!--     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality -->
+-   [Beauty/](Beauty/)
+    -   [beauty\_tv.md](Beauty/beauty_tv.md) - Student evaluations of
+        instructors’ beauty and teaching quality
         <!-- - [Bypass/](Bypass/) -->
         <!-- - [CausalDiagram/](CausalDiagram/) -->
         <!--     - [diagrams_tv.md](CausalDiagram/diagrams_tv.md) - Plot causal diagram -->
