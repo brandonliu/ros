@@ -1,7 +1,7 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-23
+2021-01-24
 
 -   [Data](#data)
 -   [Comparing data to replications from a fitted
@@ -203,6 +203,33 @@ ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
+Plot kernel density of data and 100 sample replicates.
+
+``` r
+set.seed(792)
+
+ggplot(mapping = aes(y)) +
+  stat_density(
+    aes(group = rep, color = "y_rep"),
+    data = y_rep_sim %>% filter(rep %in% sample(n_sims, 100)),
+    geom = "line",
+    position = "identity",
+    alpha = 0.5,
+    size = 0.25
+  ) +
+  stat_density(aes(color = "y"), data = newcomb, geom = "line") +
+  scale_y_continuous(breaks = NULL) +
+  scale_color_discrete(breaks = c("y", "y_rep"), labels = c("Data", "Replicates")) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Kernel density of data and 100 sample replicates",
+    y = NULL,
+    color = NULL
+  )
+```
+
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+
 Plot kernel density of data and 100 sample replicates using bayesplot.
 
 ``` r
@@ -211,7 +238,7 @@ set.seed(792)
 ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, 100), ])
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 #### Checking model fit using a numerical data summary
 
@@ -226,7 +253,7 @@ v <-
 v %>% 
   ggplot(aes(y_min)) +
   geom_histogram(binwidth = 1, boundary = 0) +
-  geom_vline(xintercept = min(newcomb$y)) +
+  geom_vline(xintercept = min(newcomb$y), color = "red") +
   scale_x_continuous(breaks = scales::breaks_width(10)) +
   labs(
     title = "Distribution of minimum value of replicates",
@@ -236,7 +263,7 @@ v %>%
   )
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
 
 Plot test statistic for data and replicates using bayesplot.
 
@@ -244,4 +271,4 @@ Plot test statistic for data and replicates using bayesplot.
 ppc_stat(y = newcomb$y, yrep = y_rep, stat = "min", binwidth = 1)
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
