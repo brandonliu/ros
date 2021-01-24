@@ -221,10 +221,10 @@ Plot test statistic for data and replicates.
 v <- 
   y_rep_sim %>% 
   group_by(rep) %>% 
-  summarize(min = min(y))
+  summarize(y_min = min(y))
 
 v %>% 
-  ggplot(aes(min)) +
+  ggplot(aes(y_min)) +
   geom_histogram(binwidth = 1, boundary = 0) +
   geom_vline(xintercept = min(newcomb$y)) +
   scale_x_continuous(breaks = scales::breaks_width(10)) +
