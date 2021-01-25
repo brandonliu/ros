@@ -162,7 +162,7 @@ dim(y_rep)
 
     #> [1] 4000   66
 
-`y_rep` is a 4000 x 66 matrix.
+`y_rep` is a matrix with 4000 rows and 66 columns.
 
 Compare `y_rep_sim` and `y_rep`.
 
@@ -268,7 +268,7 @@ v %>%
 Plot test statistic for data and replicates using bayesplot.
 
 ``` r
-ppc_stat(y = newcomb$y, yrep = y_rep, stat = "min", binwidth = 1)
+ppc_stat(y = newcomb$y, yrep = y_rep, stat = min, binwidth = 1)
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />

@@ -101,7 +101,7 @@ class(y_rep)
 dim(y_rep)
 ```
 
-`y_rep` is a `r n_sims` x `r n_newcomb` matrix.
+`y_rep` is a matrix with `r nrow(y_rep)` rows and `r ncol(y_rep)` columns.
 
 Compare `y_rep_sim` and `y_rep`.
 
@@ -195,6 +195,6 @@ v %>%
 Plot test statistic for data and replicates using bayesplot.
 
 ```{r}
-ppc_stat(y = newcomb$y, yrep = y_rep, stat = "min", binwidth = 1)
+ppc_stat(y = newcomb$y, yrep = y_rep, stat = min, binwidth = 1)
 ```
 
