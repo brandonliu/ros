@@ -111,9 +111,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Beauty/](Beauty/)
     - [beauty_tv.md](Beauty/beauty_tv.md) - Student evaluations of instructors’ beauty and teaching quality
 
-<!-- ### 11  Assumptions, diagnostics, and model evaluation -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
+### 11  Assumptions, diagnostics, and model evaluation
+- [KidIQ/](KidIQ/)
+    - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
 <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
 <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->

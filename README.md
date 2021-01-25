@@ -161,27 +161,30 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [beauty\_tv.md](Beauty/beauty_tv.md) - Student evaluations of
         instructors’ beauty and teaching quality
 
-<!-- ### 11  Assumptions, diagnostics, and model evaluation -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
-<!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
-<!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
-<!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
-<!-- - [Residuals/](Residuals/) -->
-<!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
-<!-- - [Introclass/](Introclass/) -->
-<!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
-<!-- - [Newcomb/](Newcomb/) -->
-<!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
-<!-- - [Unemployment/](Unemployment/) -->
-<!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
-<!-- - [Rsquared/](Rsquared/) -->
-<!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
-<!-- - [CrossValidation/](CrossValidation/) -->
-<!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
-<!-- - [FakeKCV/](FakeKCV/) -->
-<!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
-<!-- - [Pyth/](Pyth/) -->
+### 11 Assumptions, diagnostics, and model evaluation
+
+-   [KidIQ/](KidIQ/)
+    -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
+        multiple predictors
+        <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
+        <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
+        <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
+        <!-- - [Residuals/](Residuals/) -->
+        <!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
+        <!-- - [Introclass/](Introclass/) -->
+        <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
+        <!-- - [Newcomb/](Newcomb/) -->
+        <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
+        <!-- - [Unemployment/](Unemployment/) -->
+        <!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
+        <!-- - [Rsquared/](Rsquared/) -->
+        <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
+        <!-- - [CrossValidation/](CrossValidation/) -->
+        <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+        <!-- - [FakeKCV/](FakeKCV/) -->
+        <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
+        <!-- - [Pyth/](Pyth/) -->
+
 <!-- ### 12  Transformations -->
 <!-- - [KidIQ/](KidIQ/) -->
 <!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
