@@ -212,7 +212,7 @@ tibble(bayes_r2) %>%
 
 <img src="rsquared_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
-#### Kid test scores
+#### Child test scores
 
 Data.
 

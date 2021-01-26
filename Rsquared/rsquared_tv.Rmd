@@ -162,7 +162,7 @@ tibble(bayes_r2) %>%
   )
 ```
 
-#### Kid test scores
+#### Child test scores
 
 Data.
 
