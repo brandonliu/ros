@@ -169,9 +169,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
         <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
         <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
-        <!-- - [Residuals/](Residuals/) -->
-        <!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
-        <!-- - [Introclass/](Introclass/) -->
+-   [Residuals/](Residuals/)
+    -   [residuals\_tv.md](Residuals/residuals_tv.md) - Plotting the
+        data and fitted model <!-- - [Introclass/](Introclass/) -->
         <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
         <!-- - [Newcomb/](Newcomb/) -->
         <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
@@ -435,9 +435,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [probsim\_tv.md](ProbabilitySimulation/probsim_tv.md) -
         Simulation of probability models <!-- - [Pyth/](Pyth/) -->
         <!-- - [Redistricting/](Redistricting/) -->
-        <!-- - [Residuals/](Residuals/) -->
-        <!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
-        <!-- - [Restaurant/](Restaurant/) -->
+-   [Residuals/](Residuals/)
+    -   [residuals\_tv.md](Residuals/residuals_tv.md) - Plotting the
+        data and fitted model <!-- - [Restaurant/](Restaurant/) -->
         <!--     - [restaurant_tv.md](Restaurant/restaurant_tv.md) - Demonstration of using Stan for optimization -->
         <!-- - [RiskyBehavior/](RiskyBehavior/) -->
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->

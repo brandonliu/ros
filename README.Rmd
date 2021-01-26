@@ -117,8 +117,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
 <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
 <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
-<!-- - [Residuals/](Residuals/) -->
-<!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
+- [Residuals/](Residuals/)
+    - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model
 <!-- - [Introclass/](Introclass/) -->
 <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
 <!-- - [Newcomb/](Newcomb/) -->
@@ -366,8 +366,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [probsim_tv.md](ProbabilitySimulation/probsim_tv.md) - Simulation of probability models
 <!-- - [Pyth/](Pyth/) -->
 <!-- - [Redistricting/](Redistricting/) -->
-<!-- - [Residuals/](Residuals/) -->
-<!--     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model -->
+- [Residuals/](Residuals/)
+    - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model
 <!-- - [Restaurant/](Restaurant/) -->
 <!--     - [restaurant_tv.md](Restaurant/restaurant_tv.md) - Demonstration of using Stan for optimization -->
 <!-- - [RiskyBehavior/](RiskyBehavior/) -->
