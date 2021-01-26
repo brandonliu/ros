@@ -20,7 +20,6 @@ See also
 ```{r, message=FALSE}
 # Packages
 library(tidyverse)
-library(bayesplot)
 library(rstanarm)
 
 # Parameters
@@ -79,6 +78,8 @@ fit_bayes <-
 
 fit_bayes
 ```
+
+The Bayes fit has an intercept of `r coef(fit_bayes)[["(Intercept)"]]` and a slope of `r coef(fit_bayes)[["x"]]`. The slope is between the least-square slope and the prior slope.
 
 Bayesian $R^2$.
 
@@ -141,7 +142,6 @@ data %>%
     alpha = 0.25
   ) +
   geom_abline(slope = slope_bayes, intercept = intercept_bayes, color = "red") +
-  geom_point(color = "white", size = 2) +
   geom_point() +
   coord_fixed(ylim = c(-2, 2)) +
   labs(title = "Bayes posterior simulations")

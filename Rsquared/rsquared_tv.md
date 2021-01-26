@@ -22,7 +22,6 @@ Statistician, 73:307-209
 ``` r
 # Packages
 library(tidyverse)
-library(bayesplot)
 library(rstanarm)
 
 # Parameters
@@ -121,6 +120,9 @@ fit_bayes
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+The Bayes fit has an intercept of -0.005 and a slope of 0.831. The slope
+is between the least-square slope and the prior slope.
+
 Bayesian *R*<sup>2</sup>.
 
 ``` r
@@ -186,7 +188,6 @@ data %>%
     alpha = 0.25
   ) +
   geom_abline(slope = slope_bayes, intercept = intercept_bayes, color = "red") +
-  geom_point(color = "white", size = 2) +
   geom_point() +
   coord_fixed(ylim = c(-2, 2)) +
   labs(title = "Bayes posterior simulations")
