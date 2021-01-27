@@ -171,9 +171,11 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
 -   [Residuals/](Residuals/)
     -   [residuals\_tv.md](Residuals/residuals_tv.md) - Plotting the
-        data and fitted model <!-- - [Introclass/](Introclass/) -->
-        <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
-        <!-- - [Newcomb/](Newcomb/) -->
+        data and fitted model
+-   [Introclass/](Introclass/)
+    -   [residual\_plots\_tv.md](Introclass/residual_plots_tv.md) - Plot
+        residuals vs. predicted values, or residuals vs. observed
+        values? <!-- - [Newcomb/](Newcomb/) -->
         <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
         <!-- - [Unemployment/](Unemployment/) -->
         <!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
@@ -386,8 +388,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         individual points in a fitted regression
         <!-- - [Interactions/](Interactions/) -->
         <!--     - [interactions_tv.md](Interactions/interactions_tv.md) - Plot interaction example figure -->
-        <!-- - [Introclass/](Introclass/) -->
-        <!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
+-   [Introclass/](Introclass/)
+    -   [residual\_plots\_tv.md](Introclass/residual_plots_tv.md) - Plot
+        residuals vs. predicted values, or residuals vs. observed
+        values?
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
         multiple predictors

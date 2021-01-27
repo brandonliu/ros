@@ -119,8 +119,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
 - [Residuals/](Residuals/)
     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model
-<!-- - [Introclass/](Introclass/) -->
-<!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
+- [Introclass/](Introclass/)
+    - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 <!-- - [Newcomb/](Newcomb/) -->
 <!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
 <!-- - [Unemployment/](Unemployment/) -->
@@ -324,8 +324,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [influence_tv.md](Influence/influence_tv.md) - Influence of individual points in a fitted regression
 <!-- - [Interactions/](Interactions/) -->
 <!--     - [interactions_tv.md](Interactions/interactions_tv.md) - Plot interaction example figure -->
-<!-- - [Introclass/](Introclass/) -->
-<!--     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values? -->
+- [Introclass/](Introclass/)
+    - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 - [KidIQ/](KidIQ/)
     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
