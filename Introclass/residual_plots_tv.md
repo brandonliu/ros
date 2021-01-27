@@ -1,7 +1,7 @@
 Regression and Other Stories: Introclass
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-21
+2021-01-27
 
 -   [Data](#data)
 -   [Residual plots](#residual-plots)
@@ -97,7 +97,7 @@ fit
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-Model predicted values and residuals.
+Predicted values and residuals.
 
 ``` r
 v <- 
@@ -144,7 +144,7 @@ v %>%
 
 ### Understanding the choice using fake-data simulation
 
-Simulate final scores using the actual midterm scores and given model
+Simulate final scores using the actual midterm scores and model
 parameters.
 
 ``` r

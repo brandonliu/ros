@@ -57,7 +57,7 @@ fit <- stan_glm(final ~ midterm, data = scores, refresh = 0)
 fit
 ```
 
-Model predicted values and residuals.
+Predicted values and residuals.
 
 ```{r}
 v <- 
@@ -100,7 +100,7 @@ v %>%
 
 ### Understanding the choice using fake-data simulation
 
-Simulate final scores using the actual midterm scores and given model parameters.
+Simulate final scores using the actual midterm scores and model parameters.
 
 ```{r}
 set.seed(746)
