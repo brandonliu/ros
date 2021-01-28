@@ -121,8 +121,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model
 - [Introclass/](Introclass/)
     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
-<!-- - [Newcomb/](Newcomb/) -->
-<!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
+- [Newcomb/](Newcomb/)
+    - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data
 <!-- - [Unemployment/](Unemployment/) -->
 <!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
 <!-- - [Rsquared/](Rsquared/) -->
@@ -345,8 +345,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [NES/](NES/)
     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets
 <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
-<!-- - [Newcomb/](Newcomb/) -->
-<!--     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data -->
+- [Newcomb/](Newcomb/)
+    - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data
 <!-- - [Parabola/](Parabola/) -->
 <!--     - [parabola_tv.md](Parabola/parabola_tv.md) - Demonstration of using Stan for optimization -->
 - [Peacekeeping/](Peacekeeping/)
