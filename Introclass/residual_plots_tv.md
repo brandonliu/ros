@@ -1,15 +1,15 @@
 Regression and Other Stories: Introclass
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-27
+2021-01-28
 
--   [Data](#data)
--   [Residual plots](#residual-plots)
-    -   [A confusing choice: plot residuals vs. predicted values, or
-        residuals vs. observed
-        values?](#a-confusing-choice-plot-residuals-vs.-predicted-values-or-residuals-vs.-observed-values)
-    -   [Understanding the choice using fake-data
-        simulation](#understanding-the-choice-using-fake-data-simulation)
+-   [Chapter 11](#chapter-11)
+    -   [Residual plots](#residual-plots)
+        -   [A confusing choice: plot residuals vs. predicted values, or
+            residuals vs. observed
+            values?](#a-confusing-choice-plot-residuals-vs.-predicted-values-or-residuals-vs.-observed-values)
+        -   [Understanding the choice using fake-data
+            simulation](#understanding-the-choice-using-fake-data-simulation)
 
 Tidyverse version by Bill Behrman.
 
@@ -35,7 +35,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Residual plots
+
+### A confusing choice: plot residuals vs. predicted values, or residuals vs. observed values?
+
+Data.
 
 ``` r
 scores <- 
@@ -60,10 +66,6 @@ scores
     #>  9    95    90    98    90      78    95    99   100   109
     #> 10    90    94    95    98      91    94   100    89   126
     #> # … with 42 more rows
-
-## Residual plots
-
-### A confusing choice: plot residuals vs. predicted values, or residuals vs. observed values?
 
 Linear regression model.
 

@@ -30,7 +30,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Residual plots
+
+### A confusing choice: plot residuals vs. predicted values, or residuals vs. observed values?
+
+Data.
 
 ```{r}
 scores <- 
@@ -40,10 +46,6 @@ scores <-
 
 scores
 ```
-
-## Residual plots
-
-### A confusing choice: plot residuals vs. predicted values, or residuals vs. observed values?
 
 Linear regression model.
 
