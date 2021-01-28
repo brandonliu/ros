@@ -1,14 +1,15 @@
 Regression and Other Stories: Residuals
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-20
+2021-01-28
 
--   [Plotting the data and fitted
-    model](#plotting-the-data-and-fitted-model)
-    -   [Plotting the outcome vs. a continuous
-        predictor](#plotting-the-outcome-vs.-a-continuous-predictor)
-    -   [Forming a linear predictor from a multiple
-        regression](#forming-a-linear-predictor-from-a-multiple-regression)
+-   [Chapter 11](#chapter-11)
+    -   [Plotting the data and fitted
+        model](#plotting-the-data-and-fitted-model)
+        -   [Plotting the outcome vs. a continuous
+            predictor](#plotting-the-outcome-vs.-a-continuous-predictor)
+        -   [Forming a linear predictor from a multiple
+            regression](#forming-a-linear-predictor-from-a-multiple-regression)
 
 Tidyverse version by Bill Behrman.
 
@@ -31,6 +32,8 @@ file_common <- here::here("_common.R")
 # Run common code
 source(file_common)
 ```
+
+# Chapter 11
 
 ## Plotting the data and fitted model
 

@@ -28,6 +28,8 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
+# Chapter 11
+
 ## Plotting the data and fitted model
 
 ### Plotting the outcome vs. a continuous predictor
