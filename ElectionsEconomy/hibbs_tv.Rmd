@@ -32,7 +32,9 @@ source(file_common)
 
 # Chapter 1
 
-## Data
+## Why learn regression?
+
+Data.
 
 ```{r}
 hibbs <- 
@@ -43,7 +45,7 @@ hibbs <-
 hibbs
 ```
 
-## Graphing the bread and peace model
+Plot.
 
 ```{r}
 hibbs %>% 
@@ -59,7 +61,7 @@ hibbs %>%
   )
 ```
 
-## Linear regression
+Linear regression.
 
 The option `refresh = 0` suppresses the default Stan sampling
 progress output. This is useful for small data with fast
@@ -92,14 +94,14 @@ summary of the convergence diagnostics for MCMC sampling.
 summary(fit)
 ```
 
-### Posterior interval
+Posterior interval.
 
 ```{r}
 posterior_interval(fit) %>% 
   round(digits = 1)
 ```
 
-### Plot regression line
+Plot regression line.
 
 ```{r}
 intercept <- coef(fit)[["(Intercept)"]]

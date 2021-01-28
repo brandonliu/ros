@@ -1,15 +1,10 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-08
+2021-01-28
 
 -   [Chapter 1](#chapter-1)
-    -   [Data](#data)
-    -   [Graphing the bread and peace
-        model](#graphing-the-bread-and-peace-model)
-    -   [Linear regression](#linear-regression)
-        -   [Posterior interval](#posterior-interval)
-        -   [Plot regression line](#plot-regression-line)
+    -   [Why learn regression?](#why-learn-regression)
 -   [Chapter 7](#chapter-7)
     -   [Plot of economy and election
         results](#plot-of-economy-and-election-results)
@@ -69,7 +64,9 @@ source(file_common)
 
 # Chapter 1
 
-## Data
+## Why learn regression?
+
+Data.
 
 ``` r
 hibbs <- 
@@ -95,7 +92,7 @@ hibbs
     #> 10  1988   2.27  53.9 Bush, Sr.           Dukakis        
     #> # … with 6 more rows
 
-## Graphing the bread and peace model
+Plot.
 
 ``` r
 hibbs %>% 
@@ -113,7 +110,7 @@ hibbs %>%
 
 <img src="hibbs_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />
 
-## Linear regression
+Linear regression.
 
 The option `refresh = 0` suppresses the default Stan sampling progress
 output. This is useful for small data with fast computation. For more
@@ -218,7 +215,7 @@ summary(fit)
     #> 
     #> For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure of effective sample size, and Rhat is the potential scale reduction factor on split chains (at convergence Rhat=1).
 
-### Posterior interval
+Posterior interval.
 
 ``` r
 posterior_interval(fit) %>% 
@@ -230,7 +227,7 @@ posterior_interval(fit) %>%
     #> growth       1.8  4.3
     #> sigma        3.0  5.5
 
-### Plot regression line
+Plot regression line.
 
 ``` r
 intercept <- coef(fit)[["(Intercept)"]]
