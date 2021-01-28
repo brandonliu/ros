@@ -1,13 +1,13 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-24
+2021-01-28
 
--   [Data](#data)
--   [Comparing data to replications from a fitted
-    model](#comparing-data-to-replications-from-a-fitted-model)
-    -   [Example: simulation-based checking of a fitted normal
-        distribution](#example-simulation-based-checking-of-a-fitted-normal-distribution)
+-   [Chapter 11](#chapter-11)
+    -   [Comparing data to replications from a fitted
+        model](#comparing-data-to-replications-from-a-fitted-model)
+        -   [Example: simulation-based checking of a fitted normal
+            distribution](#example-simulation-based-checking-of-a-fitted-normal-distribution)
 
 Tidyverse version by Bill Behrman.
 
@@ -34,7 +34,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Comparing data to replications from a fitted model
+
+### Example: simulation-based checking of a fitted normal distribution
+
+Data.
 
 ``` r
 newcomb <- read_table2(file_newcomb)
@@ -70,10 +76,6 @@ newcomb %>%
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />
-
-## Comparing data to replications from a fitted model
-
-### Example: simulation-based checking of a fitted normal distribution
 
 Fit a regression model with just the intercept term.
 

@@ -31,7 +31,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Comparing data to replications from a fitted model
+
+### Example: simulation-based checking of a fitted normal distribution
+
+Data.
 
 ```{r, message=FALSE}
 newcomb <- read_table2(file_newcomb)
@@ -50,10 +56,6 @@ newcomb %>%
       "Distribution of Newcomb's measurements for estimating the speed of light"
   )
 ```
-
-## Comparing data to replications from a fitted model
-
-### Example: simulation-based checking of a fitted normal distribution
 
 Fit a regression model with just the intercept term.
 
