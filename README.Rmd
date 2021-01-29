@@ -123,8 +123,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 - [Newcomb/](Newcomb/)
     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data
-<!-- - [Unemployment/](Unemployment/) -->
-<!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
+- [Unemployment/](Unemployment/)
+    - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series
 <!-- - [Rsquared/](Rsquared/) -->
 <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
 <!-- - [CrossValidation/](CrossValidation/) -->
@@ -391,6 +391,6 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
 <!-- - [Student/](Student/) -->
 <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
-<!-- - [Unemployment/](Unemployment/) -->
-<!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
+- [Unemployment/](Unemployment/)
+    - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series
 

@@ -179,9 +179,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Newcomb/](Newcomb/)
     -   [newcomb\_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive
         checking of Normal model for Newcomb’s speed of light data
-        <!-- - [Unemployment/](Unemployment/) -->
-        <!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
-        <!-- - [Rsquared/](Rsquared/) -->
+-   [Unemployment/](Unemployment/)
+    -   [unemployment\_tv.md](Unemployment/unemployment_tv.md) - Time
+        series fit and posterior predictive model checking for
+        unemployment series <!-- - [Rsquared/](Rsquared/) -->
         <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
         <!-- - [CrossValidation/](CrossValidation/) -->
         <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
@@ -470,5 +471,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
         <!-- - [Student/](Student/) -->
         <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
-        <!-- - [Unemployment/](Unemployment/) -->
-        <!--     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series -->
+-   [Unemployment/](Unemployment/)
+    -   [unemployment\_tv.md](Unemployment/unemployment_tv.md) - Time
+        series fit and posterior predictive model checking for
+        unemployment series
