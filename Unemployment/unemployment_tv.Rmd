@@ -32,7 +32,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Example: predictive simulation to check the fit of a time-series model
+
+Data.
 
 ```{r, message=FALSE}
 unemployment <- 
@@ -47,7 +51,7 @@ unemployment
 summary(unemployment)
 ```
 
-## Example: predictive simulation to check the fit of a time-series model
+### Fitting a first-order autoregression to the unemployment series
 
 Plot the unemployment rate.
 
@@ -65,7 +69,7 @@ unemployment %>%
   )
 ```
 
-### Fitting a first-order autoregression to the unemployment series
+Fit first-order autoregression to the unemployment series.
 
 ```{r}
 set.seed(264)

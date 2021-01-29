@@ -1,17 +1,18 @@
 Regression and Other Stories: Unemployment
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-24
+2021-01-29
 
--   [Data](#data)
--   [Example: predictive simulation to check the fit of a time-series
-    model](#example-predictive-simulation-to-check-the-fit-of-a-time-series-model)
-    -   [Fitting a first-order autoregression to the unemployment
-        series](#fitting-a-first-order-autoregression-to-the-unemployment-series)
-    -   [Simulating replicated
-        datasets](#simulating-replicated-datasets)
-    -   [Visual and numerical comparisons of replicated to actual
-        data](#visual-and-numerical-comparisons-of-replicated-to-actual-data)
+-   [Chapter 11](#chapter-11)
+    -   [Example: predictive simulation to check the fit of a
+        time-series
+        model](#example-predictive-simulation-to-check-the-fit-of-a-time-series-model)
+        -   [Fitting a first-order autoregression to the unemployment
+            series](#fitting-a-first-order-autoregression-to-the-unemployment-series)
+        -   [Simulating replicated
+            datasets](#simulating-replicated-datasets)
+        -   [Visual and numerical comparisons of replicated to actual
+            data](#visual-and-numerical-comparisons-of-replicated-to-actual-data)
 
 Tidyverse version by Bill Behrman.
 
@@ -38,7 +39,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 11
+
+## Example: predictive simulation to check the fit of a time-series model
+
+Data.
 
 ``` r
 unemployment <- 
@@ -77,7 +82,7 @@ summary(unemployment)
     #>  Max.   :2016   Max.   :9.70   Max.   :9.70  
     #>                                NA's   :1
 
-## Example: predictive simulation to check the fit of a time-series model
+### Fitting a first-order autoregression to the unemployment series
 
 Plot the unemployment rate.
 
@@ -97,7 +102,7 @@ unemployment %>%
 
 <img src="unemployment_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
-### Fitting a first-order autoregression to the unemployment series
+Fit first-order autoregression to the unemployment series.
 
 ``` r
 set.seed(264)
