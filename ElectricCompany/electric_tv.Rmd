@@ -31,7 +31,11 @@ source(file_common)
 
 # Chapter 1
 
-## Data
+## Some examples of regression
+
+### A randomized experiment on the effect of an educational television program
+
+Data.
 
 ```{r, message=FALSE}
 electric_wide <- read_table2(file_electric_wide)
@@ -52,7 +56,7 @@ electric <-
 electric
 ```
 
-## Plot of raw data
+Plot of raw data.
 
 ```{r}
 electric_post <- 

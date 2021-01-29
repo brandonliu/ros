@@ -1,11 +1,13 @@
 Regression and Other Stories: Electric Company
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-01-29
 
 -   [Chapter 1](#chapter-1)
-    -   [Data](#data)
-    -   [Plot of raw data](#plot-of-raw-data)
+    -   [Some examples of regression](#some-examples-of-regression)
+        -   [A randomized experiment on the effect of an educational
+            television
+            program](#a-randomized-experiment-on-the-effect-of-an-educational-television-program)
 
 Tidyverse version by Bill Behrman.
 
@@ -19,7 +21,7 @@ Regression and Other Stories.
 library(tidyverse)
 
 # Parameters
-  # U.S. Presidential election results and GDP growth
+  # Results of educational experiment
 file_electric_wide <- here::here("ElectricCompany/data/electric_wide.txt")
   # Common code
 file_common <- here::here("_common.R")
@@ -32,7 +34,11 @@ source(file_common)
 
 # Chapter 1
 
-## Data
+## Some examples of regression
+
+### A randomized experiment on the effect of an educational television program
+
+Data.
 
 ``` r
 electric_wide <- read_table2(file_electric_wide)
@@ -78,7 +84,7 @@ electric
     #> 10 Fresno     1 Supplement treated posttest  89.7
     #> # … with 374 more rows
 
-## Plot of raw data
+Plot of raw data.
 
 ``` r
 electric_post <- 
