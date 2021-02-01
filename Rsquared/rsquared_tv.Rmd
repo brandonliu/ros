@@ -36,11 +36,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
+# Chapter 11
+
 ## Residual standard deviation $\sigma$ and explained variance $R^2$
 
 ### Bayesian $R^2$
 
-#### Toy data with n = 5
+#### Small dataset
 
 Data.
 
