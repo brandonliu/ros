@@ -32,7 +32,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 1
+
+## Some examples of regression
+
+### Estimating the effects of United Nations peacekeeping, using pre-treatment variables to adjust for differences between treatment and control groups
+
+#### Data
 
 ```{r}
 peace <- 
@@ -44,7 +50,9 @@ peace <-
 glimpse(peace)
 ```
 
-Variable labels
+#### EDA
+
+Variable labels.
 
 ```{r}
 peace %>% 
@@ -52,7 +60,7 @@ peace %>%
   map_chr(~ attr(., "label"))
 ```
 
-Conflict ID
+Conflict ID.
 
 ```{r}
 peace %>% 
@@ -150,7 +158,7 @@ peace %>%
 
 In the conflicts where the ceasefires held, the duration of peace was shorter when there were peacekeepers.
 
-## Plots
+#### Plots
 
 ```{r}
 ceasefire_failed <- 

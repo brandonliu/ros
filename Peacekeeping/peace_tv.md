@@ -1,10 +1,14 @@
 Regression and Other Stories: Peacekeeping
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-01
 
--   [Data](#data)
--   [Plots](#plots)
+-   [Chapter 1](#chapter-1)
+    -   [Some examples of regression](#some-examples-of-regression)
+        -   [Estimating the effects of United Nations peacekeeping,
+            using pre-treatment variables to adjust for differences
+            between treatment and control
+            groups](#estimating-the-effects-of-united-nations-peacekeeping-using-pre-treatment-variables-to-adjust-for-differences-between-treatment-and-control-groups)
 
 Tidyverse version by Bill Behrman.
 
@@ -31,7 +35,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Chapter 1
+
+## Some examples of regression
+
+### Estimating the effects of United Nations peacekeeping, using pre-treatment variables to adjust for differences between treatment and control groups
+
+#### Data
 
 ``` r
 peace <- 
@@ -60,7 +70,9 @@ glimpse(peace)
     #> $ morewar  <dbl> 1, 1, NA, 0, 0, NA, 1, 1, 1, 1, NA, 0, 1, 0, 0, 0, 0, 0, 1, …
     #> $ hazard1  <dbl> 3.11e-03, 3.00e-03, NA, 1.85e-05, 2.95e-04, NA, 7.24e-02, 1.…
 
-Variable labels
+#### EDA
+
+Variable labels.
 
 ``` r
 peace %>% 
@@ -75,7 +87,7 @@ peace %>%
     #>                                    pcw                                hazard1 
     #>            "post cold war termination"                     "predicted hazard"
 
-Conflict ID
+Conflict ID.
 
 ``` r
 peace %>% 
@@ -265,7 +277,7 @@ peace %>%
 In the conflicts where the ceasefires held, the duration of peace was
 shorter when there were peacekeepers.
 
-## Plots
+#### Plots
 
 ``` r
 ceasefire_failed <- 
