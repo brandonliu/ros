@@ -166,9 +166,6 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
         multiple predictors
-        <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
-        <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
-        <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
 -   [Residuals/](Residuals/)
     -   [residuals\_tv.md](Residuals/residuals_tv.md) - Plotting the
         data and fitted model
@@ -182,8 +179,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Unemployment/](Unemployment/)
     -   [unemployment\_tv.md](Unemployment/unemployment_tv.md) - Time
         series fit and posterior predictive model checking for
-        unemployment series <!-- - [Rsquared/](Rsquared/) -->
-        <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
+        unemployment series
+-   [Rsquared/](Rsquared/)
+    -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
         <!-- - [CrossValidation/](CrossValidation/) -->
         <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
         <!-- - [FakeKCV/](FakeKCV/) -->
@@ -397,11 +395,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         values?
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
-        multiple predictors
-        <!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
-        <!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
-        <!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
-        <!-- - [Lalonde/](Lalonde/) -->
+        multiple predictors <!-- - [Lalonde/](Lalonde/) -->
         <!-- - [LogisticPriors/](LogisticPriors/) -->
         <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
         <!-- - [Mesquite/](Mesquite/) -->
@@ -452,8 +446,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Roaches/](Roaches/) -->
         <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyse the effect of integrated pest management on reducing cockroach levels in urban apartments -->
         <!-- - [Rodents/](Rodents/) -->
-        <!-- - [Rsquared/](Rsquared/) -->
-        <!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
+-   [Rsquared/](Rsquared/)
+    -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
         <!-- - [Sesame/](Sesame/) -->
         <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
 -   [SexRatio/](SexRatio/)

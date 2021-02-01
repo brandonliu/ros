@@ -114,9 +114,6 @@ This repository contains Tidyverse implementations for the examples and exercise
 ### 11  Assumptions, diagnostics, and model evaluation
 - [KidIQ/](KidIQ/)
     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
-<!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
-<!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
-<!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
 - [Residuals/](Residuals/)
     - [residuals_tv.md](Residuals/residuals_tv.md) - Plotting the data and fitted model
 - [Introclass/](Introclass/)
@@ -125,8 +122,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data
 - [Unemployment/](Unemployment/)
     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series
-<!-- - [Rsquared/](Rsquared/) -->
-<!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
+- [Rsquared/](Rsquared/)
+    - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
 <!-- - [CrossValidation/](CrossValidation/) -->
 <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
 <!-- - [FakeKCV/](FakeKCV/) -->
@@ -328,9 +325,6 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [residual_plots_tv.md](Introclass/residual_plots_tv.md) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 - [KidIQ/](KidIQ/)
     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
-<!--     - [kidiq_loo_tv.md](KidIQ/kidiq_loo_tv.md) - Linear regression and leave-one-out cross-validation -->
-<!--     - [kidiq_R2_tv.md](KidIQ/kidiq_R2_tv.md) - Linear regression and Bayes-R2 and LOO-R2 -->
-<!--     - [kidiq_kcv_tv.md](KidIQ/kidiq_kcv_tv.md) - Linear regression and K-fold cross-validation -->
 <!-- - [Lalonde/](Lalonde/) -->
 <!-- - [LogisticPriors/](LogisticPriors/) -->
 <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
@@ -375,8 +369,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!-- - [Roaches/](Roaches/) -->
 <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyse the effect of integrated pest management on reducing cockroach levels in urban apartments -->
 <!-- - [Rodents/](Rodents/) -->
-<!-- - [Rsquared/](Rsquared/) -->
-<!--     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2 -->
+- [Rsquared/](Rsquared/)
+    - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
 <!-- - [Sesame/](Sesame/) -->
 <!--     - [sesame_tv.md](Sesame/sesame_tv.md) - Causal analysis of Sesame Street experiment -->
 - [SexRatio/](SexRatio/)
