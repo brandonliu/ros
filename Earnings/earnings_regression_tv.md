@@ -1,14 +1,17 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-15
+2021-02-02
 
--   [Chapter 6](#chapter-6)
-    -   [Data](#data)
-    -   [Linear regression of earnings on height and sex with no
-        interaction](#linear-regression-of-earnings-on-height-and-sex-with-no-interaction)
-    -   [Linear regression of earnings on height and sex with
-        interaction](#linear-regression-of-earnings-on-height-and-sex-with-interaction)
+-   [6 Background on regression
+    modeling](#background-on-regression-modeling)
+    -   [6.3 Interpret coefficients as comparisons, not
+        effects](#interpret-coefficients-as-comparisons-not-effects)
+-   [12 Transformations and regression](#transformations-and-regression)
+    -   [12.4 Logarithmic transformations](#logarithmic-transformations)
+        -   [Earnings and height example](#earnings-and-height-example)
+        -   [Why we use natural log rather than log base
+            10](#why-we-use-natural-log-rather-than-log-base-10)
 
 Tidyverse version by Bill Behrman.
 
@@ -20,6 +23,7 @@ Chapters 6 and 12 in Regression and Other Stories.
 ``` r
 # Packages
 library(tidyverse)
+library(bayesplot)
 library(rstanarm)
 
 # Parameters
@@ -36,9 +40,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 6
+# 6 Background on regression modeling
 
-## Data
+## 6.3 Interpret coefficients as comparisons, not effects
+
+Data.
 
 ``` r
 earnings <- 
@@ -72,7 +78,7 @@ earnings %>%
     #> 10     73 Male   32000
     #> # … with 1,806 more rows
 
-## Linear regression of earnings on height and sex with no interaction
+#### Linear regression of earnings on height and sex with no interaction
 
 ``` r
 fit_2 <- 
@@ -148,7 +154,7 @@ The equations for the regression lines are:
     Men:   y = -15499 + 651 x
     Women: y = -26129 + 651 x
 
-## Linear regression of earnings on height and sex with interaction
+#### Linear regression of earnings on height and sex with interaction
 
 ``` r
 fit_3 <- 
@@ -249,3 +255,300 @@ earnings %>%
     #> 2     0 Male      15 0.0222
 
 15% of women have no earnings, whereas only 2% of men have no earnings.
+
+# 12 Transformations and regression
+
+## 12.4 Logarithmic transformations
+
+### Earnings and height example
+
+#### Direct interpretation of small coefficients on the log scale
+
+Linear regression with log earnings as outcome.
+
+``` r
+fit_log_1 <- 
+  stan_glm(
+    log(earn) ~ height,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_1, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log(earn) ~ height
+    #>  observations: 1629
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 5.90   0.37  
+    #> height      0.06   0.01  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.88   0.01  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Earnings vs. height on log scale.
+
+``` r
+v <- 
+  tibble(height = seq_range(earnings$height)) %>% 
+  predictive_intervals(fit = fit_log_1) %>% 
+  mutate(across(!height, exp))
+
+v %>% 
+  ggplot(aes(height)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  geom_count(aes(y = earn), data = earnings %>% filter(earn > 0)) +
+  scale_y_log10(labels = scales::label_comma()) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Earnings vs. height on log scale",
+    subtitle = "With 50% and 90% predictive intervals",
+    x = "Height",
+    y = "Earnings",
+    size = "Count"
+  )
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+
+Earnings vs. height.
+
+``` r
+v %>% 
+  ggplot(aes(height)) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  geom_count(aes(y = earn), data = earnings %>% filter(earn > 0)) +
+  coord_cartesian(ylim = c(0, 1e5)) +
+  scale_y_continuous(labels = scales::label_comma()) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Earnings vs. height",
+    subtitle = "With 50% and 90% predictive intervals",
+    x = "Height",
+    y = "Earnings",
+    size = "Count"
+  )
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+
+#### Predictive checking
+
+Linear regression with non-log, positive earnings.
+
+``` r
+fit_1 <- 
+  stan_glm(
+    earn ~ height,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_1, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      earn ~ height
+    #>  observations: 1629
+    #>  predictors:   2
+    #> ------
+    #>             Median    MAD_SD   
+    #> (Intercept) -68475.92   9819.15
+    #> height        1378.87    147.30
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median   MAD_SD  
+    #> sigma 21931.53   400.85
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+Simulate new data for non-log model.
+
+``` r
+set.seed(377)
+
+y_rep_1 <- posterior_predict(fit_1)
+
+n_sims_1 <- nrow(y_rep_1)
+
+y_rep_1_tidy <- 
+  seq_len(n_sims_1) %>% 
+  map_dfr(~ tibble(rep = ., earn = y_rep_1[., ]))
+```
+
+``` r
+n_rep <- 100
+```
+
+Kernel density of data and 100 sample replicates from non-log model.
+
+``` r
+set.seed(539)
+
+ggplot(mapping = aes(earn)) +
+  stat_density(
+    aes(group = rep, color = "y_rep"),
+    data = y_rep_1_tidy %>% filter(rep %in% sample(n_sims_1, n_rep)),
+    geom = "line",
+    position = "identity",
+    alpha = 0.5,
+    size = 0.25
+  ) +
+  stat_density(
+    aes(color = "y"),
+    data = earnings %>% filter(earn > 0),
+    geom = "line"
+  ) +
+  coord_cartesian(xlim = c(NA, 1e5)) +
+  scale_x_continuous(labels = scales::label_comma()) +
+  scale_y_continuous(breaks = NULL) +
+  scale_color_discrete(
+    breaks = c("y", "y_rep"),
+    labels = c("Data", "Replicates")
+  ) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      str_glue(
+        "Kernel density of data and {n_rep} sample replicates from non-log model"
+      ),
+    x = "Earnings",
+    y = NULL,
+    color = NULL
+  )
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+
+Kernel density of data and 100 sample replicates from non-log model
+using bayesplot.
+
+``` r
+set.seed(539)
+
+ppc_dens_overlay(
+  y = earnings$earn %>% keep(. > 0),
+  yrep = y_rep_1[sample(n_sims_1, n_rep), ]
+)
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+
+Simulate new data for log model.
+
+``` r
+set.seed(377)
+
+y_rep_log_1 <- posterior_predict(fit_log_1)
+
+n_sims_log_1 <- nrow(y_rep_log_1)
+
+y_rep_log_1_tidy <- 
+  seq_len(n_sims_log_1) %>% 
+  map_dfr(~ tibble(rep = ., log_earn = y_rep_log_1[., ]))
+```
+
+Kernel density of data and 100 sample replicates from log model.
+
+``` r
+set.seed(539)
+
+ggplot() +
+  stat_density(
+    aes(log_earn, group = rep, color = "y_rep"),
+    data = y_rep_log_1_tidy %>% filter(rep %in% sample(n_sims_log_1, n_rep)),
+    geom = "line",
+    position = "identity",
+    alpha = 0.5,
+    size = 0.25
+  ) +
+  stat_density(
+    aes(log(earn), color = "y"),
+    data = earnings %>% filter(earn > 0),
+    geom = "line"
+  ) +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  scale_y_continuous(breaks = NULL) +
+  scale_color_discrete(
+    breaks = c("y", "y_rep"),
+    labels = c("Data", "Replicates")
+  ) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      str_glue(
+        "Kernel density of data and {n_rep} sample replicates from log model"
+      ),
+    x = "Log Earnings",
+    y = NULL,
+    color = NULL
+  )
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
+
+Kernel density of data and 100 sample replicates from log model using
+bayesplot.
+
+``` r
+set.seed(539)
+
+ppc_dens_overlay(
+  y = earnings$earn %>% keep(. > 0) %>% log(),
+  yrep = y_rep_log_1[sample(n_sims_log_1, n_rep), ]
+)
+```
+
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-18-1.png" width="100%" />
+
+### Why we use natural log rather than log base 10
+
+Linear regression with log10 earnings as outcome.
+
+``` r
+fit_log10_1 <- 
+  stan_glm(
+    log10(earn) ~ height,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log10_1, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log10(earn) ~ height
+    #>  observations: 1629
+    #>  predictors:   2
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 2.57   0.17  
+    #> height      0.02   0.00  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.38   0.01  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
