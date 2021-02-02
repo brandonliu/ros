@@ -1,10 +1,11 @@
 Regression and Other Stories: Cross-validation
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-28
+2021-02-02
 
--   [Chapter 11](#chapter-11)
-    -   [Cross validation](#cross-validation)
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.8 Cross validation](#cross-validation)
         -   [Leave-one-out cross
             validation](#leave-one-out-cross-validation)
         -   [Summarizing prediction error using the log score and
@@ -38,9 +39,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Cross validation
+## 11.8 Cross validation
 
 ### Leave-one-out cross validation
 

@@ -1,10 +1,11 @@
 Regression and Other Stories: Bayesian *R*<sup>2</sup>
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-01
+2021-02-02
 
--   [Chapter 11](#chapter-11)
-    -   [Residual standard deviation *σ* and explained variance
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.6 Residual standard deviation *σ* and explained variance
         *R*<sup>2</sup>](#residual-standard-deviation-sigma-and-explained-variance-r2)
         -   [Bayesian *R*<sup>2</sup>](#bayesian-r2)
 
@@ -39,9 +40,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Residual standard deviation *σ* and explained variance *R*<sup>2</sup>
+## 11.6 Residual standard deviation *σ* and explained variance *R*<sup>2</sup>
 
 ### Bayesian *R*<sup>2</sup>
 

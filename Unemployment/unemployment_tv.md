@@ -1,10 +1,11 @@
 Regression and Other Stories: Unemployment
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-29
+2021-02-02
 
--   [Chapter 11](#chapter-11)
-    -   [Example: predictive simulation to check the fit of a
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.5 Example: predictive simulation to check the fit of a
         time-series
         model](#example-predictive-simulation-to-check-the-fit-of-a-time-series-model)
         -   [Fitting a first-order autoregression to the unemployment
@@ -39,9 +40,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Example: predictive simulation to check the fit of a time-series model
+## 11.5 Example: predictive simulation to check the fit of a time-series model
 
 Data.
 

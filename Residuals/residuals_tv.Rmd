@@ -28,9 +28,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Plotting the data and fitted model
+## 11.2 Plotting the data and fitted model
 
 ### Plotting the outcome vs. a continuous predictor
 

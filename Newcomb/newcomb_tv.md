@@ -1,10 +1,11 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-28
+2021-02-02
 
--   [Chapter 11](#chapter-11)
-    -   [Comparing data to replications from a fitted
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.4 Comparing data to replications from a fitted
         model](#comparing-data-to-replications-from-a-fitted-model)
         -   [Example: simulation-based checking of a fitted normal
             distribution](#example-simulation-based-checking-of-a-fitted-normal-distribution)
@@ -34,9 +35,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Comparing data to replications from a fitted model
+## 11.4 Comparing data to replications from a fitted model
 
 ### Example: simulation-based checking of a fitted normal distribution
 

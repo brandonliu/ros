@@ -31,9 +31,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Comparing data to replications from a fitted model
+## 11.4 Comparing data to replications from a fitted model
 
 ### Example: simulation-based checking of a fitted normal distribution
 

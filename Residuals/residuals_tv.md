@@ -1,10 +1,11 @@
 Regression and Other Stories: Residuals
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-28
+2021-02-02
 
--   [Chapter 11](#chapter-11)
-    -   [Plotting the data and fitted
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.2 Plotting the data and fitted
         model](#plotting-the-data-and-fitted-model)
         -   [Plotting the outcome vs. a continuous
             predictor](#plotting-the-outcome-vs.-a-continuous-predictor)
@@ -33,9 +34,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Plotting the data and fitted model
+## 11.2 Plotting the data and fitted model
 
 ### Plotting the outcome vs. a continuous predictor
 

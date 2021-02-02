@@ -32,9 +32,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Cross validation
+## 11.8 Cross validation
 
 ### Leave-one-out cross validation
 

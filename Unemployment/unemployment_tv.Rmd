@@ -32,9 +32,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Example: predictive simulation to check the fit of a time-series model
+## 11.5 Example: predictive simulation to check the fit of a time-series model
 
 Data.
 
