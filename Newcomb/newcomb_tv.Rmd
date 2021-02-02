@@ -138,7 +138,12 @@ set.seed(792)
 ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
 ```
 
-Plot kernel density of data and 100 sample replicates.
+```{r}
+n_rep <- 100
+```
+
+
+Plot kernel density of data and `r n_rep` sample replicates.
 
 ```{r, fig.asp=0.75}
 set.seed(792)
@@ -146,7 +151,7 @@ set.seed(792)
 ggplot(mapping = aes(y)) +
   stat_density(
     aes(group = rep, color = "y_rep"),
-    data = y_rep_sim %>% filter(rep %in% sample(n_sims, 100)),
+    data = y_rep_sim %>% filter(rep %in% sample(n_sims, n_rep)),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -154,21 +159,24 @@ ggplot(mapping = aes(y)) +
   ) +
   stat_density(aes(color = "y"), data = newcomb, geom = "line") +
   scale_y_continuous(breaks = NULL) +
-  scale_color_discrete(breaks = c("y", "y_rep"), labels = c("Data", "Replicates")) +
+  scale_color_discrete(
+    breaks = c("y", "y_rep"),
+    labels = c("Data", "Replicates")
+  ) +
   theme(legend.position = "bottom") +
   labs(
-    title = "Kernel density of data and 100 sample replicates",
+    title = str_glue("Kernel density of data and {n_rep} sample replicates"),
     y = NULL,
     color = NULL
   )
 ```
 
-Plot kernel density of data and 100 sample replicates using bayesplot.
+Plot kernel density of data and `r n_rep` sample replicates using bayesplot.
 
 ```{r}
 set.seed(792)
 
-ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, 100), ])
+ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, n_rep), ])
 ```
 
 #### Checking model fit using a numerical data summary

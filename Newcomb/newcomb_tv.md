@@ -206,6 +206,10 @@ ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
+``` r
+n_rep <- 100
+```
+
 Plot kernel density of data and 100 sample replicates.
 
 ``` r
@@ -214,7 +218,7 @@ set.seed(792)
 ggplot(mapping = aes(y)) +
   stat_density(
     aes(group = rep, color = "y_rep"),
-    data = y_rep_sim %>% filter(rep %in% sample(n_sims, 100)),
+    data = y_rep_sim %>% filter(rep %in% sample(n_sims, n_rep)),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -222,26 +226,29 @@ ggplot(mapping = aes(y)) +
   ) +
   stat_density(aes(color = "y"), data = newcomb, geom = "line") +
   scale_y_continuous(breaks = NULL) +
-  scale_color_discrete(breaks = c("y", "y_rep"), labels = c("Data", "Replicates")) +
+  scale_color_discrete(
+    breaks = c("y", "y_rep"),
+    labels = c("Data", "Replicates")
+  ) +
   theme(legend.position = "bottom") +
   labs(
-    title = "Kernel density of data and 100 sample replicates",
+    title = str_glue("Kernel density of data and {n_rep} sample replicates"),
     y = NULL,
     color = NULL
   )
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
 Plot kernel density of data and 100 sample replicates using bayesplot.
 
 ``` r
 set.seed(792)
 
-ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, 100), ])
+ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, n_rep), ])
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
 
 #### Checking model fit using a numerical data summary
 
@@ -266,7 +273,7 @@ v %>%
   )
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
 
 Plot test statistic for data and replicates using bayesplot.
 
@@ -274,4 +281,4 @@ Plot test statistic for data and replicates using bayesplot.
 ppc_stat(y = newcomb$y, yrep = y_rep, stat = min, binwidth = 1)
 ```
 
-<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
+<img src="newcomb_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
