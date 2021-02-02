@@ -30,9 +30,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 1
+# 1 Overview
 
-## Why learn regression?
+## 1.2 Why learn regression?
 
 Data.
 

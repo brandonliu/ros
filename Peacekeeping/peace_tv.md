@@ -1,10 +1,10 @@
 Regression and Other Stories: Peacekeeping
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-01
+2021-02-02
 
--   [Chapter 1](#chapter-1)
-    -   [Some examples of regression](#some-examples-of-regression)
+-   [1 Overview](#overview)
+    -   [1.3 Some examples of regression](#some-examples-of-regression)
         -   [Estimating the effects of United Nations peacekeeping,
             using pre-treatment variables to adjust for differences
             between treatment and control
@@ -35,9 +35,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 1
+# 1 Overview
 
-## Some examples of regression
+## 1.3 Some examples of regression
 
 ### Estimating the effects of United Nations peacekeeping, using pre-treatment variables to adjust for differences between treatment and control groups
 

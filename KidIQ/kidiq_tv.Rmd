@@ -30,9 +30,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 10
+# 10 Linear regression with multiple predictors
 
-## Adding predictors to a model
+## 10.1 Adding predictors to a model
 
 ### Starting with a binary predictor
 
@@ -143,7 +143,7 @@ kids %>%
   )
 ```
 
-## Interactions
+## 10.3 Interactions
 
 ```{r}
 set.seed(765)
@@ -210,9 +210,9 @@ kids %>%
   )
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Plotting the data and fitted model
+## 11.2 Plotting the data and fitted model
 
 ### Displaying uncertainty in the fitted regression
 
@@ -293,7 +293,7 @@ v %>%
   )
 ```
 
-## Residual plots
+## 11.3 Residual plots
 
 ```{r}
 kids %>% 
@@ -309,9 +309,9 @@ kids %>%
   )
 ```
 
-# Chapter 12
+# 12 Transformations and regression
 
-## Centering and standardizing for models with interactions
+## 12.2 Centering and standardizing for models with interactions
 
 ```{r}
 fit_4
@@ -389,7 +389,7 @@ fit_4z <-
 fit_4z
 ```
 
-## Other transformations
+## 12.5 Other transformations
 
 ### Using discrete rather than continuous predictors
 

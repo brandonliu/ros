@@ -1,19 +1,16 @@
 Regression and Other Stories: SimpleCausal
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-02
 
--   [Simulated data from linear
-    model](#simulated-data-from-linear-model)
-    -   [Regression with binary
-        predictor](#regression-with-binary-predictor)
-    -   [Regression with continuous
-        predictor](#regression-with-continuous-predictor)
--   [Simulated data from nonlinear
-    model](#simulated-data-from-nonlinear-model)
-    -   [Regression with continuous
-        predictor](#regression-with-continuous-predictor-1)
--   [Simulated data from two groups](#simulated-data-from-two-groups)
+-   [1 Overview](#overview)
+    -   [1.4 Challenges in building, understanding, and interpreting
+        regressions](#challenges-in-building-understanding-and-interpreting-regressions)
+        -   [Regression to estimate a relationship of
+            interest](#regression-to-estimate-a-relationship-of-interest)
+        -   [Regression to adjust for differences between treatment and
+            control
+            groups](#regression-to-adjust-for-differences-between-treatment-and-control-groups)
 
 Tidyverse version by Bill Behrman.
 
@@ -42,7 +39,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Simulated data from linear model
+# 1 Overview
+
+## 1.4 Challenges in building, understanding, and interpreting regressions
+
+### Regression to estimate a relationship of interest
+
+Simulate data from linear model.
 
 ``` r
 set.seed(SEED)
@@ -56,7 +59,7 @@ df_1 <-
   )
 ```
 
-### Regression with binary predictor
+Regression with binary predictor.
 
 ``` r
 lm_1a <- lm(y ~ x_binary, data = df_1)
@@ -94,7 +97,7 @@ df_1 %>%
 
 <img src="causal_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
-### Regression with continuous predictor
+Regression with continuous predictor.
 
 ``` r
 lm_1b <- lm(y ~ x, data = df_1)
@@ -135,7 +138,7 @@ df_1 %>%
 
 <img src="causal_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
-## Simulated data from nonlinear model
+Simulate data from nonlinear model.
 
 ``` r
 set.seed(SEED)
@@ -149,7 +152,7 @@ df_2 <-
   )
 ```
 
-### Regression with continuous predictor
+Regression with continuous predictor.
 
 ``` r
 lm_2 <- lm(y ~ x, data = df_2)
@@ -198,7 +201,9 @@ df_2 %>%
 
 <img src="causal_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
 
-## Simulated data from two groups
+### Regression to adjust for differences between treatment and control groups
+
+Simulate data from two groups.
 
 ``` r
 set.seed(SEED)
@@ -217,6 +222,8 @@ df_3 <-
     y = rnorm(n, mean = 20 + 5 * x_1 + 10 * x_2, sd = 3)
   )
 ```
+
+Regression with two groups.
 
 ``` r
 lm_3 <- lm(y ~ x_1 + x_2, data = df_3)

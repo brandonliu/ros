@@ -1,10 +1,10 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-28
+2021-02-02
 
--   [Chapter 1](#chapter-1)
-    -   [Why learn regression?](#why-learn-regression)
+-   [1 Overview](#overview)
+    -   [1.2 Why learn regression?](#why-learn-regression)
 -   [Chapter 7](#chapter-7)
     -   [Plot of economy and election
         results](#plot-of-economy-and-election-results)
@@ -62,9 +62,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 1
+# 1 Overview
 
-## Why learn regression?
+## 1.2 Why learn regression?
 
 Data.
 

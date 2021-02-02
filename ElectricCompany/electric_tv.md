@@ -1,10 +1,10 @@
 Regression and Other Stories: Electric Company
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-29
+2021-02-02
 
--   [Chapter 1](#chapter-1)
-    -   [Some examples of regression](#some-examples-of-regression)
+-   [1 Overview](#overview)
+    -   [1.3 Some examples of regression](#some-examples-of-regression)
         -   [A randomized experiment on the effect of an educational
             television
             program](#a-randomized-experiment-on-the-effect-of-an-educational-television-program)
@@ -32,9 +32,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 1
+# 1 Overview
 
-## Some examples of regression
+## 1.3 Some examples of regression
 
 ### A randomized experiment on the effect of an educational television program
 

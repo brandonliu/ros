@@ -1,26 +1,29 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-01
+2021-02-02
 
--   [Chapter 10](#chapter-10)
-    -   [Adding predictors to a model](#adding-predictors-to-a-model)
+-   [10 Linear regression with multiple
+    predictors](#linear-regression-with-multiple-predictors)
+    -   [10.1 Adding predictors to a
+        model](#adding-predictors-to-a-model)
         -   [Starting with a binary
             predictor](#starting-with-a-binary-predictor)
         -   [A single continuous
             predictor](#a-single-continuous-predictor)
         -   [Including both predictors](#including-both-predictors)
-    -   [Interactions](#interactions)
--   [Chapter 11](#chapter-11)
-    -   [Plotting the data and fitted
+    -   [10.3 Interactions](#interactions)
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.2 Plotting the data and fitted
         model](#plotting-the-data-and-fitted-model)
         -   [Displaying uncertainty in the fitted
             regression](#displaying-uncertainty-in-the-fitted-regression)
         -   [Displaying using one plot for each input
             variable](#displaying-using-one-plot-for-each-input-variable)
-    -   [Residual plots](#residual-plots)
--   [Chapter 12](#chapter-12)
-    -   [Centering and standardizing for models with
+    -   [11.3 Residual plots](#residual-plots)
+-   [12 Transformations and regression](#transformations-and-regression)
+    -   [12.2 Centering and standardizing for models with
         interactions](#centering-and-standardizing-for-models-with-interactions)
         -   [Centering by subtracting the mean of the
             data](#centering-by-subtracting-the-mean-of-the-data)
@@ -29,7 +32,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         -   [Standardizing by subtracting the mean and dividing by 2
             standard
             deviations](#standardizing-by-subtracting-the-mean-and-dividing-by-2-standard-deviations)
-    -   [Other transformations](#other-transformations)
+    -   [12.5 Other transformations](#other-transformations)
         -   [Using discrete rather than continuous
             predictors](#using-discrete-rather-than-continuous-predictors)
 
@@ -57,9 +60,9 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 10
+# 10 Linear regression with multiple predictors
 
-## Adding predictors to a model
+## 10.1 Adding predictors to a model
 
 ### Starting with a binary predictor
 
@@ -248,7 +251,7 @@ kids %>%
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
-## Interactions
+## 10.3 Interactions
 
 ``` r
 set.seed(765)
@@ -339,9 +342,9 @@ kids %>%
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## Plotting the data and fitted model
+## 11.2 Plotting the data and fitted model
 
 ### Displaying uncertainty in the fitted regression
 
@@ -428,7 +431,7 @@ v %>%
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
 
-## Residual plots
+## 11.3 Residual plots
 
 ``` r
 kids %>% 
@@ -446,9 +449,9 @@ kids %>%
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
 
-# Chapter 12
+# 12 Transformations and regression
 
-## Centering and standardizing for models with interactions
+## 12.2 Centering and standardizing for models with interactions
 
 ``` r
 fit_4
@@ -606,7 +609,7 @@ fit_4z
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-## Other transformations
+## 12.5 Other transformations
 
 ### Using discrete rather than continuous predictors
 
