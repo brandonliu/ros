@@ -124,8 +124,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [unemployment_tv.md](Unemployment/unemployment_tv.md) - Time series fit and posterior predictive model checking for unemployment series
 - [Rsquared/](Rsquared/)
     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
-<!-- - [CrossValidation/](CrossValidation/) -->
-<!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+- [CrossValidation/](CrossValidation/)
+    - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation
 <!-- - [FakeKCV/](FakeKCV/) -->
 <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
 <!-- - [Pyth/](Pyth/) -->
@@ -273,8 +273,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Coverage/](Coverage/)
     - [coverage_tv.md](Coverage/coverage_tv.md) - Example of coverage
 <!-- - [Cows/](Cows/) -->
-<!-- - [CrossValidation/](CrossValidation/) -->
-<!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+- [CrossValidation/](CrossValidation/)
+    - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation
 <!-- - [SampleSize/](SampleSize/) -->
 <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 - [Death/](Death/)

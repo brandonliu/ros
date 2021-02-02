@@ -182,8 +182,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         unemployment series
 -   [Rsquared/](Rsquared/)
     -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
-        <!-- - [CrossValidation/](CrossValidation/) -->
-        <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+-   [CrossValidation/](CrossValidation/)
+    -   [crossvalidation\_tv.md](CrossValidation/crossvalidation_tv.md) -
+        Demonstration of cross validation
         <!-- - [FakeKCV/](FakeKCV/) -->
         <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
         <!-- - [Pyth/](Pyth/) -->
@@ -329,8 +330,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Coverage/](Coverage/)
     -   [coverage\_tv.md](Coverage/coverage_tv.md) - Example of coverage
         <!-- - [Cows/](Cows/) -->
-        <!-- - [CrossValidation/](CrossValidation/) -->
-        <!--     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation -->
+-   [CrossValidation/](CrossValidation/)
+    -   [crossvalidation\_tv.md](CrossValidation/crossvalidation_tv.md) -
+        Demonstration of cross validation
         <!-- - [SampleSize/](SampleSize/) -->
         <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 -   [Death/](Death/)
