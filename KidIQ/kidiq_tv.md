@@ -1,10 +1,9 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-21
+2021-02-01
 
 -   [Chapter 10](#chapter-10)
-    -   [Data](#data)
     -   [Adding predictors to a model](#adding-predictors-to-a-model)
         -   [Starting with a binary
             predictor](#starting-with-a-binary-predictor)
@@ -20,6 +19,19 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         -   [Displaying using one plot for each input
             variable](#displaying-using-one-plot-for-each-input-variable)
     -   [Residual plots](#residual-plots)
+-   [Chapter 12](#chapter-12)
+    -   [Centering and standardizing for models with
+        interactions](#centering-and-standardizing-for-models-with-interactions)
+        -   [Centering by subtracting the mean of the
+            data](#centering-by-subtracting-the-mean-of-the-data)
+        -   [Using a conventional centering
+            point](#using-a-conventional-centering-point)
+        -   [Standardizing by subtracting the mean and dividing by 2
+            standard
+            deviations](#standardizing-by-subtracting-the-mean-and-dividing-by-2-standard-deviations)
+    -   [Other transformations](#other-transformations)
+        -   [Using discrete rather than continuous
+            predictors](#using-discrete-rather-than-continuous-predictors)
 
 Tidyverse version by Bill Behrman.
 
@@ -47,7 +59,11 @@ source(file_common)
 
 # Chapter 10
 
-## Data
+## Adding predictors to a model
+
+### Starting with a binary predictor
+
+Data.
 
 ``` r
 kids <- read_csv(file_kids)
@@ -69,10 +85,6 @@ kids
     #>  9       102      1   81.6        1      24
     #> 10        95      1   95.1        1      19
     #> # … with 424 more rows
-
-## Adding predictors to a model
-
-### Starting with a binary predictor
 
 The option `refresh = 0` suppresses the default Stan sampling progress
 output. This is useful for small data with fast computation. For more
@@ -433,3 +445,202 @@ kids %>%
 ```
 
 <img src="kidiq_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+
+# Chapter 12
+
+## Centering and standardizing for models with interactions
+
+``` r
+fit_4
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+    #>  observations: 434
+    #>  predictors:   4
+    #> ------
+    #>               Median MAD_SD
+    #> (Intercept)   -10.2   14.4 
+    #> mom_hs         50.0   15.8 
+    #> mom_iq          1.0    0.2 
+    #> mom_hs:mom_iq  -0.5    0.2 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 18.0    0.6  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Centering by subtracting the mean of the data
+
+``` r
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_c1 = mom_hs - mean(mom_hs),
+    mom_iq_c1 = mom_iq - mean(mom_iq)
+  )
+```
+
+``` r
+set.seed(765)
+
+fit_4c1 <- 
+  stan_glm(
+    kid_score ~ mom_hs_c1 + mom_iq_c1 + mom_hs_c1:mom_iq_c1,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4c1
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      kid_score ~ mom_hs_c1 + mom_iq_c1 + mom_hs_c1:mom_iq_c1
+    #>  observations: 434
+    #>  predictors:   4
+    #> ------
+    #>                     Median MAD_SD
+    #> (Intercept)         87.7    0.9  
+    #> mom_hs_c1            2.9    2.4  
+    #> mom_iq_c1            0.6    0.1  
+    #> mom_hs_c1:mom_iq_c1 -0.5    0.2  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 18.0    0.6  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Using a conventional centering point
+
+``` r
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_c2 = mom_hs - 0.5,
+    mom_iq_c2 = mom_iq - 100
+  )
+```
+
+``` r
+set.seed(765)
+
+fit_4c2 <- 
+  stan_glm(
+    kid_score ~ mom_hs_c2 + mom_iq_c2 + mom_hs_c2:mom_iq_c2,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4c2
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      kid_score ~ mom_hs_c2 + mom_iq_c2 + mom_hs_c2:mom_iq_c2
+    #>  observations: 434
+    #>  predictors:   4
+    #> ------
+    #>                     Median MAD_SD
+    #> (Intercept)         86.8    1.3  
+    #> mom_hs_c2            2.8    2.5  
+    #> mom_iq_c2            0.7    0.1  
+    #> mom_hs_c2:mom_iq_c2 -0.5    0.2  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 18.0    0.6  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Standardizing by subtracting the mean and dividing by 2 standard deviations
+
+``` r
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_z = (mom_hs - mean(mom_hs)) / (2 * sd(mom_hs)),
+    mom_iq_z = (mom_iq - mean(mom_iq)) / (2 * sd(mom_iq))
+  )
+```
+
+``` r
+set.seed(765)
+
+fit_4z <- 
+  stan_glm(
+    kid_score ~ mom_hs_z + mom_iq_z + mom_hs_z:mom_iq_z,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4z
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      kid_score ~ mom_hs_z + mom_iq_z + mom_hs_z:mom_iq_z
+    #>  observations: 434
+    #>  predictors:   4
+    #> ------
+    #>                   Median MAD_SD
+    #> (Intercept)        87.7    0.9 
+    #> mom_hs_z            2.4    1.9 
+    #> mom_iq_z           17.7    1.9 
+    #> mom_hs_z:mom_iq_z -11.9    4.1 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 18.0    0.6  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+## Other transformations
+
+### Using discrete rather than continuous predictors
+
+``` r
+kids <- 
+  kids %>% 
+  mutate(mom_work = as.factor(mom_work))
+```
+
+``` r
+set.seed(765)
+
+fit_4z <- 
+  stan_glm(kid_score ~ mom_work, data = kids, refresh = 0)
+
+fit_4z
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      kid_score ~ mom_work
+    #>  observations: 434
+    #>  predictors:   4
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 82.0    2.2  
+    #> mom_work2    3.8    2.9  
+    #> mom_work3   11.5    3.5  
+    #> mom_work4    5.2    2.6  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 20.2    0.7  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg

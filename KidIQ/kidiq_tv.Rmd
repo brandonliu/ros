@@ -32,17 +32,17 @@ source(file_common)
 
 # Chapter 10
 
-## Data
+## Adding predictors to a model
+
+### Starting with a binary predictor
+
+Data.
 
 ```{r, message=FALSE}
 kids <- read_csv(file_kids)
 
 kids
 ```
-
-## Adding predictors to a model
-
-### Starting with a binary predictor
 
 The option `refresh = 0` suppresses the default Stan sampling progress output. This is useful for small data with fast computation. For more complex models and bigger data, it can be useful to see the progress.
 
@@ -307,5 +307,104 @@ kids %>%
     x = "Mother IQ score",
     y = "Residual"
   )
+```
+
+# Chapter 12
+
+## Centering and standardizing for models with interactions
+
+```{r}
+fit_4
+```
+
+### Centering by subtracting the mean of the data
+
+```{r}
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_c1 = mom_hs - mean(mom_hs),
+    mom_iq_c1 = mom_iq - mean(mom_iq)
+  )
+```
+
+```{r}
+set.seed(765)
+
+fit_4c1 <- 
+  stan_glm(
+    kid_score ~ mom_hs_c1 + mom_iq_c1 + mom_hs_c1:mom_iq_c1,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4c1
+```
+
+### Using a conventional centering point
+
+```{r}
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_c2 = mom_hs - 0.5,
+    mom_iq_c2 = mom_iq - 100
+  )
+```
+
+```{r}
+set.seed(765)
+
+fit_4c2 <- 
+  stan_glm(
+    kid_score ~ mom_hs_c2 + mom_iq_c2 + mom_hs_c2:mom_iq_c2,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4c2
+```
+
+### Standardizing by subtracting the mean and dividing by 2 standard deviations
+
+```{r}
+kids <- 
+  kids %>% 
+  mutate(
+    mom_hs_z = (mom_hs - mean(mom_hs)) / (2 * sd(mom_hs)),
+    mom_iq_z = (mom_iq - mean(mom_iq)) / (2 * sd(mom_iq))
+  )
+```
+
+```{r}
+set.seed(765)
+
+fit_4z <- 
+  stan_glm(
+    kid_score ~ mom_hs_z + mom_iq_z + mom_hs_z:mom_iq_z,
+    data = kids,
+    refresh = 0
+  )
+
+fit_4z
+```
+
+## Other transformations
+
+### Using discrete rather than continuous predictors
+
+```{r}
+kids <- 
+  kids %>% 
+  mutate(mom_work = as.factor(mom_work))
+```
+
+```{r}
+set.seed(765)
+
+fit_4z <- 
+  stan_glm(kid_score ~ mom_work, data = kids, refresh = 0)
+
+fit_4z
 ```
 
