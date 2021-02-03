@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-03
 
 -   [6 Background on regression
     modeling](#background-on-regression-modeling)
@@ -12,6 +12,10 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         -   [Earnings and height example](#earnings-and-height-example)
         -   [Why we use natural log rather than log base
             10](#why-we-use-natural-log-rather-than-log-base-10)
+        -   [Building a regression model on the log
+            scale](#building-a-regression-model-on-the-log-scale)
+        -   [Log-log model: transforming the input and outcome
+            variables](#log-log-model-transforming-the-input-and-outcome-variables)
 
 Tidyverse version by Bill Behrman.
 
@@ -548,6 +552,151 @@ print(fit_log10_1, digits = 2)
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
     #> sigma 0.38   0.01  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Building a regression model on the log scale
+
+#### Adding another predictor
+
+``` r
+fit_log_2 <- 
+  stan_glm(
+    log(earn) ~ height + sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_2, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log(earn) ~ height + sex
+    #>  observations: 1629
+    #>  predictors:   3
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 7.97   0.49  
+    #> height      0.02   0.01  
+    #> sexMale     0.37   0.06  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.87   0.01  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+#### Including an interaction
+
+``` r
+fit_log_3 <- 
+  stan_glm(
+    log(earn) ~ height + sex + height:sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_3, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log(earn) ~ height + sex + height:sex
+    #>  observations: 1629
+    #>  predictors:   4
+    #> ------
+    #>                Median MAD_SD
+    #> (Intercept)     8.47   0.68 
+    #> height          0.02   0.01 
+    #> sexMale        -0.80   1.01 
+    #> height:sexMale  0.02   0.01 
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.87   0.01  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+#### Linear transformation to make coefficients more interpretable
+
+Create rescaled variable `height_z` to have mean 0 and standard
+deviation 1.
+
+``` r
+earnings <- 
+  earnings %>% 
+  mutate(height_z = (height - mean(height)) / sd(height))
+```
+
+``` r
+fit_log_4 <- 
+  stan_glm(
+    log(earn) ~ height_z + sex + height_z:sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_4, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log(earn) ~ height_z + sex + height_z:sex
+    #>  observations: 1629
+    #>  predictors:   4
+    #> ------
+    #>                  Median MAD_SD
+    #> (Intercept)      9.54   0.04  
+    #> height_z         0.06   0.04  
+    #> sexMale          0.35   0.06  
+    #> height_z:sexMale 0.08   0.06  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.87   0.02  
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+### Log-log model: transforming the input and outcome variables
+
+``` r
+fit_log_5 <- 
+  stan_glm(
+    log(earn) ~ log(height) + sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_5, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       gaussian [identity]
+    #>  formula:      log(earn) ~ log(height) + sex
+    #>  observations: 1629
+    #>  predictors:   3
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) 2.83   2.20  
+    #> log(height) 1.60   0.53  
+    #> sexMale     0.37   0.06  
+    #> 
+    #> Auxiliary parameter(s):
+    #>       Median MAD_SD
+    #> sigma 0.87   0.02  
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg

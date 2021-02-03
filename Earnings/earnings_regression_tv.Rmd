@@ -413,3 +413,69 @@ fit_log10_1 <-
 print(fit_log10_1, digits = 2)
 ```
 
+### Building a regression model on the log scale
+
+#### Adding another predictor
+
+```{r}
+fit_log_2 <- 
+  stan_glm(
+    log(earn) ~ height + sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_2, digits = 2)
+```
+
+#### Including an interaction
+
+```{r}
+fit_log_3 <- 
+  stan_glm(
+    log(earn) ~ height + sex + height:sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_3, digits = 2)
+```
+
+#### Linear transformation to make coefficients more interpretable
+
+Create rescaled variable `height_z` to have mean 0 and standard deviation 1.
+
+```{r}
+earnings <- 
+  earnings %>% 
+  mutate(height_z = (height - mean(height)) / sd(height))
+```
+
+```{r}
+fit_log_4 <- 
+  stan_glm(
+    log(earn) ~ height_z + sex + height_z:sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_4, digits = 2)
+```
+
+### Log-log model: transforming the input and outcome variables
+
+```{r}
+fit_log_5 <- 
+  stan_glm(
+    log(earn) ~ log(height) + sex,
+    data = earnings %>% filter(earn > 0),
+    seed = SEED,
+    refresh = 0
+  )
+
+print(fit_log_5, digits = 2)
+```
+
