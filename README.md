@@ -185,9 +185,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [CrossValidation/](CrossValidation/)
     -   [crossvalidation\_tv.md](CrossValidation/crossvalidation_tv.md) -
         Demonstration of cross validation
-        <!-- - [FakeKCV/](FakeKCV/) -->
-        <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
-        <!-- - [Pyth/](Pyth/) -->
+-   [FakeKCV/](FakeKCV/)
+    -   [fake\_kcv\_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of
+        *K*-fold cross-validation using simulated data
+-   [Pyth/](Pyth/)
 
 <!-- ### 12  Transformations -->
 <!-- - [KidIQ/](KidIQ/) -->
@@ -359,8 +360,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         uncertainty in parameter estimates
 -   [ElectricCompany/](ElectricCompany/)
     -   [electric\_tv.md](ElectricCompany/electric_tv.md) - Analysis of
-        “Electric Company” data <!-- - [FakeKCV/](FakeKCV/) -->
-        <!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
+        “Electric Company” data
+-   [FakeKCV/](FakeKCV/)
+    -   [fake\_kcv\_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of
+        *K*-fold cross-validation using simulated data
 -   [FakeMidtermFinal/](FakeMidtermFinal/)
     -   [simulation\_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake
         dataset of 1000 students’ scores on a midterm and final exam

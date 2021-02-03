@@ -126,9 +126,9 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [rsquared_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
 - [CrossValidation/](CrossValidation/)
     - [crossvalidation_tv.md](CrossValidation/crossvalidation_tv.md) - Demonstration of cross validation
-<!-- - [FakeKCV/](FakeKCV/) -->
-<!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
-<!-- - [Pyth/](Pyth/) -->
+- [FakeKCV/](FakeKCV/)
+    - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data
+- [Pyth/](Pyth/)
 
 <!-- ### 12  Transformations -->
 <!-- - [KidIQ/](KidIQ/) -->
@@ -293,8 +293,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [hills_tv.md](ElectionsEconomy/hills_tv.md) - Present uncertainty in parameter estimates
 - [ElectricCompany/](ElectricCompany/)
     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data
-<!-- - [FakeKCV/](FakeKCV/) -->
-<!--     - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data -->
+- [FakeKCV/](FakeKCV/)
+    - [fake_kcv_tv.md](FakeKCV/fake_kcv_tv.md) - Demonstration of $K$-fold cross-validation using simulated data
 - [FakeMidtermFinal/](FakeMidtermFinal/)
     - [simulation_tv.md](FakeMidtermFinal/simulation_tv.md) - Fake dataset of 1000 students' scores on a midterm and final exam
 <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
