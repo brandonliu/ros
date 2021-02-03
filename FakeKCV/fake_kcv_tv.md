@@ -1,10 +1,11 @@
 Regression and Other Stories: FakeKCV
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-29
+2021-02-03
 
--   [Chapter 11](#chapter-11)
-    -   [K-fold cross validation](#k-fold-cross-validation)
+-   [11 Assumptions, diagnostics, and model
+    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    -   [11.8 Cross validation](#cross-validation)
         -   [Demonstration of K-fold cross validation using simulated
             data](#demonstration-of-k-fold-cross-validation-using-simulated-data)
 
@@ -30,15 +31,15 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 11
+# 11 Assumptions, diagnostics, and model evaluation
 
-## K-fold cross validation
+## 11.8 Cross validation
 
 ### Demonstration of K-fold cross validation using simulated data
 
 Simulated data. 60 × 30 matrix representing 30 predictors that are
 random but not independent; rather, we draw them from a multivariate
-normal distribution with correlations 0.8.
+normal distribution with correlations of 0.8.
 
 ``` r
 set.seed(586)
