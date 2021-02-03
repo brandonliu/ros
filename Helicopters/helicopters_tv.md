@@ -1,9 +1,10 @@
 Regression and Other Stories: Helicopters
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-03
 
--   [Data](#data)
+-   [1 Overview](#overview)
+    -   [1.8 Exercises](#exercises)
 
 Tidyverse version by Bill Behrman.
 
@@ -28,7 +29,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 1 Overview
+
+## 1.8 Exercises
+
+Data.
 
 ``` r
 helicopters <- 
