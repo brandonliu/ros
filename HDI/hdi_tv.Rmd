@@ -32,7 +32,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.1 Examining where data come from
+
+Data.
 
 ```{r}
 hdi <- 
@@ -75,9 +79,7 @@ hdi_income <-
 hdi_income
 ```
 
-## Plots
-
-### Average state income and Human Development Index
+Average state income and Human Development Index.
 
 ```{r}
 hdi_income %>% 
@@ -86,12 +88,13 @@ hdi_income %>%
   geom_point() +
   ggrepel::geom_text_repel(aes(label = state_abbr)) +
   labs(
+    title = "Human Development Index vs. average state income",
     x = "Average state income in 2000",
     y = "Human Development Index"
   )
 ```
 
-### Rank of state income and Human Development Index
+Rank of state income and Human Development Index.
 
 ```{r}
 hdi_income %>% 
@@ -102,12 +105,13 @@ hdi_income %>%
   scale_x_reverse() +
   scale_y_reverse() +
   labs(
-    x = "Rank of state income in 2000",
-    y = "Rank of Human Development Index"
+    title = "Human Development Index rank vs. state income rank",
+    x = "State income rank in 2000",
+    y = "Human Development Index rank"
   )
 ```
 
-### Human Development Index by state
+Human Development Index by state.
 
 Boundaries for U.S. states using [ussf package](https://github.com/dcl-docs/ussf).
 
@@ -145,7 +149,7 @@ us_hdi %>%
   )
 ```
 
-### Distance from Canada
+Distance from Canada.
 
 ```{r}
 us_hdi %>% 

@@ -1,17 +1,11 @@
 Regression and Other Stories: Human Development Index
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-03
 
--   [Data](#data)
--   [Plots](#plots)
-    -   [Average state income and Human Development
-        Index](#average-state-income-and-human-development-index)
-    -   [Rank of state income and Human Development
-        Index](#rank-of-state-income-and-human-development-index)
-    -   [Human Development Index by
-        state](#human-development-index-by-state)
-    -   [Distance from Canada](#distance-from-canada)
+-   [2 Data and measurement](#data-and-measurement)
+    -   [2.1 Examining where data come
+        from](#examining-where-data-come-from)
 
 Tidyverse version by Bill Behrman.
 
@@ -39,7 +33,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.1 Examining where data come from
+
+Data.
 
 ``` r
 hdi <- 
@@ -135,9 +133,7 @@ hdi_income
     #> 10 Rhode Isl… 0.958       10           3 RI              26620.               18
     #> # … with 41 more rows
 
-## Plots
-
-### Average state income and Human Development Index
+Average state income and Human Development Index.
 
 ``` r
 hdi_income %>% 
@@ -146,6 +142,7 @@ hdi_income %>%
   geom_point() +
   ggrepel::geom_text_repel(aes(label = state_abbr)) +
   labs(
+    title = "Human Development Index vs. average state income",
     x = "Average state income in 2000",
     y = "Human Development Index"
   )
@@ -153,7 +150,7 @@ hdi_income %>%
 
 <img src="hdi_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
-### Rank of state income and Human Development Index
+Rank of state income and Human Development Index.
 
 ``` r
 hdi_income %>% 
@@ -164,14 +161,15 @@ hdi_income %>%
   scale_x_reverse() +
   scale_y_reverse() +
   labs(
-    x = "Rank of state income in 2000",
-    y = "Rank of Human Development Index"
+    title = "Human Development Index rank vs. state income rank",
+    x = "State income rank in 2000",
+    y = "Human Development Index rank"
   )
 ```
 
 <img src="hdi_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
-### Human Development Index by state
+Human Development Index by state.
 
 Boundaries for U.S. states using [ussf
 package](https://github.com/dcl-docs/ussf).
@@ -219,7 +217,7 @@ us_hdi %>%
 
 <img src="hdi_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
-### Distance from Canada
+Distance from Canada.
 
 ``` r
 us_hdi %>% 
