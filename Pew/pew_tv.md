@@ -1,16 +1,13 @@
 Regression and Other Stories: Pew
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-04
 
--   [Data](#data)
-    -   [Income](#income)
-    -   [Party identification](#party-identification)
-    -   [Political ideology](#political-ideology)
--   [Plots](#plots)
-    -   [Political ideology by income](#political-ideology-by-income)
-    -   [Party identification by
-        income](#party-identification-by-income)
+-   [2 Data and measurement](#data-and-measurement)
+    -   [2.1 Examining where data come
+        from](#examining-where-data-come-from)
+        -   [Details of measurement can be
+            important](#details-of-measurement-can-be-important)
 
 Tidyverse version by Bill Behrman.
 
@@ -36,7 +33,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.1 Examining where data come from
+
+### Details of measurement can be important
+
+#### Data
 
 ``` r
 pew <- 
@@ -121,7 +124,7 @@ glimpse(pew)
     #> $ income2     <fct> "$50,000 to $74,999", "$75,000+", NA, "$30,000 to $49,999…
     #> $ party4      <fct> democrat, republican, independent, independent, democrat,…
 
-### Income
+Income.
 
 ``` r
 pew %>% 
@@ -161,7 +164,7 @@ pew <-
   mutate(income = na_if(income, "dk/refused") %>% fct_recode(!!! income_recode))
 ```
 
-### Party identification
+Party identification.
 
 ``` r
 pew %>% 
@@ -228,7 +231,7 @@ pew %>%
     #> 10 no preference lean republican Lean Republican   175
     #> # … with 6 more rows
 
-### Political ideology
+Political ideology.
 
 ``` r
 pew %>% 
@@ -258,9 +261,9 @@ pew <-
   mutate(ideo = na_if(ideo, "dk/refused") %>% fct_recode(!!! ideo_recode))
 ```
 
-## Plots
+#### Plots
 
-### Political ideology by income
+Political ideology by income.
 
 ``` r
 v <- 
@@ -297,7 +300,7 @@ v %>%
 
 <img src="pew_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
-### Party identification by income
+Party identification by income.
 
 ``` r
 v <- 
