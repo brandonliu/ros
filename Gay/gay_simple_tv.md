@@ -23,8 +23,6 @@ library(rstanarm)
 # Parameters
   # Data on support for same-sex marriage
 file_data <- here::here("Gay/data/naes04.csv")
-  # Age breaks for age bins
-age_breaks <- c(0, seq(29, 79, 10), 100)
   # Common code
 file_common <- here::here("_common.R")
 
@@ -98,16 +96,20 @@ data %>%
     #> # … with 70 more rows
 
 Because of the relatively small number of respondents over age 90, we
-will let age 91 represent respondents ages 91 and up. We will also bin
-ages using the parameter `age_bin`.
+will let age 91 represent respondents ages 91 and over. We will also
+create a variable for binned ages.
 
 ``` r
+age_max <-  91
+
 data <- 
   data %>% 
-  mutate(age = if_else(age >= 91, 91, age)) %>%
+  mutate(age = if_else(age >= age_max , age_max, age)) %>%
   group_by(age) %>% 
   summarize(favor = sum(gayFavorStateMarriage == "Yes") / n()) %>% 
-  mutate(age_bin = cut(age, breaks = age_breaks))
+  mutate(
+    age_bin = cut(age, breaks = c(min(age) - 1, seq(29, 79, 10), age_max))
+  )
 
 data
 ```
@@ -115,16 +117,16 @@ data
     #> # A tibble: 74 x 3
     #>      age favor age_bin
     #>    <dbl> <dbl> <fct>  
-    #>  1    18 0.486 (0,29] 
-    #>  2    19 0.5   (0,29] 
-    #>  3    20 0.472 (0,29] 
-    #>  4    21 0.463 (0,29] 
-    #>  5    22 0.453 (0,29] 
-    #>  6    23 0.463 (0,29] 
-    #>  7    24 0.458 (0,29] 
-    #>  8    25 0.506 (0,29] 
-    #>  9    26 0.494 (0,29] 
-    #> 10    27 0.406 (0,29] 
+    #>  1    18 0.486 (17,29]
+    #>  2    19 0.5   (17,29]
+    #>  3    20 0.472 (17,29]
+    #>  4    21 0.463 (17,29]
+    #>  5    22 0.453 (17,29]
+    #>  6    23 0.463 (17,29]
+    #>  7    24 0.458 (17,29]
+    #>  8    25 0.506 (17,29]
+    #>  9    26 0.494 (17,29]
+    #> 10    27 0.406 (17,29]
     #> # … with 64 more rows
 
 Fit linear regression model.
@@ -192,14 +194,14 @@ print(fit_binned, digits = 2)
     #>  observations: 74
     #>  predictors:   7
     #> ------
-    #>                 Median MAD_SD
-    #> (Intercept)      0.46   0.01 
-    #> age_bin(29,39]  -0.10   0.01 
-    #> age_bin(39,49]  -0.14   0.01 
-    #> age_bin(49,59]  -0.14   0.01 
-    #> age_bin(59,69]  -0.25   0.01 
-    #> age_bin(69,79]  -0.28   0.01 
-    #> age_bin(79,100] -0.32   0.01 
+    #>                Median MAD_SD
+    #> (Intercept)     0.46   0.01 
+    #> age_bin(29,39] -0.10   0.01 
+    #> age_bin(39,49] -0.14   0.01 
+    #> age_bin(49,59] -0.14   0.01 
+    #> age_bin(59,69] -0.25   0.01 
+    #> age_bin(69,79] -0.28   0.01 
+    #> age_bin(79,91] -0.32   0.01 
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
@@ -224,7 +226,6 @@ levels <-
   ) %>% 
   mutate(
     age_min = age_min + 1L,
-    age_max = if_else(age_max == 100, 91L, age_max),
     favor = 
       case_when(
         age_min == 18 ~ favor,
@@ -243,7 +244,7 @@ data %>%
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
   labs(
     title = "Attitudes toward same-sex marriage by age in 2004",
-    subtitle = "With binned ages",
+    subtitle = "For binned ages",
     x = "Age",
     y = "Favor same-sex marriage"
   )

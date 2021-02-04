@@ -21,8 +21,6 @@ library(rstanarm)
 # Parameters
   # Data on support for same-sex marriage
 file_data <- here::here("Gay/data/naes04.csv")
-  # Age breaks for age bins
-age_breaks <- c(0, seq(29, 79, 10), 100)
   # Common code
 file_common <- here::here("_common.R")
 
@@ -62,15 +60,19 @@ data %>%
   arrange(desc(age))
 ```
 
-Because of the relatively small number of respondents over age 90, we will let age 91 represent respondents ages 91 and up. We will also bin ages using the parameter `age_bin`. 
+Because of the relatively small number of respondents over age 90, we will let age 91 represent respondents ages 91 and over. We will also create a variable for binned ages.
 
 ```{r}
+age_max <-  91
+
 data <- 
   data %>% 
-  mutate(age = if_else(age >= 91, 91, age)) %>%
+  mutate(age = if_else(age >= age_max , age_max, age)) %>%
   group_by(age) %>% 
   summarize(favor = sum(gayFavorStateMarriage == "Yes") / n()) %>% 
-  mutate(age_bin = cut(age, breaks = age_breaks))
+  mutate(
+    age_bin = cut(age, breaks = c(min(age) - 1, seq(29, 79, 10), age_max))
+  )
 
 data
 ```
@@ -129,7 +131,6 @@ levels <-
   ) %>% 
   mutate(
     age_min = age_min + 1L,
-    age_max = if_else(age_max == 100, 91L, age_max),
     favor = 
       case_when(
         age_min == 18 ~ favor,
@@ -148,7 +149,7 @@ data %>%
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
   labs(
     title = "Attitudes toward same-sex marriage by age in 2004",
-    subtitle = "With binned ages",
+    subtitle = "For binned ages",
     x = "Age",
     y = "Favor same-sex marriage"
   )
