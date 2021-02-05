@@ -1,7 +1,7 @@
 Regression and Other Stories: FakeKCV
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-03
+2021-02-04
 
 -   [11 Assumptions, diagnostics, and model
     evaluation](#assumptions-diagnostics-and-model-evaluation)
@@ -154,11 +154,10 @@ loo_1
 
 In this case, Pareto smoothed importance sampling (PSIS) LOO fails, but
 the diagnostic recognizes this with many high Pareto k values. We can
-run slower, but more robust K-fold cross-validation. By default,
-`kfold()` uses the argument `K = 10`.
+run slower, but more robust K-fold cross-validation.
 
 ``` r
-kfold_1 <- kfold(fit_1)
+kfold_1 <- kfold(fit_1, K = 10)
 
 kfold_1
 ```
@@ -279,7 +278,7 @@ loo_2
 Perform K-fold cross-validation.
 
 ``` r
-kfold_2 <- kfold(fit_2)
+kfold_2 <- kfold(fit_2, K = 10)
 
 kfold_2
 ```

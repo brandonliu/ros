@@ -78,10 +78,10 @@ loo_1 <- loo(fit_1)
 loo_1
 ```
 
-In this case, Pareto smoothed importance sampling (PSIS) LOO fails, but the diagnostic recognizes this with many high Pareto k values. We can run slower, but more robust K-fold cross-validation. By default, `kfold()` uses the argument `K = 10`.
+In this case, Pareto smoothed importance sampling (PSIS) LOO fails, but the diagnostic recognizes this with many high Pareto k values. We can run slower, but more robust K-fold cross-validation.
 
 ```{r, message=FALSE}
-kfold_1 <- kfold(fit_1)
+kfold_1 <- kfold(fit_1, K = 10)
 
 kfold_1
 ```
@@ -125,7 +125,7 @@ loo_2
 Perform K-fold cross-validation.
 
 ```{r, message=FALSE}
-kfold_2 <- kfold(fit_2)
+kfold_2 <- kfold(fit_2, K = 10)
 
 kfold_2
 ```
