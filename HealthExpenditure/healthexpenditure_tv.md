@@ -1,10 +1,11 @@
 Regression and Other Stories: Health Expenditure
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-05
 
--   [Data](#data)
--   [Plot](#plot)
+-   [2 Data and measurement](#data-and-measurement)
+    -   [2.3 All graphs are comparisons](#all-graphs-are-comparisons)
+        -   [Simple scatterplots](#simple-scatterplots)
 
 Tidyverse version by Bill Behrman.
 
@@ -29,7 +30,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.3 All graphs are comparisons
+
+### Simple scatterplots
+
+Data.
 
 ``` r
 health <- 
@@ -55,9 +62,11 @@ health
     #> 10 Greece        2727     79.5
     #> # … with 20 more rows
 
-## Plot
+Health care spending and life expectancy in several countries.
 
 ``` r
+set.seed(576)
+
 country_recode <- 
   c(
     "Czech" = "Czech Republic",
@@ -80,6 +89,7 @@ v %>%
   ) +
   theme(legend.position = "none") +
   labs(
+    title = "Health care spending and life expectancy in several countries",
     x = "Health care spending (PPP USD)",
     y = "Life expectancy (years)"
   )
