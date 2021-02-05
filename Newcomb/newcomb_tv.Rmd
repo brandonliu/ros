@@ -79,7 +79,7 @@ sims <- as_tibble(fit)
 n_sims <- nrow(sims)
 n_newcomb <- nrow(newcomb)
 
-y_rep_sim <- 
+y_rep_tidy <- 
   sims %>% 
   pmap_dfr(
     ~ tibble(y = rnorm(n_newcomb, mean = .x, sd = .y)),
@@ -87,10 +87,10 @@ y_rep_sim <-
   ) %>% 
   mutate(rep = as.integer(rep))
 
-y_rep_sim
+y_rep_tidy
 ```
 
-`y_rep_sim` is a tidy tibble with `r n_sims` * `r n_newcomb` rows.
+`y_rep_tidy` is a tidy tibble with `r n_sims` * `r n_newcomb` rows.
 
 Simulate using `posterior_predict()`.
 
@@ -105,15 +105,15 @@ dim(y_rep)
 
 `y_rep` is a matrix with `r nrow(y_rep)` rows and `r ncol(y_rep)` columns.
 
-Compare `y_rep_sim` and `y_rep`.
+Compare `y_rep_tidy` and `y_rep`.
 
 ```{r}
-v <- matrix(y_rep_sim$y, nrow = n_sims, ncol = n_newcomb, byrow = TRUE)
+v <- matrix(y_rep_tidy$y, nrow = n_sims, ncol = n_newcomb, byrow = TRUE)
 
 max(abs(y_rep - v))
 ```
 
-`y_rep_sim` and `y_rep` have the same replicate values.
+`y_rep_tidy` and `y_rep` have the same replicate values.
 
 #### Visual comparison of actual and replicated datasets
 
@@ -122,7 +122,7 @@ Plot histograms for 20 sample replicates.
 ```{r, fig.asp=0.75}
 set.seed(792)
 
-y_rep_sim %>% 
+y_rep_tidy %>% 
   filter(rep %in% sample(n_sims, 20)) %>% 
   ggplot(aes(y)) + 
   geom_histogram(binwidth = 4, boundary = 0) +
@@ -139,19 +139,20 @@ ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
 ```
 
 ```{r}
+set.seed(792)
+
 n_rep <- 100
+sims_sample <- sample(n_sims, n_rep)
 ```
 
 
 Plot kernel density of data and `r n_rep` sample replicates.
 
 ```{r, fig.asp=0.75}
-set.seed(792)
-
 ggplot(mapping = aes(y)) +
   stat_density(
     aes(group = rep, color = "y_rep"),
-    data = y_rep_sim %>% filter(rep %in% sample(n_sims, n_rep)),
+    data = y_rep_tidy %>% filter(rep %in% sims_sample),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -174,9 +175,7 @@ ggplot(mapping = aes(y)) +
 Plot kernel density of data and `r n_rep` sample replicates using bayesplot.
 
 ```{r}
-set.seed(792)
-
-ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, n_rep), ])
+ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sims_sample, ])
 ```
 
 #### Checking model fit using a numerical data summary
@@ -185,7 +184,7 @@ Plot test statistic for data and replicates.
 
 ```{r}
 v <- 
-  y_rep_sim %>% 
+  y_rep_tidy %>% 
   group_by(rep) %>% 
   summarize(y_min = min(y))
 

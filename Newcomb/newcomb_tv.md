@@ -1,7 +1,7 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-04
 
 -   [11 Assumptions, diagnostics, and model
     evaluation](#assumptions-diagnostics-and-model-evaluation)
@@ -119,7 +119,7 @@ sims <- as_tibble(fit)
 n_sims <- nrow(sims)
 n_newcomb <- nrow(newcomb)
 
-y_rep_sim <- 
+y_rep_tidy <- 
   sims %>% 
   pmap_dfr(
     ~ tibble(y = rnorm(n_newcomb, mean = .x, sd = .y)),
@@ -127,7 +127,7 @@ y_rep_sim <-
   ) %>% 
   mutate(rep = as.integer(rep))
 
-y_rep_sim
+y_rep_tidy
 ```
 
     #> # A tibble: 264,000 x 2
@@ -145,7 +145,7 @@ y_rep_sim
     #> 10     1 31.9 
     #> # … with 263,990 more rows
 
-`y_rep_sim` is a tidy tibble with 4000 \* 66 rows.
+`y_rep_tidy` is a tidy tibble with 4000 \* 66 rows.
 
 Simulate using `posterior_predict()`.
 
@@ -167,17 +167,17 @@ dim(y_rep)
 
 `y_rep` is a matrix with 4000 rows and 66 columns.
 
-Compare `y_rep_sim` and `y_rep`.
+Compare `y_rep_tidy` and `y_rep`.
 
 ``` r
-v <- matrix(y_rep_sim$y, nrow = n_sims, ncol = n_newcomb, byrow = TRUE)
+v <- matrix(y_rep_tidy$y, nrow = n_sims, ncol = n_newcomb, byrow = TRUE)
 
 max(abs(y_rep - v))
 ```
 
     #> [1] 0
 
-`y_rep_sim` and `y_rep` have the same replicate values.
+`y_rep_tidy` and `y_rep` have the same replicate values.
 
 #### Visual comparison of actual and replicated datasets
 
@@ -186,7 +186,7 @@ Plot histograms for 20 sample replicates.
 ``` r
 set.seed(792)
 
-y_rep_sim %>% 
+y_rep_tidy %>% 
   filter(rep %in% sample(n_sims, 20)) %>% 
   ggplot(aes(y)) + 
   geom_histogram(binwidth = 4, boundary = 0) +
@@ -207,18 +207,19 @@ ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
 ``` r
+set.seed(792)
+
 n_rep <- 100
+sims_sample <- sample(n_sims, n_rep)
 ```
 
 Plot kernel density of data and 100 sample replicates.
 
 ``` r
-set.seed(792)
-
 ggplot(mapping = aes(y)) +
   stat_density(
     aes(group = rep, color = "y_rep"),
-    data = y_rep_sim %>% filter(rep %in% sample(n_sims, n_rep)),
+    data = y_rep_tidy %>% filter(rep %in% sims_sample),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -243,9 +244,7 @@ ggplot(mapping = aes(y)) +
 Plot kernel density of data and 100 sample replicates using bayesplot.
 
 ``` r
-set.seed(792)
-
-ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sample(n_sims, n_rep), ])
+ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sims_sample, ])
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
@@ -256,7 +255,7 @@ Plot test statistic for data and replicates.
 
 ``` r
 v <- 
-  y_rep_sim %>% 
+  y_rep_tidy %>% 
   group_by(rep) %>% 
   summarize(y_min = min(y))
 
