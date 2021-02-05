@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-03
+2021-02-04
 
 -   [6 Background on regression
     modeling](#background-on-regression-modeling)
@@ -391,26 +391,22 @@ set.seed(377)
 
 y_rep_1 <- posterior_predict(fit_1)
 
-n_sims_1 <- nrow(y_rep_1)
+n_sims <- nrow(y_rep_1)
+n_rep <- 100
+sims_sample <- sample(n_sims, n_rep)
 
 y_rep_1_tidy <- 
-  seq_len(n_sims_1) %>% 
+  seq_len(n_sims) %>% 
   map_dfr(~ tibble(rep = ., earn = y_rep_1[., ]))
-```
-
-``` r
-n_rep <- 100
 ```
 
 Kernel density of data and 100 sample replicates from non-log model.
 
 ``` r
-set.seed(539)
-
 ggplot(mapping = aes(earn)) +
   stat_density(
     aes(group = rep, color = "y_rep"),
-    data = y_rep_1_tidy %>% filter(rep %in% sample(n_sims_1, n_rep)),
+    data = y_rep_1_tidy %>% filter(rep %in% sims_sample),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -423,7 +419,7 @@ ggplot(mapping = aes(earn)) +
   ) +
   coord_cartesian(xlim = c(NA, 1e5)) +
   scale_x_continuous(labels = scales::label_comma()) +
-  scale_y_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = 0) +
   scale_color_discrete(
     breaks = c("y", "y_rep"),
     labels = c("Data", "Replicates")
@@ -440,21 +436,20 @@ ggplot(mapping = aes(earn)) +
   )
 ```
 
-<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
 
 Kernel density of data and 100 sample replicates from non-log model
 using bayesplot.
 
 ``` r
-set.seed(539)
-
 ppc_dens_overlay(
   y = earnings$earn %>% keep(. > 0),
-  yrep = y_rep_1[sample(n_sims_1, n_rep), ]
-)
+  yrep = y_rep_1[sims_sample, ]
+) +
+  theme(text = element_text(family = "sans"))
 ```
 
-<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
 
 Simulate new data for log model.
 
@@ -463,22 +458,18 @@ set.seed(377)
 
 y_rep_log_1 <- posterior_predict(fit_log_1)
 
-n_sims_log_1 <- nrow(y_rep_log_1)
-
 y_rep_log_1_tidy <- 
-  seq_len(n_sims_log_1) %>% 
+  seq_len(n_sims) %>% 
   map_dfr(~ tibble(rep = ., log_earn = y_rep_log_1[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from log model.
 
 ``` r
-set.seed(539)
-
 ggplot() +
   stat_density(
     aes(log_earn, group = rep, color = "y_rep"),
-    data = y_rep_log_1_tidy %>% filter(rep %in% sample(n_sims_log_1, n_rep)),
+    data = y_rep_log_1_tidy %>% filter(rep %in% sims_sample),
     geom = "line",
     position = "identity",
     alpha = 0.5,
@@ -490,7 +481,7 @@ ggplot() +
     geom = "line"
   ) +
   scale_x_continuous(breaks = scales::breaks_width(2)) +
-  scale_y_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = 0) +
   scale_color_discrete(
     breaks = c("y", "y_rep"),
     labels = c("Data", "Replicates")
@@ -501,27 +492,26 @@ ggplot() +
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from log model"
       ),
-    x = "Log Earnings",
+    x = "Log earnings",
     y = NULL,
     color = NULL
   )
 ```
 
-<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-16-1.png" width="100%" />
 
 Kernel density of data and 100 sample replicates from log model using
 bayesplot.
 
 ``` r
-set.seed(539)
-
 ppc_dens_overlay(
   y = earnings$earn %>% keep(. > 0) %>% log(),
-  yrep = y_rep_log_1[sample(n_sims_log_1, n_rep), ]
-)
+  yrep = y_rep_log_1[sims_sample, ]
+) +
+  theme(text = element_text(family = "sans"))
 ```
 
-<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-18-1.png" width="100%" />
+<img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
 
 ### Why we use natural log rather than log base 10
 
