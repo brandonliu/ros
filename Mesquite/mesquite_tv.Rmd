@@ -27,6 +27,16 @@ file_mesquite <- here::here("Mesquite/data/mesquite.dat")
   # Common code
 file_common <- here::here("_common.R")
 
+# Functions
+  # LOO R^2
+loo_r2 <- function(fit, digits = 2) {
+  round(median(loo_R2(fit)), digits = digits)
+}
+  # Bayesian R^2
+bayes_r2 <- function(fit, digits = 2) {
+  round(median(bayes_R2(fit)), digits = digits)
+}
+
 #===============================================================================
 
 # Run common code
@@ -70,6 +80,8 @@ fit_1 <-
 fit_1
 ```
 
+LOO log score
+
 ```{r}
 loo_1 <- loo(fit_1)
 ```
@@ -82,10 +94,16 @@ loo_1 <- loo(fit_1, k_threshold = 0.7)
 loo_1
 ```
 
+LOO $R^2$
+
+```{r, warning=FALSE}
+loo_r2(fit_1)
+```
+
 Bayesian $R^2$
 
 ```{r}
-median(bayes_R2(fit_1))
+bayes_r2(fit_1)
 ```
 
 #### Predict log(weight) given log transformed predictors
@@ -104,6 +122,8 @@ fit_2 <-
 fit_2
 ```
 
+LOO log score
+
 ```{r}
 loo_2 <- loo(fit_2)
 ```
@@ -116,10 +136,16 @@ loo_2 <- loo(fit_2, k_threshold = 0.7)
 loo_2
 ```
 
+LOO $R^2$
+
+```{r, warning=FALSE}
+loo_r2(fit_2)
+```
+
 Bayesian $R^2$
 
 ```{r}
-median(bayes_R2(fit_2))
+bayes_r2(fit_2)
 ```
 
 ### Using the Jacobian to adjust the predictive comparison after a tranformation
@@ -317,16 +343,24 @@ fit_3 <-
 fit_3
 ```
 
+LOO log score
+
 ```{r}
 loo_3 <- loo(fit_3)
 
 loo_3
 ```
 
+LOO $R^2$
+
+```{r}
+loo_r2(fit_3)
+```
+
 Bayesian $R^2$
 
 ```{r}
-median(bayes_R2(fit_3))
+bayes_r2(fit_3)
 ```
 
 Compare log scores. Models 2 and 3 both use `log(weight)` as the outcome variable, so they can be compared directly.
@@ -353,16 +387,24 @@ fit_4 <-
 fit_4
 ```
 
+LOO log score
+
 ```{r}
 loo_4 <- loo(fit_4)
 
 loo_4
 ```
 
+LOO $R^2$
+
+```{r, warning=FALSE}
+loo_r2(fit_4)
+```
+
 Bayesian $R^2$
 
 ```{r}
-median(bayes_R2(fit_4))
+bayes_r2(fit_4)
 ```
 
 Compare log scores.
@@ -387,16 +429,24 @@ fit_5 <-
 fit_5
 ```
 
+LOO log score
+
 ```{r}
 loo_5 <- loo(fit_5)
 
 loo_5
 ```
 
+LOO $R^2$
+
+```{r, warning=FALSE}
+loo_r2(fit_5)
+```
+
 Bayesian $R^2$
 
 ```{r}
-median(bayes_R2(fit_5))
+bayes_r2(fit_5)
 ```
 
 Compare log scores.

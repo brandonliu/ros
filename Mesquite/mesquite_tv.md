@@ -1,7 +1,7 @@
 Regression and Other Stories: Mesquite
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-04
+2021-02-05
 
 -   [12 Transformation and regression](#transformation-and-regression)
     -   [12.6 Building and comparing regression models for
@@ -34,6 +34,16 @@ SEED <- 4587
 file_mesquite <- here::here("Mesquite/data/mesquite.dat")
   # Common code
 file_common <- here::here("_common.R")
+
+# Functions
+  # LOO R^2
+loo_r2 <- function(fit, digits = 2) {
+  round(median(loo_R2(fit)), digits = digits)
+}
+  # Bayesian R^2
+bayes_r2 <- function(fit, digits = 2) {
+  round(median(bayes_R2(fit)), digits = digits)
+}
 
 #===============================================================================
 
@@ -123,6 +133,8 @@ fit_1
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+LOO log score
+
 ``` r
 loo_1 <- loo(fit_1)
 ```
@@ -151,13 +163,21 @@ loo_1
     #> All Pareto k estimates are good (k < 0.5).
     #> See help('pareto-k-diagnostic') for details.
 
+LOO *R*<sup>2</sup>
+
+``` r
+loo_r2(fit_1)
+```
+
+    #> [1] 0.72
+
 Bayesian *R*<sup>2</sup>
 
 ``` r
-median(bayes_R2(fit_1))
+bayes_r2(fit_1)
 ```
 
-    #> [1] 0.828
+    #> [1] 0.83
 
 #### Predict log(weight) given log transformed predictors
 
@@ -199,6 +219,8 @@ fit_2
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+LOO log score
+
 ``` r
 loo_2 <- loo(fit_2)
 ```
@@ -234,13 +256,21 @@ loo_2
     #> All Pareto k estimates are ok (k < 0.7).
     #> See help('pareto-k-diagnostic') for details.
 
+LOO *R*<sup>2</sup>
+
+``` r
+loo_r2(fit_2)
+```
+
+    #> [1] 0.85
+
 Bayesian *R*<sup>2</sup>
 
 ``` r
-median(bayes_R2(fit_2))
+bayes_r2(fit_2)
 ```
 
-    #> [1] 0.871
+    #> [1] 0.87
 
 ### Using the Jacobian to adjust the predictive comparison after a tranformation
 
@@ -326,7 +356,7 @@ ggplot(mapping = aes(weight)) +
   )
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-16-1.png" width="100%" />
 
 Kernel density of data and 100 sample replicates from non-log model
 using bayesplot.
@@ -340,7 +370,7 @@ ppc_dens_overlay(y = mesquite$weight, yrep = y_rep_1[sims_sample, ]) +
   labs(title = "Model for weight")
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
 
 #### Posterior predictive checking for model in log scale
 
@@ -389,7 +419,7 @@ ggplot() +
   )
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-19-1.png" width="100%" />
 
 Kernel density of data and 100 sample replicates from log model using
 bayesplot.
@@ -403,7 +433,7 @@ ppc_dens_overlay(y = log(mesquite$weight), yrep = y_rep_2[sims_sample, ]) +
   labs(title = "Model for log(weight)")
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-18-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-20-1.png" width="100%" />
 
 #### Plot marginal posteriors for log model
 
@@ -414,7 +444,7 @@ mcmc_areas(as.matrix(fit_2), regex_pars = "^(log|group)") +
   theme(text = element_text(family = "sans"))
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-19-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-21-1.png" width="100%" />
 
 #### Plot posterior coefficients of `log(canopy_height)` and `log(total_height)`
 
@@ -434,7 +464,7 @@ sims_2 %>%
   )
 ```
 
-<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-20-1.png" width="100%" />
+<img src="mesquite_tv_files/figure-gfm/unnamed-chunk-22-1.png" width="100%" />
 
 ### Constructing a simpler model
 
@@ -482,6 +512,8 @@ fit_3
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+LOO log score
+
 ``` r
 loo_3 <- loo(fit_3)
 
@@ -501,10 +533,18 @@ loo_3
     #> All Pareto k estimates are good (k < 0.5).
     #> See help('pareto-k-diagnostic') for details.
 
+LOO *R*<sup>2</sup>
+
+``` r
+loo_r2(fit_3)
+```
+
+    #> [1] 0.79
+
 Bayesian *R*<sup>2</sup>
 
 ``` r
-median(bayes_R2(fit_3))
+bayes_r2(fit_3)
 ```
 
     #> [1] 0.79
@@ -562,6 +602,8 @@ fit_4
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+LOO log score
+
 ``` r
 loo_4 <- loo(fit_4)
 
@@ -588,10 +630,18 @@ loo_4
     #> All Pareto k estimates are ok (k < 0.7).
     #> See help('pareto-k-diagnostic') for details.
 
+LOO *R*<sup>2</sup>
+
+``` r
+loo_r2(fit_4)
+```
+
+    #> [1] 0.85
+
 Bayesian *R*<sup>2</sup>
 
 ``` r
-median(bayes_R2(fit_4))
+bayes_r2(fit_4)
 ```
 
     #> [1] 0.87
@@ -644,6 +694,8 @@ fit_5
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
+LOO log score
+
 ``` r
 loo_5 <- loo(fit_5)
 
@@ -670,13 +722,21 @@ loo_5
     #> All Pareto k estimates are ok (k < 0.7).
     #> See help('pareto-k-diagnostic') for details.
 
+LOO *R*<sup>2</sup>
+
+``` r
+loo_r2(fit_5)
+```
+
+    #> [1] 0.85
+
 Bayesian *R*<sup>2</sup>
 
 ``` r
-median(bayes_R2(fit_5))
+bayes_r2(fit_5)
 ```
 
-    #> [1] 0.868
+    #> [1] 0.87
 
 Compare log scores.
 
