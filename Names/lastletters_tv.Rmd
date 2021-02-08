@@ -13,6 +13,12 @@ American babies. See Chapter 2 in Regression and Other Stories.
 
 -------------
 
+# 2 Data and measurement
+
+## 2.3 All graphs are comparisons
+
+### Multiple plots
+
 ```{r, message=FALSE}
 # Packages
 library(tidyverse)
@@ -28,17 +34,14 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+#### Data
 
 ```{r}
 babynames
 ```
 
-## Plots
 
-### Last letter of boy's names by year
-
-The distributions of the last letter of boy's names by year.
+#### Last letter of boy's names by year
 
 ```{r}
 boys_last_letter <- 
@@ -79,9 +82,7 @@ boys_last_letter %>%
   )
 ```
 
-### Percentage of top 10 names each year by sex
-
-Proportion of the top 10 names each year by sex.
+#### Percentage of top 10 names each year by sex
 
 ```{r}
 prop_top_10 <- 
@@ -117,5 +118,4 @@ prop_top_10 %>%
 ```
 
 In 2017, the last year in the data, the two lines crossed, with 7.7% for girls and 7.5% for boys.
-
 

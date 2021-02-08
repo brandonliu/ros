@@ -1,14 +1,11 @@
 Regression and Other Stories: Last letters of names
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-08
 
--   [Data](#data)
--   [Plots](#plots)
-    -   [Last letter of boy’s names by
-        year](#last-letter-of-boys-names-by-year)
-    -   [Percentage of top 10 names each year by
-        sex](#percentage-of-top-10-names-each-year-by-sex)
+-   [2 Data and measurement](#data-and-measurement)
+    -   [2.3 All graphs are comparisons](#all-graphs-are-comparisons)
+        -   [Multiple plots](#multiple-plots)
 
 Tidyverse version by Bill Behrman.
 
@@ -16,6 +13,12 @@ Last letters of names - Distributions of last letters of names of
 American babies. See Chapter 2 in Regression and Other Stories.
 
 ------------------------------------------------------------------------
+
+# 2 Data and measurement
+
+## 2.3 All graphs are comparisons
+
+### Multiple plots
 
 ``` r
 # Packages
@@ -32,7 +35,7 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+#### Data
 
 ``` r
 babynames
@@ -53,11 +56,7 @@ babynames
     #> 10  1880 F     Sarah      1288 0.0132
     #> # … with 1,924,655 more rows
 
-## Plots
-
-### Last letter of boy’s names by year
-
-The distributions of the last letter of boy’s names by year.
+#### Last letter of boy’s names by year
 
 ``` r
 boys_last_letter <- 
@@ -117,9 +116,7 @@ boys_last_letter %>%
 
 <img src="lastletters_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
-### Percentage of top 10 names each year by sex
-
-Proportion of the top 10 names each year by sex.
+#### Percentage of top 10 names each year by sex
 
 ``` r
 prop_top_10 <- 
