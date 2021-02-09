@@ -1,10 +1,11 @@
 Regression and Other Stories: Electric Company
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
--   [1 Overview](#overview)
-    -   [1.3 Some examples of regression](#some-examples-of-regression)
+-   [1 Overview](#1-overview)
+    -   [1.3 Some examples of
+        regression](#13-some-examples-of-regression)
         -   [A randomized experiment on the effect of an educational
             television
             program](#a-randomized-experiment-on-the-effect-of-an-educational-television-program)
