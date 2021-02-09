@@ -1,11 +1,11 @@
 Regression and Other Stories: SimpleCausal
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
--   [1 Overview](#overview)
+-   [1 Overview](#1-overview)
     -   [1.4 Challenges in building, understanding, and interpreting
-        regressions](#challenges-in-building-understanding-and-interpreting-regressions)
+        regressions](#14-challenges-in-building-understanding-and-interpreting-regressions)
         -   [Regression to estimate a relationship of
             interest](#regression-to-estimate-a-relationship-of-interest)
         -   [Regression to adjust for differences between treatment and

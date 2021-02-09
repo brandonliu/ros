@@ -1,10 +1,10 @@
 Regression and Other Stories: Elections Economy
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
--   [1 Overview](#overview)
-    -   [1.2 Why learn regression?](#why-learn-regression)
+-   [1 Overview](#1-overview)
+    -   [1.2 Why learn regression?](#12-why-learn-regression)
 -   [Chapter 7](#chapter-7)
     -   [Plot of economy and election
         results](#plot-of-economy-and-election-results)
@@ -24,7 +24,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         -   [Posterior draws of the regression coefficients a,
             b](#posterior-draws-of-the-regression-coefficients-a-b)
         -   [Data and 100 posterior draws of the line, y = a + b
-            x](#data-and-100-posterior-draws-of-the-line-y-a-b-x)
+            x](#data-and-100-posterior-draws-of-the-line-y--a--b-x)
         -   [Data and linear fit with 50% and 90% predictive
             intervals](#data-and-linear-fit-with-50-and-90-predictive-intervals)
     -   [Prediction and uncertainty](#prediction-and-uncertainty)
@@ -453,7 +453,7 @@ sims %>%
 
     #> # A tibble: 3 x 3
     #>   param       median   mad
-    #>   <chr>        <dbl> <dbl>
+    #> * <chr>        <dbl> <dbl>
     #> 1 (Intercept)  46.3  1.71 
     #> 2 growth        3.06 0.730
     #> 3 sigma         3.90 0.732

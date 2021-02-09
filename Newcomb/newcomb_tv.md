@@ -1,12 +1,12 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-04
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
     -   [11.4 Comparing data to replications from a fitted
-        model](#comparing-data-to-replications-from-a-fitted-model)
+        model](#114-comparing-data-to-replications-from-a-fitted-model)
         -   [Example: simulation-based checking of a fitted normal
             distribution](#example-simulation-based-checking-of-a-fitted-normal-distribution)
 

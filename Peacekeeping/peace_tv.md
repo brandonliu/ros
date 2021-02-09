@@ -1,10 +1,11 @@
 Regression and Other Stories: Peacekeeping
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
--   [1 Overview](#overview)
-    -   [1.3 Some examples of regression](#some-examples-of-regression)
+-   [1 Overview](#1-overview)
+    -   [1.3 Some examples of
+        regression](#13-some-examples-of-regression)
         -   [Estimating the effects of United Nations peacekeeping,
             using pre-treatment variables to adjust for differences
             between treatment and control
@@ -97,7 +98,7 @@ peace %>%
 
     #> # A tibble: 5 x 2
     #>   nrows     n
-    #>   <int> <int>
+    #> * <int> <int>
     #> 1     1   148
     #> 2     2    14
     #> 3     3     5
@@ -182,7 +183,7 @@ peace %>%
 
     #> # A tibble: 2 x 2
     #>   peacekeepers     n
-    #>   <lgl>        <int>
+    #> * <lgl>        <int>
     #> 1 FALSE          114
     #> 2 TRUE            43
 
@@ -229,7 +230,7 @@ peace %>%
 
     #> # A tibble: 2 x 2
     #>   peacekeepers peace_prop
-    #>   <lgl>             <dbl>
+    #> * <lgl>             <dbl>
     #> 1 FALSE             0.430
     #> 2 TRUE              0.535
 
@@ -249,7 +250,7 @@ peace %>%
 
     #> # A tibble: 2 x 3
     #>   peacekeepers return_years_mean return_years_median
-    #>   <lgl>                    <dbl>               <dbl>
+    #> * <lgl>                    <dbl>               <dbl>
     #> 1 FALSE                     4.17                2.00
     #> 2 TRUE                      2.61                1.25
 
@@ -270,7 +271,7 @@ peace %>%
 
     #> # A tibble: 2 x 3
     #>   peacekeepers peace_years_mean peace_years_median
-    #>   <lgl>                   <dbl>              <dbl>
+    #> * <lgl>                   <dbl>              <dbl>
     #> 1 FALSE                    27.6               22.3
     #> 2 TRUE                     12.4               10.5
 

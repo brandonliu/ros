@@ -1,11 +1,11 @@
 Regression and Other Stories: Human Development Index
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-03
+2021-02-09
 
--   [2 Data and measurement](#data-and-measurement)
+-   [2 Data and measurement](#2-data-and-measurement)
     -   [2.1 Examining where data come
-        from](#examining-where-data-come-from)
+        from](#21-examining-where-data-come-from)
 
 Tidyverse version by Bill Behrman.
 

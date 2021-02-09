@@ -1,10 +1,10 @@
 Regression and Other Stories: Last letters of names
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-08
+2021-02-09
 
--   [2 Data and measurement](#data-and-measurement)
-    -   [2.3 All graphs are comparisons](#all-graphs-are-comparisons)
+-   [2 Data and measurement](#2-data-and-measurement)
+    -   [2.3 All graphs are comparisons](#23-all-graphs-are-comparisons)
         -   [Multiple plots](#multiple-plots)
 
 Tidyverse version by Bill Behrman.

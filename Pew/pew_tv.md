@@ -1,11 +1,11 @@
 Regression and Other Stories: Pew
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-04
+2021-02-09
 
--   [2 Data and measurement](#data-and-measurement)
+-   [2 Data and measurement](#2-data-and-measurement)
     -   [2.1 Examining where data come
-        from](#examining-where-data-come-from)
+        from](#21-examining-where-data-come-from)
         -   [Details of measurement can be
             important](#details-of-measurement-can-be-important)
 
@@ -240,7 +240,7 @@ pew %>%
 
     #> # A tibble: 7 x 2
     #>   ideo                  n
-    #>   <fct>             <int>
+    #> * <fct>             <int>
     #> 1 very conservative  2417
     #> 2 conservative       9795
     #> 3 moderate          11197

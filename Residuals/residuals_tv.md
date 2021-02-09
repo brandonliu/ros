@@ -1,14 +1,14 @@
 Regression and Other Stories: Residuals
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
     -   [11.2 Plotting the data and fitted
-        model](#plotting-the-data-and-fitted-model)
+        model](#112-plotting-the-data-and-fitted-model)
         -   [Plotting the outcome vs. a continuous
-            predictor](#plotting-the-outcome-vs.-a-continuous-predictor)
+            predictor](#plotting-the-outcome-vs-a-continuous-predictor)
         -   [Forming a linear predictor from a multiple
             regression](#forming-a-linear-predictor-from-a-multiple-regression)
 

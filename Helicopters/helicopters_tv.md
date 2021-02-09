@@ -1,10 +1,10 @@
 Regression and Other Stories: Helicopters
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-03
+2021-02-09
 
--   [1 Overview](#overview)
-    -   [1.8 Exercises](#exercises)
+-   [1 Overview](#1-overview)
+    -   [1.8 Exercises](#18-exercises)
 
 Tidyverse version by Bill Behrman.
 

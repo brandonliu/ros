@@ -1,13 +1,13 @@
 Regression and Other Stories: Unemployment
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
     -   [11.5 Example: predictive simulation to check the fit of a
         time-series
-        model](#example-predictive-simulation-to-check-the-fit-of-a-time-series-model)
+        model](#115-example-predictive-simulation-to-check-the-fit-of-a-time-series-model)
         -   [Fitting a first-order autoregression to the unemployment
             series](#fitting-a-first-order-autoregression-to-the-unemployment-series)
         -   [Simulating replicated

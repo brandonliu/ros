@@ -1,14 +1,14 @@
 Regression and Other Stories: Introclass
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
-    -   [11.3 Residual plots](#residual-plots)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
+    -   [11.3 Residual plots](#113-residual-plots)
         -   [A confusing choice: plot residuals vs. predicted values, or
             residuals vs. observed
-            values?](#a-confusing-choice-plot-residuals-vs.-predicted-values-or-residuals-vs.-observed-values)
+            values?](#a-confusing-choice-plot-residuals-vs-predicted-values-or-residuals-vs-observed-values)
         -   [Understanding the choice using fake-data
             simulation](#understanding-the-choice-using-fake-data-simulation)
 

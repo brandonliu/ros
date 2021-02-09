@@ -1,11 +1,11 @@
 Regression and Other Stories: Cross-validation
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
-    -   [11.8 Cross validation](#cross-validation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
+    -   [11.8 Cross validation](#118-cross-validation)
         -   [Leave-one-out cross
             validation](#leave-one-out-cross-validation)
         -   [Summarizing prediction error using the log score and

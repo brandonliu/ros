@@ -1,12 +1,12 @@
 Regression and Other Stories: Bayesian *R*<sup>2</sup>
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
     -   [11.6 Residual standard deviation *σ* and explained variance
-        *R*<sup>2</sup>](#residual-standard-deviation-sigma-and-explained-variance-r2)
+        *R*<sup>2</sup>](#116-residual-standard-deviation-sigma-and-explained-variance-r2)
         -   [Bayesian *R*<sup>2</sup>](#bayesian-r2)
 
 Tidyverse version by Bill Behrman.

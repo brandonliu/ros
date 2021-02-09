@@ -1,30 +1,31 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-08
+2021-02-09
 
 -   [10 Linear regression with multiple
-    predictors](#linear-regression-with-multiple-predictors)
+    predictors](#10-linear-regression-with-multiple-predictors)
     -   [10.1 Adding predictors to a
-        model](#adding-predictors-to-a-model)
+        model](#101-adding-predictors-to-a-model)
         -   [Starting with a binary
             predictor](#starting-with-a-binary-predictor)
         -   [A single continuous
             predictor](#a-single-continuous-predictor)
         -   [Including both predictors](#including-both-predictors)
-    -   [10.3 Interactions](#interactions)
+    -   [10.3 Interactions](#103-interactions)
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
     -   [11.2 Plotting the data and fitted
-        model](#plotting-the-data-and-fitted-model)
+        model](#112-plotting-the-data-and-fitted-model)
         -   [Displaying uncertainty in the fitted
             regression](#displaying-uncertainty-in-the-fitted-regression)
         -   [Displaying using one plot for each input
             variable](#displaying-using-one-plot-for-each-input-variable)
-    -   [11.3 Residual plots](#residual-plots)
--   [12 Transformations and regression](#transformations-and-regression)
+    -   [11.3 Residual plots](#113-residual-plots)
+-   [12 Transformations and
+    regression](#12-transformations-and-regression)
     -   [12.2 Centering and standardizing for models with
-        interactions](#centering-and-standardizing-for-models-with-interactions)
+        interactions](#122-centering-and-standardizing-for-models-with-interactions)
         -   [Centering by subtracting the mean of the
             data](#centering-by-subtracting-the-mean-of-the-data)
         -   [Using a conventional centering
@@ -32,7 +33,7 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         -   [Standardizing by subtracting the mean and dividing by 2
             standard
             deviations](#standardizing-by-subtracting-the-mean-and-dividing-by-2-standard-deviations)
-    -   [12.5 Other transformations](#other-transformations)
+    -   [12.5 Other transformations](#125-other-transformations)
         -   [Using discrete rather than continuous
             predictors](#using-discrete-rather-than-continuous-predictors)
 

@@ -1,11 +1,11 @@
 Regression and Other Stories: FakeKCV
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-04
+2021-02-09
 
 -   [11 Assumptions, diagnostics, and model
-    evaluation](#assumptions-diagnostics-and-model-evaluation)
-    -   [11.8 Cross validation](#cross-validation)
+    evaluation](#11-assumptions-diagnostics-and-model-evaluation)
+    -   [11.8 Cross validation](#118-cross-validation)
         -   [Demonstration of K-fold cross validation using simulated
             data](#demonstration-of-k-fold-cross-validation-using-simulated-data)
 
