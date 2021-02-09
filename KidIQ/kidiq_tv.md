@@ -1,7 +1,7 @@
 Regression and Other Stories: KidIQ
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-02
+2021-02-08
 
 -   [10 Linear regression with multiple
     predictors](#linear-regression-with-multiple-predictors)
@@ -622,10 +622,9 @@ kids <-
 ``` r
 set.seed(765)
 
-fit_4z <- 
-  stan_glm(kid_score ~ mom_work, data = kids, refresh = 0)
+fit_5 <- stan_glm(kid_score ~ mom_work, data = kids, refresh = 0)
 
-fit_4z
+fit_5
 ```
 
     #> stan_glm
