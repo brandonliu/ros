@@ -5,8 +5,8 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
 
 -   [11 Assumptions, diagnostics, and model
     evaluation](#11-assumptions-diagnostics-and-model-evaluation)
-    -   [11.6 Residual standard deviation *σ* and explained variance
-        *R*<sup>2</sup>](#116-residual-standard-deviation-sigma-and-explained-variance-r2)
+    -   [11.6 Residual standard deviation σ and explained variance
+        *R*<sup>2</sup>](#116-residual-standard-deviation-σ-and-explained-variance-r2)
         -   [Bayesian *R*<sup>2</sup>](#bayesian-r2)
 
 Tidyverse version by Bill Behrman.
@@ -42,7 +42,7 @@ source(file_common)
 
 # 11 Assumptions, diagnostics, and model evaluation
 
-## 11.6 Residual standard deviation *σ* and explained variance *R*<sup>2</sup>
+## 11.6 Residual standard deviation σ and explained variance *R*<sup>2</sup>
 
 ### Bayesian *R*<sup>2</sup>
 

@@ -39,7 +39,7 @@ source(file_common)
 
 # 11 Assumptions, diagnostics, and model evaluation
 
-## 11.6 Residual standard deviation $\sigma$ and explained variance $R^2$
+## 11.6 Residual standard deviation σ and explained variance $R^2$
 
 ### Bayesian $R^2$
 
