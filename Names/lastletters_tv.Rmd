@@ -4,7 +4,6 @@ author: "Andrew Gelman, Jennifer Hill, Aki Vehtari"
 date: "`r format(Sys.Date())`"
 output:
   github_document:
-    md_extension: +gfm_auto_identifiers
     toc: true
 ---
 Tidyverse version by Bill Behrman.
