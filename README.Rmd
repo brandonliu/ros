@@ -131,8 +131,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Pyth/](Pyth/)
 
 <!-- ### 12  Transformations -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
+- [KidIQ/](KidIQ/)
+    - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
 <!-- - [Gay/](Gay/) -->

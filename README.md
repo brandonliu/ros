@@ -191,18 +191,20 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Pyth/](Pyth/)
 
 <!-- ### 12  Transformations -->
-<!-- - [KidIQ/](KidIQ/) -->
-<!--     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
-<!-- - [Gay/](Gay/) -->
-<!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
-<!-- - [Mesquite/](Mesquite/) -->
-<!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
-<!-- - [Student/](Student/) -->
-<!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
-<!-- - [Pollution/](Pollution/) -->
-<!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+
+-   [KidIQ/](KidIQ/)
+    -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
+        multiple predictors <!-- - [Earnings/](Earnings/) -->
+        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+        <!-- - [Gay/](Gay/) -->
+        <!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
+        <!-- - [Mesquite/](Mesquite/) -->
+        <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
+        <!-- - [Student/](Student/) -->
+        <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
+        <!-- - [Pollution/](Pollution/) -->
+        <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+
 <!-- ### 13  Logistic regression -->
 <!-- - [NES/](NES/) -->
 <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
