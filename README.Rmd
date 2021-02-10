@@ -135,8 +135,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [kidiq_tv.md](KidIQ/kidiq_tv.md) - Linear regression with multiple predictors
 - [Earnings/](Earnings/)
     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990
-<!-- - [Gay/](Gay/) -->
-<!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
+- [Gay/](Gay/)
+    - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age
 <!-- - [Mesquite/](Mesquite/) -->
 <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
 <!-- - [Student/](Student/) -->
@@ -300,8 +300,8 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
 <!-- - [FrenchElection/](FrenchElection/) -->
 <!--     - [ps_primaire_tv.md](FrenchElection/ps_primaire_tv.md) - French Election data -->
-<!-- - [Gay/](Gay/) -->
-<!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
+- [Gay/](Gay/)
+    - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age
 <!--     - [gay_tv.md](Gay/gay_tv.md) - Nonlinear models (Loess, B-spline, GP-spline, and BART) and political attitudes as a function of age -->
 - [Girls/](Girls/)
 <!-- - [Golf/](Golf/) -->

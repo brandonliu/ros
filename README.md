@@ -198,9 +198,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Earnings/](Earnings/)
     -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
         Predict respondents’ yearly earnings using survey data from 1990
-        <!-- - [Gay/](Gay/) -->
-        <!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
-        <!-- - [Mesquite/](Mesquite/) -->
+-   [Gay/](Gay/)
+    -   [gay\_simple\_tv.md](Gay/gay_simple_tv.md) - Simple models
+        (linear and discretized age) and political attitudes as a
+        function of age <!-- - [Mesquite/](Mesquite/) -->
         <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
         <!-- - [Student/](Student/) -->
         <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
@@ -374,8 +375,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
         <!-- - [FrenchElection/](FrenchElection/) -->
         <!--     - [ps_primaire_tv.md](FrenchElection/ps_primaire_tv.md) - French Election data -->
-        <!-- - [Gay/](Gay/) -->
-        <!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
+-   [Gay/](Gay/)
+    -   [gay\_simple\_tv.md](Gay/gay_simple_tv.md) - Simple models
+        (linear and discretized age) and political attitudes as a
+        function of age
         <!--     - [gay_tv.md](Gay/gay_tv.md) - Nonlinear models (Loess, B-spline, GP-spline, and BART) and political attitudes as a function of age -->
 -   [Girls/](Girls/) <!-- - [Golf/](Golf/) -->
     <!--     - [golf_tv.md](Golf/golf_tv.md) - Gold putting accuracy: Fitting a nonlinear model using Stan -->
