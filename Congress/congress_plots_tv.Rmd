@@ -40,7 +40,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.3 All graphs are comparisons
+
+### Grids of plots
+
+Data.
 
 ```{r, message=FALSE}
 elections <- 
@@ -114,7 +120,7 @@ elections %>%
   knitr::kable()
 ```
 
-## Plot
+Swings in U.S. congressional elections.
 
 ```{r, fig.asp=0.8, fig.width=10}
 v <- 

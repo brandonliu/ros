@@ -1,10 +1,11 @@
 Regression and Other Stories: Congress
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-10
 
--   [Data](#data)
--   [Plot](#plot)
+-   [2 Data and measurement](#2-data-and-measurement)
+    -   [2.3 All graphs are comparisons](#23-all-graphs-are-comparisons)
+        -   [Grids of plots](#grids-of-plots)
 
 Tidyverse version by Bill Behrman.
 
@@ -40,7 +41,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 2 Data and measurement
+
+## 2.3 All graphs are comparisons
+
+### Grids of plots
+
+Data.
 
 ``` r
 elections <- 
@@ -152,7 +159,7 @@ elections %>%
 | 1898 |           3 |              1 | TRUE      |    8760 |   14315 | Northeast |   0.380 |         0.322 |
 | 1898 |           3 |              2 | TRUE      |    8054 |   13327 | Northeast |   0.377 |         0.282 |
 
-## Plot
+Swings in U.S. congressional elections.
 
 ``` r
 v <- 

@@ -1,10 +1,11 @@
 Regression and Other Stories: Gay
 ================
 Andrew Gelman, Aki Vehtari
-2021-02-03
+2021-02-10
 
--   [12 Transformations and regression](#transformations-and-regression)
-    -   [12.5 Other transformation](#other-transformation)
+-   [12 Transformations and
+    regression](#12-transformations-and-regression)
+    -   [12.5 Other transformation](#125-other-transformation)
         -   [Index and indicator
             variables](#index-and-indicator-variables)
 
@@ -116,7 +117,7 @@ data
 
     #> # A tibble: 74 x 3
     #>      age favor age_bin
-    #>    <dbl> <dbl> <fct>  
+    #>  * <dbl> <dbl> <fct>  
     #>  1    18 0.486 (17,29]
     #>  2    19 0.5   (17,29]
     #>  3    20 0.472 (17,29]
