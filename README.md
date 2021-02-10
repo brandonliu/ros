@@ -190,12 +190,14 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         *K*-fold cross-validation using simulated data
 -   [Pyth/](Pyth/)
 
-<!-- ### 12  Transformations -->
+### 12 Transformations
 
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
-        multiple predictors <!-- - [Earnings/](Earnings/) -->
-        <!--     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990. -->
+        multiple predictors
+-   [Earnings/](Earnings/)
+    -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
+        Predict respondents’ yearly earnings using survey data from 1990
         <!-- - [Gay/](Gay/) -->
         <!--     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age -->
         <!-- - [Mesquite/](Mesquite/) -->
