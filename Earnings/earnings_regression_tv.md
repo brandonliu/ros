@@ -1,14 +1,16 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-04
+2021-02-09
 
 -   [6 Background on regression
-    modeling](#background-on-regression-modeling)
+    modeling](#6-background-on-regression-modeling)
     -   [6.3 Interpret coefficients as comparisons, not
-        effects](#interpret-coefficients-as-comparisons-not-effects)
--   [12 Transformations and regression](#transformations-and-regression)
-    -   [12.4 Logarithmic transformations](#logarithmic-transformations)
+        effects](#63-interpret-coefficients-as-comparisons-not-effects)
+-   [12 Transformations and
+    regression](#12-transformations-and-regression)
+    -   [12.4 Logarithmic
+        transformations](#124-logarithmic-transformations)
         -   [Earnings and height example](#earnings-and-height-example)
         -   [Why we use natural log rather than log base
             10](#why-we-use-natural-log-rather-than-log-base-10)
