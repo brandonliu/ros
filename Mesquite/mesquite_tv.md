@@ -1,11 +1,12 @@
 Regression and Other Stories: Mesquite
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-05
+2021-02-11
 
--   [12 Transformation and regression](#transformation-and-regression)
+-   [12 Transformation and
+    regression](#12-transformation-and-regression)
     -   [12.6 Building and comparing regression models for
-        prediction](#building-and-comparing-regression-models-for-prediction)
+        prediction](#126-building-and-comparing-regression-models-for-prediction)
         -   [Example predicting the yields of mesquite
             bushes](#example-predicting-the-yields-of-mesquite-bushes)
         -   [Using the Jacobian to adjust the predictive comparison
