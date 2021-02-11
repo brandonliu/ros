@@ -201,9 +201,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Gay/](Gay/)
     -   [gay\_simple\_tv.md](Gay/gay_simple_tv.md) - Simple models
         (linear and discretized age) and political attitudes as a
-        function of age <!-- - [Mesquite/](Mesquite/) -->
-        <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
-        <!-- - [Student/](Student/) -->
+        function of age
+-   [Mesquite/](Mesquite/)
+    -   [mesquite\_tv.md](Mesquite/mesquite_tv.md) - Predicting the
+        yields of mesquite bushes <!-- - [Student/](Student/) -->
         <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
         <!-- - [Pollution/](Pollution/) -->
         <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
@@ -410,8 +411,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         multiple predictors <!-- - [Lalonde/](Lalonde/) -->
         <!-- - [LogisticPriors/](LogisticPriors/) -->
         <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
-        <!-- - [Mesquite/](Mesquite/) -->
-        <!--     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes -->
+-   [Mesquite/](Mesquite/)
+    -   [mesquite\_tv.md](Mesquite/mesquite_tv.md) - Predicting the
+        yields of mesquite bushes
 -   [Metabolic/](Metabolic/)
     -   [metabolic\_tv.md](Metabolic/metabolic_tv.md) - How to interpret
         a power law or log-log regression
