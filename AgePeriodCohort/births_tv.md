@@ -1,19 +1,11 @@
 Regression and Other Stories: AgePeriodCohort
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-11
 
--   [Data](#data)
--   [Plots](#plots)
-    -   [Unadjusted mortality](#unadjusted-mortality)
-    -   [Mean age of cohort](#mean-age-of-cohort)
-    -   [Impact of changing age distribution on
-        mortality](#impact-of-changing-age-distribution-on-mortality)
-    -   [Age-adjusted mortality](#age-adjusted-mortality)
-    -   [Age-adjusted mortality by
-        gender](#age-adjusted-mortality-by-gender)
-    -   [Age-adjusted mortality by gender and
-        region](#age-adjusted-mortality-by-gender-and-region)
+-   [Data and measurement](#data-and-measurement)
+    -   [2.4 Data and adjustment: trends in mortality
+        rates](#24-data-and-adjustment-trends-in-mortality-rates)
 
 Tidyverse version by Bill Behrman.
 
@@ -39,7 +31,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Data and measurement
+
+## 2.4 Data and adjustment: trends in mortality rates
+
+#### Data
 
 The dataset was downloaded from the CDC WONDER [Underlying Cause of
 Death](https://wonder.cdc.gov/ucd-icd10.html) database. It contains
@@ -96,9 +92,7 @@ mortality
     #> 10  1999    46 Female Midwest      817     401367
     #> # … with 1,190 more rows
 
-## Plots
-
-### Unadjusted mortality
+#### Unadjusted mortality
 
 ``` r
 mortality_unadjusted <- 
@@ -118,7 +112,7 @@ mortality_unadjusted %>%
 
 <img src="births_tv_files/figure-gfm/unnamed-chunk-3-1.png" width="100%" />
 
-### Mean age of cohort
+#### Mean age of cohort
 
 ``` r
 v <- 
@@ -138,7 +132,7 @@ v %>%
 
 <img src="births_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
-### Impact of changing age distribution on mortality
+#### Impact of changing age distribution on mortality
 
 A helper function to set the mortality rates for all years to that of a
 given year.
@@ -196,7 +190,7 @@ overall mortality rate from 382 to 398 deaths per 100,000, an increase
 of 17 deaths per 100,000. Thus the aging of the cohort played a
 substantial role in the increase of the unadjusted mortality.
 
-### Age-adjusted mortality
+#### Age-adjusted mortality
 
 A helper function to add the weights for age adjustment.
 
@@ -265,7 +259,7 @@ mortality_1999 <-
   add_weight(weight_year = 1999)
 ```
 
-### Age-adjusted mortality by gender
+#### Age-adjusted mortality by gender
 
 ``` r
 v <- 
@@ -301,7 +295,7 @@ combination of these two trends explains why the overall trend increased
 from 1999 to 2005 and then was stable afterwards. The decrease in the
 men’s rate was roughly canceled by the increase in the women’s rate.
 
-### Age-adjusted mortality by gender and region
+#### Age-adjusted mortality by gender and region
 
 ``` r
 v <- 

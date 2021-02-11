@@ -31,7 +31,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# Data and measurement
+
+## 2.4 Data and adjustment: trends in mortality rates
+
+#### Data
 
 The dataset was downloaded from the CDC WONDER [Underlying Cause of Death](https://wonder.cdc.gov/ucd-icd10.html) database. It contains mortality data for white non-Hispanics ages 45 - 54, and breaks down mortality by year, age, gender, and census region. We will restrict attention to the years 1999 - 2013. The bottom of the dataset contains notes on the query and settings used to generate it. 
 
@@ -68,9 +72,7 @@ mortality <-
 mortality
 ```
 
-## Plots
-
-### Unadjusted mortality
+#### Unadjusted mortality
 
 ```{r}
 mortality_unadjusted <- 
@@ -88,7 +90,7 @@ mortality_unadjusted %>%
   )
 ```
 
-### Mean age of cohort
+#### Mean age of cohort
 
 ```{r}
 v <- 
@@ -106,7 +108,7 @@ v %>%
   )
 ```
 
-### Impact of changing age distribution on mortality
+#### Impact of changing age distribution on mortality
 
 A helper function to set the mortality rates for all years to that of a given year.
 
@@ -155,7 +157,7 @@ v %>%
 
 From 1999 to 2013, the unadjusted mortality rate increased from 382 to 415 deaths per 100,000, an increase of 33 deaths per 100,000. If the mortality rates for each age remained unchanged from the 1999 rates, the changing population distribution for the cohort would have increased its overall mortality rate from 382 to 398 deaths per 100,000, an increase of 17 deaths per 100,000. Thus the aging of the cohort played a substantial role in the increase of the unadjusted mortality.
 
-### Age-adjusted mortality
+#### Age-adjusted mortality
 
 A helper function to add the weights for age adjustment.
 
@@ -215,7 +217,7 @@ mortality_1999 <-
   add_weight(weight_year = 1999)
 ```
 
-### Age-adjusted mortality by gender
+#### Age-adjusted mortality by gender
 
 ```{r, fig.asp=0.7}
 v <- 
@@ -242,7 +244,7 @@ v %>%
 
 The mortality rate for men is substantially higher than that for women, but the genders have different trends. The rate for men in deaths per 100,000 was 484 in 1999, increased to a maximum of 515 in 2005, and then declined to 492 in 2013. The rate for women in deaths per 100,000 increased throughout the period, from 281 in 1999 to 309 in 2013. The combination of these two trends explains why the overall trend increased from 1999 to 2005 and then was stable afterwards. The decrease in the men's rate was roughly canceled by the increase in the women's rate.
 
-### Age-adjusted mortality by gender and region
+#### Age-adjusted mortality by gender and region
 
 ```{r, fig.asp=0.7}
 v <- 
