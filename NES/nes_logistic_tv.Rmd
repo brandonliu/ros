@@ -379,3 +379,32 @@ Posterior distribution for the difference in support for Bush, comparing people 
 quantile(epred[, 5] - epred[, 4], c(0.05, 0.25, 0.5, 0.75, 0.95))
 ```
 
+## 13.6 Cross validation and log score for logistic regression
+
+### Log score for logistic regression
+
+Point predictions of model on data from 1992 presidential election.
+
+```{r}
+pred <- predict(fit, type = "response")
+
+nrow(nes_1992)
+length(pred)
+
+head(pred)
+```
+
+Estimate the predictive performance of model using within-sample log score.
+
+```{r}
+sum(log(c(pred[nes_1992$rvote == 1], 1 - pred[nes_1992$rvote == 0])))
+```
+
+Estimate the predictive performance of model using leave-one-out log score (elpd_loo).
+
+```{r}
+loo(fit)
+```
+
+The LOO estimated log score (elpd_loo) of -780 is 2 lower than the within-sample log score of -778 computed above; this difference is about what we would expect, given that the fitted model has 2 parameters or degrees of freedom.
+

@@ -1,7 +1,7 @@
 Regression and Other Stories: National election study
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-10
+2021-02-11
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.1 Logistic regression with a single
@@ -28,6 +28,10 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             `posterior_predict()`](#predictive-distribution-for-a-new-observation-using-posterior_predict)
         -   [Prediction given a range of input
             values](#prediction-given-a-range-of-input-values)
+    -   [13.6 Cross validation and log score for logistic
+        regression](#136-cross-validation-and-log-score-for-logistic-regression)
+        -   [Log score for logistic
+            regression](#log-score-for-logistic-regression)
 
 Tidyverse version by Bill Behrman.
 
@@ -640,3 +644,64 @@ quantile(epred[, 5] - epred[, 4], c(0.05, 0.25, 0.5, 0.75, 0.95))
 
     #>     5%    25%    50%    75%    95% 
     #> 0.0572 0.0715 0.0809 0.0905 0.1045
+
+## 13.6 Cross validation and log score for logistic regression
+
+### Log score for logistic regression
+
+Point predictions of model on data from 1992 presidential election.
+
+``` r
+pred <- predict(fit, type = "response")
+
+nrow(nes_1992)
+```
+
+    #> [1] 1179
+
+``` r
+length(pred)
+```
+
+    #> [1] 1179
+
+``` r
+head(pred)
+```
+
+    #>     1     2     3     4     5     6 
+    #> 0.475 0.321 0.255 0.321 0.396 0.475
+
+Estimate the predictive performance of model using within-sample log
+score.
+
+``` r
+sum(log(c(pred[nes_1992$rvote == 1], 1 - pred[nes_1992$rvote == 0])))
+```
+
+    #> [1] -778
+
+Estimate the predictive performance of model using leave-one-out log
+score (elpd\_loo).
+
+``` r
+loo(fit)
+```
+
+    #> 
+    #> Computed from 4000 by 1179 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo   -780.5  8.6
+    #> p_loo         2.0  0.1
+    #> looic      1560.9 17.1
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+The LOO estimated log score (elpd\_loo) of -780 is 2 lower than the
+within-sample log score of -778 computed above; this difference is about
+what we would expect, given that the fitted model has 2 parameters or
+degrees of freedom.
