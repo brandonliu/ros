@@ -224,16 +224,16 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 <!-- - [Rodents/](Rodents/) -->
 <!-- - [Arsenic/](Arsenic/) -->
 <!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictice comparisons for a logistic regression model: wells in Bangladesh -->
+<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
 <!-- ### 15  Other generalized linear models -->
 <!-- - [PoissonExample/](PoissonExample/) -->
 <!--     - [PoissonExample_tv.md](PoissonExample/poisson_regression_tv.md) - Demonstrate Poisson regression with simulated data. -->
 <!-- - [Roaches/](Roaches/) -->
-<!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyse the effect of integrated pest management on reducing cockroach levels in urban apartments -->
+<!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
 <!-- - [Storable/](Storable/)  -->
 <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
 <!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
+<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
 <!-- - [RiskyBehavior/](RiskyBehavior/) -->
 <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
 <!-- - [NES/](NES/) -->
@@ -308,7 +308,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [Arsenic/](Arsenic/) -->
         <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
         <!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
-        <!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictice comparisons for a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
         <!--     - [arsenic_logistic_building_optimizing_tv.md](Arsenic/arsenic_logistic_building_optimizing_tv.md) - Building a logistic regression model: wells in Bangladesh. A version with normal approximation at the mode. -->
         <!-- - [Balance/](Balance/) -->
         <!--     - [treatcontrol_tv.md](Balance/treatcontrol_tv.md) -->
@@ -352,7 +352,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Bootstrapping to simulate the sampling distribution
     -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
         Predict respondents’ yearly earnings using survey data from 1990
-        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continous model -->
+        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
     -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
         Predict weight
 -   [ElectionsEconomy/](ElectionsEconomy/)
@@ -458,7 +458,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [RiskyBehavior/](RiskyBehavior/) -->
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
         <!-- - [Roaches/](Roaches/) -->
-        <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyse the effect of integrated pest management on reducing cockroach levels in urban apartments -->
+        <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
         <!-- - [Rodents/](Rodents/) -->
 -   [Rsquared/](Rsquared/)
     -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
