@@ -1,15 +1,11 @@
 Regression and Other Stories: Mile
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-12
 
--   [Data](#data)
--   [Linear model](#linear-model)
--   [Plots](#plots)
-    -   [Example of increasing trend](#example-of-increasing-trend)
-    -   [Example of decreasing trend](#example-of-decreasing-trend)
-    -   [Approximate trend of record times in the mile run from 1900 to
-        2000](#approximate-trend-of-record-times-in-the-mile-run-from-1900-to-2000)
+-   [3 Some basic methods in mathematics and
+    probability](#3-some-basic-methods-in-mathematics-and-probability)
+    -   [3.2 Graphing a line](#32-graphing-a-line)
 
 Tidyverse version by Bill Behrman.
 
@@ -35,7 +31,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.2 Graphing a line
+
+Data.
 
 ``` r
 mile <- read_csv(file_mile)
@@ -58,7 +58,7 @@ mile
     #> 10  1942     9     4   4.6 1943.    245.
     #> # … with 22 more rows
 
-## Linear model
+Linear model.
 
 The option `refresh = 0` suppresses the default Stan sampling progress
 output. This is useful for small data with fast computation. For more
@@ -88,9 +88,7 @@ print(fit, digits = 2)
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-## Plots
-
-### Example of increasing trend
+Example of increasing trend.
 
 ``` r
 intercept <- 0.15
@@ -110,7 +108,7 @@ v %>%
 
 <img src="mile_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
-### Example of decreasing trend
+Example of decreasing trend.
 
 ``` r
 intercept <- 0.95
@@ -130,7 +128,7 @@ v %>%
 
 <img src="mile_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
-### Approximate trend of record times in the mile run from 1900 to 2000
+Approximate trend of record times in the mile run.
 
 ``` r
 intercept <- coef(fit)[["(Intercept)"]]

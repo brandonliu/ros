@@ -30,7 +30,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.2 Graphing a line
+
+Data.
 
 ```{r, message=FALSE}
 mile <- read_csv(file_mile)
@@ -38,7 +42,7 @@ mile <- read_csv(file_mile)
 mile
 ```
 
-## Linear model
+Linear model.
 
 The option `refresh = 0` suppresses the default Stan sampling progress output. This is useful for small data with fast computation. For more complex models and bigger data, it can be useful to see the progress.
 
@@ -48,9 +52,7 @@ fit <- stan_glm(seconds ~ year, data = mile, refresh = 0)
 print(fit, digits = 2)
 ```
 
-## Plots
-
-### Example of increasing trend
+Example of increasing trend.
 
 ```{r}
 intercept <- 0.15
@@ -68,7 +70,7 @@ v %>%
   labs(title = "y = a + b x (with b > 0)")
 ```
 
-### Example of decreasing trend
+Example of decreasing trend.
 
 ```{r}
 intercept <- 0.95
@@ -86,7 +88,7 @@ v %>%
   labs(title = "y = a + b x (with b < 0)")
 ```
 
-### Approximate trend of record times in the mile run from 1900 to 2000
+Approximate trend of record times in the mile run.
 
 ```{r}
 intercept <- coef(fit)[["(Intercept)"]]
