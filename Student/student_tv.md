@@ -1,11 +1,12 @@
 Regression and Other Stories: Student
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-07
+2021-02-12
 
--   [12 Transportation and regression](#transportation-and-regression)
+-   [12 Transformations and
+    regression](#12-transformations-and-regression)
     -   [12.7 Models for regression
-        coefficients](#models-for-regression-coefficients)
+        coefficients](#127-models-for-regression-coefficients)
 
 Tidyverse version by Bill Behrman.
 
@@ -23,7 +24,7 @@ library(rstanarm)
 # Parameters
   # Seed
 SEED <- 2132
-  # Merged data with students having both math and Portuguese language grades
+  # Merged on Portuguese students
 file_students <- here::here("Student/data/student-merged.csv")
   # Common code
 file_common <- here::here("_common.R")
@@ -69,7 +70,7 @@ plot_r2 <- function(.data) {
 source(file_common)
 ```
 
-# 12 Transportation and regression
+# 12 Transformations and regression
 
 ## 12.7 Models for regression coefficients
 
@@ -630,7 +631,7 @@ loo_compare(loo_3, loo_4)
     #> fit_3  0.0       0.0   
     #> fit_4 -2.8       4.2
 
-The prediction performance can not improved much by adding more
+The prediction performance can not be improved much by adding more
 predictors. Note that by observing more students it might be possible to
 learn regression coefficients for other predictors with sufficient small
 uncertainty so that predictions for new students could be improved.

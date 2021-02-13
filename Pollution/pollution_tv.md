@@ -1,10 +1,11 @@
 Regression and Other Stories: Pollution
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-07
+2021-02-12
 
--   [12 Transformations and regression](#transformations-and-regression)
-    -   [12.9 Exercises](#exercises)
+-   [12 Transformations and
+    regression](#12-transformations-and-regression)
+    -   [12.9 Exercises](#129-exercises)
 
 Tidyverse version by Bill Behrman.
 

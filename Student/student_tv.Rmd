@@ -22,7 +22,7 @@ library(rstanarm)
 # Parameters
   # Seed
 SEED <- 2132
-  # Merged data with students having both math and Portuguese language grades
+  # Merged on Portuguese students
 file_students <- here::here("Student/data/student-merged.csv")
   # Common code
 file_common <- here::here("_common.R")
@@ -68,7 +68,7 @@ plot_r2 <- function(.data) {
 source(file_common)
 ```
 
-# 12 Transportation and regression
+# 12 Transformations and regression
 
 ## 12.7 Models for regression coefficients
 
@@ -418,7 +418,7 @@ loo_compare(loo_2, loo_4)
 loo_compare(loo_3, loo_4)
 ```
 
-The prediction performance can not improved much by adding more predictors. Note that by observing more students it might be possible to learn regression coefficients for other predictors with sufficient small uncertainty so that predictions for new students could be improved.
+The prediction performance can not be improved much by adding more predictors. Note that by observing more students it might be possible to learn regression coefficients for other predictors with sufficient small uncertainty so that predictions for new students could be improved.
 
 LOO $R^2$
 
