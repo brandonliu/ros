@@ -211,13 +211,16 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Pollution/](Pollution/)
     -   [pollution\_tv.md](Pollution/pollution_tv.md) - Pollution data
 
-<!-- ### 13  Logistic regression -->
-<!-- - [NES/](NES/) -->
-<!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
-<!-- - [LogisticPriors/](LogisticPriors/) -->
-<!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
-<!-- - [Arsenic/](Arsenic/) -->
-<!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+### 13 Logistic regression
+
+-   [NES/](NES/)
+    -   [nes\_logistic\_tv.md](NES/nes_logistic_tv.md) - Logistic
+        regression, identifiability, and separation
+        <!-- - [LogisticPriors/](LogisticPriors/) -->
+        <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
+        <!-- - [Arsenic/](Arsenic/) -->
+        <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+
 <!-- ### 14  Working with logistic regression -->
 <!-- - [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/) -->
 <!--     - [logitgraphs_tv.md](LogitGraphs/logitgraphs_tv.md) - Different ways of displaying logistic regression -->
@@ -428,7 +431,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [NES/](NES/)
     -   [nes\_linear\_tv.md](NES/nes_linear_tv.md) - Fitting the same
         regression to many datasets
-        <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+    -   [nes\_logistic\_tv.md](NES/nes_logistic_tv.md) - Logistic
+        regression, identifiability, and separation
 -   [Newcomb/](Newcomb/)
     -   [newcomb\_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive
         checking of Normal model for Newcomb’s speed of light data

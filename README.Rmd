@@ -144,9 +144,9 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Pollution/](Pollution/)
     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data
 
-<!-- ### 13  Logistic regression -->
-<!-- - [NES/](NES/) -->
-<!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+### 13  Logistic regression
+- [NES/](NES/)
+    - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation
 <!-- - [LogisticPriors/](LogisticPriors/) -->
 <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
 <!-- - [Arsenic/](Arsenic/) -->
@@ -338,7 +338,7 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [lastletters_tv.md](Names/lastletters_tv.md) - Last letters - Distributions of last letters of names of American babies
 - [NES/](NES/)
     - [nes_linear_tv.md](NES/nes_linear_tv.md) - Fitting the same regression to many datasets
-<!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+    - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation
 - [Newcomb/](Newcomb/)
     - [newcomb_tv.md](Newcomb/newcomb_tv.md) - Posterior predictive checking of Normal model for Newcomb's speed of light data
 <!-- - [Parabola/](Parabola/) -->
