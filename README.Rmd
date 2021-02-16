@@ -139,8 +139,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [gay_simple_tv.md](Gay/gay_simple_tv.md) - Simple models (linear and discretized age) and political attitudes as a function of age
 - [Mesquite/](Mesquite/)
     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes
-<!-- - [Student/](Student/) -->
-<!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
+- [Student/](Student/)
+    - [student_tv.md](Student/student_tv.md) - Models for regression coefficients
 <!-- - [Pollution/](Pollution/) -->
 <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
 

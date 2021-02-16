@@ -204,9 +204,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         function of age
 -   [Mesquite/](Mesquite/)
     -   [mesquite\_tv.md](Mesquite/mesquite_tv.md) - Predicting the
-        yields of mesquite bushes <!-- - [Student/](Student/) -->
-        <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
-        <!-- - [Pollution/](Pollution/) -->
+        yields of mesquite bushes
+-   [Student/](Student/)
+    -   [student\_tv.md](Student/student_tv.md) - Models for regression
+        coefficients <!-- - [Pollution/](Pollution/) -->
         <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
 
 <!-- ### 13  Logistic regression -->
