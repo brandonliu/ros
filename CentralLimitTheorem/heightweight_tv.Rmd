@@ -20,7 +20,7 @@ library(tidyverse)
 
 # Parameters
   # Number of points for plot curves
-N_POINTS <- 101
+N_POINTS <- 201
   # Common code
 file_common <- here::here("_common.R")
 
@@ -30,7 +30,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.5 Probability distributions
+
+### Mean and standard deviation of a probability distribution
+
+Data.
 
 ```{r}
 heights <- 
@@ -49,9 +55,7 @@ heights <-
   )
 ```
 
-## Plots
-
-### Normal approximation of heights
+Normal approximations of heights.
 
 ```{r}
 height_men_mean <- weighted.mean(heights$height, heights$men)
@@ -70,6 +74,7 @@ norm_approx <-
   )
 ```
 
+Heights of women.
 
 ```{r}
 heights %>% 
@@ -79,11 +84,13 @@ heights %>%
   geom_line(aes(x, y_women), data = norm_approx, color = "red") +
   labs(
     title = "Heights of women",
-    subtitle = "With normal approximation",
+    subtitle = "With normal approximation in red",
     x = "Height (inches)",
     y = "Count"
   )
 ```
+
+Heights of men.
 
 ```{r}
 heights %>% 
@@ -93,11 +100,15 @@ heights %>%
   geom_line(aes(x, y_men), data = norm_approx, color = "red") +
   labs(
     title = "Heights of men",
-    subtitle = "With normal approximation",
+    subtitle = "With normal approximation in red",
     x = "Height (inches)",
     y = "Count"
   )
 ```
+
+### Normal distribution; mean and standard deviation
+
+Heights of all adults.
 
 ```{r}
 heights %>% 
@@ -112,62 +123,7 @@ heights %>%
   )
 ```
 
-### Log-normal approximation of weights
-
-```{r}
-weight_men_meanlog <- 5.13
-weight_men_sdlog <- 0.17
-```
-
-```{r}
-v <- 
-  tibble(
-    x = 
-      seq(
-        weight_men_meanlog - 3 * weight_men_sdlog,
-        weight_men_meanlog + 3 * weight_men_sdlog,
-        length.out = N_POINTS
-      ),
-    y = dnorm(x, mean = weight_men_meanlog, sd = weight_men_sdlog)
-  )
-
-v %>% 
-  ggplot(aes(x, y)) +
-  geom_line() +
-  scale_x_continuous(breaks = scales::breaks_width(0.2)) +
-  scale_y_continuous(breaks = NULL) +
-  labs(
-    title = "Normal approximation of log weights of men",
-    x = "Log of weight in pounds",
-    y = NULL
-  )
-```
-
-```{r}
-v <- 
-  tibble(
-    x = 
-      seq(
-        exp(weight_men_meanlog - 3 * weight_men_sdlog),
-        exp(weight_men_meanlog + 3 * weight_men_sdlog),
-        length.out = N_POINTS
-      ),
-    y = dlnorm(x, meanlog = weight_men_meanlog, sdlog = weight_men_sdlog)
-  )
-
-v %>% 
-  ggplot(aes(x, y)) +
-  geom_line() +
-  scale_x_continuous(breaks = scales::breaks_width(20)) +
-  scale_y_continuous(breaks = NULL) +
-  labs(
-    title = "Log-normal approximation of weights of men",
-    x = "Weight in pounds",
-    y = NULL
-  )
-```
-
-### Normal distribution
+Normal distribution with mean 0 and standard deviation 1.
 
 ```{r}
 v <- 
@@ -208,6 +164,65 @@ v %>%
   labs(
     title = "Normal distribution with mean 0 and standard deviation 1",
     x = NULL,
+    y = NULL
+  )
+```
+
+### Lognormal distribution
+
+```{r}
+weight_men_meanlog <- 5.13
+weight_men_sdlog <- 0.17
+```
+
+Normal approximation of log weights of men.
+
+```{r}
+v <- 
+  tibble(
+    x = 
+      seq(
+        weight_men_meanlog - 3 * weight_men_sdlog,
+        weight_men_meanlog + 3 * weight_men_sdlog,
+        length.out = N_POINTS
+      ),
+    y = dnorm(x, mean = weight_men_meanlog, sd = weight_men_sdlog)
+  )
+
+v %>% 
+  ggplot(aes(x, y)) +
+  geom_line() +
+  scale_x_continuous(breaks = scales::breaks_width(0.2)) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Normal approximation of log weights of men",
+    x = "Log of weight in pounds",
+    y = NULL
+  )
+```
+
+Lognormal approximation of weights of men.
+
+```{r}
+v <- 
+  tibble(
+    x = 
+      seq(
+        exp(weight_men_meanlog - 3 * weight_men_sdlog),
+        exp(weight_men_meanlog + 3 * weight_men_sdlog),
+        length.out = N_POINTS
+      ),
+    y = dlnorm(x, meanlog = weight_men_meanlog, sdlog = weight_men_sdlog)
+  )
+
+v %>% 
+  ggplot(aes(x, y)) +
+  geom_line() +
+  scale_x_continuous(breaks = scales::breaks_width(20)) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Lognormal approximation of weights of men",
+    x = "Weight in pounds",
     y = NULL
   )
 ```

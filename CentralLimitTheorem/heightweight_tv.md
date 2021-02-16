@@ -1,15 +1,16 @@
 Regression and Other Stories: Heights and weights
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-16
 
--   [Data](#data)
--   [Plots](#plots)
-    -   [Normal approximation of
-        heights](#normal-approximation-of-heights)
-    -   [Log-normal approximation of
-        weights](#log-normal-approximation-of-weights)
-    -   [Normal distribution](#normal-distribution)
+-   [3 Some basic methods in mathematics and
+    probability](#3-some-basic-methods-in-mathematics-and-probability)
+    -   [3.5 Probability distributions](#35-probability-distributions)
+        -   [Mean and standard deviation of a probability
+            distribution](#mean-and-standard-deviation-of-a-probability-distribution)
+        -   [Normal distribution; mean and standard
+            deviation](#normal-distribution-mean-and-standard-deviation)
+        -   [Lognormal distribution](#lognormal-distribution)
 
 Tidyverse version by Bill Behrman.
 
@@ -25,7 +26,7 @@ library(tidyverse)
 
 # Parameters
   # Number of points for plot curves
-N_POINTS <- 101
+N_POINTS <- 201
   # Common code
 file_common <- here::here("_common.R")
 
@@ -35,7 +36,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.5 Probability distributions
+
+### Mean and standard deviation of a probability distribution
+
+Data.
 
 ``` r
 heights <- 
@@ -54,9 +61,7 @@ heights <-
   )
 ```
 
-## Plots
-
-### Normal approximation of heights
+Normal approximations of heights.
 
 ``` r
 height_men_mean <- weighted.mean(heights$height, heights$men)
@@ -75,6 +80,8 @@ norm_approx <-
   )
 ```
 
+Heights of women.
+
 ``` r
 heights %>% 
   ggplot() +
@@ -83,13 +90,15 @@ heights %>%
   geom_line(aes(x, y_women), data = norm_approx, color = "red") +
   labs(
     title = "Heights of women",
-    subtitle = "With normal approximation",
+    subtitle = "With normal approximation in red",
     x = "Height (inches)",
     y = "Count"
   )
 ```
 
 <img src="heightweight_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+
+Heights of men.
 
 ``` r
 heights %>% 
@@ -99,13 +108,17 @@ heights %>%
   geom_line(aes(x, y_men), data = norm_approx, color = "red") +
   labs(
     title = "Heights of men",
-    subtitle = "With normal approximation",
+    subtitle = "With normal approximation in red",
     x = "Height (inches)",
     y = "Count"
   )
 ```
 
 <img src="heightweight_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
+
+### Normal distribution; mean and standard deviation
+
+Heights of all adults.
 
 ``` r
 heights %>% 
@@ -122,66 +135,7 @@ heights %>%
 
 <img src="heightweight_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
-### Log-normal approximation of weights
-
-``` r
-weight_men_meanlog <- 5.13
-weight_men_sdlog <- 0.17
-```
-
-``` r
-v <- 
-  tibble(
-    x = 
-      seq(
-        weight_men_meanlog - 3 * weight_men_sdlog,
-        weight_men_meanlog + 3 * weight_men_sdlog,
-        length.out = N_POINTS
-      ),
-    y = dnorm(x, mean = weight_men_meanlog, sd = weight_men_sdlog)
-  )
-
-v %>% 
-  ggplot(aes(x, y)) +
-  geom_line() +
-  scale_x_continuous(breaks = scales::breaks_width(0.2)) +
-  scale_y_continuous(breaks = NULL) +
-  labs(
-    title = "Normal approximation of log weights of men",
-    x = "Log of weight in pounds",
-    y = NULL
-  )
-```
-
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
-
-``` r
-v <- 
-  tibble(
-    x = 
-      seq(
-        exp(weight_men_meanlog - 3 * weight_men_sdlog),
-        exp(weight_men_meanlog + 3 * weight_men_sdlog),
-        length.out = N_POINTS
-      ),
-    y = dlnorm(x, meanlog = weight_men_meanlog, sdlog = weight_men_sdlog)
-  )
-
-v %>% 
-  ggplot(aes(x, y)) +
-  geom_line() +
-  scale_x_continuous(breaks = scales::breaks_width(20)) +
-  scale_y_continuous(breaks = NULL) +
-  labs(
-    title = "Log-normal approximation of weights of men",
-    x = "Weight in pounds",
-    y = NULL
-  )
-```
-
-<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
-
-### Normal distribution
+Normal distribution with mean 0 and standard deviation 1.
 
 ``` r
 v <- 
@@ -222,6 +176,69 @@ v %>%
   labs(
     title = "Normal distribution with mean 0 and standard deviation 1",
     x = NULL,
+    y = NULL
+  )
+```
+
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
+
+### Lognormal distribution
+
+``` r
+weight_men_meanlog <- 5.13
+weight_men_sdlog <- 0.17
+```
+
+Normal approximation of log weights of men.
+
+``` r
+v <- 
+  tibble(
+    x = 
+      seq(
+        weight_men_meanlog - 3 * weight_men_sdlog,
+        weight_men_meanlog + 3 * weight_men_sdlog,
+        length.out = N_POINTS
+      ),
+    y = dnorm(x, mean = weight_men_meanlog, sd = weight_men_sdlog)
+  )
+
+v %>% 
+  ggplot(aes(x, y)) +
+  geom_line() +
+  scale_x_continuous(breaks = scales::breaks_width(0.2)) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Normal approximation of log weights of men",
+    x = "Log of weight in pounds",
+    y = NULL
+  )
+```
+
+<img src="heightweight_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+
+Lognormal approximation of weights of men.
+
+``` r
+v <- 
+  tibble(
+    x = 
+      seq(
+        exp(weight_men_meanlog - 3 * weight_men_sdlog),
+        exp(weight_men_meanlog + 3 * weight_men_sdlog),
+        length.out = N_POINTS
+      ),
+    y = dlnorm(x, meanlog = weight_men_meanlog, sdlog = weight_men_sdlog)
+  )
+
+v %>% 
+  ggplot(aes(x, y)) +
+  geom_line() +
+  scale_x_continuous(breaks = scales::breaks_width(20)) +
+  scale_y_continuous(breaks = 0) +
+  labs(
+    title = "Lognormal approximation of weights of men",
+    x = "Weight in pounds",
     y = NULL
   )
 ```
