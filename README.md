@@ -478,8 +478,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
         distributions <!-- - [Storable/](Storable/) -->
         <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
-        <!-- - [Student/](Student/) -->
-        <!--     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients -->
+-   [Student/](Student/)
+    -   [student\_tv.md](Student/student_tv.md) - Models for regression
+        coefficients
 -   [Unemployment/](Unemployment/)
     -   [unemployment\_tv.md](Unemployment/unemployment_tv.md) - Time
         series fit and posterior predictive model checking for
