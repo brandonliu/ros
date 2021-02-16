@@ -1,10 +1,13 @@
 Regression and Other Stories: Metabolic
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-15
 
--   [Data](#data)
--   [Plots](#plots)
+-   [3 Some basic methods in mathematics and
+    probability](#3-some-basic-methods-in-mathematics-and-probability)
+    -   [3.4 Exponential and power-law growth and decline; logarithmic
+        and log-log
+        relationships](#34-exponential-and-power-law-growth-and-decline-logarithmic-and-log-log-relationships)
 
 Tidyverse version by Bill Behrman.
 
@@ -31,7 +34,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.4 Exponential and power-law growth and decline; logarithmic and log-log relationships
+
+Data.
 
 ``` r
 metabolic_rates <- 
@@ -46,12 +53,12 @@ intercept <- 1.4
 slope <- 0.74
 ```
 
-## Plots
+Metabolic rate on untransformed scales.
 
 ``` r
 power_law <- 
   tibble(
-    mass = seq(0.02, 3000, length.out = 101),
+    mass = seq(0.02, 3000, length.out = 201),
     metabolic_rate = exp(intercept) * mass^slope
   )
 
@@ -79,6 +86,8 @@ metabolic_rates %>%
 ```
 
 <img src="metabolic_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+
+Metabolic rate on log-log scales.
 
 ``` r
 metabolic_rates %>% 

@@ -31,7 +31,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.4 Exponential and power-law growth and decline; logarithmic and log-log relationships
+
+Data.
 
 ```{r}
 metabolic_rates <- 
@@ -46,12 +50,12 @@ intercept <- 1.4
 slope <- 0.74
 ```
 
-## Plots
+Metabolic rate on untransformed scales.
 
 ```{r}
 power_law <- 
   tibble(
-    mass = seq(0.02, 3000, length.out = 101),
+    mass = seq(0.02, 3000, length.out = 201),
     metabolic_rate = exp(intercept) * mass^slope
   )
 
@@ -78,6 +82,8 @@ metabolic_rates %>%
     y = "Metabolic rate (watts)"
   )
 ```
+
+Metabolic rate on log-log scales.
 
 ```{r}
 metabolic_rates %>% 
