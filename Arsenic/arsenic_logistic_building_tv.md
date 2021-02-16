@@ -1,7 +1,7 @@
 Regression and Other Stories: Arsenic
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-12
+2021-02-15
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.7 Building a logistic regression model: wells in
@@ -16,11 +16,14 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             variable](#adding-a-second-input-variable)
         -   [Graphing the fitted model with two
             predictors](#graphing-the-fitted-model-with-two-predictors)
+-   [14 Working with logistic
+    regression](#14-working-with-logistic-regression)
+    -   [14.3 Predictive simulation](#143-predictive-simulation)
 
 Tidyverse version by Bill Behrman.
 
-Building a logistic regression model: wells in Bangladesh. See Chapter
-13 in Regression and Other Stories.
+Building a logistic regression model: wells in Bangladesh. See Chapters
+13 and 14 in Regression and Other Stories.
 
 ------------------------------------------------------------------------
 
@@ -501,52 +504,6 @@ are similar. Between the distance of 0 - 50 meters, the empirical plot
 has a roughly constant percentage of households who switched, whereas
 the model has a linear decline.
 
-Probability of household switching to new well by distance with
-uncertainty.
-
-``` r
-new <- tibble(dist = seq_range(wells$dist))
-linpred <- posterior_linpred(fit_1, newdata = new)
-v <- 
-  new %>% 
-  mutate(
-    .pred = predict(fit_1, type = "response", newdata = new),
-    `5%`  = apply(linpred, 2, quantile, probs = 0.05) %>% plogis(),
-    `25%` = apply(linpred, 2, quantile, probs = 0.25) %>% plogis(),
-    `75%` = apply(linpred, 2, quantile, probs = 0.75) %>% plogis(),
-    `95%` = apply(linpred, 2, quantile, probs = 0.95) %>% plogis()
-  )
-
-v %>% 
-  ggplot(aes(dist)) +
-  stat_ydensity(
-    aes(y = switch, group = switch),
-    data = wells,
-    width = 0.25,
-    draw_quantiles = c(0.25, 0.5, 0.75),
-    scale = "count"
-  ) +
-  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
-  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
-  geom_line(aes(y = .pred)) +
-  coord_cartesian(ylim = c(-0.125, 1.125)) +
-  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
-  scale_x_continuous(breaks = scales::breaks_width(50)) +
-  labs(
-    title = "Probability of household switching to new well by distance",
-    subtitle =
-      "With 50% and 90% predictive intervals\nVoilin plots represent density of those do did and did not switch",
-    x = "Distance to the closest known safe well (meters)",
-    y = "Probability of household switching"
-  )
-```
-
-<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-21-1.png" width="100%" />
-
-In the region of sparse data for large distances, the uncertainty from
-the posterior distribution of the model is much less than the
-uncertainty seen in the 2D EDA section using LOESS.
-
 ### Interpreting the logistic regression coefficients
 
 Proportion of households who switched.
@@ -691,7 +648,7 @@ v %>%
   )
 ```
 
-<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-27-1.png" width="100%" />
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-26-1.png" width="100%" />
 
 The probability decreases with distance and increases with arsenic
 level.
@@ -747,7 +704,57 @@ v %>%
   )
 ```
 
-<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-28-1.png" width="100%" />
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-27-1.png" width="100%" />
 
 The probability increases with arsenic level and decreases with
 distance.
+
+# 14 Working with logistic regression
+
+## 14.3 Predictive simulation
+
+Probability of household switching to new well by distance with
+uncertainty.
+
+``` r
+new <- tibble(dist = seq_range(wells$dist))
+linpred <- posterior_linpred(fit_1, newdata = new)
+v <- 
+  new %>% 
+  mutate(
+    .pred = predict(fit_1, type = "response", newdata = new),
+    `5%`  = apply(linpred, 2, quantile, probs = 0.05) %>% plogis(),
+    `25%` = apply(linpred, 2, quantile, probs = 0.25) %>% plogis(),
+    `75%` = apply(linpred, 2, quantile, probs = 0.75) %>% plogis(),
+    `95%` = apply(linpred, 2, quantile, probs = 0.95) %>% plogis()
+  )
+
+v %>% 
+  ggplot(aes(dist)) +
+  stat_ydensity(
+    aes(y = switch, group = switch),
+    data = wells,
+    width = 0.25,
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
+  geom_ribbon(aes(ymin = `5%`, ymax = `95%`), alpha = 0.25) +
+  geom_ribbon(aes(ymin = `25%`, ymax = `75%`), alpha = 0.5) +
+  geom_line(aes(y = .pred)) +
+  coord_cartesian(ylim = c(-0.125, 1.125)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
+  scale_x_continuous(breaks = scales::breaks_width(50)) +
+  labs(
+    title = "Probability of household switching to new well by distance",
+    subtitle =
+      "With 50% and 90% predictive intervals\nVoilin plots represent density of those do did and did not switch",
+    x = "Distance to the closest known safe well (meters)",
+    y = "Probability of household switching"
+  )
+```
+
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-28-1.png" width="100%" />
+
+In the region of sparse data for large distances, the uncertainty from
+the posterior distribution of the model is much less than the
+uncertainty seen in the 2D EDA section using LOESS.
