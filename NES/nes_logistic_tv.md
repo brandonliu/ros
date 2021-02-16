@@ -1,7 +1,7 @@
 Regression and Other Stories: National election study
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-11
+2021-02-15
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.1 Logistic regression with a single
@@ -157,7 +157,9 @@ We will use the following variables.
 nes <- 
   nes %>% 
   select(year, income, dvote, rvote)
+```
 
+``` r
 unique(nes$year) %>% 
   sort()
 ```
@@ -271,7 +273,7 @@ v %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
 ### Fitting the model using `stan_glm()` and displaying uncertainty in the fitted model
 
@@ -306,7 +308,7 @@ v %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
 ## 13.2 Interpreting logistic regression coefficients and the divide-by-4 rule
 
@@ -365,7 +367,7 @@ coefs %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
 
 ## 13.3 Predictions and comparisons
 
@@ -472,9 +474,9 @@ max(abs(epred_manual - epred))
 
     #> [1] 2.22e-16
 
-The values returned by `posterior_linpred()` transformed by `plogis()`
-to convert from the linear predictor to the probability scale are the
-same as the values returned by `posterior_epred()`.
+The result of `posterior_epred()` is equal to the result of
+`posterior_linpred()` transformed by `plogis()` to convert from the
+linear predictor to the probability scale.
 
 ``` r
 max(abs(epred - plogis(linpred)))
@@ -483,8 +485,8 @@ max(abs(epred - plogis(linpred)))
     #> [1] 2.22e-16
 
 The mean of the simulations of the prediction returned by
-`posterior_epred()` is the same as the prediction returned by
-`predict()` with `type = "response"`.
+`posterior_epred()` is equal to the prediction returned by `predict()`
+with `type = "response"`.
 
 ``` r
 mean(epred)
@@ -499,7 +501,7 @@ mean(epred) - as.double(pred)
     #> [1] 0
 
 The standard deviation of the simulations of the prediction can be used
-as a measure of its uncertainty.
+as a measure of uncertainty.
 
 ``` r
 sd(epred)

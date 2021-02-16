@@ -55,7 +55,9 @@ We will use the following variables.
 nes <- 
   nes %>% 
   select(year, income, dvote, rvote)
+```
 
+```{r}
 unique(nes$year) %>% 
   sort()
 
@@ -283,13 +285,13 @@ epred_manual <- plogis(sims$`(Intercept)` + sims$income * new$income)
 max(abs(epred_manual - epred))
 ```
 
-The values returned by `posterior_linpred()` transformed by `plogis()` to convert from the linear predictor to the probability scale are the same as the values returned by `posterior_epred()`.
+The result of `posterior_epred()` is equal to the result of `posterior_linpred()` transformed by `plogis()` to convert from the linear predictor to the probability scale.
 
 ```{r}
 max(abs(epred - plogis(linpred)))
 ```
 
-The mean of the simulations of the prediction returned by `posterior_epred()` is the same as the prediction returned by `predict()` with `type = "response"`.
+The mean of the simulations of the prediction returned by `posterior_epred()` is equal to the prediction returned by `predict()` with `type = "response"`.
 
 ```{r}
 mean(epred)
@@ -297,7 +299,7 @@ mean(epred)
 mean(epred) - as.double(pred)
 ```
 
-The standard deviation of the simulations of the prediction can be used as a measure of its uncertainty.
+The standard deviation of the simulations of the prediction can be used as a measure of uncertainty.
 
 ```{r}
 sd(epred)
