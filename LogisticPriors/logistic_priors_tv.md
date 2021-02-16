@@ -1,7 +1,7 @@
 Regression and Other Stories: Logistic regression priors
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-10
+2021-02-16
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.5 Maximum likelihood and Bayesion inference for logistic
@@ -47,7 +47,7 @@ bayes_sim <- function(n, a = -2, b = 0.8) {
   data <- 
     tibble(
       x = runif(n, min = -1, max = 1),
-      y = if_else(rlogis(n, location = a + b * x, scale = 1) > 0, 1, 0)
+      y = if_else(0 < rlogis(n, location = a + b * x, scale = 1), 1, 0)
     )
   
   glm_fit <- glm(y ~ x, family = binomial(link = "logit"), data = data)
