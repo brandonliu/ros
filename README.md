@@ -216,8 +216,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [NES/](NES/)
     -   [nes\_logistic\_tv.md](NES/nes_logistic_tv.md) - Logistic
         regression, identifiability, and separation
-        <!-- - [LogisticPriors/](LogisticPriors/) -->
-        <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
+-   [LogisticPriors/](LogisticPriors/)
+    -   [logistic\_priors\_tv.md](LogisticPriors/logistic_priors_tv.md) -
+        Effect of priors in logistic regression
         <!-- - [Arsenic/](Arsenic/) -->
         <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
 
@@ -414,8 +415,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [KidIQ/](KidIQ/)
     -   [kidiq\_tv.md](KidIQ/kidiq_tv.md) - Linear regression with
         multiple predictors <!-- - [Lalonde/](Lalonde/) -->
-        <!-- - [LogisticPriors/](LogisticPriors/) -->
-        <!--     - [logistic_priors_tv.md](LogisticPriors/logistic_priors_tv.md) - Effect of priors in logistic regression -->
+-   [LogisticPriors/](LogisticPriors/)
+    -   [logistic\_priors\_tv.md](LogisticPriors/logistic_priors_tv.md) -
+        Effect of priors in logistic regression
 -   [Mesquite/](Mesquite/)
     -   [mesquite\_tv.md](Mesquite/mesquite_tv.md) - Predicting the
         yields of mesquite bushes
