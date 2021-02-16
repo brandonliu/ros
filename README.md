@@ -207,8 +207,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         yields of mesquite bushes
 -   [Student/](Student/)
     -   [student\_tv.md](Student/student_tv.md) - Models for regression
-        coefficients <!-- - [Pollution/](Pollution/) -->
-        <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+        coefficients
+-   [Pollution/](Pollution/)
+    -   [pollution\_tv.md](Pollution/pollution_tv.md) - Pollution data
 
 <!-- ### 13  Logistic regression -->
 <!-- - [NES/](NES/) -->
@@ -443,8 +444,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
         Pew data <!-- - [PoissonExample/](PoissonExample/) -->
         <!--     - [poissonexample_tv.md](PoissonExample/poissonexample_tv.md) - Demonstrate Poisson regression with simulated data. -->
-        <!-- - [Pollution/](Pollution/) -->
-        <!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+-   [Pollution/](Pollution/)
+    -   [pollution\_tv.md](Pollution/pollution_tv.md) - Pollution data
         <!-- - [Poststrat/](Poststrat/) -->
         <!--     - [poststrat_tv.md](Poststrat/poststrat_tv.md) - Poststratification after estimation -->
         <!--     - [poststrat2_tv.md](Poststrat/poststrat2_tv.md) - Poststratification after estimation -->

@@ -141,8 +141,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [mesquite_tv.md](Mesquite/mesquite_tv.md) - Predicting the yields of mesquite bushes
 - [Student/](Student/)
     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients
-<!-- - [Pollution/](Pollution/) -->
-<!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+- [Pollution/](Pollution/)
+    - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data
 
 <!-- ### 13  Logistic regression -->
 <!-- - [NES/](NES/) -->
@@ -351,8 +351,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [pew_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw Pew data
 <!-- - [PoissonExample/](PoissonExample/) -->
 <!--     - [poissonexample_tv.md](PoissonExample/poissonexample_tv.md) - Demonstrate Poisson regression with simulated data. -->
-<!-- - [Pollution/](Pollution/) -->
-<!--     - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data. -->
+- [Pollution/](Pollution/)
+    - [pollution_tv.md](Pollution/pollution_tv.md) - Pollution data
 <!-- - [Poststrat/](Poststrat/) -->
 <!--     - [poststrat_tv.md](Poststrat/poststrat_tv.md) - Poststratification after estimation -->
 <!--     - [poststrat2_tv.md](Poststrat/poststrat2_tv.md) - Poststratification after estimation -->
