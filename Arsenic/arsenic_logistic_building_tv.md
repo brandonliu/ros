@@ -1,7 +1,7 @@
 Regression and Other Stories: Arsenic
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-15
+2021-02-17
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.7 Building a logistic regression model: wells in
@@ -192,7 +192,7 @@ wells_all %>%
 It looks as though the wells may be near dwellings along streets. In
 many areas unsafe wells are close to safe wells.
 
-#### Data on wells that exceed the safety standard
+#### Data on unsafe wells
 
 Data.
 
@@ -217,7 +217,7 @@ summary(wells)
     #>  3rd Qu.: 8.00   3rd Qu.:2.00  
     #>  Max.   :17.00   Max.   :4.25
 
-The variables we will use here are:
+The variables are:
 
 -   `switch`: Outcome variable:
     -   1 if household switched to a new well
@@ -225,6 +225,10 @@ The variables we will use here are:
 -   `arsenic`: Arsenic level of respondent’s well
 -   `dist`: Distance (in meters) to the closest known safe well
 -   `dist100` = `dist / 100`
+-   `assoc`: Whether any members of the household are active in
+    community organizations
+-   `educ`: Education level of the head of household
+-   `educ4` = `educ / 4`
 
 ##### 1D EDA
 
@@ -516,8 +520,8 @@ switch_prop
 
     #> [1] 0.575
 
-Log score for model with constant prediction equal to the proportion of
-households who switched.
+Log score for model with a constant prediction equal to the proportion
+of households who switched.
 
 ``` r
 log(switch_prop) * sum(wells$switch) + log(1 - switch_prop) * sum(!wells$switch)

@@ -128,7 +128,7 @@ wells_all %>%
 
 It looks as though the wells may be near dwellings along streets. In many areas unsafe wells are close to safe wells.
 
-#### Data on wells that exceed the safety standard
+#### Data on unsafe wells
 
 Data.
 
@@ -138,7 +138,7 @@ wells <- read_csv(file_wells)
 summary(wells)
 ```
 
-The variables we will use here are:
+The variables are:
 
 * `switch`: Outcome variable:
   * 1 if household switched to a new well
@@ -146,6 +146,9 @@ The variables we will use here are:
 * `arsenic`: Arsenic level of respondent's well
 * `dist`: Distance (in meters) to the closest known safe well
 * `dist100` = `dist / 100`
+* `assoc`: Whether any members of the household are active in community organizations
+* `educ`: Education level of the head of household
+* `educ4` = `educ / 4`
 
 ##### 1D EDA
 
@@ -350,7 +353,7 @@ switch_prop <- mean(wells$switch)
 switch_prop
 ```
 
-Log score for model with constant prediction equal to the proportion of households who switched.
+Log score for model with a constant prediction equal to the proportion of households who switched.
 
 ```{r}
 log(switch_prop) * sum(wells$switch) + log(1 - switch_prop) * sum(!wells$switch)
