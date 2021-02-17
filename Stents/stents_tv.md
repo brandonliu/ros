@@ -1,10 +1,12 @@
 Regression and Other Stories: Stents
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-17
 
--   [Data](#data)
--   [Plot](#plot)
+-   [3 Some basic methods in mathematics and
+    probability](#3-some-basic-methods-in-mathematics-and-probability)
+    -   [3.5 Probability distributions](#35-probability-distributions)
+        -   [Comparing distributions](#comparing-distributions)
 
 Tidyverse version by Bill Behrman.
 
@@ -27,20 +29,26 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 3 Some basic methods in mathematics and probability
+
+## 3.5 Probability distributions
+
+### Comparing distributions
+
+Data.
 
 ``` r
 # Mean times for each group
-time_control <- 510
-time_treatment <- 530
+time_placebo <- 510
+time_stent <- 530
 
 # Standard deviations for each group
-sd_control <- 190
-sd_treatment <- 190
+sd_placebo <- 190
+sd_stent <- 190
 ```
 
 ``` r
-pnorm(time_treatment, mean = time_control, sd = sd_control)
+pnorm(time_stent, mean = time_placebo, sd = sd_placebo)
 ```
 
     #> [1] 0.542
@@ -48,31 +56,26 @@ pnorm(time_treatment, mean = time_control, sd = sd_control)
 The mean time for the treatment group would have been in the 54th
 percentile for the control group.
 
-## Plot
+Distributions of potential outcomes for patients given placebo or heart
+stent.
 
 ``` r
 x <- 
   seq(
     max(
       0,
-      min(time_control - 3 * sd_control, time_treatment - 3 * sd_treatment)
+      min(time_placebo - 3 * sd_placebo, time_stent - 3 * sd_stent)
     ),
-    max(time_control + 3 * sd_control, time_treatment + 3 * sd_treatment),
-    length.out = 101
+    max(time_placebo + 3 * sd_placebo, time_stent + 3 * sd_stent),
+    length.out = 201
   )
 v <- 
-  tibble(
-    group = "Control",
-    x = x,
-    y = dnorm(x, mean = time_control, sd = sd_control)
+  tribble(
+    ~group,    ~data,
+    "Placebo", tibble(x, y = dnorm(x, mean = time_placebo, sd = sd_placebo)),
+    "Stent",   tibble(x, y = dnorm(x, mean = time_stent, sd = sd_stent))
   ) %>% 
-  bind_rows(
-    tibble(
-      group = "Treatment",
-      x = x,
-      y = dnorm(x, mean = time_treatment, sd = sd_treatment)
-    )
-  )
+  unnest(data)
 
 v %>% 
   ggplot(aes(x, y, color = group)) +
@@ -80,6 +83,8 @@ v %>%
   scale_x_continuous(breaks = scales::breaks_width(200)) +
   scale_y_continuous(breaks = 0) +
   labs(
+    title =
+      "Distributions of potential outcomes for patients given placebo or heart stent",
     x = "Exercise time (seconds)",
     y = NULL,
     color = "Group"
