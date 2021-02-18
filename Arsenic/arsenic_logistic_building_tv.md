@@ -18,7 +18,21 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
             predictors](#graphing-the-fitted-model-with-two-predictors)
 -   [14 Working with logistic
     regression](#14-working-with-logistic-regression)
+    -   [14.2 Logistic regression with
+        interactions](#142-logistic-regression-with-interactions)
+        -   [Centering the input
+            variables](#centering-the-input-variables)
+        -   [Re-fitting the interaction model using the centered
+            inputs](#re-fitting-the-interaction-model-using-the-centered-inputs)
+        -   [Statistical significance of the
+            interaction](#statistical-significance-of-the-interaction)
+        -   [Graphing the model with
+            interactions](#graphing-the-model-with-interactions)
+        -   [Adding social predictors](#adding-social-predictors)
+        -   [Adding further interactions](#adding-further-interactions)
     -   [14.3 Predictive simulation](#143-predictive-simulation)
+        -   [Simulating the uncertainty in the estimated
+            coefficients](#simulating-the-uncertainty-in-the-estimated-coefficients)
 
 Tidyverse version by Bill Behrman.
 
@@ -715,7 +729,534 @@ distance.
 
 # 14 Working with logistic regression
 
+## 14.2 Logistic regression with interactions
+
+Fit a model using scaled distance, arsenic level, and an interaction
+
+``` r
+set.seed(733)
+
+fit_4 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + dist100:arsenic,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_4, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       binomial [logit]
+    #>  formula:      switch ~ dist100 + arsenic + dist100:arsenic
+    #>  observations: 3020
+    #>  predictors:   4
+    #> ------
+    #>                 Median MAD_SD
+    #> (Intercept)     -0.15   0.12 
+    #> dist100         -0.58   0.23 
+    #> arsenic          0.56   0.07 
+    #> dist100:arsenic -0.18   0.11 
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+LOO log score
+
+``` r
+loo_4 <- loo(fit_4)
+
+loo_4
+```
+
+    #> 
+    #> Computed from 4000 by 3020 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo  -1968.3 15.9
+    #> p_loo         4.7  0.3
+    #> looic      3936.6 31.8
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+### Centering the input variables
+
+``` r
+wells <- 
+  wells %>% 
+  mutate(
+    arsenic_c = arsenic - mean(arsenic),
+    dist100_c = dist100 - mean(dist100)
+  )
+```
+
+### Re-fitting the interaction model using the centered inputs
+
+``` r
+set.seed(733)
+
+fit_5 <- 
+  stan_glm(
+    switch ~ dist100_c + arsenic_c + dist100_c:arsenic_c,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_5, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       binomial [logit]
+    #>  formula:      switch ~ dist100_c + arsenic_c + dist100_c:arsenic_c
+    #>  observations: 3020
+    #>  predictors:   4
+    #> ------
+    #>                     Median MAD_SD
+    #> (Intercept)          0.35   0.04 
+    #> dist100_c           -0.88   0.10 
+    #> arsenic_c            0.47   0.04 
+    #> dist100_c:arsenic_c -0.18   0.10 
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+LOO log score
+
+``` r
+loo_5 <- loo(fit_5)
+
+loo_5
+```
+
+    #> 
+    #> Computed from 4000 by 3020 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo  -1968.1 15.9
+    #> p_loo         4.4  0.3
+    #> looic      3936.1 31.9
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+Compare log scores.
+
+``` r
+loo_compare(loo_4, loo_5)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_5  0.0       0.0   
+    #> fit_4 -0.2       0.0
+
+Centering the variables does not affect the model log score.
+
+### Statistical significance of the interaction
+
+Compare log scores.
+
+``` r
+loo_compare(loo_3, loo_4)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_4  0.0       0.0   
+    #> fit_3 -0.2       1.9
+
+Adding the interaction doesn’t change the predictive performance, and
+there is no need to keep it in the model for predictive purposes (unless
+new information can be obtained).
+
+### Graphing the model with interactions
+
+Probability of household switching to new well by distance and arsenic
+level.
+
+``` r
+v <- 
+  tibble(
+    arsenic = c(0.5, quantile(wells$arsenic, probs = c(0.25, 0.5, 0.75))),
+    label = 
+      case_when(
+        names(arsenic) == "" ~ as.character(arsenic),
+        TRUE ~ 
+          str_glue(
+            "{format(arsenic, digits = 1, nsmall = 1)} ({names(arsenic)})"
+          ) %>% 
+          as.character()
+      ) %>% 
+      fct_inorder(),
+    dist = list(seq_range(wells$dist))
+  ) %>% 
+  unnest(dist) %>% 
+  mutate(
+    dist100 = dist / 100,
+    .pred = 
+      predict(fit_4, type = "response", newdata = tibble(arsenic, dist100))
+  )
+
+v %>% 
+  ggplot(aes(dist)) +
+  stat_ydensity(
+    aes(y = switch, group = switch),
+    data = wells,
+    width = 0.25,
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
+  geom_line(aes(y = .pred, color = label)) +
+  coord_cartesian(ylim = c(-0.125, 1.125)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
+  scale_x_continuous(breaks = scales::breaks_width(50)) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      "Probability of household switching to new well by distance and arsenic level",
+    subtitle =
+      "Voilin plots represent density of those do did and did not switch",
+    x = "Distance to the closest known safe well (meters)",
+    y = "Probability of household switching",
+    color = "Arsenic level (Quantile)"
+  )
+```
+
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-35-1.png" width="100%" />
+
+The probability decreases with distance and increases with arsenic
+level.
+
+Probability of household switching to new well by arsenic level and
+distance.
+
+``` r
+v <- 
+  tibble(
+    dist = c(0, quantile(wells$dist, probs = c(0.25, 0.5, 0.75))),
+    label = 
+      case_when(
+        names(dist) == "" ~ as.character(dist),
+        TRUE ~ 
+          str_glue(
+            "{format(dist, digits = 0, nsmall = 0)} ({names(dist)})"
+          ) %>% 
+          as.character()
+      ) %>% 
+      fct_inorder(),
+    arsenic = list(seq_range(wells$arsenic))
+  ) %>% 
+  unnest(arsenic) %>% 
+  mutate(
+    dist100 = dist / 100,
+    .pred = 
+      predict(fit_4, type = "response", newdata = tibble(arsenic, dist100))
+  )
+
+v %>% 
+  ggplot(aes(arsenic)) +
+  stat_ydensity(
+    aes(y = switch, group = switch),
+    data = wells,
+    width = 0.25,
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
+  geom_line(aes(y = .pred, color = label)) +
+  coord_cartesian(ylim = c(-0.125, 1.125)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      "Probability of household switching to new well by arsenic level and distance",
+    subtitle =
+      "Voilin plots represent density of those do did and did not switch",
+    x = "Arsenic level",
+    y = "Probability of household switching",
+    color = "Distance in meters (Quantile)"
+  )
+```
+
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-36-1.png" width="100%" />
+
+The probability increases with arsenic level and decreases with
+distance.
+
+### Adding social predictors
+
+Fit a model using scaled distance, arsenic level, education of head of
+household, and community organization activity.
+
+``` r
+set.seed(733)
+
+fit_6 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + educ4 + assoc,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_6, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       binomial [logit]
+    #>  formula:      switch ~ dist100 + arsenic + educ4 + assoc
+    #>  observations: 3020
+    #>  predictors:   5
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) -0.16   0.10 
+    #> dist100     -0.90   0.11 
+    #> arsenic      0.47   0.04 
+    #> educ4        0.17   0.04 
+    #> assoc       -0.12   0.08 
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+LOO log score
+
+``` r
+loo_6 <- loo(fit_6)
+
+loo_6
+```
+
+    #> 
+    #> Computed from 4000 by 3020 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo  -1959.1 16.1
+    #> p_loo         5.3  0.1
+    #> looic      3918.3 32.2
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+Compare log scores.
+
+``` r
+loo_compare(loo_4, loo_6)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_6  0.0       0.0   
+    #> fit_4 -9.1       5.1
+
+Belonging to a community association, perhaps surprisingly, is
+associated in our data with a *lower* probability of switching, after
+adjusting for the other factors in the model. However, this coefficient
+is not estimated precisely, and so for clarity and stability we remove
+it from the model.
+
+Fit a model using scaled distance, arsenic level, and education of head
+of household.
+
+``` r
+set.seed(733)
+
+fit_7 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + educ4,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_7, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       binomial [logit]
+    #>  formula:      switch ~ dist100 + arsenic + educ4
+    #>  observations: 3020
+    #>  predictors:   4
+    #> ------
+    #>             Median MAD_SD
+    #> (Intercept) -0.21   0.09 
+    #> dist100     -0.90   0.10 
+    #> arsenic      0.47   0.04 
+    #> educ4        0.17   0.04 
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+LOO log score
+
+``` r
+loo_7 <- loo(fit_7)
+
+loo_7
+```
+
+    #> 
+    #> Computed from 4000 by 3020 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo  -1959.4 16.1
+    #> p_loo         4.3  0.1
+    #> looic      3918.8 32.2
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+Compare log scores.
+
+``` r
+loo_compare(loo_4, loo_7)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_7  0.0       0.0   
+    #> fit_4 -8.9       4.8
+
+Adding education improves predictive log score, but there is
+considerable uncertainty.
+
+``` r
+loo_compare(loo_6, loo_7)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_6  0.0       0.0   
+    #> fit_7 -0.3       1.6
+
+Removing the association variable doesn’t change the predictive
+performance.
+
+### Adding further interactions
+
+Create centered education variable.
+
+``` r
+wells <- 
+  wells %>% 
+  mutate(educ4_c = educ4 - mean(educ4))
+```
+
+Fit a model using scaled distance, arsenic level, education of head of
+household, and interactions with education.
+
+``` r
+set.seed(733)
+
+fit_8 <- 
+  stan_glm(
+    switch ~ 
+      dist100_c + arsenic_c + educ4_c + dist100_c:educ4_c + arsenic_c:educ4_c,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_8, digits = 2)
+```
+
+    #> stan_glm
+    #>  family:       binomial [logit]
+    #>  formula:      switch ~ dist100_c + arsenic_c + educ4_c + dist100_c:educ4_c + 
+    #>     arsenic_c:educ4_c
+    #>  observations: 3020
+    #>  predictors:   6
+    #> ------
+    #>                   Median MAD_SD
+    #> (Intercept)        0.35   0.04 
+    #> dist100_c         -0.92   0.10 
+    #> arsenic_c          0.49   0.04 
+    #> educ4_c            0.19   0.04 
+    #> dist100_c:educ4_c  0.33   0.10 
+    #> arsenic_c:educ4_c  0.08   0.04 
+    #> 
+    #> ------
+    #> * For help interpreting the printed output see ?print.stanreg
+    #> * For info on the priors used see ?prior_summary.stanreg
+
+LOO log score
+
+``` r
+loo_8 <- loo(fit_8)
+
+loo_8
+```
+
+    #> 
+    #> Computed from 4000 by 3020 log-likelihood matrix
+    #> 
+    #>          Estimate   SE
+    #> elpd_loo  -1952.7 16.5
+    #> p_loo         6.4  0.3
+    #> looic      3905.4 33.0
+    #> ------
+    #> Monte Carlo SE of elpd_loo is 0.0.
+    #> 
+    #> All Pareto k estimates are good (k < 0.5).
+    #> See help('pareto-k-diagnostic') for details.
+
+Compare log scores.
+
+``` r
+loo_compare(loo_7, loo_8)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_8  0.0       0.0   
+    #> fit_7 -6.7       4.4
+
+Adding the interactions with education in model 8 improves predictive
+performance over model 7.
+
+``` r
+loo_compare(loo_3, loo_8)
+```
+
+    #>       elpd_diff se_diff
+    #> fit_8   0.0       0.0  
+    #> fit_3 -15.8       6.3
+
+The education variable and its interactions in model 8 substantially
+improves predictive performance over model 3.
+
 ## 14.3 Predictive simulation
+
+### Simulating the uncertainty in the estimated coefficients
+
+Posterior draws of logistic regression coefficients.
+
+``` r
+sims_2 <- as_tibble(fit_2)
+coef <- 
+  tibble(
+    `(Intercept)` = coef(fit_2)[["(Intercept)"]],
+    dist100 = coef(fit_2)[["dist100"]]
+  )
+
+sims_2 %>% 
+  ggplot(aes(`(Intercept)`, dist100)) +
+  geom_point(size = 0.1) +
+  geom_point(data = coef, color = "red", size = 1.5) +
+  labs(
+    title = "Posterior draws of logistic regression coefficients"
+  )
+```
+
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-49-1.png" width="100%" />
 
 Probability of household switching to new well by distance with
 uncertainty.
@@ -757,7 +1298,7 @@ v %>%
   )
 ```
 
-<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-28-1.png" width="100%" />
+<img src="arsenic_logistic_building_tv_files/figure-gfm/unnamed-chunk-50-1.png" width="100%" />
 
 In the region of sparse data for large distances, the uncertainty from
 the posterior distribution of the model is much less than the

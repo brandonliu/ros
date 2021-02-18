@@ -503,7 +503,334 @@ The probability increases with arsenic level and decreases with distance.
 
 # 14 Working with logistic regression
 
+## 14.2 Logistic regression with interactions
+
+Fit a model using scaled distance, arsenic level, and an interaction
+
+```{r}
+set.seed(733)
+
+fit_4 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + dist100:arsenic,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_4, digits = 2)
+```
+
+LOO log score
+
+```{r}
+loo_4 <- loo(fit_4)
+
+loo_4
+```
+
+### Centering the input variables
+
+```{r}
+wells <- 
+  wells %>% 
+  mutate(
+    arsenic_c = arsenic - mean(arsenic),
+    dist100_c = dist100 - mean(dist100)
+  )
+```
+
+### Re-fitting the interaction model using the centered inputs
+
+```{r}
+set.seed(733)
+
+fit_5 <- 
+  stan_glm(
+    switch ~ dist100_c + arsenic_c + dist100_c:arsenic_c,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_5, digits = 2)
+```
+
+LOO log score
+
+```{r}
+loo_5 <- loo(fit_5)
+
+loo_5
+```
+
+Compare log scores.
+
+```{r}
+loo_compare(loo_4, loo_5)
+```
+
+Centering the variables does not affect the model log score.
+
+### Statistical significance of the interaction
+
+Compare log scores.
+
+```{r}
+loo_compare(loo_3, loo_4)
+```
+
+Adding the interaction doesn't change the predictive performance, and there is no need to keep it in the model for predictive purposes (unless new information can be obtained).
+
+### Graphing the model with interactions
+
+Probability of household switching to new well by distance and arsenic level.
+
+```{r, fig.asp=0.75}
+v <- 
+  tibble(
+    arsenic = c(0.5, quantile(wells$arsenic, probs = c(0.25, 0.5, 0.75))),
+    label = 
+      case_when(
+        names(arsenic) == "" ~ as.character(arsenic),
+        TRUE ~ 
+          str_glue(
+            "{format(arsenic, digits = 1, nsmall = 1)} ({names(arsenic)})"
+          ) %>% 
+          as.character()
+      ) %>% 
+      fct_inorder(),
+    dist = list(seq_range(wells$dist))
+  ) %>% 
+  unnest(dist) %>% 
+  mutate(
+    dist100 = dist / 100,
+    .pred = 
+      predict(fit_4, type = "response", newdata = tibble(arsenic, dist100))
+  )
+
+v %>% 
+  ggplot(aes(dist)) +
+  stat_ydensity(
+    aes(y = switch, group = switch),
+    data = wells,
+    width = 0.25,
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
+  geom_line(aes(y = .pred, color = label)) +
+  coord_cartesian(ylim = c(-0.125, 1.125)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
+  scale_x_continuous(breaks = scales::breaks_width(50)) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      "Probability of household switching to new well by distance and arsenic level",
+    subtitle =
+      "Voilin plots represent density of those do did and did not switch",
+    x = "Distance to the closest known safe well (meters)",
+    y = "Probability of household switching",
+    color = "Arsenic level (Quantile)"
+  )
+```
+
+The probability decreases with distance and increases with arsenic level.
+
+Probability of household switching to new well by arsenic level and distance.
+
+```{r, fig.asp=0.75}
+v <- 
+  tibble(
+    dist = c(0, quantile(wells$dist, probs = c(0.25, 0.5, 0.75))),
+    label = 
+      case_when(
+        names(dist) == "" ~ as.character(dist),
+        TRUE ~ 
+          str_glue(
+            "{format(dist, digits = 0, nsmall = 0)} ({names(dist)})"
+          ) %>% 
+          as.character()
+      ) %>% 
+      fct_inorder(),
+    arsenic = list(seq_range(wells$arsenic))
+  ) %>% 
+  unnest(arsenic) %>% 
+  mutate(
+    dist100 = dist / 100,
+    .pred = 
+      predict(fit_4, type = "response", newdata = tibble(arsenic, dist100))
+  )
+
+v %>% 
+  ggplot(aes(arsenic)) +
+  stat_ydensity(
+    aes(y = switch, group = switch),
+    data = wells,
+    width = 0.25,
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
+  geom_line(aes(y = .pred, color = label)) +
+  coord_cartesian(ylim = c(-0.125, 1.125)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), minor_breaks = NULL) +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = 
+      "Probability of household switching to new well by arsenic level and distance",
+    subtitle =
+      "Voilin plots represent density of those do did and did not switch",
+    x = "Arsenic level",
+    y = "Probability of household switching",
+    color = "Distance in meters (Quantile)"
+  )
+```
+
+The probability increases with arsenic level and decreases with distance.
+
+### Adding social predictors
+
+Fit a model using scaled distance, arsenic level, education of head of household, and community organization activity.
+
+```{r}
+set.seed(733)
+
+fit_6 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + educ4 + assoc,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_6, digits = 2)
+```
+
+LOO log score
+
+```{r}
+loo_6 <- loo(fit_6)
+
+loo_6
+```
+
+Compare log scores.
+
+```{r}
+loo_compare(loo_4, loo_6)
+```
+
+Belonging to a community association, perhaps surprisingly, is associated in our data with a _lower_ probability of switching, after adjusting for the other factors in the model. However, this coefficient is not estimated precisely, and so for clarity and stability we remove it from the model.
+
+Fit a model using scaled distance, arsenic level, and education of head of household.
+
+```{r}
+set.seed(733)
+
+fit_7 <- 
+  stan_glm(
+    switch ~ dist100 + arsenic + educ4,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_7, digits = 2)
+```
+
+LOO log score
+
+```{r}
+loo_7 <- loo(fit_7)
+
+loo_7
+```
+
+Compare log scores.
+
+```{r}
+loo_compare(loo_4, loo_7)
+```
+
+Adding education improves predictive log score, but there is considerable uncertainty.
+
+```{r}
+loo_compare(loo_6, loo_7)
+```
+
+Removing the association variable doesn't change the predictive performance.
+
+### Adding further interactions
+
+Create centered education variable.
+
+```{r}
+wells <- 
+  wells %>% 
+  mutate(educ4_c = educ4 - mean(educ4))
+```
+
+Fit a model using scaled distance, arsenic level, education of head of household, and interactions with education.
+
+```{r}
+set.seed(733)
+
+fit_8 <- 
+  stan_glm(
+    switch ~ 
+      dist100_c + arsenic_c + educ4_c + dist100_c:educ4_c + arsenic_c:educ4_c,
+    family = binomial(link = "logit"),
+    data = wells,
+    refresh = 0
+  )
+
+print(fit_8, digits = 2)
+```
+
+LOO log score
+
+```{r}
+loo_8 <- loo(fit_8)
+
+loo_8
+```
+
+Compare log scores.
+
+```{r}
+loo_compare(loo_7, loo_8)
+```
+
+Adding the interactions with education in model 8 improves predictive performance over model 7.
+
+```{r}
+loo_compare(loo_3, loo_8)
+```
+
+The education variable and its interactions in model 8 substantially improves predictive performance over model 3.
+
 ## 14.3 Predictive simulation
+
+### Simulating the uncertainty in the estimated coefficients
+
+Posterior draws of logistic regression coefficients.
+
+```{r}
+sims_2 <- as_tibble(fit_2)
+coef <- 
+  tibble(
+    `(Intercept)` = coef(fit_2)[["(Intercept)"]],
+    dist100 = coef(fit_2)[["dist100"]]
+  )
+
+sims_2 %>% 
+  ggplot(aes(`(Intercept)`, dist100)) +
+  geom_point(size = 0.1) +
+  geom_point(data = coef, color = "red", size = 1.5) +
+  labs(
+    title = "Posterior draws of logistic regression coefficients"
+  )
+```
 
 Probability of household switching to new well by distance with uncertainty.
 
