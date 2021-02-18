@@ -239,7 +239,7 @@ loo_2 <- loo(fit_2)
 loo_2
 ```
 
-Compare models.
+Compare log scores.
 
 ```{r}
 loo_compare(loo_1, loo_2)
@@ -321,7 +321,7 @@ loo_3 <- loo(fit_3)
 loo_3
 ```
 
-Compare models.
+Compare log scores.
 
 ```{r}
 loo_compare(loo_1, loo_3)
@@ -410,7 +410,7 @@ loo_4 <- loo(fit_4)
 loo_4
 ```
 
-Compare models.
+Compare log scores.
 
 ```{r}
 loo_compare(loo_1, loo_4)

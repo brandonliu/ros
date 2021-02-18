@@ -1,7 +1,7 @@
 Regression and Other Stories: Student
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-12
+2021-02-17
 
 -   [12 Transformations and
     regression](#12-transformations-and-regression)
@@ -335,7 +335,7 @@ loo_2
     #> All Pareto k estimates are good (k < 0.5).
     #> See help('pareto-k-diagnostic') for details.
 
-Compare models.
+Compare log scores.
 
 ``` r
 loo_compare(loo_1, loo_2)
@@ -446,7 +446,7 @@ loo_3
     #> All Pareto k estimates are good (k < 0.5).
     #> See help('pareto-k-diagnostic') for details.
 
-Compare models.
+Compare log scores.
 
 ``` r
 loo_compare(loo_1, loo_3)
@@ -605,7 +605,7 @@ loo_4
     #> All Pareto k estimates are good (k < 0.5).
     #> See help('pareto-k-diagnostic') for details.
 
-Compare models.
+Compare log scores.
 
 ``` r
 loo_compare(loo_1, loo_4)
