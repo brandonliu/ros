@@ -27,9 +27,17 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 4 Statistical inference
+
+## 4.2 Estimates, standard errors, and confidence intervals
+
+### Standard errors, inferential uncertainty, and confidence intervals
+
+Simulated data.
 
 ```{r}
+set.seed(224)
+
 mean <- 6
 sd <- 4
 n_sim <- 100
@@ -45,7 +53,7 @@ sims <-
   )
 ```
 
-Coverage
+Coverage.
 
 ```{r}
 v <- 
@@ -60,7 +68,7 @@ v
 
 The 50% uncertainty interval contained the simulation population mean `r format(100 * v$coverage_50, digits = 0)`% of the time, and the 95% uncertainty interval contained the simulation population mean `r format(100 * v$coverage_95, digits = 0)`% of the time.
 
-## Plot
+Coverage of `r n_sim` random simulations.
 
 ```{r}
 sims %>% 

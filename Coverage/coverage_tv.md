@@ -1,10 +1,13 @@
 Regression and Other Stories: Coverage
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-21
+2021-02-18
 
--   [Data](#data)
--   [Plot](#plot)
+-   [4 Statistical inference](#4-statistical-inference)
+    -   [4.2 Estimates, standard errors, and confidence
+        intervals](#42-estimates-standard-errors-and-confidence-intervals)
+        -   [Standard errors, inferential uncertainty, and confidence
+            intervals](#standard-errors-inferential-uncertainty-and-confidence-intervals)
 
 Tidyverse version by Bill Behrman.
 
@@ -27,9 +30,17 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 4 Statistical inference
+
+## 4.2 Estimates, standard errors, and confidence intervals
+
+### Standard errors, inferential uncertainty, and confidence intervals
+
+Simulated data.
 
 ``` r
+set.seed(224)
+
 mean <- 6
 sd <- 4
 n_sim <- 100
@@ -45,7 +56,7 @@ sims <-
   )
 ```
 
-Coverage
+Coverage.
 
 ``` r
 v <- 
@@ -61,13 +72,13 @@ v
     #> # A tibble: 1 x 2
     #>   coverage_50 coverage_95
     #>         <dbl>       <dbl>
-    #> 1        0.51        0.94
+    #> 1        0.53        0.95
 
 The 50% uncertainty interval contained the simulation population mean
-51% of the time, and the 95% uncertainty interval contained the
-simulation population mean 94% of the time.
+53% of the time, and the 95% uncertainty interval contained the
+simulation population mean 95% of the time.
 
-## Plot
+Coverage of 100 random simulations.
 
 ``` r
 sims %>% 
