@@ -469,7 +469,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
         <!-- - [Roaches/](Roaches/) -->
         <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
-        <!-- - [Rodents/](Rodents/) -->
+-   [Rodents/](Rodents/)
 -   [Rsquared/](Rsquared/)
     -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
         <!-- - [Sesame/](Sesame/) -->
