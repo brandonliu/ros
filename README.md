@@ -12,7 +12,6 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [Code
         website](https://avehtari.github.io/ROS-Examples/examples.html)
     -   [GitHub repository](https://github.com/avehtari/ROS-Examples)
-        from which this repository was forked
 
 ------------------------------------------------------------------------
 
@@ -222,16 +221,17 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Arsenic/](Arsenic/)
     -   [arsenic\_logistic\_building\_tv.md](Arsenic/arsenic_logistic_building_tv.md) -
         Building a logistic regression model: wells in Bangladesh
+-   [Rodents/](Rodents/)
 
 <!-- ### 14  Working with logistic regression -->
 <!-- - [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/) -->
 <!--     - [logitgraphs_tv.md](LogitGraphs/logitgraphs_tv.md) - Different ways of displaying logistic regression -->
+<!-- - [Arsenic/](Arsenic/) -->
+<!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
+<!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
 <!-- - [NES/](NES/) -->
 <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
-<!-- - [Rodents/](Rodents/) -->
-<!-- - [Arsenic/](Arsenic/) -->
-<!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
 <!-- ### 15  Other generalized linear models -->
 <!-- - [PoissonExample/](PoissonExample/) -->
 <!--     - [PoissonExample_tv.md](PoissonExample/poisson_regression_tv.md) - Demonstrate Poisson regression with simulated data. -->
