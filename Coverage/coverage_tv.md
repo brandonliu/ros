@@ -41,9 +41,9 @@ Simulated data.
 ``` r
 set.seed(224)
 
+n_sim <- 100
 mean <- 6
 sd <- 4
-n_sim <- 100
 
 sims <- 
   tibble(
