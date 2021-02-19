@@ -21,7 +21,7 @@ library(rstanarm)
 # Parameters
   # Data on arsenic in wells in Bangladesh
 file_wells_all <- here::here("Arsenic/data/all.dta")
-  # Data on arsenic in wells in Bangladesh that exceed the safety standard
+  # Data on arsenic in unsafe wells in Bangladesh
 file_wells <- here::here("Arsenic/data/wells.csv")
   # Common code
 file_common <- here::here("_common.R")

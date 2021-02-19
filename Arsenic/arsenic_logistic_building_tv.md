@@ -1,7 +1,7 @@
 Regression and Other Stories: Arsenic
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-17
+2021-02-18
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.7 Building a logistic regression model: wells in
@@ -49,7 +49,7 @@ library(rstanarm)
 # Parameters
   # Data on arsenic in wells in Bangladesh
 file_wells_all <- here::here("Arsenic/data/all.dta")
-  # Data on arsenic in wells in Bangladesh that exceed the safety standard
+  # Data on arsenic in unsafe wells in Bangladesh
 file_wells <- here::here("Arsenic/data/wells.csv")
   # Common code
 file_common <- here::here("_common.R")
