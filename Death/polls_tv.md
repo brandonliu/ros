@@ -1,10 +1,13 @@
 Regression and Other Stories: Death penalty poll
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-22
+2021-02-19
 
--   [Data](#data)
--   [Plot](#plot)
+-   [4 Statistical inference](#4-statistical-inference)
+    -   [4.2 Estimates, standard errors, and confidence
+        intervals](#42-estimates-standard-errors-and-confidence-intervals)
+        -   [Comparisons, visual and
+            numerical](#comparisons-visual-and-numerical)
 
 Tidyverse version by Bill Behrman.
 
@@ -29,7 +32,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 4 Statistical inference
+
+## 4.2 Estimates, standard errors, and confidence intervals
+
+### Comparisons, visual and numerical
+
+Data.
 
 ``` r
 death_penalty <- 
@@ -46,7 +55,7 @@ death_penalty <-
   )
 ```
 
-## Plot
+Are you in favor of the death penalty for a person convicted of murder?
 
 ``` r
 death_penalty %>% 
