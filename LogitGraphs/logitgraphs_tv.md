@@ -1,9 +1,9 @@
 Regression and Other Stories: Logistic regression graphs
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-16
+2021-02-22
 
--   [14 working with logistic
+-   [14 Working with logistic
     regression](#14-working-with-logistic-regression)
     -   [14.1 Graphing logistic regression and binary
         data](#141-graphing-logistic-regression-and-binary-data)
@@ -30,7 +30,7 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# 14 working with logistic regression
+# 14 Working with logistic regression
 
 ## 14.1 Graphing logistic regression and binary data
 
@@ -114,14 +114,14 @@ labels <-
   tribble(
       ~x,   ~y, ~label,
     -1.9, 0.73, "True~curve",
-    -1.9, 0.67, "y == logit^{-1}~(2 + 3 * x)",
+    -1.9, 0.67, "y == logit^{-1}*(2 + 3 * x)",
     -0.4, 0.33, "Fitted~curve",
     -0.4, 0.27, 
         str_glue(
-          "y == logit^{-1}~({format(intercept, digits = 1, nsmall = 1)} + ",
+          "y == logit^{-1}*({format(intercept, digits = 1, nsmall = 1)} + ",
           "{format(slope, digits = 1, nsmall = 1)} * x)"
         )
-    
+
   )
 
 v %>% 
@@ -167,7 +167,6 @@ data_1 %>%
   geom_line(aes(y = y_fit), data = v) +
   geom_point(aes(y = y_mean), data = binned_means, color = "red") +
   annotate("text", x = 0.1, y = 0.53, label = "True curve") +
-  coord_cartesian(ylim = c(-0.1, 1.1)) +
   scale_x_continuous(breaks = scales::breaks_width(1)) +
   scale_y_continuous(breaks = scales::breaks_width(0.1), minor_breaks = NULL) +
   labs(
@@ -230,7 +229,7 @@ fit_2
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-Data and discrimination lines from fitted logistic regression.
+Data and discrimination lines for logistic regression.
 
 ``` r
 coef <- coef(fit_2)
@@ -253,7 +252,7 @@ data_2 %>%
   coord_fixed() +
   theme(legend.position = "bottom") +
   labs(
-    title = "Data and discrimination lines from fitted logistic regression",
+    title = "Data and discrimination lines for logistic regression",
     color = "Discrimination line"
   )
 ```
