@@ -1,16 +1,11 @@
 Regression and Other Stories: Coop
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-22
 
--   [Data](#data)
--   [Plots](#plots)
-    -   [Cummulative vote percentages at different points in
-        counting](#cummulative-vote-percentages-at-different-points-in-counting)
-    -   [Vote percentages of new votes at different points in
-        counting](#vote-percentages-of-new-votes-at-different-points-in-counting)
-    -   [Standard deviation of vote proportions of new votes for each
-        candidate](#standard-deviation-of-vote-proportions-of-new-votes-for-each-candidate)
+-   [4 Statistical inference](#4-statistical-inference)
+    -   [4.6 Example of hypothesis testing: 55,000 residents need your
+        help!](#46-example-of-hypothesis-testing-55000-residents-need-your-help)
 
 Tidyverse version by Bill Behrman.
 
@@ -35,7 +30,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 4 Statistical inference
+
+## 4.6 Example of hypothesis testing: 55,000 residents need your help!
+
+Data.
 
 ``` r
 votes <- 
@@ -60,7 +59,7 @@ votes <-
   ungroup()
 ```
 
-Candidates who received the most votes
+Candidates who received the most votes.
 
 ``` r
 voters <- 
@@ -99,9 +98,7 @@ candidates_top_8 <-
   pull(name_2)
 ```
 
-## Plots
-
-### Cummulative vote percentages at different points in counting
+Cumulative vote percentages at different points in counting.
 
 ``` r
 votes_top_8 <- 
@@ -117,17 +114,17 @@ votes_top_8 %>%
   facet_wrap(facets = vars(name), ncol = 4) +
   theme(axis.text = element_text(size = rel(0.6))) +
   labs(
-    title = "Cummulative vote percentages at different points in counting",
+    title = "Cumulative vote percentages at different points in counting",
     subtitle = "For top 8 candidates",
-    x = "Cummulative voters",
-    y = "Cummulative vote percentage",
+    x = "Cumulative voters",
+    y = "Cumulative vote percentage",
     caption = "Voters could vote for up to 6 candidates"
   )
 ```
 
 <img src="riverbay_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
-### Vote percentages of new votes at different points in counting
+Vote percentages of new votes at different points in counting.
 
 ``` r
 votes_top_8 %>% 
@@ -140,7 +137,7 @@ votes_top_8 %>%
   labs(
     title = "Vote percentages of new votes at different points in counting",
     subtitle = "For top 8 candidates",
-    x = "Cummulative voters",
+    x = "Cumulative voters",
     y = "Vote percentage of new votes",
     caption = "Voters could vote for up to 6 candidates"
   )
@@ -148,7 +145,7 @@ votes_top_8 %>%
 
 <img src="riverbay_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
-### Standard deviation of vote proportions of new votes for each candidate
+Standard deviation of vote proportions of new votes for each candidate.
 
 ``` r
 v <- 
