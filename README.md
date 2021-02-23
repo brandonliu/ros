@@ -223,15 +223,18 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Building a logistic regression model: wells in Bangladesh
 -   [Rodents/](Rodents/)
 
-<!-- ### 14  Working with logistic regression -->
-<!-- - [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/) -->
-<!--     - [logitgraphs_tv.md](LogitGraphs/logitgraphs_tv.md) - Different ways of displaying logistic regression -->
-<!-- - [Arsenic/](Arsenic/) -->
-<!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
-<!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
-<!-- - [NES/](NES/) -->
-<!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+### 14 Working with logistic regression
+
+-   [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/)
+    -   [logitgraphs\_tv.md](LogitGraphs/logitgraphs_tv.md) - Different
+        ways of displaying logistic regression
+        <!-- - [Arsenic/](Arsenic/) -->
+        <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
+        <!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
+        <!-- - [NES/](NES/) -->
+        <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+
 <!-- ### 15  Other generalized linear models -->
 <!-- - [PoissonExample/](PoissonExample/) -->
 <!--     - [PoissonExample_tv.md](PoissonExample/poisson_regression_tv.md) - Demonstrate Poisson regression with simulated data. -->
@@ -420,6 +423,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [LogisticPriors/](LogisticPriors/)
     -   [logistic\_priors\_tv.md](LogisticPriors/logistic_priors_tv.md) -
         Effect of priors in logistic regression
+-   [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/)
+    -   [logitgraphs\_tv.md](LogitGraphs/logitgraphs_tv.md) - Different
+        ways of displaying logistic regression
 -   [Mesquite/](Mesquite/)
     -   [mesquite\_tv.md](Mesquite/mesquite_tv.md) - Predicting the
         yields of mesquite bushes
