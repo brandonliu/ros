@@ -410,3 +410,163 @@ loo(fit)
 
 The LOO estimated log score (elpd_loo) of -780 is 2 lower than the within-sample log score of -778 computed above; this difference is about what we would expect, given that the fitted model has 2 parameters or degrees of freedom.
 
+# 14 Working with logistic regression
+
+## 14.6 Identification and separation
+
+Data.
+
+```{r}
+nes <-
+  file_nes %>% 
+  read.table() %>% 
+  as_tibble() %>% 
+  select(year, income, black, female, dvote, rvote) %>% 
+  filter(xor(dvote, rvote))
+
+summary(nes)
+```
+
+Calculate coefficients for each year with `glm()` and `stan_glm()`.
+
+```{r, results=FALSE}
+set.seed(630)
+
+formula <- rvote ~ female + black + income
+
+coefs <- 
+  bind_rows(
+    nes %>% 
+      nest(data = !year) %>% 
+      mutate(
+        method = "glm",
+        fit = 
+          map(
+            data,
+            ~ glm(formula, family = binomial(link = "logit"), data = .)
+          ),
+        coefs =
+          map(
+            fit,
+            ~ left_join(
+              enframe(coef(.), name = "var", value = "coef"),
+              enframe(arm::se.coef(.), name = "var", value = "se"),
+              by = "var"
+            )
+          )
+      ),
+    nes %>% 
+      nest(data = !year) %>% 
+      mutate(
+        method = "stan_glm",
+        fit = 
+          map(
+            data,
+            ~ stan_glm(
+              formula,
+              family = binomial(link = "logit"),
+              data = .,
+              refresh = 0
+            )
+          ),
+        coefs =
+          map(
+            fit,
+            ~ left_join(
+              enframe(coef(.), name = "var", value = "coef"),
+              enframe(se(.), name = "var", value = "se"),
+              by = "var"
+            )
+          )
+      )
+  )
+```
+
+The `glm()` coefficients for 1960 - 1972. The `black` predictor is nonidentifiable in 1964.
+
+```{r}
+for (i in seq(1960, 1972, 4)) {
+  cat(i, "\n")
+  coefs %>% 
+    filter(year == i, method == "glm") %>% 
+    pull(fit) %>% 
+    pluck(1) %>% 
+    arm::display()
+  cat("\n")
+}
+```
+
+The coefficients for both methods and all years.
+
+```{r}
+coefs <- 
+  coefs %>% 
+  select(!c(data, fit)) %>% 
+  unnest(col = coefs)
+
+coefs
+```
+
+Logistic regression coefficients by election year.
+
+```{r, fig.asp=1.25}
+method_labels <- 
+  c(
+    glm = "Maximum likelihood estimate from glm()",
+    stan_glm = "Bayes estimate with default prior from stan_glm()"
+  )
+
+v <- 
+  coefs %>% 
+  mutate(
+    var = fct_inorder(var),
+    q_25 = qnorm(0.25, mean = coef, sd = se),
+    q_75 = qnorm(0.75, mean = coef, sd = se)
+  )
+
+v %>% 
+  ggplot(aes(year, coef)) +
+  geom_hline(yintercept = 0, color = "grey60") +
+  geom_line() +
+  geom_linerange(aes(ymin = q_25, ymax = q_75)) +
+  geom_point() +
+  facet_grid(
+    rows = vars(var),
+    cols = vars(method), 
+    scales = "free_y",
+    labeller = labeller(method = method_labels)
+  ) +
+  scale_x_continuous(breaks = seq(1952, 2000, 8)) +
+  labs(
+    title = "Logistic regression coefficients by election year",
+    subtitle = "With 50% uncertainty intervals",
+    x = "Election year",
+    y = "Coefficient"
+  )
+```
+
+Logistic regression coefficient for `black` by election year.
+
+```{r}
+v %>% 
+  filter(var == "black") %>% 
+  ggplot(aes(year, coef)) +
+  geom_hline(yintercept = 0, color = "grey60") +
+  geom_line() +
+  geom_linerange(aes(ymin = q_25, ymax = q_75)) +
+  geom_point() +
+  facet_grid(
+    rows = vars(var),
+    cols = vars(method), 
+    labeller = labeller(method = method_labels)
+  ) +
+  coord_cartesian(ylim = c(-18, 0)) +
+  scale_x_continuous(breaks = seq(1952, 2000, 8)) +
+  labs(
+    title = "Logistic regression coefficient for black by election year",
+    subtitle = "With 50% uncertainty intervals",
+    x = "Election year",
+    y = "Coefficient"
+  )
+```
+

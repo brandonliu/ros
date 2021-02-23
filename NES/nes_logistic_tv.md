@@ -1,7 +1,7 @@
 Regression and Other Stories: National election study
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-15
+2021-02-22
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.1 Logistic regression with a single
@@ -32,6 +32,10 @@ Andrew Gelman, Jennifer Hill, Aki Vehtari
         regression](#136-cross-validation-and-log-score-for-logistic-regression)
         -   [Log score for logistic
             regression](#log-score-for-logistic-regression)
+-   [14 Working with logistic
+    regression](#14-working-with-logistic-regression)
+    -   [14.6 Identification and
+        separation](#146-identification-and-separation)
 
 Tidyverse version by Bill Behrman.
 
@@ -707,3 +711,242 @@ The LOO estimated log score (elpd\_loo) of -780 is 2 lower than the
 within-sample log score of -778 computed above; this difference is about
 what we would expect, given that the fitted model has 2 parameters or
 degrees of freedom.
+
+# 14 Working with logistic regression
+
+## 14.6 Identification and separation
+
+Data.
+
+``` r
+nes <-
+  file_nes %>% 
+  read.table() %>% 
+  as_tibble() %>% 
+  select(year, income, black, female, dvote, rvote) %>% 
+  filter(xor(dvote, rvote))
+
+summary(nes)
+```
+
+    #>       year          income         black           female          dvote      
+    #>  Min.   :1952   Min.   :1.00   Min.   :0.000   Min.   :0.000   Min.   :0.000  
+    #>  1st Qu.:1964   1st Qu.:2.00   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.000  
+    #>  Median :1976   Median :3.00   Median :0.000   Median :1.000   Median :0.000  
+    #>  Mean   :1975   Mean   :3.07   Mean   :0.086   Mean   :0.541   Mean   :0.484  
+    #>  3rd Qu.:1988   3rd Qu.:4.00   3rd Qu.:0.000   3rd Qu.:1.000   3rd Qu.:1.000  
+    #>  Max.   :2000   Max.   :5.00   Max.   :1.000   Max.   :1.000   Max.   :1.000  
+    #>      rvote      
+    #>  Min.   :0.000  
+    #>  1st Qu.:0.000  
+    #>  Median :1.000  
+    #>  Mean   :0.516  
+    #>  3rd Qu.:1.000  
+    #>  Max.   :1.000
+
+Calculate coefficients for each year with `glm()` and `stan_glm()`.
+
+``` r
+set.seed(630)
+
+formula <- rvote ~ female + black + income
+
+coefs <- 
+  bind_rows(
+    nes %>% 
+      nest(data = !year) %>% 
+      mutate(
+        method = "glm",
+        fit = 
+          map(
+            data,
+            ~ glm(formula, family = binomial(link = "logit"), data = .)
+          ),
+        coefs =
+          map(
+            fit,
+            ~ left_join(
+              enframe(coef(.), name = "var", value = "coef"),
+              enframe(arm::se.coef(.), name = "var", value = "se"),
+              by = "var"
+            )
+          )
+      ),
+    nes %>% 
+      nest(data = !year) %>% 
+      mutate(
+        method = "stan_glm",
+        fit = 
+          map(
+            data,
+            ~ stan_glm(
+              formula,
+              family = binomial(link = "logit"),
+              data = .,
+              refresh = 0
+            )
+          ),
+        coefs =
+          map(
+            fit,
+            ~ left_join(
+              enframe(coef(.), name = "var", value = "coef"),
+              enframe(se(.), name = "var", value = "se"),
+              by = "var"
+            )
+          )
+      )
+  )
+```
+
+The `glm()` coefficients for 1960 - 1972. The `black` predictor is
+nonidentifiable in 1964.
+
+``` r
+for (i in seq(1960, 1972, 4)) {
+  cat(i, "\n")
+  coefs %>% 
+    filter(year == i, method == "glm") %>% 
+    pull(fit) %>% 
+    pluck(1) %>% 
+    arm::display()
+  cat("\n")
+}
+```
+
+    #> 1960 
+    #> glm(formula = formula, family = binomial(link = "logit"), data = .)
+    #>             coef.est coef.se
+    #> (Intercept) -0.14     0.23  
+    #> female       0.24     0.14  
+    #> black       -1.03     0.36  
+    #> income       0.03     0.06  
+    #> ---
+    #>   n = 875, k = 4
+    #>   residual deviance = 1200.7, null deviance = 1212.9 (difference = 12.3)
+    #> 
+    #> 1964 
+    #> glm(formula = formula, family = binomial(link = "logit"), data = .)
+    #>             coef.est coef.se
+    #> (Intercept)  -1.15     0.22 
+    #> female       -0.09     0.14 
+    #> black       -16.83   420.40 
+    #> income        0.19     0.06 
+    #> ---
+    #>   n = 1058, k = 4
+    #>   residual deviance = 1250.2, null deviance = 1334.5 (difference = 84.4)
+    #> 
+    #> 1968 
+    #> glm(formula = formula, family = binomial(link = "logit"), data = .)
+    #>             coef.est coef.se
+    #> (Intercept)  0.47     0.24  
+    #> female      -0.01     0.15  
+    #> black       -3.64     0.59  
+    #> income      -0.03     0.07  
+    #> ---
+    #>   n = 847, k = 4
+    #>   residual deviance = 1061.9, null deviance = 1168.6 (difference = 106.7)
+    #> 
+    #> 1972 
+    #> glm(formula = formula, family = binomial(link = "logit"), data = .)
+    #>             coef.est coef.se
+    #> (Intercept)  0.67     0.18  
+    #> female      -0.25     0.12  
+    #> black       -2.63     0.27  
+    #> income       0.09     0.05  
+    #> ---
+    #>   n = 1512, k = 4
+    #>   residual deviance = 1800.3, null deviance = 1968.5 (difference = 168.2)
+
+The coefficients for both methods and all years.
+
+``` r
+coefs <- 
+  coefs %>% 
+  select(!c(data, fit)) %>% 
+  unnest(col = coefs)
+
+coefs
+```
+
+    #> # A tibble: 104 x 5
+    #>     year method var            coef     se
+    #>    <int> <chr>  <chr>         <dbl>  <dbl>
+    #>  1  1952 glm    (Intercept)  0.102  0.195 
+    #>  2  1952 glm    female       0.0583 0.123 
+    #>  3  1952 glm    black       -1.66   0.362 
+    #>  4  1952 glm    income       0.0801 0.0538
+    #>  5  1956 glm    (Intercept) -0.0468 0.187 
+    #>  6  1956 glm    female       0.251  0.120 
+    #>  7  1956 glm    black       -0.839  0.308 
+    #>  8  1956 glm    income       0.108  0.0529
+    #>  9  1960 glm    (Intercept) -0.143  0.226 
+    #> 10  1960 glm    female       0.236  0.137 
+    #> # … with 94 more rows
+
+Logistic regression coefficients by election year.
+
+``` r
+method_labels <- 
+  c(
+    glm = "Maximum likelihood estimate from glm()",
+    stan_glm = "Bayes estimate with default prior from stan_glm()"
+  )
+
+v <- 
+  coefs %>% 
+  mutate(
+    var = fct_inorder(var),
+    q_25 = qnorm(0.25, mean = coef, sd = se),
+    q_75 = qnorm(0.75, mean = coef, sd = se)
+  )
+
+v %>% 
+  ggplot(aes(year, coef)) +
+  geom_hline(yintercept = 0, color = "grey60") +
+  geom_line() +
+  geom_linerange(aes(ymin = q_25, ymax = q_75)) +
+  geom_point() +
+  facet_grid(
+    rows = vars(var),
+    cols = vars(method), 
+    scales = "free_y",
+    labeller = labeller(method = method_labels)
+  ) +
+  scale_x_continuous(breaks = seq(1952, 2000, 8)) +
+  labs(
+    title = "Logistic regression coefficients by election year",
+    subtitle = "With 50% uncertainty intervals",
+    x = "Election year",
+    y = "Coefficient"
+  )
+```
+
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-36-1.png" width="100%" />
+
+Logistic regression coefficient for `black` by election year.
+
+``` r
+v %>% 
+  filter(var == "black") %>% 
+  ggplot(aes(year, coef)) +
+  geom_hline(yintercept = 0, color = "grey60") +
+  geom_line() +
+  geom_linerange(aes(ymin = q_25, ymax = q_75)) +
+  geom_point() +
+  facet_grid(
+    rows = vars(var),
+    cols = vars(method), 
+    labeller = labeller(method = method_labels)
+  ) +
+  coord_cartesian(ylim = c(-18, 0)) +
+  scale_x_continuous(breaks = seq(1952, 2000, 8)) +
+  labs(
+    title = "Logistic regression coefficient for black by election year",
+    subtitle = "With 50% uncertainty intervals",
+    x = "Election year",
+    y = "Coefficient"
+  )
+```
+
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-37-1.png" width="100%" />
