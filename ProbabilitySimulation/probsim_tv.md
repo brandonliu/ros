@@ -1,21 +1,15 @@
 Regression and Other Stories: Simulation
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-18
+2021-02-23
 
--   [Simulation of dicrete probability
-    models](#simulation-of-dicrete-probability-models)
-    -   [Number of girls in 400 single
-        births](#number-of-girls-in-400-single-births)
-    -   [Number of girls in 400 single and twin
-        births](#number-of-girls-in-400-single-and-twin-births)
--   [Simulation of continuous and mixed discrete / continuous
-    models](#simulation-of-continuous-and-mixed-discrete-continuous-models)
-    -   [Normal distribution](#normal-distribution)
-    -   [Log-normal distribution](#log-normal-distribution)
-    -   [Binomial distribution](#binomial-distribution)
-    -   [Poisson distribution](#poisson-distribution)
-    -   [Heights of adults](#heights-of-adults)
+-   [5 Simulation](#5-simulation)
+    -   [5.1 Simulation of dicrete probability
+        models](#51-simulation-of-dicrete-probability-models)
+        -   [How many girls in 400
+            births?](#how-many-girls-in-400-births)
+    -   [5.2 Simulation of continuous and mixed discrete / continuous
+        models](#52-simulation-of-continuous-and-mixed-discrete--continuous-models)
 
 Tidyverse version by Bill Behrman.
 
@@ -38,7 +32,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Simulation of dicrete probability models
+# 5 Simulation
+
+## 5.1 Simulation of dicrete probability models
+
+### How many girls in 400 births?
 
 ``` r
 n_births <- 400
@@ -47,9 +45,7 @@ n_sims <- 1e4
 prob_girl <- 0.488
 ```
 
-### Number of girls in 400 single births
-
-One observation.
+One observation of 400 single births.
 
 ``` r
 set.seed(151)
@@ -59,7 +55,7 @@ rbinom(n = 1, size = n_births, prob = prob_girl)
 
     #> [1] 193
 
-10000 observations.
+10,000 observations of 400 single births.
 
 ``` r
 set.seed(151)
@@ -68,16 +64,18 @@ sim_girl_1 <-
   tibble(n_girls = rbinom(n = n_sims, size = n_births, prob = prob_girl))
 ```
 
+Number of girls born in 400 single births.
+
 ``` r
 sim_girl_1 %>% 
   ggplot(aes(n_girls)) +
   geom_histogram(binwidth = 2) +
-  labs(title = "Number of girls born in single births")
+  labs(title = str_glue("Number of girls born in {n_births} single births"))
 ```
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
-### Number of girls in 400 single and twin births
+10,000 observations of 400 single and twin births.
 
 ``` r
 set.seed(151)
@@ -126,18 +124,23 @@ sim_girls_2 <-
   )
 ```
 
+Number of girls born in 400 single and twin births.
+
 ``` r
 sim_girls_2 %>% 
   ggplot(aes(n_girls)) +
   geom_histogram(binwidth = 2) +
-  labs(title = "Number of girls born in single and twin births")
+  labs(
+    title = 
+      str_glue("Number of girls born in {n_births} single and twin births")
+  )
 ```
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
-## Simulation of continuous and mixed discrete / continuous models
+## 5.2 Simulation of continuous and mixed discrete / continuous models
 
-### Normal distribution
+#### Normal distribution
 
 ``` r
 set.seed(660)
@@ -160,7 +163,7 @@ v %>%
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
-### Log-normal distribution
+#### Log-normal distribution
 
 ``` r
 v %>% 
@@ -171,7 +174,7 @@ v %>%
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
-### Binomial distribution
+#### Binomial distribution
 
 ``` r
 set.seed(136)
@@ -196,7 +199,7 @@ v %>%
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-10-1.png" width="100%" />
 
-### Poisson distribution
+#### Poisson distribution
 
 ``` r
 set.seed(185)
@@ -214,7 +217,7 @@ v %>%
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
 
-### Heights of adults
+#### Heights of adults
 
 ``` r
 n_sims <- 1000
@@ -226,7 +229,7 @@ height_women_mean <- 64.5
 height_women_sd <- 2.7
 ```
 
-#### Mean height of 10 randomly chosen adults
+Mean height of 10 randomly chosen adults.
 
 ``` r
 height_mean <- function(n = 10) {
@@ -257,6 +260,8 @@ set.seed(815)
 sim_height_mean <- tibble(height_mean = map_dbl(seq_len(n_sims), height_mean))
 ```
 
+Distribution of the mean height of 10 adults.
+
 ``` r
 sim_height_mean %>%
   ggplot(aes(height_mean)) +
@@ -266,7 +271,7 @@ sim_height_mean %>%
 
 <img src="probsim_tv_files/figure-gfm/unnamed-chunk-16-1.png" width="100%" />
 
-#### Maximum height of 10 randomly chosen adults
+Maximum height of 10 randomly chosen adults.
 
 ``` r
 height_max <- function(n = 10) {
@@ -296,6 +301,8 @@ set.seed(815)
 
 sim_height_max <- tibble(height_max = map_dbl(seq_len(n_sims), height_max))
 ```
+
+Distribution of the maximum height of 10 adults.
 
 ``` r
 sim_height_max %>%

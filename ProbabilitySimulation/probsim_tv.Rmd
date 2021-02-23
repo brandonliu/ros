@@ -27,7 +27,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Simulation of dicrete probability models
+# 5 Simulation
+
+## 5.1 Simulation of dicrete probability models
+
+### How many girls in 400 births?
 
 ```{r}
 n_births <- 400
@@ -36,9 +40,7 @@ n_sims <- 1e4
 prob_girl <- 0.488
 ```
 
-### Number of girls in `r n_births` single births
-
-One observation.
+One observation of `r n_births` single births.
 
 ```{r}
 set.seed(151)
@@ -46,7 +48,7 @@ set.seed(151)
 rbinom(n = 1, size = n_births, prob = prob_girl)
 ```
 
-`r format(n_sims)` observations.
+`r format(n_sims, big.mark = ",")` observations of `r n_births` single births.
 
 ```{r}
 set.seed(151)
@@ -55,14 +57,16 @@ sim_girl_1 <-
   tibble(n_girls = rbinom(n = n_sims, size = n_births, prob = prob_girl))
 ```
 
+Number of girls born in `r n_births` single births.
+
 ```{r}
 sim_girl_1 %>% 
   ggplot(aes(n_girls)) +
   geom_histogram(binwidth = 2) +
-  labs(title = "Number of girls born in single births")
+  labs(title = str_glue("Number of girls born in {n_births} single births"))
 ```
 
-### Number of girls in `r n_births` single and twin births
+`r format(n_sims, big.mark = ",")` observations of `r n_births` single and twin births.
 
 ```{r}
 set.seed(151)
@@ -111,16 +115,21 @@ sim_girls_2 <-
   )
 ```
 
+Number of girls born in `r n_births` single and twin births.
+
 ```{r}
 sim_girls_2 %>% 
   ggplot(aes(n_girls)) +
   geom_histogram(binwidth = 2) +
-  labs(title = "Number of girls born in single and twin births")
+  labs(
+    title = 
+      str_glue("Number of girls born in {n_births} single and twin births")
+  )
 ```
 
-## Simulation of continuous and mixed discrete / continuous models
+## 5.2 Simulation of continuous and mixed discrete / continuous models
 
-### Normal distribution
+#### Normal distribution
 
 ```{r}
 set.seed(660)
@@ -141,7 +150,7 @@ v %>%
   )
 ```
 
-### Log-normal distribution
+#### Log-normal distribution
 
 ```{r}
 v %>% 
@@ -150,7 +159,7 @@ v %>%
   labs(title = "Corresponding log-normal distribution")
 ```
 
-### Binomial distribution
+#### Binomial distribution
 
 ```{r}
 set.seed(136)
@@ -173,7 +182,7 @@ v %>%
   )
 ```
 
-### Poisson distribution
+#### Poisson distribution
 
 ```{r}
 set.seed(185)
@@ -189,7 +198,7 @@ v %>%
   labs(title = str_glue("Poisson distribution with mean {lambda}"))
 ```
 
-### Heights of adults
+#### Heights of adults
 
 ```{r}
 n_sims <- 1000
@@ -201,8 +210,7 @@ height_women_mean <- 64.5
 height_women_sd <- 2.7
 ```
 
-
-#### Mean height of 10 randomly chosen adults
+Mean height of 10 randomly chosen adults.
 
 ```{r}
 height_mean <- function(n = 10) {
@@ -231,6 +239,8 @@ set.seed(815)
 sim_height_mean <- tibble(height_mean = map_dbl(seq_len(n_sims), height_mean))
 ```
 
+Distribution of the mean height of 10 adults.
+
 ```{r}
 sim_height_mean %>%
   ggplot(aes(height_mean)) +
@@ -238,7 +248,7 @@ sim_height_mean %>%
   labs(title = "Distribution of the mean height of 10 adults")
 ```
 
-#### Maximum height of 10 randomly chosen adults
+Maximum height of 10 randomly chosen adults.
 
 ```{r}
 height_max <- function(n = 10) {
@@ -266,6 +276,8 @@ set.seed(815)
 
 sim_height_max <- tibble(height_max = map_dbl(seq_len(n_sims), height_max))
 ```
+
+Distribution of the maximum height of 10 adults.
 
 ```{r}
 sim_height_max %>%
