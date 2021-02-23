@@ -1,7 +1,7 @@
 Regression and Other Stories: National election study
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-22
+2021-02-23
 
 -   [13 Logistic regression](#13-logistic-regression)
     -   [13.1 Logistic regression with a single
@@ -726,23 +726,42 @@ nes <-
   select(year, income, black, female, dvote, rvote) %>% 
   filter(xor(dvote, rvote))
 
-summary(nes)
+glimpse(nes)
 ```
 
-    #>       year          income         black           female          dvote      
-    #>  Min.   :1952   Min.   :1.00   Min.   :0.000   Min.   :0.000   Min.   :0.000  
-    #>  1st Qu.:1964   1st Qu.:2.00   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.000  
-    #>  Median :1976   Median :3.00   Median :0.000   Median :1.000   Median :0.000  
-    #>  Mean   :1975   Mean   :3.07   Mean   :0.086   Mean   :0.541   Mean   :0.484  
-    #>  3rd Qu.:1988   3rd Qu.:4.00   3rd Qu.:0.000   3rd Qu.:1.000   3rd Qu.:1.000  
-    #>  Max.   :2000   Max.   :5.00   Max.   :1.000   Max.   :1.000   Max.   :1.000  
-    #>      rvote      
-    #>  Min.   :0.000  
-    #>  1st Qu.:0.000  
-    #>  Median :1.000  
-    #>  Mean   :0.516  
-    #>  3rd Qu.:1.000  
-    #>  Max.   :1.000
+    #> Rows: 13,757
+    #> Columns: 6
+    #> $ year   <int> 1952, 1952, 1952, 1952, 1952, 1952, 1952, 1952, 1952, 1952, 19…
+    #> $ income <int> 4, 4, 3, 3, 1, 4, 1, 2, 4, 3, 4, 4, 1, 1, 3, 4, 1, 2, 3, 3, 4,…
+    #> $ black  <int> 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+    #> $ female <int> 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1,…
+    #> $ dvote  <int> 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0,…
+    #> $ rvote  <int> 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1,…
+
+We examined the variables `year`, `income`, `dvote`, and `rvote` above.
+Here are `black` and `female`.
+
+``` r
+nes %>% 
+  count(black)
+```
+
+    #> # A tibble: 2 x 2
+    #>   black     n
+    #> * <int> <int>
+    #> 1     0 12571
+    #> 2     1  1186
+
+``` r
+nes %>% 
+  count(female)
+```
+
+    #> # A tibble: 2 x 2
+    #>   female     n
+    #> *  <int> <int>
+    #> 1      0  6312
+    #> 2      1  7445
 
 Calculate coefficients for each year with `glm()` and `stan_glm()`.
 
@@ -799,14 +818,14 @@ coefs <-
   )
 ```
 
-The `glm()` coefficients for 1960 - 1972. The `black` predictor is
+The `glm()` coefficients for 1960 - 1972. The `black` variable is
 nonidentifiable in 1964.
 
 ``` r
-for (i in seq(1960, 1972, 4)) {
-  cat(i, "\n")
+for (year in seq(1960, 1972, 4)) {
+  cat(year, "\n")
   coefs %>% 
-    filter(year == i, method == "glm") %>% 
+    filter(year == {{year}}, method == "glm") %>% 
     pull(fit) %>% 
     pluck(1) %>% 
     arm::display()
@@ -922,7 +941,7 @@ v %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-36-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-37-1.png" width="100%" />
 
 Logistic regression coefficient for `black` by election year.
 
@@ -949,4 +968,4 @@ v %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-37-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-38-1.png" width="100%" />

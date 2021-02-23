@@ -424,12 +424,22 @@ nes <-
   select(year, income, black, female, dvote, rvote) %>% 
   filter(xor(dvote, rvote))
 
-summary(nes)
+glimpse(nes)
+```
+
+We examined the variables `year`, `income`, `dvote`, and `rvote` above. Here are `black` and `female`.
+
+```{r}
+nes %>% 
+  count(black)
+
+nes %>% 
+  count(female)
 ```
 
 Calculate coefficients for each year with `glm()` and `stan_glm()`.
 
-```{r, results=FALSE}
+```{r}
 set.seed(630)
 
 formula <- rvote ~ female + black + income
@@ -482,13 +492,13 @@ coefs <-
   )
 ```
 
-The `glm()` coefficients for 1960 - 1972. The `black` predictor is nonidentifiable in 1964.
+The `glm()` coefficients for 1960 - 1972. The `black` variable is nonidentifiable in 1964.
 
 ```{r}
-for (i in seq(1960, 1972, 4)) {
-  cat(i, "\n")
+for (year in seq(1960, 1972, 4)) {
+  cat(year, "\n")
   coefs %>% 
-    filter(year == i, method == "glm") %>% 
+    filter(year == {{year}}, method == "glm") %>% 
     pull(fit) %>% 
     pluck(1) %>% 
     arm::display()
