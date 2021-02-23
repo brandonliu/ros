@@ -228,8 +228,9 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/)
     -   [logitgraphs\_tv.md](LogitGraphs/logitgraphs_tv.md) - Different
         ways of displaying logistic regression
-        <!-- - [Arsenic/](Arsenic/) -->
-        <!--     - [arsenic_logistic_building_tv.md](Arsenic/arsenic_logistic_building_tv.md) - Building a logistic regression model: wells in Bangladesh -->
+-   [Arsenic/](Arsenic/)
+    -   [arsenic\_logistic\_building\_tv.md](Arsenic/arsenic_logistic_building_tv.md) -
+        Building a logistic regression model: wells in Bangladesh
         <!--     - [arsenic_logistic_apc_tv.md](Arsenic/arsenic_logistic_apc_tv.md) - Average predictive comparisons for a logistic regression model: wells in Bangladesh -->
         <!--     - [arsenic_logistic_residuals_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) - Residual plots for a logistic regression model: wells in Bangladesh -->
         <!-- - [NES/](NES/) -->
