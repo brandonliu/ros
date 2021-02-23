@@ -822,10 +822,10 @@ The `glm()` coefficients for 1960 - 1972. The `black` variable is
 nonidentifiable in 1964.
 
 ``` r
-for (year in seq(1960, 1972, 4)) {
-  cat(year, "\n")
+for (i in seq(1960, 1972, 4)) {
+  cat(i, "\n")
   coefs %>% 
-    filter(year == {{year}}, method == "glm") %>% 
+    filter(year == i, method == "glm") %>% 
     pull(fit) %>% 
     pluck(1) %>% 
     arm::display()
@@ -943,6 +943,30 @@ v %>%
 
 <img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-37-1.png" width="100%" />
 
+The estimates above look fine except in 1964, where there is complete
+separation for the `black` variable.
+
+``` r
+nes %>% 
+  filter(year == 1964) %>% 
+  count(black, rvote)
+```
+
+    #> # A tibble: 3 x 3
+    #>   black rvote     n
+    #>   <int> <int> <int>
+    #> 1     0     0   627
+    #> 2     0     1   344
+    #> 3     1     0    87
+
+Of the 87 African Americans in the survey in 1964, none reported a
+preference for the Republican candidate. The fit with `glm()` actually
+yielded a finite estimate for the coefficient of `black` in 1964, but
+that number and its standard error are essentially meaningless, being a
+function of how long the iterative fitting procedure goes before giving
+up. The maximum likelihood estimate for the coefficient of `black` that
+year is  − ∞.
+
 Logistic regression coefficient for `black` by election year.
 
 ``` r
@@ -968,4 +992,8 @@ v %>%
   )
 ```
 
-<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-38-1.png" width="100%" />
+<img src="nes_logistic_tv_files/figure-gfm/unnamed-chunk-39-1.png" width="100%" />
+
+In the coefficient estimates from `stan_glm()` with its default
+settings, the estimated coefficient of `black` in 1964 has been
+stabilized, with the other coefficients being essentially unchanged.
