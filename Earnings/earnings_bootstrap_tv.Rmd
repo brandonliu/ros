@@ -29,7 +29,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 5 Simulation
+
+## 5.4 Bootstrapping to simulate a sampling distribution
+
+Data.
 
 ```{r, message=FALSE}
 earnings <- 
@@ -42,10 +46,23 @@ earnings <-
         male == 1 ~ "male",
         TRUE ~ NA_character_
       )
-  )
+  ) %>% 
+  select(age, sex, earn)
+```
+
+EDA.
+
+```{r}
+earnings %>% 
+  select(age, earn) %>% 
+  summary()
 
 earnings %>% 
-  select(age, sex, earn)
+  count(sex)
+
+earnings %>%
+  group_by(sex) %>% 
+  summarize(across(earn, .fns = list(median = median, mean = mean)))
 ```
 
 Median of women's earnings divided by the median of men's earnings.
@@ -84,7 +101,7 @@ earnings_ratio_boot <-
   tibble(earnings_ratio = map_dbl(seq_len(n_sims), ~ earnings_ratio()))
 ```
 
-## Plot
+Distribution of bootstrap earnings ratios.
 
 ```{r}
 earnings_ratio_boot %>% 
@@ -101,7 +118,7 @@ earnings_ratio_boot %>%
 
 Because of the nature of the data, one value accounts for 70% of the earnings ratios in the bootstrap samples and the top three account for 92%.
 
-## Standard deviation of bootstrap earnings ratios
+Standard deviation of bootstrap earnings ratios.
 
 ```{r}
 sd(earnings_ratio_boot$earnings_ratio)

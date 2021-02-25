@@ -1,12 +1,11 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-25
+2021-02-25
 
--   [Data](#data)
--   [Plot](#plot)
--   [Standard deviation of bootstrap earnings
-    ratios](#standard-deviation-of-bootstrap-earnings-ratios)
+-   [5 Simulation](#5-simulation)
+    -   [5.4 Bootstrapping to simulate a sampling
+        distribution](#54-bootstrapping-to-simulate-a-sampling-distribution)
 
 Tidyverse version by Bill Behrman.
 
@@ -31,7 +30,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 5 Simulation
+
+## 5.4 Bootstrapping to simulate a sampling distribution
+
+Data.
 
 ``` r
 earnings <- 
@@ -44,26 +47,48 @@ earnings <-
         male == 1 ~ "male",
         TRUE ~ NA_character_
       )
-  )
-
-earnings %>% 
+  ) %>% 
   select(age, sex, earn)
 ```
 
-    #> # A tibble: 1,816 x 3
-    #>      age sex     earn
-    #>    <dbl> <chr>  <dbl>
-    #>  1    45 male   50000
-    #>  2    58 female 60000
-    #>  3    29 female 30000
-    #>  4    57 female 25000
-    #>  5    91 female 50000
-    #>  6    54 female 62000
-    #>  7    39 female 51000
-    #>  8    26 female  9000
-    #>  9    49 female 29000
-    #> 10    46 male   32000
-    #> # … with 1,806 more rows
+EDA.
+
+``` r
+earnings %>% 
+  select(age, earn) %>% 
+  summary()
+```
+
+    #>       age            earn       
+    #>  Min.   :18.0   Min.   :     0  
+    #>  1st Qu.:29.0   1st Qu.:  6000  
+    #>  Median :39.0   Median : 16000  
+    #>  Mean   :42.9   Mean   : 21147  
+    #>  3rd Qu.:56.0   3rd Qu.: 27000  
+    #>  Max.   :91.0   Max.   :400000
+
+``` r
+earnings %>% 
+  count(sex)
+```
+
+    #> # A tibble: 2 x 2
+    #>   sex        n
+    #> * <chr>  <int>
+    #> 1 female  1141
+    #> 2 male     675
+
+``` r
+earnings %>%
+  group_by(sex) %>% 
+  summarize(across(earn, .fns = list(median = median, mean = mean)))
+```
+
+    #> # A tibble: 2 x 3
+    #>   sex    earn_median earn_mean
+    #> * <chr>        <dbl>     <dbl>
+    #> 1 female       15000    15848.
+    #> 2 male         25000    30105.
 
 Median of women’s earnings divided by the median of men’s earnings.
 
@@ -103,7 +128,7 @@ earnings_ratio_boot <-
   tibble(earnings_ratio = map_dbl(seq_len(n_sims), ~ earnings_ratio()))
 ```
 
-## Plot
+Distribution of bootstrap earnings ratios.
 
 ``` r
 earnings_ratio_boot %>% 
@@ -112,7 +137,7 @@ earnings_ratio_boot %>%
   labs(title = "Distribution of bootstrap earnings ratios")
 ```
 
-<img src="earnings_bootstrap_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
+<img src="earnings_bootstrap_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
 ``` r
 earnings_ratio_boot %>% 
@@ -139,7 +164,7 @@ Because of the nature of the data, one value accounts for 70% of the
 earnings ratios in the bootstrap samples and the top three account for
 92%.
 
-## Standard deviation of bootstrap earnings ratios
+Standard deviation of bootstrap earnings ratios.
 
 ``` r
 sd(earnings_ratio_boot$earnings_ratio)
