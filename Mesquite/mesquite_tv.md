@@ -1,7 +1,7 @@
 Regression and Other Stories: Mesquite
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-11
+2021-02-26
 
 -   [12 Transformation and
     regression](#12-transformation-and-regression)
@@ -44,6 +44,31 @@ loo_r2 <- function(fit, digits = 2) {
   # Bayesian R^2
 bayes_r2 <- function(fit, digits = 2) {
   round(median(bayes_R2(fit)), digits = digits)
+}
+  # Plot kernel density of data and sample replicates
+plot_density_overlay <- function(y, y_rep) {
+  ggplot(mapping = aes(y)) +
+    stat_density(
+      aes(group = rep, color = "y_rep"),
+      data = 
+        seq_len(nrow(y_rep)) %>% map_dfr(~ tibble(rep = ., y = y_rep[., ])),
+      geom = "line",
+      position = "identity",
+      alpha = 0.5,
+      size = 0.25
+    ) +
+    stat_density(aes(color = "y"), data = tibble(y), geom = "line", size = 1) +
+    scale_y_continuous(breaks = 0) +
+    scale_color_discrete(
+      breaks = c("y", "y_rep"),
+      labels = c("y", expression(y[rep]))
+    ) +
+    theme(legend.text.align = 0) +
+    labs(
+      x = NULL,
+      y = NULL,
+      color = NULL
+    )
 }
 
 #===============================================================================
@@ -317,43 +342,18 @@ y_rep_1 <- posterior_predict(fit_1)
 n_sims <- nrow(y_rep_1)
 n_rep <- 100
 sims_sample <- sample(n_sims, n_rep)
-
-y_rep_1_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., weight = y_rep_1[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from non-log model.
 
 ``` r
-ggplot(mapping = aes(weight)) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_1_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(
-    aes(color = "y"),
-    data = mesquite,
-    geom = "line"
-  ) +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
+plot_density_overlay(y = mesquite$weight, y_rep = y_rep_1[sims_sample, ]) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from non-log model"
       ),
-    x = "Weight",
-    y = NULL,
-    color = NULL
+    x = "Weight"
   )
 ```
 
@@ -379,44 +379,18 @@ ppc_dens_overlay(y = mesquite$weight, yrep = y_rep_1[sims_sample, ]) +
 set.seed(700)
 
 y_rep_2 <- posterior_predict(fit_2)
-
-y_rep_2_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., log_weight = y_rep_2[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from log model.
 
 ``` r
-ggplot() +
-  stat_density(
-    aes(log_weight, group = rep, color = "y_rep"),
-    data = y_rep_2_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(
-    aes(log(weight), color = "y"),
-    data = mesquite,
-    geom = "line"
-  ) +
-  scale_x_continuous(breaks = scales::breaks_width(1)) +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
+plot_density_overlay(y = log(mesquite$weight), y_rep = y_rep_2[sims_sample, ]) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from log model"
       ),
-    x = "Log weight",
-    y = NULL,
-    color = NULL
+    x = "Log weight"
   )
 ```
 
