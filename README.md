@@ -236,8 +236,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         wells in Bangladesh
     -   [arsenic\_logistic\_residuals\_tv.md](Arsenic/arsenic_logistic_residuals_tv.md) -
         Residual plots for a logistic regression model: wells in
-        Bangladesh <!-- - [NES/](NES/) -->
-        <!--     - [nes_logistic_tv.md](NES/nes_logistic_tv.md) - Logistic regression, identifiability, and separation -->
+        Bangladesh
+-   [NES/](NES/)
+    -   [nes\_logistic\_tv.md](NES/nes_logistic_tv.md) - Logistic
+        regression, identifiability, and separation
 
 <!-- ### 15  Other generalized linear models -->
 <!-- - [PoissonExample/](PoissonExample/) -->
