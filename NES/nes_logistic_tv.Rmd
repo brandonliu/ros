@@ -492,7 +492,7 @@ coefs <-
   )
 ```
 
-The `glm()` coefficients for 1960 - 1972. The `black` variable is nonidentifiable in 1964.
+The `glm()` coefficients for 1960 - 1972. Note that the `black` variable is nonidentifiable in 1964.
 
 ```{r}
 for (i in seq(1960, 1972, 4)) {
@@ -555,7 +555,7 @@ v %>%
   )
 ```
 
-The estimates above look fine except in 1964, where there is complete separation for the `black` variable.
+The estimates above look fine except for the coefficient of `black` in 1964, where there is complete separation.
 
 ```{r}
 nes %>% 
