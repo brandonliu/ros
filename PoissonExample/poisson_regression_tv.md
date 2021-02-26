@@ -1,7 +1,7 @@
 Regression and Other Stories: Poisson Example
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-23
+2021-02-25
 
 -   [15 Other generalized linear
     models](#15-other-generalized-linear-models)
@@ -112,7 +112,7 @@ set.seed(SEED)
 
 phi_grid <- c(0.1, 1, 10)
 
-data_nb <- 
+data_nbinom <- 
   tibble(
     phi = phi_grid,
     data = 
@@ -123,8 +123,8 @@ data_nb <-
 Fit negative binomial regression models.
 
 ``` r
-fit_nb <- 
-  data_nb %>% 
+fit_nbinom <- 
+  data_nbinom %>% 
   mutate(
     fit =
       map(
@@ -140,9 +140,9 @@ fit_nb <-
   ) %>% 
   select(!data)
 
-for (i in seq_len(nrow(fit_nb))) {
-  cat("phi:", fit_nb$phi[i], "\n")
-  print(fit_nb$fit[[i]])
+for (i in seq_len(nrow(fit_nbinom))) {
+  cat("phi:", fit_nbinom$phi[i], "\n")
+  print(fit_nbinom$fit[[i]])
   cat("\n")
 }
 ```
@@ -208,7 +208,7 @@ Simulated data from overdispersed Poisson (negative binomial) regression
 
 ``` r
 fitted_curves <- 
-  fit_nb %>% 
+  fit_nbinom %>% 
   mutate(
     data =
       map(
@@ -222,7 +222,7 @@ fitted_curves <-
   select(!fit) %>% 
   unnest(cols = data)
 
-data_nb %>% 
+data_nbinom %>% 
   unnest(cols = data) %>% 
   ggplot(aes(x, y)) +
   geom_line(data = fitted_curves) +
