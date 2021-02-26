@@ -1,7 +1,7 @@
 Regression and Other Stories: Roaches
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-25
+2021-02-26
 
 -   [15 Other generalized linear
     models](#15-other-generalized-linear-models)
@@ -36,24 +36,26 @@ file_common <- here::here("_common.R")
 
 # Functions
   # Plot kernel density of data and sample replicates
-plot_density_overlay <- function(mapping, data, data_rep) {
-  ggplot(mapping = mapping) +
+plot_density_overlay <- function(y, y_rep) {
+  ggplot(mapping = aes(y)) +
     stat_density(
       aes(group = rep, color = "y_rep"),
-      data = data_rep,
+      data = 
+        seq_len(nrow(y_rep)) %>% map_dfr(~ tibble(rep = ., y = y_rep[., ])),
       geom = "line",
       position = "identity",
       alpha = 0.5,
       size = 0.25
     ) +
-    stat_density(aes(color = "y"), data = data, geom = "line") +
+    stat_density(aes(color = "y"), data = tibble(y), geom = "line", size = 1) +
     scale_y_continuous(breaks = 0) +
     scale_color_discrete(
       breaks = c("y", "y_rep"),
-      labels = c("Data", "Replicates")
+      labels = c("y", expression(y[rep]))
     ) +
-    theme(legend.position = "bottom") +
+    theme(legend.text.align = 0) +
     labs(
+      x = NULL,
       y = NULL,
       color = NULL
     )
@@ -187,10 +189,6 @@ y_rep_nbinom <- posterior_predict(fit_nbinom)
 n_sims <- nrow(y_rep_nbinom)
 n_rep <- 100
 sims_sample <- sample(n_sims, n_rep)
-
-y_rep_nbinom_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_nbinom[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from negative binomial
@@ -198,16 +196,16 @@ model.
 
 ``` r
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_nbinom_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_nbinom[sims_sample, ] + 1)
 ) +
   scale_x_continuous(breaks = scales::breaks_width(1)) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from negative binomial model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -254,12 +252,9 @@ y_prop_0
     #> [1] 0.359
 
 ``` r
-y_rep_nbinom_prop_0 <- 
-  y_rep_nbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_nbinom_prop_0 <- apply(y_rep_nbinom, 1, prop_0)
 
-summary(y_rep_nbinom_prop_0$y_prop_0)
+summary(y_rep_nbinom_prop_0)
 ```
 
     #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -272,7 +267,7 @@ proportion in the data of 0.36.
 Distribution of proportion of zero counts in replicates.
 
 ``` r
-y_rep_nbinom_prop_0 %>% 
+tibble(y_prop_0 = y_rep_nbinom_prop_0) %>% 
   ggplot(aes(y_prop_0)) +
   geom_histogram(binwidth = 0.015) +
   geom_vline(xintercept = y_prop_0, color = "red") +
@@ -305,12 +300,9 @@ y_max
     #> [1] 357
 
 ``` r
-y_rep_nbinom_max <- 
-  y_rep_nbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_max = max(y))
+y_rep_nbinom_max <- apply(y_rep_nbinom, 1, max)
 
-summary(y_rep_nbinom_max$y_max)
+summary(y_rep_nbinom_max)
 ```
 
     #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -403,25 +395,21 @@ Simulate data for Poisson model.
 set.seed(SEED)
 
 y_rep_pois <- posterior_predict(fit_pois)
-
-y_rep_pois_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_pois[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from Poisson model.
 
 ``` r
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_pois_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_pois[sims_sample, ] + 1)
 ) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from Poisson model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -452,12 +440,9 @@ ppc_dens_overlay(
 Test statistic for proportion of zero counts.
 
 ``` r
-y_rep_pois_prop_0 <- 
-  y_rep_pois_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_pois_prop_0 <- apply(y_rep_pois, 1, prop_0)
 
-summary(y_rep_pois_prop_0$y_prop_0)
+summary(y_rep_pois_prop_0)
 ```
 
     #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -592,10 +577,6 @@ Simulate data for zero-inflated negative binomial model.
 set.seed(SEED)
 
 y_rep_zinbinom <- posterior_predict(fit_zinbinom)
-
-y_rep_zinbinom_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_zinbinom[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from zero-inflated
@@ -603,15 +584,15 @@ negative binomial model.
 
 ``` r
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_zinbinom_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_zinbinom[sims_sample, ] + 1)
 ) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates\nfrom zero-inflated negative binomial model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -647,12 +628,9 @@ ppc_dens_overlay(
 Test statistic for proportion of zero counts.
 
 ``` r
-y_rep_zinbinom_prop_0 <- 
-  y_rep_zinbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_zinbinom_prop_0 <- apply(y_rep_zinbinom, 1, prop_0)
 
-summary(y_rep_zinbinom_prop_0$y_prop_0)
+summary(y_rep_zinbinom_prop_0)
 ```
 
     #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -664,7 +642,7 @@ and mean of closer to the observed proportion in the data of 0.36.
 Distribution of proportion of zero counts in replicates.
 
 ``` r
-y_rep_zinbinom_prop_0 %>% 
+tibble(y_prop_0 = y_rep_zinbinom_prop_0) %>% 
   ggplot(aes(y_prop_0)) +
   geom_histogram(binwidth = 0.015) +
   geom_vline(xintercept = y_prop_0, color = "red") +
@@ -689,12 +667,9 @@ ppc_stat(y = roaches$y, yrep = y_rep_zinbinom, stat = function(x) mean(x == 0))
 ###### Maximum counts
 
 ``` r
-y_rep_zinbinom_max <- 
-  y_rep_zinbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_max = max(y))
+y_rep_zinbinom_max <- apply(y_rep_zinbinom, 1, max)
 
-summary(y_rep_zinbinom_max$y_max)
+summary(y_rep_zinbinom_max)
 ```
 
     #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 

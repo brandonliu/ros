@@ -29,24 +29,26 @@ file_common <- here::here("_common.R")
 
 # Functions
   # Plot kernel density of data and sample replicates
-plot_density_overlay <- function(mapping, data, data_rep) {
-  ggplot(mapping = mapping) +
+plot_density_overlay <- function(y, y_rep) {
+  ggplot(mapping = aes(y)) +
     stat_density(
       aes(group = rep, color = "y_rep"),
-      data = data_rep,
+      data = 
+        seq_len(nrow(y_rep)) %>% map_dfr(~ tibble(rep = ., y = y_rep[., ])),
       geom = "line",
       position = "identity",
       alpha = 0.5,
       size = 0.25
     ) +
-    stat_density(aes(color = "y"), data = data, geom = "line") +
+    stat_density(aes(color = "y"), data = tibble(y), geom = "line", size = 1) +
     scale_y_continuous(breaks = 0) +
     scale_color_discrete(
       breaks = c("y", "y_rep"),
-      labels = c("Data", "Replicates")
+      labels = c("y", expression(y[rep]))
     ) +
-    theme(legend.position = "bottom") +
+    theme(legend.text.align = 0) +
     labs(
+      x = NULL,
       y = NULL,
       color = NULL
     )
@@ -121,26 +123,22 @@ y_rep_nbinom <- posterior_predict(fit_nbinom)
 n_sims <- nrow(y_rep_nbinom)
 n_rep <- 100
 sims_sample <- sample(n_sims, n_rep)
-
-y_rep_nbinom_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_nbinom[., ]))
 ```
 
 Kernel density of data and `r n_rep` sample replicates from negative binomial model.
 
-```{r, fig.asp=0.75}
+```{r}
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_nbinom_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_nbinom[sims_sample, ] + 1)
 ) +
   scale_x_continuous(breaks = scales::breaks_width(1)) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from negative binomial model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -180,12 +178,9 @@ y_prop_0
 ```
 
 ```{r}
-y_rep_nbinom_prop_0 <- 
-  y_rep_nbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_nbinom_prop_0 <- apply(y_rep_nbinom, 1, prop_0)
 
-summary(y_rep_nbinom_prop_0$y_prop_0)
+summary(y_rep_nbinom_prop_0)
 ```
 
 The proportion of zero counts in the replicated datasets varies from 0.21 to 0.49, with a median and mean of 0.34, close to the observed proportion in the data of 0.36.
@@ -193,7 +188,7 @@ The proportion of zero counts in the replicated datasets varies from 0.21 to 0.4
 Distribution of proportion of zero counts in replicates.
 
 ```{r}
-y_rep_nbinom_prop_0 %>% 
+tibble(y_prop_0 = y_rep_nbinom_prop_0) %>% 
   ggplot(aes(y_prop_0)) +
   geom_histogram(binwidth = 0.015) +
   geom_vline(xintercept = y_prop_0, color = "red") +
@@ -220,12 +215,9 @@ y_max
 ```
 
 ```{r}
-y_rep_nbinom_max <- 
-  y_rep_nbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_max = max(y))
+y_rep_nbinom_max <- apply(y_rep_nbinom, 1, max)
 
-summary(y_rep_nbinom_max$y_max)
+summary(y_rep_nbinom_max)
 ```
 
 The maximum roach count in the data is `r y_max`, but the maximum count in the negative binomial model is close to nine million, which would make sense only in a horror movie. We will introduce another improvement below with the zero-inflated negative binomial model.
@@ -280,25 +272,21 @@ Simulate data for Poisson model.
 set.seed(SEED)
 
 y_rep_pois <- posterior_predict(fit_pois)
-
-y_rep_pois_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_pois[., ]))
 ```
 
 Kernel density of data and `r n_rep` sample replicates from Poisson model.
 
-```{r, fig.asp=0.75}
+```{r}
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_pois_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_pois[sims_sample, ] + 1)
 ) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from Poisson model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -324,12 +312,9 @@ ppc_dens_overlay(
 Test statistic for proportion of zero counts.
 
 ```{r}
-y_rep_pois_prop_0 <- 
-  y_rep_pois_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_pois_prop_0 <- apply(y_rep_pois, 1, prop_0)
 
-summary(y_rep_pois_prop_0$y_prop_0)
+summary(y_rep_pois_prop_0)
 ```
 
 A majority of the replicated datasets have no zero counts, the maximum proportion in all `r n_sims` replicates is 0.0076, and the mean proportion is 0.00070, far below the observed proportion in the data of 0.36. This suggests a potential problem with the model: in reality, many apartments have zero roaches, but this would not be happening if the model were true.
@@ -402,25 +387,21 @@ Simulate data for zero-inflated negative binomial model.
 set.seed(SEED)
 
 y_rep_zinbinom <- posterior_predict(fit_zinbinom)
-
-y_rep_zinbinom_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., y = y_rep_zinbinom[., ]))
 ```
 
 Kernel density of data and `r n_rep` sample replicates from zero-inflated negative binomial model.
 
-```{r, fig.asp=0.75}
+```{r}
 plot_density_overlay(
-  mapping = aes(log10(y + 1)), 
-  data = roaches,
-  data_rep = y_rep_zinbinom_tidy %>% filter(rep %in% sims_sample)
+  y = log10(roaches$y + 1),
+  y_rep = log10(y_rep_zinbinom[sims_sample, ] + 1)
 ) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates\nfrom zero-inflated negative binomial model"
-      )
+      ),
+    x = "log10(y + 1)"
   )
 ```
 
@@ -450,12 +431,9 @@ ppc_dens_overlay(
 Test statistic for proportion of zero counts.
 
 ```{r}
-y_rep_zinbinom_prop_0 <- 
-  y_rep_zinbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_prop_0 = prop_0(y))
+y_rep_zinbinom_prop_0 <- apply(y_rep_zinbinom, 1, prop_0)
 
-summary(y_rep_zinbinom_prop_0$y_prop_0)
+summary(y_rep_zinbinom_prop_0)
 ```
 
 The proportion of zero counts in the replicated datasets have a median and mean of closer to the observed proportion in the data of 0.36.
@@ -463,7 +441,7 @@ The proportion of zero counts in the replicated datasets have a median and mean 
 Distribution of proportion of zero counts in replicates.
 
 ```{r}
-y_rep_zinbinom_prop_0 %>% 
+tibble(y_prop_0 = y_rep_zinbinom_prop_0) %>% 
   ggplot(aes(y_prop_0)) +
   geom_histogram(binwidth = 0.015) +
   geom_vline(xintercept = y_prop_0, color = "red") +
@@ -484,12 +462,9 @@ ppc_stat(y = roaches$y, yrep = y_rep_zinbinom, stat = function(x) mean(x == 0))
 ###### Maximum counts
 
 ```{r}
-y_rep_zinbinom_max <- 
-  y_rep_zinbinom_tidy %>% 
-  group_by(rep) %>% 
-  summarize(y_max = max(y))
+y_rep_zinbinom_max <- apply(y_rep_zinbinom, 1, max)
 
-summary(y_rep_zinbinom_max$y_max)
+summary(y_rep_zinbinom_max)
 ```
 
 The maximum count in the data is `r y_max`. The maximum count in the replicates for the zero-inflated negative binomial model is much closer to this value than the value of nearly nine million for the negative binomial model.
