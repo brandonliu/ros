@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-09
+2021-02-26
 
 -   [6 Background on regression
     modeling](#6-background-on-regression-modeling)
@@ -39,6 +39,33 @@ SEED <- 7783
 file_earnings <- here::here("Earnings/data/earnings.csv")
   # Common code
 file_common <- here::here("_common.R")
+
+# Functions
+  # Plot kernel density of data and sample replicates
+plot_density_overlay <- function(y, y_rep) {
+  ggplot(mapping = aes(y)) +
+    stat_density(
+      aes(group = rep, color = "y_rep"),
+      data = 
+        seq_len(nrow(y_rep)) %>% map_dfr(~ tibble(rep = ., y = y_rep[., ])),
+      geom = "line",
+      position = "identity",
+      alpha = 0.5,
+      size = 0.25
+    ) +
+    stat_density(aes(color = "y"), data = tibble(y), geom = "line", size = 1) +
+    scale_y_continuous(breaks = 0) +
+    scale_color_discrete(
+      breaks = c("y", "y_rep"),
+      labels = c("y", expression(y[rep]))
+    ) +
+    theme(legend.text.align = 0) +
+    labs(
+      x = NULL,
+      y = NULL,
+      color = NULL
+    )
+}
 
 #===============================================================================
 
@@ -396,45 +423,21 @@ y_rep_1 <- posterior_predict(fit_1)
 n_sims <- nrow(y_rep_1)
 n_rep <- 100
 sims_sample <- sample(n_sims, n_rep)
-
-y_rep_1_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., earn = y_rep_1[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from non-log model.
 
 ``` r
-ggplot(mapping = aes(earn)) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_1_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(
-    aes(color = "y"),
-    data = earnings %>% filter(earn > 0),
-    geom = "line"
-  ) +
-  coord_cartesian(xlim = c(NA, 1e5)) +
-  scale_x_continuous(labels = scales::label_comma()) +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
+plot_density_overlay(
+  y = earnings$earn %>% keep(. > 0),
+  y_rep = y_rep_1[sims_sample, ]
+) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from non-log model"
       ),
-    x = "Earnings",
-    y = NULL,
-    color = NULL
+    x = "Earnings"
   )
 ```
 
@@ -448,7 +451,11 @@ ppc_dens_overlay(
   y = earnings$earn %>% keep(. > 0),
   yrep = y_rep_1[sims_sample, ]
 ) +
-  theme(text = element_text(family = "sans"))
+  theme(
+    axis.line.y = element_blank(),
+    text = element_text(family = "sans")
+  ) +
+  labs(title = "earn")
 ```
 
 <img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
@@ -459,44 +466,22 @@ Simulate new data for log model.
 set.seed(377)
 
 y_rep_log_1 <- posterior_predict(fit_log_1)
-
-y_rep_log_1_tidy <- 
-  seq_len(n_sims) %>% 
-  map_dfr(~ tibble(rep = ., log_earn = y_rep_log_1[., ]))
 ```
 
 Kernel density of data and 100 sample replicates from log model.
 
 ``` r
-ggplot() +
-  stat_density(
-    aes(log_earn, group = rep, color = "y_rep"),
-    data = y_rep_log_1_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(
-    aes(log(earn), color = "y"),
-    data = earnings %>% filter(earn > 0),
-    geom = "line"
-  ) +
+plot_density_overlay(
+  y = earnings$earn %>% keep(. > 0) %>% log(),
+  y_rep = y_rep_log_1[sims_sample, ]
+) +
   scale_x_continuous(breaks = scales::breaks_width(2)) +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from log model"
       ),
-    x = "Log earnings",
-    y = NULL,
-    color = NULL
+    x = "Log earnings"
   )
 ```
 
@@ -510,7 +495,11 @@ ppc_dens_overlay(
   y = earnings$earn %>% keep(. > 0) %>% log(),
   yrep = y_rep_log_1[sims_sample, ]
 ) +
-  theme(text = element_text(family = "sans"))
+  theme(
+    axis.line.y = element_blank(),
+    text = element_text(family = "sans")
+  ) +
+  labs(title = "log(earn)")
 ```
 
 <img src="earnings_regression_tv_files/figure-gfm/unnamed-chunk-17-1.png" width="100%" />
