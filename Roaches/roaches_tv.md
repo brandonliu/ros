@@ -34,6 +34,31 @@ SEED <- 3579
   # Common code
 file_common <- here::here("_common.R")
 
+# Functions
+  # Plot kernel density of data and sample replicates
+plot_density_overlay <- function(mapping, data, data_rep) {
+  ggplot(mapping = mapping) +
+    stat_density(
+      aes(group = rep, color = "y_rep"),
+      data = data_rep,
+      geom = "line",
+      position = "identity",
+      alpha = 0.5,
+      size = 0.25
+    ) +
+    stat_density(aes(color = "y"), data = data, geom = "line") +
+    scale_y_continuous(breaks = 0) +
+    scale_color_discrete(
+      breaks = c("y", "y_rep"),
+      labels = c("Data", "Replicates")
+    ) +
+    theme(legend.position = "bottom") +
+    labs(
+      y = NULL,
+      color = NULL
+    )
+}
+
 #===============================================================================
 
 # Run common code
@@ -172,30 +197,17 @@ Kernel density of data and 100 sample replicates from negative binomial
 model.
 
 ``` r
-ggplot(mapping = aes(log10(y + 1))) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_nbinom_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(aes(color = "y"), data = roaches, geom = "line") +
+plot_density_overlay(
+  mapping = aes(log10(y + 1)), 
+  data = roaches,
+  data_rep = y_rep_nbinom_tidy %>% filter(rep %in% sims_sample)
+) +
   scale_x_continuous(breaks = scales::breaks_width(1)) +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from negative binomial model"
-      ),
-    y = NULL,
-    color = NULL
+      )
   )
 ```
 
@@ -400,29 +412,16 @@ y_rep_pois_tidy <-
 Kernel density of data and 100 sample replicates from Poisson model.
 
 ``` r
-ggplot(mapping = aes(log10(y + 1))) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_pois_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(aes(color = "y"), data = roaches, geom = "line") +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
+plot_density_overlay(
+  mapping = aes(log10(y + 1)), 
+  data = roaches,
+  data_rep = y_rep_pois_tidy %>% filter(rep %in% sims_sample)
+) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates from Poisson model"
-      ),
-    y = NULL,
-    color = NULL
+      )
   )
 ```
 
@@ -603,29 +602,16 @@ Kernel density of data and 100 sample replicates from zero-inflated
 negative binomial model.
 
 ``` r
-ggplot(mapping = aes(log10(y + 1))) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_zinbinom_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(aes(color = "y"), data = roaches, geom = "line") +
-  scale_y_continuous(breaks = 0) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
+plot_density_overlay(
+  mapping = aes(log10(y + 1)), 
+  data = roaches,
+  data_rep = y_rep_zinbinom_tidy %>% filter(rep %in% sims_sample)
+) +
   labs(
     title = 
       str_glue(
         "Kernel density of data and {n_rep} sample replicates\nfrom zero-inflated negative binomial model"
-      ),
-    y = NULL,
-    color = NULL
+      )
   )
 ```
 
@@ -647,7 +633,7 @@ ppc_dens_overlay(
     text = element_text(family = "sans")
   ) +
   labs(
-    title = "Zero-inflated negative binomial model model",
+    title = "Zero-inflated negative binomial model",
     x = "log10(y + 1)"
   )
 ```
