@@ -1,7 +1,7 @@
 Regression and Other Stories: Newcomb
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-09
+2021-02-26
 
 -   [11 Assumptions, diagnostics, and model
     evaluation](#11-assumptions-diagnostics-and-model-evaluation)
@@ -28,6 +28,33 @@ library(rstanarm)
 file_newcomb <- here::here("Newcomb/data/newcomb.txt")
   # Common code
 file_common <- here::here("_common.R")
+
+# Functions
+  # Plot kernel density of data and sample replicates
+plot_density_overlay <- function(y, y_rep) {
+  ggplot(mapping = aes(y)) +
+    stat_density(
+      aes(group = rep, color = "y_rep"),
+      data = 
+        seq_len(nrow(y_rep)) %>% map_dfr(~ tibble(rep = ., y = y_rep[., ])),
+      geom = "line",
+      position = "identity",
+      alpha = 0.5,
+      size = 0.25
+    ) +
+    stat_density(aes(color = "y"), data = tibble(y), geom = "line", size = 1) +
+    scale_y_continuous(breaks = 0) +
+    scale_color_discrete(
+      breaks = c("y", "y_rep"),
+      labels = c("y", expression(y[rep]))
+    ) +
+    theme(legend.text.align = 0) +
+    labs(
+      x = NULL,
+      y = NULL,
+      color = NULL
+    )
+}
 
 #===============================================================================
 
@@ -201,7 +228,8 @@ Plot histograms for data and 19 sample replicates using bayesplot.
 ``` r
 set.seed(792)
 
-ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4)
+ppc_hist(y = newcomb$y, yrep = y_rep[sample(n_sims, 19), ], binwidth = 4) +
+  theme(text = element_text(family = "sans"))
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
@@ -216,27 +244,8 @@ sims_sample <- sample(n_sims, n_rep)
 Plot kernel density of data and 100 sample replicates.
 
 ``` r
-ggplot(mapping = aes(y)) +
-  stat_density(
-    aes(group = rep, color = "y_rep"),
-    data = y_rep_tidy %>% filter(rep %in% sims_sample),
-    geom = "line",
-    position = "identity",
-    alpha = 0.5,
-    size = 0.25
-  ) +
-  stat_density(aes(color = "y"), data = newcomb, geom = "line") +
-  scale_y_continuous(breaks = NULL) +
-  scale_color_discrete(
-    breaks = c("y", "y_rep"),
-    labels = c("Data", "Replicates")
-  ) +
-  theme(legend.position = "bottom") +
-  labs(
-    title = str_glue("Kernel density of data and {n_rep} sample replicates"),
-    y = NULL,
-    color = NULL
-  )
+plot_density_overlay(y = newcomb$y, y_rep = y_rep[sims_sample, ]) +
+  labs(title = str_glue("Kernel density of data and {n_rep} sample replicates"))
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
@@ -244,7 +253,11 @@ ggplot(mapping = aes(y)) +
 Plot kernel density of data and 100 sample replicates using bayesplot.
 
 ``` r
-ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sims_sample, ])
+ppc_dens_overlay(y = newcomb$y, yrep = y_rep[sims_sample, ]) +
+  theme(
+    axis.line.y = element_blank(),
+    text = element_text(family = "sans")
+  )
 ```
 
 <img src="newcomb_tv_files/figure-gfm/unnamed-chunk-12-1.png" width="100%" />
