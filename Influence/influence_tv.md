@@ -1,7 +1,7 @@
 Regression and Other Stories: Influence
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-20
+2021-02-26
 
 Tidyverse version by Bill Behrman.
 
@@ -62,7 +62,7 @@ v <-
 v %>% 
   ggplot(aes(x, y)) +
   geom_abline(slope = slope, intercept = intercept) +
-  geom_segment(aes(xend = x, yend = pred), color = "gray60") +
+  geom_segment(aes(xend = x, yend = pred), color = "grey60") +
   geom_point() +
   scale_x_continuous(breaks = scales::breaks_width(2)) +
   labs(title = "Linear regression with residuals")
