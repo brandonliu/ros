@@ -1,21 +1,23 @@
 Regression and Other Stories: Simple regression
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-01-05
+2021-03-01
 
--   [Chapter 6](#chapter-6)
-    -   [Simulate fake data](#simulate-fake-data)
-    -   [Linear regression model](#linear-regression-model)
-    -   [Plot](#plot)
+-   [6 Background on regression
+    modeling](#6-background-on-regression-modeling)
+    -   [6.2 Fitting a simple regression to fake
+        data](#62-fitting-a-simple-regression-to-fake-data)
+        -   [Fitting a regression and displaying the
+            results](#fitting-a-regression-and-displaying-the-results)
 -   [Chapter 7](#chapter-7)
-    -   [Simulate fake data](#simulate-fake-data-1)
+    -   [Simulate fake data](#simulate-fake-data)
     -   [Estimating the mean is the same as regressing on a constant
         term](#estimating-the-mean-is-the-same-as-regressing-on-a-constant-term)
-    -   [Simulate fake data](#simulate-fake-data-2)
+    -   [Simulate fake data](#simulate-fake-data-1)
     -   [Estimating a difference is the same as regressing on an
         indicator
         variable](#estimating-a-difference-is-the-same-as-regressing-on-an-indicator-variable)
-    -   [Plot](#plot-1)
+    -   [Plot](#plot)
 
 Tidyverse version by Bill Behrman.
 
@@ -41,9 +43,11 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-# Chapter 6
+# 6 Background on regression modeling
 
-### Simulate fake data
+## 6.2 Fitting a simple regression to fake data
+
+Data
 
 ``` r
 set.seed(SEED)
@@ -52,21 +56,21 @@ a <- 0.2
 b <- 0.3
 sigma <- 0.5
 
-fake_1 <- 
+data_1 <- 
   tibble(
     x = 1:20,
     y = a + b * x + rnorm(length(x), mean = 0, sd = sigma)
   )
 ```
 
-### Linear regression model
+### Fitting a regression and displaying the results
 
 The option `refresh = 0` suppresses the default Stan sampling progress
 output. This is useful for small data with fast computation. For more
 complex models and bigger data, it can be useful to see the progress.
 
 ``` r
-fit_1 <- stan_glm(y ~ x, data = fake_1, refresh = 0, seed = SEED)
+fit_1 <- stan_glm(y ~ x, data = data_1, refresh = 0, seed = SEED)
 
 print(fit_1, digits = 2)
 ```
@@ -89,7 +93,7 @@ print(fit_1, digits = 2)
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-### Plot
+Data and fitted regression line.
 
 ``` r
 intercept <- coef(fit_1)[["(Intercept)"]]
@@ -100,7 +104,7 @@ eqn <-
     "{format(slope, digits = 2, nsmall = 2)} x"
   )
 
-fake_1 %>% 
+data_1 %>% 
   ggplot(aes(x, y)) +
   geom_abline(slope = slope, intercept = intercept) +
   geom_point() +
@@ -138,12 +142,12 @@ y_0_mean_se
 ## Estimating the mean is the same as regressing on a constant term
 
 ``` r
-fake_2 <- tibble(y = y_0)
+data_2 <- tibble(y = y_0)
 
 fit_2 <- 
   stan_glm(
     y ~ 1,
-    data = fake_2,
+    data = data_2,
     refresh = 0,
     seed = SEED,
     prior = NULL,
@@ -200,7 +204,7 @@ diff_se
 ## Estimating a difference is the same as regressing on an indicator variable
 
 ``` r
-fake_3 <- 
+data_3 <- 
   bind_rows(
     tibble(x = 0, y = y_0),
     tibble(x = 1, y = y_1)
@@ -209,7 +213,7 @@ fake_3 <-
 fit_3 <- 
   stan_glm(
     y ~ x,
-    data = fake_3,
+    data = data_3,
     refresh = 0,
     seed = SEED,
     prior = NULL,
@@ -256,7 +260,7 @@ eqn <-
 
 offset <- 1.5
 
-fake_3 %>% 
+data_3 %>% 
   ggplot(aes(x, y)) +
   geom_hline(yintercept = c(y_0_mean, y_1_mean), color = "grey60") +
   geom_abline(slope = slope, intercept = intercept) +
