@@ -217,9 +217,9 @@ segments <-
 Example individuals from storable votes study.
 
 ``` r
-person_label <- function(person_) {
+person_label <- function(x) {
   people %>% 
-    filter(person == person_) %>% 
+    filter(person == x) %>% 
     pull(behavior)
 }
 
