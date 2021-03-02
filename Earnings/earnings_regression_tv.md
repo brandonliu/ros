@@ -77,7 +77,7 @@ source(file_common)
 
 ## 6.3 Interpret coefficients as comparisons, not effects
 
-Data.
+Data
 
 ``` r
 earnings <- 
