@@ -241,21 +241,23 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
     -   [nes\_logistic\_tv.md](NES/nes_logistic_tv.md) - Logistic
         regression, identifiability, and separation
 
-<!-- ### 15  Other generalized linear models -->
-<!-- - [PoissonExample/](PoissonExample/) -->
-<!--     - [PoissonExample_tv.md](PoissonExample/poisson_regression_tv.md) - Demonstrate Poisson regression with simulated data. -->
-<!-- - [Roaches/](Roaches/) -->
-<!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
-<!-- - [Storable/](Storable/)  -->
-<!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
-<!-- - [RiskyBehavior/](RiskyBehavior/) -->
-<!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
-<!-- - [NES/](NES/) -->
-<!-- - [Lalonde/](Lalonde/) -->
-<!-- - [Congress/](Congress/) -->
-<!-- - [AcademyAwards/](AcademyAwards/) -->
+### 15 Other generalized linear models
+
+-   [PoissonExample/](PoissonExample/)
+    -   [poisson\_regression\_tv.md](PoissonExample/poisson_regression_tv.md) -
+        Demonstrate Poisson regression with simulated data
+        <!-- - [Roaches/](Roaches/) -->
+        <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
+        <!-- - [Storable/](Storable/)  -->
+        <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
+        <!-- - [Earnings/](Earnings/) -->
+        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
+        <!-- - [RiskyBehavior/](RiskyBehavior/) -->
+        <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
+        <!-- - [NES/](NES/) --> <!-- - [Lalonde/](Lalonde/) -->
+        <!-- - [Congress/](Congress/) -->
+        <!-- - [AcademyAwards/](AcademyAwards/) -->
+
 <!-- ### 16  Design and sample size decisions -->
 <!-- - [ElectricCompany/](ElectricCompany/) -->
 <!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
@@ -466,8 +468,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         height. Published in 1903 by Karl Pearson and Alice Lee.
 -   [Pew/](Pew/)
     -   [pew\_tv.md](Pew/pew_tv.md) - Miscellaneous analyses using raw
-        Pew data <!-- - [PoissonExample/](PoissonExample/) -->
-        <!--     - [poissonexample_tv.md](PoissonExample/poissonexample_tv.md) - Demonstrate Poisson regression with simulated data. -->
+        Pew data
+-   [PoissonExample/](PoissonExample/)
+    -   [poisson\_regression\_tv.md](PoissonExample/poisson_regression_tv.md) -
+        Demonstrate Poisson regression with simulated data
 -   [Pollution/](Pollution/)
     -   [pollution\_tv.md](Pollution/pollution_tv.md) - Pollution data
         <!-- - [Poststrat/](Poststrat/) -->
@@ -502,7 +506,7 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Stents/](Stents/)
     -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
         distributions <!-- - [Storable/](Storable/) -->
-        <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.'' -->
+        <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
 -   [Student/](Student/)
     -   [student\_tv.md](Student/student_tv.md) - Models for regression
         coefficients
