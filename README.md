@@ -246,9 +246,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [PoissonExample/](PoissonExample/)
     -   [poisson\_regression\_tv.md](PoissonExample/poisson_regression_tv.md) -
         Demonstrate Poisson regression with simulated data
-        <!-- - [Roaches/](Roaches/) -->
-        <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
-        <!-- - [Storable/](Storable/)  -->
+-   [Roaches/](Roaches/)
+    -   [roaches\_tv.md](Roaches/roaches_tv.md) - Analyze the effect of
+        integrated pest management on reducing cockroach levels in urban
+        apartments <!-- - [Storable/](Storable/)  -->
         <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
         <!-- - [Earnings/](Earnings/) -->
         <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
@@ -487,8 +488,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!--     - [restaurant_tv.md](Restaurant/restaurant_tv.md) - Demonstration of using Stan for optimization -->
         <!-- - [RiskyBehavior/](RiskyBehavior/) -->
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
-        <!-- - [Roaches/](Roaches/) -->
-        <!--     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments -->
+-   [Roaches/](Roaches/)
+    -   [roaches\_tv.md](Roaches/roaches_tv.md) - Analyze the effect of
+        integrated pest management on reducing cockroach levels in urban
+        apartments
 -   [Rodents/](Rodents/)
 -   [Rsquared/](Rsquared/)
     -   [rsquared\_tv.md](Rsquared/rsquared_tv.md) - Bayesian R^2
