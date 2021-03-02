@@ -1,7 +1,7 @@
 Regression and Other Stories: Roaches
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-26
+2021-03-02
 
 -   [15 Other generalized linear
     models](#15-other-generalized-linear-models)
@@ -73,7 +73,7 @@ source(file_common)
 
 ### Example zeros in count data
 
-Data.
+Data
 
 ``` r
 # data(roaches)
@@ -462,8 +462,8 @@ true.
 A zero-inflated negative binomial model is a mixture of two models, a
 logistic regression to model the proportion of extra zero counts and a
 negative binomial model to model the non-zero counts. This two-stage
-model can be modeled directly in Stan or with the `brms::brm()` using
-the `zero_inflated_negbinomial()` family. We’ll use the latter here.
+model can be modeled directly in Stan or with `brms::brm()` using the
+`zero_inflated_negbinomial()` family. We’ll use the latter here.
 
 Create log-transformed variables.
 

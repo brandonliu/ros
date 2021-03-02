@@ -66,7 +66,7 @@ source(file_common)
 
 ### Example zeros in count data
 
-Data.
+Data
 
 ```{r}
 # data(roaches)
@@ -323,7 +323,7 @@ A majority of the replicated datasets have no zero counts, the maximum proportio
 
 ### Cockroaches and the zero-inflated negative binomial model
 
-A zero-inflated negative binomial model is a mixture of two models, a logistic regression to model the proportion of extra zero counts and a negative binomial model to model the non-zero counts. This two-stage model can be modeled directly in Stan or with the `brms::brm()` using the `zero_inflated_negbinomial()` family. We'll use the latter here.
+A zero-inflated negative binomial model is a mixture of two models, a logistic regression to model the proportion of extra zero counts and a negative binomial model to model the non-zero counts. This two-stage model can be modeled directly in Stan or with `brms::brm()` using the `zero_inflated_negbinomial()` family. We'll use the latter here.
 
 Create log-transformed variables.
 
