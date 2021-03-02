@@ -208,7 +208,7 @@ many areas unsafe wells are close to safe wells.
 
 #### Data on unsafe wells
 
-Data.
+Data
 
 ``` r
 wells <- read_csv(file_wells)

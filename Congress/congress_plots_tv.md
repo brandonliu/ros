@@ -47,7 +47,7 @@ source(file_common)
 
 ### Grids of plots
 
-Data.
+Data
 
 ``` r
 elections <- 

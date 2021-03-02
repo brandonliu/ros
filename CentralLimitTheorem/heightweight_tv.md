@@ -42,7 +42,7 @@ source(file_common)
 
 ### Mean and standard deviation of a probability distribution
 
-Data.
+Data
 
 ``` r
 heights <- 

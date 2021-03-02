@@ -42,7 +42,7 @@ source(file_common)
 
 ### Demonstration with the well-switching example
 
-Data.
+Data
 
 ``` r
 wells <- read_csv(file_wells)

@@ -44,7 +44,7 @@ source(file_common)
 
 ### Residuals and binned residuals
 
-Data.
+Data
 
 ``` r
 wells <- read_csv(file_wells)

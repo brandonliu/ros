@@ -130,7 +130,7 @@ It looks as though the wells may be near dwellings along streets. In many areas 
 
 #### Data on unsafe wells
 
-Data.
+Data
 
 ```{r, message=FALSE}
 wells <- read_csv(file_wells)
