@@ -167,8 +167,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [poisson_regression_tv.md](PoissonExample/poisson_regression_tv.md) - Demonstrate Poisson regression with simulated data
 - [Roaches/](Roaches/)
     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments
-<!-- - [Storable/](Storable/)  -->
-<!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
+- [Storable/](Storable/)
+    - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes"
 <!-- - [Earnings/](Earnings/) -->
 <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
 <!-- - [RiskyBehavior/](RiskyBehavior/) -->
@@ -383,8 +383,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [simplest_tv.md](Simplest/simplest_tv.md) - Linear regression with a single predictor
 - [Stents/](Stents/)
     - [stents_tv.md](Stents/stents_tv.md) - Stents - comparing distributions
-<!-- - [Storable/](Storable/) -->
-<!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
+- [Storable/](Storable/)
+    - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes"
 - [Student/](Student/)
     - [student_tv.md](Student/student_tv.md) - Models for regression coefficients
 - [Unemployment/](Unemployment/)

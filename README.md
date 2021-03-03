@@ -249,9 +249,11 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Roaches/](Roaches/)
     -   [roaches\_tv.md](Roaches/roaches_tv.md) - Analyze the effect of
         integrated pest management on reducing cockroach levels in urban
-        apartments <!-- - [Storable/](Storable/)  -->
-        <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
-        <!-- - [Earnings/](Earnings/) -->
+        apartments
+-   [Storable/](Storable/)
+    -   [storable\_tv.md](Storable/storable_tv.md) - Ordered categorical
+        data analysis with a study from experimental economics, on the
+        topic of “storable votes” <!-- - [Earnings/](Earnings/) -->
         <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
         <!-- - [RiskyBehavior/](RiskyBehavior/) -->
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
@@ -508,8 +510,11 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         with a single predictor
 -   [Stents/](Stents/)
     -   [stents\_tv.md](Stents/stents_tv.md) - Stents - comparing
-        distributions <!-- - [Storable/](Storable/) -->
-        <!--     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes" -->
+        distributions
+-   [Storable/](Storable/)
+    -   [storable\_tv.md](Storable/storable_tv.md) - Ordered categorical
+        data analysis with a study from experimental economics, on the
+        topic of “storable votes”
 -   [Student/](Student/)
     -   [student\_tv.md](Student/student_tv.md) - Models for regression
         coefficients
