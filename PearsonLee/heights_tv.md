@@ -1,11 +1,13 @@
 Regression and Other Stories: Pearson and Lee Heights
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-23
+2021-03-03
 
--   [Data](#data)
--   [Linear regression](#linear-regression)
--   [Plots](#plots)
+-   [6 Background on regression
+    modeling](#6-background-on-regression-modeling)
+    -   [6.4 Historical origins of
+        regression](#64-historical-origins-of-regression)
+        -   [Fitting the model in R](#fitting-the-model-in-r)
 
 Tidyverse version by Bill Behrman.
 
@@ -31,7 +33,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 6 Background on regression modeling
+
+## 6.4 Historical origins of regression
+
+### Fitting the model in R
+
+Data
 
 ``` r
 heights <- 
@@ -57,14 +65,14 @@ heights
     #> 10            56.5          58.5
     #> # … with 5,514 more rows
 
-## Linear regression
+Fit linear regression.
 
 ``` r
 set.seed(201)
 
-fit_1 <- stan_glm(daughter_height ~ mother_height, data = heights, refresh = 0)
+fit <- stan_glm(daughter_height ~ mother_height, data = heights, refresh = 0)
 
-print(fit_1, digits = 2)
+print(fit, digits = 2)
 ```
 
     #> stan_glm
@@ -85,7 +93,7 @@ print(fit_1, digits = 2)
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-## Plots
+Mothers’ and adult daughters’ heights.
 
 ``` r
 heights %>% 
@@ -101,13 +109,16 @@ heights %>%
 
 <img src="heights_tv_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
 
+Mothers’ and adult daughters’ heights with fitted regression line and
+average of data.
+
 ``` r
 heights_mean <- 
   heights %>% 
   summarize(across(everything(), mean))
 
-intercept <- coef(fit_1)[["(Intercept)"]]
-slope <- coef(fit_1)[["mother_height"]]
+intercept <- coef(fit)[["(Intercept)"]]
+slope <- coef(fit)[["mother_height"]]
 
 heights %>% 
   ggplot(aes(mother_height, daughter_height)) + 
@@ -124,6 +135,8 @@ heights %>%
 ```
 
 <img src="heights_tv_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
+
+Fitted regression line and average of data.
 
 ``` r
 eqn_1 <- 
@@ -163,6 +176,8 @@ heights %>%
 
 <img src="heights_tv_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
+Fitted regression line with x = 0.
+
 ``` r
 heights %>% 
   ggplot(aes(mother_height, daughter_height)) + 
@@ -181,6 +196,8 @@ heights %>%
 ```
 
 <img src="heights_tv_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
+
+Fitted regression line and data with x = 0.
 
 ``` r
 heights %>% 

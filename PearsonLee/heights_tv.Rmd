@@ -30,7 +30,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 6 Background on regression modeling
+
+## 6.4 Historical origins of regression
+
+### Fitting the model in R
+
+Data
 
 ```{r}
 heights <- 
@@ -41,17 +47,17 @@ heights <-
 heights
 ```
 
-## Linear regression
+Fit linear regression.
 
 ```{r}
 set.seed(201)
 
-fit_1 <- stan_glm(daughter_height ~ mother_height, data = heights, refresh = 0)
+fit <- stan_glm(daughter_height ~ mother_height, data = heights, refresh = 0)
 
-print(fit_1, digits = 2)
+print(fit, digits = 2)
 ```
 
-## Plots
+Mothers' and adult daughters' heights.
 
 ```{r, fig.asp=1}
 heights %>% 
@@ -65,13 +71,15 @@ heights %>%
   )
 ```
 
+Mothers' and adult daughters' heights with fitted regression line and average of data.
+
 ```{r, fig.asp=1}
 heights_mean <- 
   heights %>% 
   summarize(across(everything(), mean))
 
-intercept <- coef(fit_1)[["(Intercept)"]]
-slope <- coef(fit_1)[["mother_height"]]
+intercept <- coef(fit)[["(Intercept)"]]
+slope <- coef(fit)[["mother_height"]]
 
 heights %>% 
   ggplot(aes(mother_height, daughter_height)) + 
@@ -86,6 +94,8 @@ heights %>%
     y = "Adult daughter's height (inches)"
   )
 ```
+
+Fitted regression line and average of data.
 
 ```{r, fig.asp=1}
 eqn_1 <- 
@@ -123,6 +133,8 @@ heights %>%
   )
 ```
 
+Fitted regression line with x = 0.
+
 ```{r, fig.asp=1}
 heights %>% 
   ggplot(aes(mother_height, daughter_height)) + 
@@ -139,6 +151,8 @@ heights %>%
     y = "Adult daughter's height (inches)"
   )
 ```
+
+Fitted regression line and data with x = 0.
 
 ```{r, fig.asp=1}
 heights %>% 
