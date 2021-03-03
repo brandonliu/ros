@@ -34,7 +34,7 @@ source(file_common)
 
 ## 4.6 Example of hypothesis testing: 55,000 residents need your help!
 
-Data.
+Data
 
 ``` r
 votes <- 

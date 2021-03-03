@@ -66,7 +66,7 @@ source(file_common)
 
 ## 1.2 Why learn regression?
 
-Data.
+Data
 
 ``` r
 hibbs <- 

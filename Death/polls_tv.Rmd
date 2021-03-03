@@ -35,7 +35,7 @@ source(file_common)
 
 ### Comparisons, visual and numerical
 
-Data.
+Data
 
 ```{r, message=FALSE}
 death_penalty <- 

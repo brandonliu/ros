@@ -34,7 +34,7 @@ source(file_common)
 
 ## 5.4 Bootstrapping to simulate a sampling distribution
 
-Data.
+Data
 
 ``` r
 earnings <- 
@@ -51,7 +51,7 @@ earnings <-
   select(age, sex, earn)
 ```
 
-EDA.
+EDA
 
 ``` r
 earnings %>% 

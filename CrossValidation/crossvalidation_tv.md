@@ -45,7 +45,7 @@ source(file_common)
 
 ### Leave-one-out cross validation
 
-Data.
+Data
 
 ``` r
 set.seed(SEED)

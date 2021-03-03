@@ -38,7 +38,7 @@ source(file_common)
 
 ### Comparisons, visual and numerical
 
-Data.
+Data
 
 ``` r
 death_penalty <- 
