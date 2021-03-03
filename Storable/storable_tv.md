@@ -1,7 +1,7 @@
 Regression and Other Stories: Storable
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-26
+2021-03-03
 
 -   [15 Other generalized linear
     models](#15-other-generalized-linear-models)
@@ -94,7 +94,11 @@ and 10 have 20.
 ``` r
 data %>% 
   ggplot(aes(value)) +
-  geom_violin(aes(y = vote_ord)) +
+  stat_ydensity(
+    aes(y = vote_ord),
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
   geom_smooth(aes(y = vote)) +
   labs(x = "Value", y = "Votes cast")
 ```
@@ -226,13 +230,13 @@ person_label <- function(x) {
 data_people %>% 
   unnest(data) %>% 
   ggplot() +
-  geom_count(aes(value, vote)) +
   geom_segment(
     aes(x = x, xend = x, y = y, yend = yend),
     data = segments,
     color = "grey60"
   ) +
   geom_line(aes(x, y), data = curves) +
+  geom_count(aes(value, vote)) +
   facet_wrap(
     facets = vars(person),
     ncol = 2,

@@ -74,7 +74,11 @@ There are 87 people in the data, 76 have 30 observations each, 1 has 29, and 10 
 ```{r, message=FALSE}
 data %>% 
   ggplot(aes(value)) +
-  geom_violin(aes(y = vote_ord)) +
+  stat_ydensity(
+    aes(y = vote_ord),
+    draw_quantiles = c(0.25, 0.5, 0.75),
+    scale = "count"
+  ) +
   geom_smooth(aes(y = vote)) +
   labs(x = "Value", y = "Votes cast")
 ```
@@ -186,13 +190,13 @@ person_label <- function(x) {
 data_people %>% 
   unnest(data) %>% 
   ggplot() +
-  geom_count(aes(value, vote)) +
   geom_segment(
     aes(x = x, xend = x, y = y, yend = yend),
     data = segments,
     color = "grey60"
   ) +
   geom_line(aes(x, y), data = curves) +
+  geom_count(aes(value, vote)) +
   facet_wrap(
     facets = vars(person),
     ncol = 2,
