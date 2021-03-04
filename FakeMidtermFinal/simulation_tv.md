@@ -1,11 +1,15 @@
 Regression and Other Stories: Fake midterm and final exam
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2020-12-24
+2021-03-04
 
--   [Data](#data)
--   [Linear regression](#linear-regression)
--   [Plot](#plot)
+-   [6 Background on regression
+    modeling](#6-background-on-regression-modeling)
+    -   [6.5 The paradox of regression to the
+        mean](#65-the-paradox-of-regression-to-the-mean)
+        -   [How regression to the mean can confuse people about causal
+            inference; demonstration using fake
+            data](#how-regression-to-the-mean-can-confuse-people-about-causal-inference-demonstration-using-fake-data)
 
 Tidyverse version by Bill Behrman.
 
@@ -29,7 +33,13 @@ file_common <- here::here("_common.R")
 source(file_common)
 ```
 
-## Data
+# 6 Background on regression modeling
+
+## 6.5 The paradox of regression to the mean
+
+### How regression to the mean can confuse people about causal inference; demonstration using fake data
+
+Data
 
 ``` r
 set.seed(2243)
@@ -46,13 +56,15 @@ exams <-
   )
 ```
 
-## Linear regression
+Fit linear regression.
 
 The option `refresh = 0` suppresses the default Stan sampling progress
 output. This is useful for small data with fast computation. For more
 complex models and bigger data, it can be useful to see the progress.
 
 ``` r
+set.seed(857)
+
 fit <- stan_glm(final ~ midterm, data = exams, refresh = 0)
 
 print(fit, digits = 2)
@@ -65,18 +77,18 @@ print(fit, digits = 2)
     #>  predictors:   2
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) 24.82   1.38 
+    #> (Intercept) 24.79   1.36 
     #> midterm      0.51   0.03 
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 11.60   0.27 
+    #> sigma 11.60   0.25 
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
     #> * For info on the priors used see ?prior_summary.stanreg
 
-## Plot
+Simulated midterm and final exam scores.
 
 ``` r
 intercept <- coef(fit)[["(Intercept)"]]
