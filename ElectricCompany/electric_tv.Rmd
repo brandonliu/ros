@@ -35,7 +35,7 @@ source(file_common)
 
 ### A randomized experiment on the effect of an educational television program
 
-Data.
+Data
 
 ```{r, message=FALSE}
 electric_wide <- read_table2(file_electric_wide)
@@ -56,7 +56,7 @@ electric <-
 electric
 ```
 
-Plot of raw data.
+Effect educational television program on chilren's reading scores.
 
 ```{r}
 electric_post <- 
@@ -86,6 +86,10 @@ electric_post %>%
     labeller = labeller(grade = grade_labels, group = group_labels)
   ) + 
   labs(
+    title = 
+      "Effect educational television program on chilren's reading scores",
+    subtitle = 
+      "Vertical line shows the average for the corresponding group of classrooms",
     x = "Score",
     y = "Count"
   )
