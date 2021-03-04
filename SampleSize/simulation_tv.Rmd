@@ -63,7 +63,7 @@ Fit model with one predictor.
 ```{r}
 fit_1_1 <- stan_glm(y ~ x_1, data = data_1, refresh = 0, seed = SEED)
 
-print(fit_1_1)
+fit_1_1
 ```
 
 Fit model with two predictors with an interaction.
@@ -72,7 +72,7 @@ Fit model with two predictors with an interaction.
 fit_1_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_1, refresh = 0, seed = SEED)
 
-print(fit_1_2)
+fit_1_2
 ```
 
 Ignore the estimates; they're pure noise. Just look at the standard errors. They follow the formulas:
@@ -100,7 +100,7 @@ Fit model with one predictor.
 ```{r}
 fit_2_1 <- stan_glm(y ~ x_1, data = data_2, refresh = 0, seed = SEED)
 
-print(fit_2_1)
+fit_2_1
 ```
 
 Fit model with two predictors with an interaction.
@@ -109,7 +109,7 @@ Fit model with two predictors with an interaction.
 fit_2_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_2, refresh = 0, seed = SEED)
 
-print(fit_2_2)
+fit_2_2
 ```
 
 In this case, the standard error for the interaction is unchanged, and the standard error for the main effects have increased by a factor of sqrt(2).
@@ -125,7 +125,7 @@ Fit model with one predictor.
 ```{r}
 fit_3_1 <- stan_glm(y ~ x_1, data = data_3, refresh = 0, seed = SEED)
 
-print(fit_3_1)
+fit_3_1
 ```
 
 Fit model with two predictors with an interaction.
@@ -134,7 +134,7 @@ Fit model with two predictors with an interaction.
 fit_3_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_3, refresh = 0, seed = SEED)
 
-print(fit_3_2)
+fit_3_2
 ```
 
 In this case, multiplying the predictors by 2 has the effect of dividing the standard errors for the main effects by 2 and the standard errors for the interaction by 4.

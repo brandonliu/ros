@@ -67,7 +67,7 @@ Fit model with one predictor.
 ``` r
 fit_1_1 <- stan_glm(y ~ x_1, data = data_1, refresh = 0, seed = SEED)
 
-print(fit_1_1)
+fit_1_1
 ```
 
     #> stan_glm
@@ -94,7 +94,7 @@ Fit model with two predictors with an interaction.
 fit_1_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_1, refresh = 0, seed = SEED)
 
-print(fit_1_2)
+fit_1_2
 ```
 
     #> stan_glm
@@ -147,7 +147,7 @@ Fit model with one predictor.
 ``` r
 fit_2_1 <- stan_glm(y ~ x_1, data = data_2, refresh = 0, seed = SEED)
 
-print(fit_2_1)
+fit_2_1
 ```
 
     #> stan_glm
@@ -174,7 +174,7 @@ Fit model with two predictors with an interaction.
 fit_2_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_2, refresh = 0, seed = SEED)
 
-print(fit_2_2)
+fit_2_2
 ```
 
     #> stan_glm
@@ -212,7 +212,7 @@ Fit model with one predictor.
 ``` r
 fit_3_1 <- stan_glm(y ~ x_1, data = data_3, refresh = 0, seed = SEED)
 
-print(fit_3_1)
+fit_3_1
 ```
 
     #> stan_glm
@@ -239,7 +239,7 @@ Fit model with two predictors with an interaction.
 fit_3_2 <- 
   stan_glm(y ~ x_1 + x_2 + x_1:x_2, data = data_3, refresh = 0, seed = SEED)
 
-print(fit_3_2)
+fit_3_2
 ```
 
     #> stan_glm
