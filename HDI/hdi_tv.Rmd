@@ -36,7 +36,7 @@ source(file_common)
 
 ## 2.1 Examining where data come from
 
-Data.
+Data
 
 ```{r}
 hdi <- 

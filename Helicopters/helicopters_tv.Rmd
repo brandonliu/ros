@@ -33,7 +33,7 @@ source(file_common)
 
 ## 1.8 Exercises
 
-Data.
+Data
 
 ```{r}
 helicopters <- 

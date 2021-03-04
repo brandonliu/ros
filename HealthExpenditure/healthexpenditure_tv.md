@@ -36,7 +36,7 @@ source(file_common)
 
 ### Simple scatterplots
 
-Data.
+Data
 
 ``` r
 health <- 

@@ -42,7 +42,7 @@ source(file_common)
 
 ### A confusing choice: plot residuals vs. predicted values, or residuals vs. observed values?
 
-Data.
+Data
 
 ``` r
 scores <- 

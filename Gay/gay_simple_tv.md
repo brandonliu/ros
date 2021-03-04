@@ -39,7 +39,7 @@ source(file_common)
 
 ### Index and indicator variables
 
-Data.
+Data
 
 ``` r
 data <- 

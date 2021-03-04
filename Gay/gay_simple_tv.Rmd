@@ -36,7 +36,7 @@ source(file_common)
 
 ### Index and indicator variables
 
-Data.
+Data
 
 ```{r, message=FALSE, warning=FALSE}
 data <- 
