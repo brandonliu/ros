@@ -19,7 +19,7 @@ library(rstanarm)
 
 # Parameters
   # Seed
-SEED <- 396
+SEED <- 660
   # Common code
 file_common <- here::here("_common.R")
 
@@ -44,12 +44,14 @@ n <- 1000
 sigma <- 10
 
 y <- rnorm(n, mean = 0, sd = sigma)
+sample_1 <- sample(1:2, size = n, replace = TRUE)
+sample_2 <- sample(1:2, size = n, replace = TRUE)
 
-sim <- function(r_1, r_2) {
+sim <- function(v_1, v_2) {
   tibble(
     y,
-    x_1 = sample(c(r_1, r_2), size = n, replace = TRUE),
-    x_2 = sample(c(r_1, r_2), size = n, replace = TRUE)
+    x_1 = c(v_1, v_2)[sample_1],
+    x_2 = c(v_1, v_2)[sample_2]
   )
 }
 
@@ -90,8 +92,6 @@ Interaction:
 #### Simulated data 2: predictor range: 0, 1
 
 ```{r}
-set.seed(SEED)
-
 data_2 <- sim(0, 1)
 ```
 
@@ -117,8 +117,6 @@ In this case, the standard error for the interaction is unchanged, and the stand
 #### Simulated data 3: predictor range: -1, 1
 
 ```{r}
-set.seed(SEED)
-
 data_3 <- sim(-1, 1)
 ```
 

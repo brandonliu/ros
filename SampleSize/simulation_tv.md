@@ -1,7 +1,7 @@
 Regression and Other Stories: Sample size simulation
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-03-03
+2021-03-04
 
 -   [16 Design and sample size
     decisions](#16-design-and-sample-size-decisions)
@@ -23,7 +23,7 @@ library(rstanarm)
 
 # Parameters
   # Seed
-SEED <- 396
+SEED <- 660
   # Common code
 file_common <- here::here("_common.R")
 
@@ -48,12 +48,14 @@ n <- 1000
 sigma <- 10
 
 y <- rnorm(n, mean = 0, sd = sigma)
+sample_1 <- sample(1:2, size = n, replace = TRUE)
+sample_2 <- sample(1:2, size = n, replace = TRUE)
 
-sim <- function(r_1, r_2) {
+sim <- function(v_1, v_2) {
   tibble(
     y,
-    x_1 = sample(c(r_1, r_2), size = n, replace = TRUE),
-    x_2 = sample(c(r_1, r_2), size = n, replace = TRUE)
+    x_1 = c(v_1, v_2)[sample_1],
+    x_2 = c(v_1, v_2)[sample_2]
   )
 }
 
@@ -75,12 +77,12 @@ print(fit_1_1)
     #>  predictors:   2
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.1    0.3  
-    #> x_1          0.3    0.6  
+    #> (Intercept) -0.2    0.3  
+    #> x_1          0.2    0.6  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -102,14 +104,14 @@ print(fit_1_2)
     #>  predictors:   4
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.1    0.3  
-    #> x_1          0.2    0.6  
-    #> x_2          0.8    0.6  
-    #> x_1:x_2      1.3    1.2  
+    #> (Intercept) -0.2    0.3  
+    #> x_1          0.3    0.6  
+    #> x_2         -0.6    0.6  
+    #> x_1:x_2     -2.9    1.2  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.1    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -137,8 +139,6 @@ Interaction:
 #### Simulated data 2: predictor range: 0, 1
 
 ``` r
-set.seed(SEED)
-
 data_2 <- sim(0, 1)
 ```
 
@@ -158,11 +158,11 @@ print(fit_2_1)
     #> ------
     #>             Median MAD_SD
     #> (Intercept) -0.3    0.4  
-    #> x_1          0.3    0.6  
+    #> x_1          0.2    0.6  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -184,14 +184,14 @@ print(fit_2_2)
     #>  predictors:   4
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.7    0.6  
-    #> x_1          0.5    0.9  
-    #> x_2          0.9    0.9  
-    #> x_1:x_2     -0.7    1.2  
+    #> (Intercept) -0.8    0.6  
+    #> x_1          1.7    0.8  
+    #> x_2          0.9    0.8  
+    #> x_1:x_2     -2.8    1.2  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.1    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -204,8 +204,6 @@ sqrt(2).
 #### Simulated data 3: predictor range: -1, 1
 
 ``` r
-set.seed(SEED)
-
 data_3 <- sim(-1, 1)
 ```
 
@@ -224,12 +222,12 @@ print(fit_3_1)
     #>  predictors:   2
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.1    0.3  
+    #> (Intercept) -0.2    0.3  
     #> x_1          0.1    0.3  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -251,14 +249,14 @@ print(fit_3_2)
     #>  predictors:   4
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.1    0.3  
+    #> (Intercept) -0.2    0.3  
     #> x_1          0.1    0.3  
-    #> x_2          0.3    0.3  
-    #> x_1:x_2     -0.2    0.3  
+    #> x_2         -0.3    0.3  
+    #> x_1:x_2     -0.7    0.3  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.6    0.2   
+    #> sigma 9.1    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
