@@ -68,8 +68,8 @@ fit_pos <-
     earn_pos ~ height + sex,
     family = binomial(link = "logit"),
     data = earnings,
-    seed = SEED,
-    refresh = 0
+    refresh = 0,
+    seed = SEED
   )
 
 print(fit_pos, digits = 2)
@@ -82,8 +82,8 @@ fit_log_2 <-
   stan_glm(
     log(earn) ~ height + sex,
     data = earnings %>% filter(earn_pos),
-    seed = SEED,
-    refresh = 0
+    refresh = 0,
+    seed = SEED
   )
 
 print(fit_log_2, digits = 2)
@@ -97,7 +97,7 @@ v <- plogis(coef(fit_pos)[["(Intercept)"]] + coef(fit_pos)[["height"]] * 66)
 v
 ```
 
-or a `r round(100 * v)`% chance, of having positive income.
+or an `r round(100 * v)`% chance, of having positive income.
 
 If her earnings are positive, their predicted value is
 
@@ -110,7 +110,7 @@ Combining these gives a mixture of a spike at 0 and a lognormal distribution, wh
 ```{r}
 set.seed(SEED)
 
-new <- tibble(height = 66, sex = "Female", earn_pos = TRUE)
+new <- tibble(height = 66, sex = "Female")
 
 pred_pos <- 
   posterior_predict(fit_pos, newdata = new) %>% 

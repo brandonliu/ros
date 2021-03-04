@@ -1,7 +1,7 @@
 Regression and Other Stories: Earnings
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-03-02
+2021-03-04
 
 -   [15 Other generalized linear
     models](#15-other-generalized-linear-models)
@@ -91,8 +91,8 @@ fit_pos <-
     earn_pos ~ height + sex,
     family = binomial(link = "logit"),
     data = earnings,
-    seed = SEED,
-    refresh = 0
+    refresh = 0,
+    seed = SEED
   )
 
 print(fit_pos, digits = 2)
@@ -121,8 +121,8 @@ fit_log_2 <-
   stan_glm(
     log(earn) ~ height + sex,
     data = earnings %>% filter(earn_pos),
-    seed = SEED,
-    refresh = 0
+    refresh = 0,
+    seed = SEED
   )
 
 print(fit_log_2, digits = 2)
@@ -157,7 +157,7 @@ v
 
     #> [1] 0.865
 
-or a 87% chance, of having positive income.
+or an 87% chance, of having positive income.
 
 If her earnings are positive, their predicted value is
 
@@ -173,7 +173,7 @@ distribution, which is most easily manipulated using simulations.
 ``` r
 set.seed(SEED)
 
-new <- tibble(height = 66, sex = "Female", earn_pos = TRUE)
+new <- tibble(height = 66, sex = "Female")
 
 pred_pos <- 
   posterior_predict(fit_pos, newdata = new) %>% 
