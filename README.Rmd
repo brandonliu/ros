@@ -169,8 +169,8 @@ This repository contains Tidyverse implementations for the examples and exercise
     - [roaches_tv.md](Roaches/roaches_tv.md) - Analyze the effect of integrated pest management on reducing cockroach levels in urban apartments
 - [Storable/](Storable/)
     - [storable_tv.md](Storable/storable_tv.md) - Ordered categorical data analysis with a study from experimental economics, on the topic of "storable votes"
-<!-- - [Earnings/](Earnings/) -->
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
+- [Earnings/](Earnings/)
+    - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model
 <!-- - [RiskyBehavior/](RiskyBehavior/) -->
 <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
 <!-- - [NES/](NES/) -->
@@ -179,12 +179,12 @@ This repository contains Tidyverse implementations for the examples and exercise
 <!-- - [AcademyAwards/](AcademyAwards/) -->
 
 <!-- ### 16  Design and sample size decisions -->
-<!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [SampleSize/](SampleSize/) -->
 <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
 <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
+<!-- - [ElectricCompany/](ElectricCompany/) -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 
 <!-- ### 17  Poststratification and missing-data imputation -->
 <!-- - [Poststrat/](Poststrat/) -->
@@ -284,7 +284,7 @@ This repository contains Tidyverse implementations for the examples and exercise
 - [Earnings/](Earnings/)
     - [earnings_bootstrap_tv.md](Earnings/earnings_bootstrap_tv.md) - Bootstrapping to simulate the sampling distribution
     - [earnings_regression_tv.md](Earnings/earnings_regression_tv.md) - Predict respondents' yearly earnings using survey data from 1990
-<!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
+    - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model
     - [height_and_weight_tv.md](Earnings/height_and_weight_tv.md) - Predict weight
 - [ElectionsEconomy/](ElectionsEconomy/)
     - [bayes_tv.md](ElectionsEconomy/bayes_tv.md) - Demonstration of Bayesian information aggregation

@@ -253,8 +253,10 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
 -   [Storable/](Storable/)
     -   [storable\_tv.md](Storable/storable_tv.md) - Ordered categorical
         data analysis with a study from experimental economics, on the
-        topic of “storable votes” <!-- - [Earnings/](Earnings/) -->
-        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
+        topic of “storable votes”
+-   [Earnings/](Earnings/)
+    -   [earnings\_compound\_tv.md](Earnings/earnings_compound_tv.md) -
+        Compound discrete-continuous model
         <!-- - [RiskyBehavior/](RiskyBehavior/) -->
         <!--     - [risky_tv.md](RiskyBehavior/risky_tv.md) Risky behavior data. -->
         <!-- - [NES/](NES/) --> <!-- - [Lalonde/](Lalonde/) -->
@@ -262,12 +264,12 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         <!-- - [AcademyAwards/](AcademyAwards/) -->
 
 <!-- ### 16  Design and sample size decisions -->
-<!-- - [ElectricCompany/](ElectricCompany/) -->
-<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- - [SampleSize/](SampleSize/) -->
 <!--     - [simulation_tv.md](DataCollection/simulation_tv.md) - Sample size simulation -->
 <!-- - [FakeMidtermFinal/](FakeMidtermFinal/) -->
 <!--     - [simulation_based_design_tv.md](FakeMidtermFinal/simulation_based_design_tv.md) - Fake dataset of a randomized experiment on student grades -->
+<!-- - [ElectricCompany/](ElectricCompany/) -->
+<!--     - [electric_tv.md](ElectricCompany/electric_tv.md) - Analysis of "Electric Company" data -->
 <!-- ### 17  Poststratification and missing-data imputation -->
 <!-- - [Poststrat/](Poststrat/) -->
 <!--     - [poststrat_tv.md](Poststrat/poststrat_tv.md) - Poststratification after estimation -->
@@ -378,7 +380,8 @@ Vehtari](https://users.aalto.fi/~ave/) (2020).
         Bootstrapping to simulate the sampling distribution
     -   [earnings\_regression\_tv.md](Earnings/earnings_regression_tv.md) -
         Predict respondents’ yearly earnings using survey data from 1990
-        <!--     - [earnings_compound_tv.md](Earnings/earnings_compound_tv.md) - Compound discrete-continuous model -->
+    -   [earnings\_compound\_tv.md](Earnings/earnings_compound_tv.md) -
+        Compound discrete-continuous model
     -   [height\_and\_weight\_tv.md](Earnings/height_and_weight_tv.md) -
         Predict weight
 -   [ElectionsEconomy/](ElectionsEconomy/)
