@@ -250,7 +250,7 @@ n_sims <- 50
 
 Run the simulation `r n_sims` times.
 
-```{r}
+```{r, comment = ""}
 set.seed(844)
 
 results_mean <- 
@@ -258,7 +258,12 @@ results_mean <-
   map_dfr(~ experiment()) %>% 
   summarize(across(everything(), mean))
 
-results_mean
+matrix(
+  as.double(results_mean),
+  ncol = 2,
+  byrow = TRUE,
+  dimnames = list(c("Simple", "Adjusted"), c("Estimate", "SE"))
+)
 ```
 
 The true parameter value here is 5.0, so in this case the simple comparison is horribly biased -- no surprise if you reflect upon the big differences between treatment and control groups. In contrast, the bias of the adjusted estimate is low.

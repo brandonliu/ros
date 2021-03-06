@@ -2,7 +2,7 @@ Regression and Other Stories: Fake dataset of a randomized experiment on
 student grades
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-03-05
+2021-03-06
 
 -   [16 Design and sample size
     decisions](#16-design-and-sample-size-decisions)
@@ -382,13 +382,17 @@ results_mean <-
   map_dfr(~ experiment()) %>% 
   summarize(across(everything(), mean))
 
-results_mean
+matrix(
+  as.double(results_mean),
+  ncol = 2,
+  byrow = TRUE,
+  dimnames = list(c("Simple", "Adjusted"), c("Estimate", "SE"))
+)
 ```
 
-    #> # A tibble: 1 x 4
-    #>   simple simple_se adjusted adjusted_se
-    #>    <dbl>     <dbl>    <dbl>       <dbl>
-    #> 1  -5.44      3.86     5.13        3.38
+             Estimate   SE
+    Simple      -5.44 3.86
+    Adjusted     5.13 3.38
 
 The true parameter value here is 5.0, so in this case the simple
 comparison is horribly biased – no surprise if you reflect upon the big
