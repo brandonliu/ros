@@ -25,6 +25,8 @@ library(tidyverse)
 library(rstanarm)
 
 # Parameters
+  # Seed
+SEED <- 987
   # Common code
 file_common <- here::here("_common.R")
 
@@ -43,7 +45,7 @@ source(file_common)
 Simulated data.
 
 ``` r
-set.seed(987)
+set.seed(SEED)
 
 n <- 100
 a <- 1
@@ -62,7 +64,7 @@ data_1 <-
 Model.
 
 ``` r
-set.seed(987)
+set.seed(SEED)
 
 fit_1 <- stan_glm(y ~ x + z, data = data_1, refresh = 0)
 
@@ -121,7 +123,7 @@ data_1 %>%
 Simulated data.
 
 ``` r
-set.seed(987)
+set.seed(SEED)
 
 n <- 100
 k <- 10
@@ -142,7 +144,7 @@ data_2 <-
 Model.
 
 ``` r
-set.seed(987)
+set.seed(SEED)
 
 fit_2 <- stan_glm(y ~ X + z, data = data_2, refresh = 0)
 
