@@ -1,7 +1,7 @@
 Regression and Other Stories: Residuals
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-02-09
+2021-03-06
 
 -   [11 Assumptions, diagnostics, and model
     evaluation](#11-assumptions-diagnostics-and-model-evaluation)
@@ -43,7 +43,7 @@ source(file_common)
 Simulated data.
 
 ``` r
-set.seed(660)
+set.seed(987)
 
 n <- 100
 a <- 1
@@ -54,7 +54,7 @@ sigma <- 2
 data_1 <- 
   tibble(
     x = runif(n, min = 0, max = 1),
-    z = sample(0:1, n, replace = TRUE),
+    z = rep(0:1, n / 2) %>% sample(),
     y = a + b * x + theta * z + rnorm(n, mean = 0, sd = sigma)
   )
 ```
@@ -62,7 +62,7 @@ data_1 <-
 Model.
 
 ``` r
-set.seed(660)
+set.seed(987)
 
 fit_1 <- stan_glm(y ~ x + z, data = data_1, refresh = 0)
 
@@ -76,13 +76,13 @@ fit_1
     #>  predictors:   3
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) 0.2    0.4   
-    #> x           2.5    0.6   
-    #> z           5.9    0.3   
+    #> (Intercept) 1.7    0.4   
+    #> x           1.6    0.6   
+    #> z           4.5    0.4   
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 1.6    0.1   
+    #> sigma 1.8    0.1   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -121,7 +121,7 @@ data_1 %>%
 Simulated data.
 
 ``` r
-set.seed(660)
+set.seed(987)
 
 n <- 100
 k <- 10
@@ -134,7 +134,7 @@ sigma <- 2
 data_2 <- 
   tibble(
     X = matrix(runif(n * k, min = 0, max = 1), nrow = n, ncol = k),
-    z = sample(0:1, n, replace = TRUE),
+    z = rep(0:1, n / 2) %>% sample(),
     y = as.double(a + X %*% b + theta * z + rnorm(n, mean = 0, sd = sigma))
   )
 ```
@@ -142,7 +142,7 @@ data_2 <-
 Model.
 
 ``` r
-set.seed(660)
+set.seed(987)
 
 fit_2 <- stan_glm(y ~ X + z, data = data_2, refresh = 0)
 
@@ -156,22 +156,22 @@ fit_2
     #>  predictors:   12
     #> ------
     #>             Median MAD_SD
-    #> (Intercept)  1.4    1.2  
-    #> X1           2.5    0.8  
-    #> X2           1.8    0.8  
-    #> X3           1.4    0.8  
-    #> X4           4.3    0.8  
-    #> X5           3.9    0.8  
-    #> X6           5.1    0.8  
-    #> X7           6.3    0.8  
-    #> X8           7.7    0.7  
-    #> X9           8.9    0.8  
-    #> X10         11.9    0.8  
-    #> z            5.4    0.4  
+    #> (Intercept) -0.2    1.1  
+    #> X1           0.6    0.7  
+    #> X2           2.5    0.7  
+    #> X3           3.6    0.7  
+    #> X4           3.9    0.7  
+    #> X5           5.2    0.8  
+    #> X6           6.0    0.7  
+    #> X7           8.8    0.8  
+    #> X8           8.8    0.8  
+    #> X9           8.7    0.7  
+    #> X10         10.4    0.8  
+    #> z            4.5    0.4  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 2.1    0.2   
+    #> sigma 2.0    0.1   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg

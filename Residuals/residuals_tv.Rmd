@@ -37,7 +37,7 @@ source(file_common)
 Simulated data.
 
 ```{r}
-set.seed(660)
+set.seed(987)
 
 n <- 100
 a <- 1
@@ -48,7 +48,7 @@ sigma <- 2
 data_1 <- 
   tibble(
     x = runif(n, min = 0, max = 1),
-    z = sample(0:1, n, replace = TRUE),
+    z = rep(0:1, n / 2) %>% sample(),
     y = a + b * x + theta * z + rnorm(n, mean = 0, sd = sigma)
   )
 ```
@@ -56,7 +56,7 @@ data_1 <-
 Model.
 
 ```{r}
-set.seed(660)
+set.seed(987)
 
 fit_1 <- stan_glm(y ~ x + z, data = data_1, refresh = 0)
 
@@ -94,7 +94,7 @@ data_1 %>%
 Simulated data.
 
 ```{r}
-set.seed(660)
+set.seed(987)
 
 n <- 100
 k <- 10
@@ -107,7 +107,7 @@ sigma <- 2
 data_2 <- 
   tibble(
     X = matrix(runif(n * k, min = 0, max = 1), nrow = n, ncol = k),
-    z = sample(0:1, n, replace = TRUE),
+    z = rep(0:1, n / 2) %>% sample(),
     y = as.double(a + X %*% b + theta * z + rnorm(n, mean = 0, sd = sigma))
   )
 ```
@@ -115,7 +115,7 @@ data_2 <-
 Model.
 
 ```{r}
-set.seed(660)
+set.seed(987)
 
 fit_2 <- stan_glm(y ~ X + z, data = data_2, refresh = 0)
 
