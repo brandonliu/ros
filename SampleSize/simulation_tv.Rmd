@@ -44,8 +44,8 @@ n <- 1000
 sigma <- 10
 
 y <- rnorm(n, mean = 0, sd = sigma)
-sample_1 <- sample(1:2, size = n, replace = TRUE)
-sample_2 <- sample(1:2, size = n, replace = TRUE)
+sample_1 <- rep(1:2, n / 2) %>%  sample()
+sample_2 <- rep(1:2, n / 2) %>%  sample()
 
 sim <- function(v_1, v_2) {
   tibble(

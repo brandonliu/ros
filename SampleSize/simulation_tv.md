@@ -1,7 +1,7 @@
 Regression and Other Stories: Sample size simulation
 ================
 Andrew Gelman, Jennifer Hill, Aki Vehtari
-2021-03-04
+2021-03-06
 
 -   [16 Design and sample size
     decisions](#16-design-and-sample-size-decisions)
@@ -48,8 +48,8 @@ n <- 1000
 sigma <- 10
 
 y <- rnorm(n, mean = 0, sd = sigma)
-sample_1 <- sample(1:2, size = n, replace = TRUE)
-sample_2 <- sample(1:2, size = n, replace = TRUE)
+sample_1 <- rep(1:2, n / 2) %>%  sample()
+sample_2 <- rep(1:2, n / 2) %>%  sample()
 
 sim <- function(v_1, v_2) {
   tibble(
@@ -78,7 +78,7 @@ fit_1_1
     #> ------
     #>             Median MAD_SD
     #> (Intercept) -0.2    0.3  
-    #> x_1          0.2    0.6  
+    #> x_1          0.1    0.6  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
@@ -105,13 +105,13 @@ fit_1_2
     #> ------
     #>             Median MAD_SD
     #> (Intercept) -0.2    0.3  
-    #> x_1          0.3    0.6  
-    #> x_2         -0.6    0.6  
-    #> x_1:x_2     -2.9    1.2  
+    #> x_1          0.2    0.6  
+    #> x_2          0.5    0.6  
+    #> x_1:x_2      0.9    1.2  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.1    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -158,7 +158,7 @@ fit_2_1
     #> ------
     #>             Median MAD_SD
     #> (Intercept) -0.3    0.4  
-    #> x_1          0.2    0.6  
+    #> x_1          0.1    0.6  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
@@ -184,14 +184,14 @@ fit_2_2
     #>  predictors:   4
     #> ------
     #>             Median MAD_SD
-    #> (Intercept) -0.8    0.6  
-    #> x_1          1.7    0.8  
-    #> x_2          0.9    0.8  
-    #> x_1:x_2     -2.8    1.2  
+    #> (Intercept) -0.3    0.6  
+    #> x_1         -0.4    0.9  
+    #> x_2          0.0    0.9  
+    #> x_1:x_2      1.0    1.2  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.1    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
@@ -251,12 +251,12 @@ fit_3_2
     #>             Median MAD_SD
     #> (Intercept) -0.2    0.3  
     #> x_1          0.1    0.3  
-    #> x_2         -0.3    0.3  
-    #> x_1:x_2     -0.7    0.3  
+    #> x_2          0.2    0.3  
+    #> x_1:x_2      0.2    0.3  
     #> 
     #> Auxiliary parameter(s):
     #>       Median MAD_SD
-    #> sigma 9.1    0.2   
+    #> sigma 9.2    0.2   
     #> 
     #> ------
     #> * For help interpreting the printed output see ?print.stanreg
